@@ -1,2 +1,2 @@
-# Shootout
+# ShootoutMod
 Unity 3D project
