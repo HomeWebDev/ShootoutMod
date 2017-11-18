@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour {
 
     private List<GameObject> fenceList = new List<GameObject>();
+    private LevelRepresentation levelRepresentation = new LevelRepresentation();
+    int scaleX = 18;
+    int scaleZ = 10;
 
     void Awake()
     {
         GenerateLevel();
 
         OpenDoors();
+
+        PositionPlayersAndCamera();
 
         //Debug.Log("This was run");
     }
@@ -33,6 +38,26 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    private void PositionPlayersAndCamera()
+    {
+        GameObject player1 = GameObject.Find("Player1");
+        GameObject player2 = GameObject.Find("Player2");
+
+        //Always start in center room
+        int iPosition = levelRepresentation.RoomArray.GetLength(0) / 2;
+        int jPosition = levelRepresentation.RoomArray.GetLength(1) / 2;
+        int xPosition = iPosition * scaleX;
+        int zPosition = jPosition * scaleZ;
+
+        Vector3 player1Position = new Vector3(xPosition, 0, zPosition);
+
+        player1.transform.position = player1Position;
+        player2.transform.position = player1Position;
+
+        Vector3 cameraPosition = new Vector3(xPosition, Camera.main.transform.position.y, zPosition);
+        Camera.main.transform.position = cameraPosition;
+    }
+
     // Use this for initialization
     void Start() {
 
@@ -44,6 +69,167 @@ public class LevelController : MonoBehaviour {
     }
 
     private void GenerateLevel()
+    {
+        for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
+            {
+                GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(1) - i - 1, j], i, j);
+                //GenerateRoom(levelRepresentation.RoomArray[i, j], i, j);
+            }
+        }
+    }
+
+    private void GenerateRoom(LevelRepresentation.RoomType roomType, int i, int j)
+    {
+        int x = j * scaleX;
+        int z = i * scaleZ;
+
+        if (roomType == LevelRepresentation.RoomType.NoRoom)
+        {
+            return;
+        }
+
+        //Add common objects
+        GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Ground", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        fenceList.Add(fences);
+
+        switch(roomType)
+        {
+            case LevelRepresentation.RoomType.NorthOpenSouthOpenWestOpenEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthOpenWestOpenEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthOpenWestClosedEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthClosedWestOpenEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthOpenWestOpenEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthOpenWestClosedEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthClosedWestOpenEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthOpenWestOpenEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthClosedWestClosedEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthOpenWestClosedEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthClosedWestOpenEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthOpenSouthClosedWestClosedEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthOpenWestClosedEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthClosedWestOpenEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthClosedWestClosedEastOpen:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+            case LevelRepresentation.RoomType.NorthClosedSouthClosedWestClosedEastClosed:
+                {
+                    GameObject northWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject southWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject westWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    GameObject eastWall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                }
+        }
+    }
+
+    private void GenerateLevelOld()
     {
         GenerateFirstRoom();
         GenerateNorthRoom();
