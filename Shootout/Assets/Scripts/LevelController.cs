@@ -7,8 +7,8 @@ public class LevelController : MonoBehaviour {
 
     private List<GameObject> fenceList = new List<GameObject>();
     private LevelRepresentation levelRepresentation = new LevelRepresentation();
-    int scaleX = 18;
-    int scaleZ = 10;
+    public int scaleX = 18;
+    public int scaleZ = 10;
 
     void Awake()
     {
@@ -29,11 +29,16 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    public LevelRepresentation GetLevelRepresentation()
+    {
+        return levelRepresentation;
+    }
+
     public void OpenDoors()
     {
         foreach (var fence in fenceList)
         {
-            Debug.Log("Fence: " + fence);
+            //Debug.Log("Fence: " + fence);
             fence.SetActive(false);
         }
     }

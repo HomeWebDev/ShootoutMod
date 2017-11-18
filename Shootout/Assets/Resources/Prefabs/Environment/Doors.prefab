@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xShift: 0
   zShift: 10
+  shiftSpeed: 0.3
 --- !u!114 &114217034557093180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xShift: 18
   zShift: 0
+  shiftSpeed: 0.3
 --- !u!114 &114355513737216224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xShift: -18
   zShift: 0
+  shiftSpeed: 0.3
 --- !u!114 &114839449471815358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,3 +278,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xShift: 0
   zShift: -10
+  shiftSpeed: 0.3

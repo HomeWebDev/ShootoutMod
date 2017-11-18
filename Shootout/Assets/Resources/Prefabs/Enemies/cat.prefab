@@ -7545,7 +7545,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339135195479940}
-  m_LocalRotation: {x: 0.040348165, y: -0.1722414, z: 0.65178365, w: 0.7374842}
+  m_LocalRotation: {x: 0.04034817, y: -0.17224142, z: 0.6517837, w: 0.7374843}
   m_LocalPosition: {x: 0.10629454, y: 0.39675346, z: -0.19422723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9690,7 +9690,7 @@ MonoBehaviour:
   rotationDamping: 20
   horizontalAxis: Horizontal3
   verticalAxis: Vertical3
-  health: 100
+  health: 20
   meleeDamage: 1
 --- !u!137 &137293682281038872
 SkinnedMeshRenderer:

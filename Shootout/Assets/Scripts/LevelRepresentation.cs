@@ -9,6 +9,11 @@ public class LevelRepresentation : MonoBehaviour {
     public int blockedPercentage = 50;
     public int minNumberOfRooms = 30;
 
+    //public int roomArrayX = 3;
+    //public int roomArrayZ = 3;
+    //public int blockedPercentage = 0;
+    //public int minNumberOfRooms = 3;
+
     private System.Random rand = new System.Random();
 
     public enum RoomType
@@ -32,6 +37,14 @@ public class LevelRepresentation : MonoBehaviour {
         NorthClosedSouthClosedWestClosedEastClosed,
     };
 
+    public enum ContentType
+    {
+        NoContent,
+        BossLevel1,
+        EnemyLevel1,
+        Treasure,
+    };
+
     public LevelRepresentation()
     {
         //CreateRoomArray();
@@ -46,6 +59,7 @@ public class LevelRepresentation : MonoBehaviour {
     }
 
     public RoomType[,] RoomArray{ get; set; }
+    public ContentType[,] ContentArray { get; set; }
 
     private void CreateRoomArray()
     {
@@ -71,12 +85,14 @@ public class LevelRepresentation : MonoBehaviour {
         while (true)
         {
             RoomArray = new RoomType[roomArrayX, roomArrayZ];
+            ContentArray = new ContentType[roomArrayX, roomArrayZ];
             //Initialize with empty rooms
             for (int i = 0; i < roomArrayX; i++)
             {
                 for (int j = 0; j < roomArrayZ; j++)
                 {
                     RoomArray[i, j] = RoomType.NoRoom;
+                    ContentArray[i, j] = ContentType.NoContent;
                 }
             }
 
@@ -103,6 +119,7 @@ public class LevelRepresentation : MonoBehaviour {
                                 if (RoomArray[i - 1, j] == RoomType.NoRoom)
                                 {
                                     RoomArray[i - 1, j] = GetRandomRoomThatFits(i - 1, j);
+                                    ContentArray[i - 1, j] = ContentType.EnemyLevel1;
                                     nrOrOpenDoors++;
                                     numberOfRooms++;
                                 }
@@ -112,6 +129,7 @@ public class LevelRepresentation : MonoBehaviour {
                                 if (RoomArray[i + 1, j] == RoomType.NoRoom)
                                 {
                                     RoomArray[i + 1, j] = GetRandomRoomThatFits(i + 1, j);
+                                    ContentArray[i + 1, j] = ContentType.EnemyLevel1;
                                     nrOrOpenDoors++;
                                     numberOfRooms++;
                                 }
@@ -121,6 +139,7 @@ public class LevelRepresentation : MonoBehaviour {
                                 if (RoomArray[i, j - 1] == RoomType.NoRoom)
                                 {
                                     RoomArray[i, j - 1] = GetRandomRoomThatFits(i, j - 1);
+                                    ContentArray[i, j - 1] = ContentType.EnemyLevel1;
                                     nrOrOpenDoors++;
                                     numberOfRooms++;
                                 }
@@ -130,6 +149,7 @@ public class LevelRepresentation : MonoBehaviour {
                                 if (RoomArray[i, j + 1] == RoomType.NoRoom)
                                 {
                                     RoomArray[i, j + 1] = GetRandomRoomThatFits(i, j + 1);
+                                    ContentArray[i, j + 1] = ContentType.EnemyLevel1;
                                     nrOrOpenDoors++;
                                     numberOfRooms++;
                                 }

@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389402270}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 1855270843}
   - component: {fileID: 1855270842}
   m_Layer: 0
-  m_Name: LevelController
+  m_Name: LevelControl
   m_TagString: LevelController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,7 +7,9 @@ public class ShiftCamera : MonoBehaviour {
 
     public int xShift;
     public int zShift;
+    public float shiftSpeed;
     private bool buzyShifting = false;
+    private LevelController levelController;
 
     private void OnTriggerEnter(Collider other)
 
@@ -26,7 +28,7 @@ public class ShiftCamera : MonoBehaviour {
         {
             Vector3 diff = new Vector3(xShift, 0, zShift);
             Vector3 newDesiredPosition = Camera.main.transform.position - diff;
-            StartCoroutine(LerpFromTo(Camera.main.transform.position, newDesiredPosition, 0.5f));
+            StartCoroutine(LerpFromTo(Camera.main.transform.position, newDesiredPosition, shiftSpeed));
 
             if(other.tag == "Player1")
             {
@@ -44,15 +46,31 @@ public class ShiftCamera : MonoBehaviour {
 
     private void SpawnEnemies(Vector3 roomPosition)
     {
-        Vector3 enemyPosition = new Vector3(roomPosition.x, 0, roomPosition.z);
-        GameObject ground = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        //Get room position
+        levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
+        int xRoomPos = (int)(roomPosition.x / levelController.scaleX);
+        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)(roomPosition.z / levelController.scaleZ) - 1;
+
+        //Debug.Log("x: " + roomPosition.x + " z: " + roomPosition.z);
+        //Debug.Log("xint: " + xRoomPos + " zint: " + zRoomPos);
+        //Debug.Log("ContentType: " + levelController.GetLevelRepresentation().ContentArray[xRoomPos, zRoomPos]);
+
+        //Add enemies and close doors
+        if (levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] == LevelRepresentation.ContentType.EnemyLevel1)
+        {
+            CloseDoors(roomPosition);
+            //TODO: Add random enemys of appropriate level
+            Vector3 enemyPosition = new Vector3(roomPosition.x, 0, roomPosition.z);
+            GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] = LevelRepresentation.ContentType.NoContent;
+        }
     }
 
     IEnumerator LerpFromTo(Vector3 pos1, Vector3 pos2, float duration)
     {
         if (!buzyShifting)
         {
-            CloseDoors(pos2);
+            //CloseDoors(pos2);
             SpawnEnemies(pos2);
 
             buzyShifting = true;
