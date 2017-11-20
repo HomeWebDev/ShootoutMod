@@ -7,8 +7,8 @@ public class LevelController : MonoBehaviour {
 
     private List<GameObject> fenceList = new List<GameObject>();
     private LevelRepresentation levelRepresentation = new LevelRepresentation();
-    public int scaleX = 18;
-    public int scaleZ = 10;
+    public int scaleX = 17;
+    public int scaleZ = 12;
 
     void Awake()
     {
@@ -59,7 +59,7 @@ public class LevelController : MonoBehaviour {
         player1.transform.position = player1Position;
         player2.transform.position = player1Position;
 
-        Vector3 cameraPosition = new Vector3(xPosition, Camera.main.transform.position.y, zPosition);
+        Vector3 cameraPosition = new Vector3(xPosition, Camera.main.transform.position.y, zPosition - 4.2f);
         Camera.main.transform.position = cameraPosition;
     }
 

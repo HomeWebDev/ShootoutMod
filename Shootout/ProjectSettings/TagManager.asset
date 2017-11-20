@@ -19,6 +19,7 @@ TagManager:
   - Enemy
   - Fence
   - LevelController
+  - Weapon
   layers:
   - Default
   - TransparentFX

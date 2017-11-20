@@ -49,7 +49,7 @@ public class ShiftCamera : MonoBehaviour {
         //Get room position
         levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
         int xRoomPos = (int)(roomPosition.x / levelController.scaleX);
-        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)(roomPosition.z / levelController.scaleZ) - 1;
+        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)((roomPosition.z + 4.2f) / levelController.scaleZ) - 1;
 
         //Debug.Log("x: " + roomPosition.x + " z: " + roomPosition.z);
         //Debug.Log("xint: " + xRoomPos + " zint: " + zRoomPos);
@@ -59,8 +59,8 @@ public class ShiftCamera : MonoBehaviour {
         if (levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] == LevelRepresentation.ContentType.EnemyLevel1)
         {
             CloseDoors(roomPosition);
-            //TODO: Add random enemys of appropriate level
-            Vector3 enemyPosition = new Vector3(roomPosition.x, 0, roomPosition.z);
+            //TODO: Add random enemies of appropriate level
+            Vector3 enemyPosition = new Vector3(roomPosition.x, 0, roomPosition.z + 4.2f);
             GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
             levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] = LevelRepresentation.ContentType.NoContent;
         }

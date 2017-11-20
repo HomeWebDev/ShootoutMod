@@ -62,6 +62,7 @@ public class Animation_Controller : MonoBehaviour
         //Handle movements based on axises
         float moveV = Input.GetAxis(verticalAxis);
         float moveH = Input.GetAxis(horizontalAxis);
+        //Debug.Log("h: " + moveH);
 
         Vector3 movement = new Vector3(moveH, 0.0f, moveV);
         movement *= speed;

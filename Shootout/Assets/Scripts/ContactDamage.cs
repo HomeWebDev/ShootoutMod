@@ -14,6 +14,8 @@ public class ContactDamage : MonoBehaviour {
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("Trigger: " + other);
+
         //Ignore walls
         if (other.tag == "Boundary")
         {
@@ -58,6 +60,6 @@ public class ContactDamage : MonoBehaviour {
         }
 
         //Destroy bullet
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

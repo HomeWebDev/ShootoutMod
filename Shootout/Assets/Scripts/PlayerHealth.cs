@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        shieldSlider.value = shield;
+        //shieldSlider.value = shield;
     }
 
     /// <summary>
