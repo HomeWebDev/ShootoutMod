@@ -17,9 +17,15 @@ public class HeroController : MonoBehaviour
     public float speed;
     public float rotationDamping = 20f;
 
-    int jumpHash = Animator.StringToHash("Jump");
-    int idleStateHash = Animator.StringToHash("Idle");
-    int walkStateHash = Animator.StringToHash("Walk");
+    private int walkHash = Animator.StringToHash("Walk");
+    private int walkBackwardHash = Animator.StringToHash("Walk Backward");
+    private int relaxHash = Animator.StringToHash("Relax");
+    private int punchHash = Animator.StringToHash("Punch");
+    private int melee1Hash = Animator.StringToHash("Melee1"); //Strike forward like dagger or light sword
+    private int melee2Hash = Animator.StringToHash("Melee2"); //Strike in arch like axe or hammer
+    private int melee3Hash = Animator.StringToHash("Melee3"); //Strike in low arc/towards right side like scythe
+
+    private WeaponType weaponType;
 
     // Use this for initialization
     void Start()
@@ -27,7 +33,32 @@ public class HeroController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         controller = GetComponent(typeof(CharacterController)) as CharacterController;
         animator = GetComponent<Animator>();
+
+        weaponType = WeaponType.BareHands;
+        GetWeaponType();
     }
+
+    public enum WeaponType
+    {
+        BareHands,
+        Axe,
+        Claws,
+        Club,
+        Crossbow,
+        Dagger,
+        Hammer,
+        HandAuras,
+        Knuckles,
+        Longbow,
+        Mace,
+        Scepter,
+        Scythe,
+        Spear,
+        Sword,
+        TwoHandedAxe,
+        TwoHandedSword,
+        Wand,
+    };
 
     // Update is called once per frame
     void Update()
@@ -59,37 +90,55 @@ public class HeroController : MonoBehaviour
         movement *= speed;
         controller.Move(movement * Time.deltaTime);
 
+        GetWeaponType();
 
-        //animator.SetFloat("Speed", move);
-
-        //animator.speed = 1.0f;
-
-        //Animation
-        if (moveV != 0 || moveH != 0)
-        {
-            //animator.SetTrigger(walkStateHash);
-            animator.SetTrigger("Walk");
-            //animator.SetTrigger("Strafe Left");
-            animator.ResetTrigger("Relax");
-        }
-        else
-        {
-            animator.SetTrigger("Relax");
-            //animator.ResetTrigger("Strafe Left");
-            animator.ResetTrigger("Walk");
-        }
+        Debug.Log("Weapontype: " + weaponType.ToString());
 
         if (Input.GetButton(leftAttackButton) | Input.GetButton(rightAttackButton) | Input.GetButton(upAttackButton) | Input.GetButton(downAttackButton))
         {
-            //animator.SetTrigger("Punch Attack");
-            animator.SetTrigger("Punch");
-            //animator.ResetTrigger("Relax");
+            if (weaponType == WeaponType.BareHands |
+                weaponType == WeaponType.Claws |
+                weaponType == WeaponType.HandAuras |
+                weaponType == WeaponType.Knuckles)
+            {
+                animator.SetTrigger(punchHash);
+            }
+
+            if (weaponType == WeaponType.Sword |
+                weaponType == WeaponType.Dagger)
+            {
+                animator.SetTrigger(melee1Hash);
+            }
+
+            if (weaponType == WeaponType.Axe |
+                weaponType == WeaponType.Hammer |
+                weaponType == WeaponType.Mace |
+                weaponType == WeaponType.Scepter |
+                weaponType == WeaponType.Club |
+                weaponType == WeaponType.TwoHandedAxe |  //Move to two handed animation when that exists
+                weaponType == WeaponType.TwoHandedSword) //Move to two handed animation when thta exists
+            {
+                animator.SetTrigger(melee2Hash);
+            }
+
+            if (weaponType == WeaponType.Scythe)
+            {
+                animator.SetTrigger(melee3Hash);
+            }
+
+            //Weapons left to implement
+            //Spear
+            //Crossbow
+            //Longbow
+            //Wand
         }
         else
         {
-            animator.ResetTrigger("Punch");
+            animator.ResetTrigger(melee1Hash);
+            animator.ResetTrigger(melee2Hash);
+            animator.ResetTrigger(melee3Hash);
+            animator.ResetTrigger(punchHash);
         }
-
 
         //Handle rotation, look in attack direction
         if (Input.GetButton(leftAttackButton))
@@ -98,48 +147,31 @@ public class HeroController : MonoBehaviour
                                  Quaternion.LookRotation(new Vector3(-1, 0, 0)),
                                  Time.deltaTime * rotationDamping);
 
-            if (moveH < 0)
-            {
-                animator.SetTrigger("Walk");
-                animator.ResetTrigger("Walk Backward");
-                animator.ResetTrigger("Relax");
-            }
-            else if (moveH > 0)
-            {
-                animator.SetTrigger("Walk Backward");
-                animator.ResetTrigger("Walk");
-                animator.ResetTrigger("Relax");
-            }
-            else if(moveV != 0)
-            {
-                animator.SetTrigger("Walk");
-                animator.ResetTrigger("Walk Backward");
-                animator.ResetTrigger("Relax");
-            }
-            else
-            {
-                animator.SetTrigger("Relax");
-                animator.ResetTrigger("Walk Backward");
-                animator.ResetTrigger("Walk");
-            }
+            SetLeftAttackingMovement(moveH, moveV);
         }
         else if (Input.GetButton(rightAttackButton))
         {
             transform.rotation = Quaternion.Slerp(transform.rotation,
                                  Quaternion.LookRotation(new Vector3(1, 0, 0)),
                                  Time.deltaTime * rotationDamping);
+
+            SetRightAttackingMovement(moveH, moveV);
         }
         else if (Input.GetButton(upAttackButton))
         {
             transform.rotation = Quaternion.Slerp(transform.rotation,
                                  Quaternion.LookRotation(new Vector3(0, 0, 1)),
                                  Time.deltaTime * rotationDamping);
+
+            SetUpAttackingMovement(moveH, moveV);
         }
         else if (Input.GetButton(downAttackButton))
         {
             transform.rotation = Quaternion.Slerp(transform.rotation,
                                  Quaternion.LookRotation(new Vector3(0, 0, -1)),
                                  Time.deltaTime * rotationDamping);
+
+            SetDownAttackingMovement(moveH, moveV);
         }
         //If not attacking look forwards
         else
@@ -150,7 +182,187 @@ public class HeroController : MonoBehaviour
                                      Quaternion.LookRotation(movement),
                                      Time.deltaTime * rotationDamping);
 
+                animator.SetTrigger(walkHash);
+                animator.ResetTrigger(walkBackwardHash);
+                animator.ResetTrigger(relaxHash);
             }
+            else
+            {
+                animator.SetTrigger(relaxHash);
+                animator.ResetTrigger(walkBackwardHash);
+                animator.ResetTrigger(walkHash);
+            }
+        }
+    }
+
+    private void GetWeaponType()
+    {
+        //GameObject rightHand = GameObject.Find("Dummy Prop Right");
+
+        GameObject rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        Debug.Log("rightHand: " + rightHand);
+
+        if (rightHand.transform.childCount > 0)
+        {
+            string weaponName = rightHand.transform.GetChild(0).name;
+
+            Debug.Log("weaponName: " + weaponName);
+
+            if (weaponName.Contains("Axe"))
+                weaponType = WeaponType.Axe;
+            if (weaponName.Contains("Claw"))
+                weaponType = WeaponType.Claws;
+            if (weaponName.Contains("Club"))
+                weaponType = WeaponType.Club;
+            if (weaponName.Contains("Crossbow"))
+                weaponType = WeaponType.Crossbow;
+            if (weaponName.Contains("Dagger"))
+                weaponType = WeaponType.Dagger;
+            if (weaponName.Contains("Hammer"))
+                weaponType = WeaponType.Hammer;
+            if (weaponName.Contains("Claw"))
+                weaponType = WeaponType.Claws;
+            if (weaponName.Contains("Hand Aura"))
+                weaponType = WeaponType.HandAuras;
+            if (weaponName.Contains("Knuckles"))
+                weaponType = WeaponType.Knuckles;
+            if (weaponName.Contains("Longbow"))
+                weaponType = WeaponType.Longbow;
+            if (weaponName.Contains("Mace"))
+                weaponType = WeaponType.Mace;
+            if (weaponName.Contains("Scepter"))
+                weaponType = WeaponType.Scepter;
+            if (weaponName.Contains("Scythe"))
+                weaponType = WeaponType.Scythe;
+            if (weaponName.Contains("Spear"))
+                weaponType = WeaponType.Spear;
+            if (weaponName.Contains("Sword"))
+                weaponType = WeaponType.Sword;
+            if (weaponName.Contains("TH Axe"))
+                weaponType = WeaponType.TwoHandedAxe;
+            if (weaponName.Contains("TH Sword"))
+                weaponType = WeaponType.TwoHandedSword;
+            if (weaponName.Contains("Wand"))
+                weaponType = WeaponType.Wand;
+        }
+    }
+
+
+
+
+
+
+
+private void SetLeftAttackingMovement(float moveH, float moveV)
+    {
+        if (moveH < 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveH > 0)
+        {
+            animator.SetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveV != 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else
+        {
+            animator.SetTrigger(relaxHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+        }
+    }
+
+    private void SetRightAttackingMovement(float moveH, float moveV)
+    {
+        if (moveH > 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveH < 0)
+        {
+            animator.SetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveV != 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else
+        {
+            animator.SetTrigger(relaxHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+        }
+    }
+
+    private void SetUpAttackingMovement(float moveH, float moveV)
+    {
+        if (moveV > 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveV < 0)
+        {
+            animator.SetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveH != 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else
+        {
+            animator.SetTrigger(relaxHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+        }
+    }
+
+    private void SetDownAttackingMovement(float moveH, float moveV)
+    {
+        if (moveV < 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveV > 0)
+        {
+            animator.SetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else if (moveH != 0)
+        {
+            animator.SetTrigger(walkHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(relaxHash);
+        }
+        else
+        {
+            animator.SetTrigger(relaxHash);
+            animator.ResetTrigger(walkBackwardHash);
+            animator.ResetTrigger(walkHash);
         }
     }
 }
