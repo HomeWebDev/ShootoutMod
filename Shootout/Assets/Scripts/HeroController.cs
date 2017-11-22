@@ -29,6 +29,7 @@ public class HeroController : MonoBehaviour
     private int thMelee2Hash = Animator.StringToHash("THMelee2"); //Twohanded strike in left to right arch (sword)
     private int spearMelee1Hash = Animator.StringToHash("SpearMelee1"); //Normal spear attack
     private int spearMelee2Hash = Animator.StringToHash("SpearMelee2"); //Long range spear attack
+    private int longbowShootHash = Animator.StringToHash("LongbowShoot"); //
 
     private WeaponType weaponType;
 
@@ -109,13 +110,11 @@ public class HeroController : MonoBehaviour
             {
                 animator.SetTrigger(punchHash);
             }
-
             if (weaponType == WeaponType.Sword |
                 weaponType == WeaponType.Dagger)
             {
                 animator.SetTrigger(melee1Hash);
             }
-
             if (weaponType == WeaponType.Axe |
                 weaponType == WeaponType.Hammer |
                 weaponType == WeaponType.Mace |
@@ -124,36 +123,33 @@ public class HeroController : MonoBehaviour
             {
                 animator.SetTrigger(melee2Hash);
             }
-
             if (weaponType == WeaponType.Scythe)
             {
                 animator.SetTrigger(melee3Hash);
             }
-
             if (weaponType == WeaponType.TwoHandedAxe)
             {
                 animator.SetTrigger(thMelee1Hash);
             }
-
             if (weaponType == WeaponType.TwoHandedSword)
             {
                 animator.SetTrigger(thMelee2Hash);
             }
-
             if (weaponType == WeaponType.Spear)
             {
                 animator.SetTrigger(spearMelee1Hash);
             }
-
             if (weaponType == WeaponType.LongSpear)
             {
                 animator.SetTrigger(spearMelee2Hash);
             }
+            if (weaponType == WeaponType.Longbow)
+            {
+                animator.SetTrigger(longbowShootHash);
+            }
 
             //Weapons left to implement
-            //Spear
             //Crossbow
-            //Longbow
             //Wand
 
             animator.ResetTrigger(twoHandedIdleHash);
@@ -168,6 +164,7 @@ public class HeroController : MonoBehaviour
             animator.ResetTrigger(thMelee2Hash);
             animator.ResetTrigger(spearMelee1Hash);
             animator.ResetTrigger(spearMelee2Hash);
+            animator.ResetTrigger(longbowShootHash);
             animator.ResetTrigger(punchHash);
 
             if (weaponType == WeaponType.TwoHandedAxe | weaponType == WeaponType.TwoHandedSword)
@@ -184,41 +181,72 @@ public class HeroController : MonoBehaviour
             {
                 animator.ResetTrigger(twoHandedIdleHash);
                 animator.ResetTrigger(spearIdleHash);
-                Debug.Log("Did this?");
             }
         }
 
         //Handle rotation, look in attack direction
         if (Input.GetButton(leftAttackButton))
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                 Quaternion.LookRotation(new Vector3(-1, 0, 0)),
-                                 Time.deltaTime * rotationDamping);
-
+            if (weaponType == WeaponType.Longbow)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(-1, 0, 1)),
+                    Time.deltaTime * rotationDamping);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(-1, 0, 0)),
+                    Time.deltaTime * rotationDamping);
+            }
             SetLeftAttackingMovement(moveH, moveV);
         }
         else if (Input.GetButton(rightAttackButton))
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                 Quaternion.LookRotation(new Vector3(1, 0, 0)),
-                                 Time.deltaTime * rotationDamping);
-
+            if (weaponType == WeaponType.Longbow)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(1, 0, -1)),
+                    Time.deltaTime * rotationDamping);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(1, 0, 0)),
+                    Time.deltaTime * rotationDamping);
+            }
             SetRightAttackingMovement(moveH, moveV);
         }
         else if (Input.GetButton(upAttackButton))
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                 Quaternion.LookRotation(new Vector3(0, 0, 1)),
-                                 Time.deltaTime * rotationDamping);
-
+            if (weaponType == WeaponType.Longbow)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(1, 0, 1)),
+                    Time.deltaTime * rotationDamping);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(0, 0, 1)),
+                    Time.deltaTime * rotationDamping);
+            }
             SetUpAttackingMovement(moveH, moveV);
         }
         else if (Input.GetButton(downAttackButton))
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                 Quaternion.LookRotation(new Vector3(0, 0, -1)),
-                                 Time.deltaTime * rotationDamping);
-
+            if (weaponType == WeaponType.Longbow)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(-1, 0, -1)),
+                    Time.deltaTime * rotationDamping);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                    Quaternion.LookRotation(new Vector3(0, 0, -1)),
+                    Time.deltaTime * rotationDamping);
+            }
             SetDownAttackingMovement(moveH, moveV);
         }
         //If not attacking look forwards
@@ -227,16 +255,13 @@ public class HeroController : MonoBehaviour
             if (movement != Vector3.zero)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation,
-                                     Quaternion.LookRotation(movement),
-                                     Time.deltaTime * rotationDamping);
-
+                    Quaternion.LookRotation(movement),
+                    Time.deltaTime * rotationDamping);
                 animator.SetTrigger(walkHash);
                 animator.ResetTrigger(walkBackwardHash);
-                //animator.ResetTrigger(relaxHash);
             }
             else
             {
-                //animator.SetTrigger(relaxHash);
                 animator.ResetTrigger(walkBackwardHash);
                 animator.ResetTrigger(walkHash);
             }
@@ -248,14 +273,22 @@ public class HeroController : MonoBehaviour
         //GameObject rightHand = GameObject.Find("Dummy Prop Right");
 
         GameObject rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        Transform leftHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).transform;
 
-        Debug.Log("rightHand: " + rightHand);
+        //Longbow only possible left hand weapon
+        if (leftHand.transform.childCount > 0)
+        {
+            string weaponName = leftHand.transform.GetChild(0).name;
+
+            if (weaponName.Contains("Longbow"))
+                weaponType = WeaponType.Longbow;
+        }
 
         if (rightHand.transform.childCount > 0)
         {
             string weaponName = rightHand.transform.GetChild(0).name;
 
-            Debug.Log("weaponName: " + weaponName);
+            //Debug.Log("weaponName: " + weaponName);
 
             if (weaponName.Contains("Axe"))
                 weaponType = WeaponType.Axe;
@@ -275,8 +308,6 @@ public class HeroController : MonoBehaviour
                 weaponType = WeaponType.HandAuras;
             if (weaponName.Contains("Knuckles"))
                 weaponType = WeaponType.Knuckles;
-            if (weaponName.Contains("Longbow"))
-                weaponType = WeaponType.Longbow;
             if (weaponName.Contains("Mace"))
                 weaponType = WeaponType.Mace;
             if (weaponName.Contains("Scepter"))
