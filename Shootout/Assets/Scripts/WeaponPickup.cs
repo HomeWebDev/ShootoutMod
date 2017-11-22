@@ -26,7 +26,14 @@ public class WeaponPickup : MonoBehaviour {
 
             //Add new weapon
             transform.position = new Vector3(rightHandTransform.position.x, rightHandTransform.position.y, rightHandTransform.position.z);
-            transform.localEulerAngles = new Vector3(-90, 0, 0);
+            if(gameObject.name.Contains("Spear 03")) //This weapon is not rotated as the others
+            {
+                transform.localEulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                transform.localEulerAngles = new Vector3(-90, 0, 0);
+            }
             transform.parent = rightHandTransform;
         }
     }
