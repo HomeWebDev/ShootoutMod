@@ -29,7 +29,9 @@ public class HeroController : MonoBehaviour
     private int thMelee2Hash = Animator.StringToHash("THMelee2"); //Twohanded strike in left to right arch (sword)
     private int spearMelee1Hash = Animator.StringToHash("SpearMelee1"); //Normal spear attack
     private int spearMelee2Hash = Animator.StringToHash("SpearMelee2"); //Long range spear attack
-    private int longbowShootHash = Animator.StringToHash("LongbowShoot"); //
+    private int longbowShootHash = Animator.StringToHash("LongbowShoot");
+    private int crossbowShootHash = Animator.StringToHash("CrossbowShoot");
+    private int wandShootHash = Animator.StringToHash("WandShoot");
 
     private WeaponType weaponType;
 
@@ -147,10 +149,14 @@ public class HeroController : MonoBehaviour
             {
                 animator.SetTrigger(longbowShootHash);
             }
-
-            //Weapons left to implement
-            //Crossbow
-            //Wand
+            if (weaponType == WeaponType.Crossbow)
+            {
+                animator.SetTrigger(crossbowShootHash);
+            }
+            if (weaponType == WeaponType.Wand)
+            {
+                animator.SetTrigger(wandShootHash);
+            }
 
             animator.ResetTrigger(twoHandedIdleHash);
             animator.ResetTrigger(spearIdleHash);
@@ -165,6 +171,8 @@ public class HeroController : MonoBehaviour
             animator.ResetTrigger(spearMelee1Hash);
             animator.ResetTrigger(spearMelee2Hash);
             animator.ResetTrigger(longbowShootHash);
+            animator.ResetTrigger(crossbowShootHash);
+            animator.ResetTrigger(wandShootHash);
             animator.ResetTrigger(punchHash);
 
             if (weaponType == WeaponType.TwoHandedAxe | weaponType == WeaponType.TwoHandedSword)
