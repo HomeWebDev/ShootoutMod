@@ -10,6 +10,8 @@ public class WeaponPickup : MonoBehaviour {
         {
             Debug.Log("Weapon: " + gameObject);
 
+            Destroy(GetComponent<WeaponPickup>());
+
             GameObject player1 = other.gameObject;
 
             //Find hand by reference from player object. Using "Find" by name seems sometimes buggy
@@ -26,9 +28,9 @@ public class WeaponPickup : MonoBehaviour {
             {
                 RemoveItemsFromHand(rightHandTransform);
                 RemoveItemsFromHand(leftHandTransform);
-                PutHandWeaponInHand(leftHandTransform);
                 PutCopyInHand(rightHandTransform);
-                Destroy(this);
+                PutHandWeaponInHand(leftHandTransform);
+                //Destroy(this);
             }
             else
             {
@@ -96,18 +98,41 @@ public class WeaponPickup : MonoBehaviour {
 
     private void PutHandWeaponInHand(Transform handTransform)
     {
-        //Add new weapon
+        //Add new weapon in left hand
         transform.position = new Vector3(handTransform.position.x, handTransform.position.y, handTransform.position.z);
-        transform.localEulerAngles = new Vector3(0, -90, -45);
+        if(gameObject.name.Contains("Claw"))
+        {
+            transform.localEulerAngles = new Vector3(0, 45, -90);
+        }
+        if (gameObject.name.Contains("Knuckles"))
+        {
+            transform.localEulerAngles = new Vector3(0, 75, -90);
+        }
+        if (gameObject.name.Contains("Hand Aura"))
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 135);
+        }
         transform.parent = handTransform;
     }
 
     private void PutCopyInHand(Transform handTransform)
     {
-        //Add new weapon
+        //Add new weapon in right hand
         GameObject copy = Instantiate(gameObject);
+        Destroy(copy.GetComponent<WeaponPickup>());
         copy.transform.position = new Vector3(handTransform.position.x, handTransform.position.y, handTransform.position.z);
-        copy.transform.localEulerAngles = new Vector3(0, -90, 225);
+        if (gameObject.name.Contains("Claw"))
+        {
+            copy.transform.localEulerAngles = new Vector3(0, -45, -90);
+        }
+        if (gameObject.name.Contains("Knuckles"))
+        {
+            copy.transform.localEulerAngles = new Vector3(0, -75, -90);
+        }
+        if (gameObject.name.Contains("Hand Aura"))
+        {
+            copy.transform.localEulerAngles = new Vector3(0, 0, 135);
+        }
         copy.transform.parent = handTransform;
     }
 }

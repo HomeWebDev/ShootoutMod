@@ -101,7 +101,7 @@ public class HeroController : MonoBehaviour
 
         GetWeaponType();
 
-        Debug.Log("Weapontype: " + weaponType.ToString());
+        //Debug.Log("Weapontype: " + weaponType.ToString());
 
         if (Input.GetButton(leftAttackButton) | Input.GetButton(rightAttackButton) | Input.GetButton(upAttackButton) | Input.GetButton(downAttackButton))
         {
