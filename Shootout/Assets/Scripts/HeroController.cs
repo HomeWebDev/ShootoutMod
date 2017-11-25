@@ -16,15 +16,12 @@ public class HeroController : MonoBehaviour
 
     public float speed;
     public float rotationDamping = 20f;
-    private float longbowAttackRate = 0.90f;
     private float longbowAnimationDelay = 0.50f;
     public float longbowForce = 30;
-    private float crossbowAttackRate = 0.57f;
     private float crossbowAnimationDelay = 0.32f;
     private float crossbowForce = 20;
-    private float wandAttackRate = 0.73f;
     private float wandAnimationDelay = 0.45f;
-    private float wandForce = 40;
+    private float wandForce = 5;
     private float rangedAttackRate;
     private float rangedAnimationDelay;
     private float rangedForce;
@@ -56,6 +53,7 @@ public class HeroController : MonoBehaviour
 
     private float moveH;
     private float moveV;
+    private Vector3 movement;
 
     // Use this for initialization
     void Start()
@@ -99,7 +97,6 @@ public class HeroController : MonoBehaviour
 
     }
 
-
     private void LateUpdate()
     {
         moveV = Input.GetAxis(verticalAxis);
@@ -122,7 +119,7 @@ public class HeroController : MonoBehaviour
         moveV = Input.GetAxis(verticalAxis);
         moveH = Input.GetAxis(horizontalAxis);
         //Debug.Log("h: " + moveH);
-        Vector3 movement = new Vector3(moveH, 0.0f, moveV);
+        movement = new Vector3(moveH, 0.0f, moveV);
         movement *= speed;
         controller.Move(movement * Time.deltaTime);
 
@@ -303,50 +300,94 @@ public class HeroController : MonoBehaviour
         }
 
         //Handle ranged weapons
-        if (weaponType == WeaponType.Crossbow | weaponType == WeaponType.Longbow | weaponType == WeaponType.Wand)
-        {
-            if(weaponType == WeaponType.Longbow)
-            {
-                rangedAttackRate = longbowAttackRate;
-                rangedAnimationDelay = longbowAnimationDelay;
-                rangedForce = longbowForce;
-                arrowString = longbowArrowString;
-            }
-            if (weaponType == WeaponType.Crossbow)
-            {
-                rangedAttackRate = crossbowAttackRate;
-                rangedAnimationDelay = crossbowAnimationDelay;
-                rangedForce = crossbowForce;
-                arrowString = crossbowArrowString;
-            }
-            if (weaponType == WeaponType.Wand)
-            {
-                rangedAttackRate = wandAttackRate;
-                rangedAnimationDelay = wandAnimationDelay;
-                rangedForce = wandForce;
-                arrowString = wandArrowString;
-            }
+        //if (weaponType == WeaponType.Crossbow | weaponType == WeaponType.Longbow | weaponType == WeaponType.Wand)
+        //{
+        //    if(weaponType == WeaponType.Longbow)
+        //    {
+        //        rangedAttackRate = longbowAttackRate;
+        //        rangedAnimationDelay = longbowAnimationDelay;
+        //        rangedForce = longbowForce;
+        //        arrowString = longbowArrowString;
+        //    }
+        //    if (weaponType == WeaponType.Crossbow)
+        //    {
+        //        rangedAttackRate = crossbowAttackRate;
+        //        rangedAnimationDelay = crossbowAnimationDelay;
+        //        rangedForce = crossbowForce;
+        //        arrowString = crossbowArrowString;
+        //    }
+        //    if (weaponType == WeaponType.Wand)
+        //    {
+        //        rangedAttackRate = wandAttackRate;
+        //        rangedAnimationDelay = wandAnimationDelay;
+        //        rangedForce = wandForce;
+        //        arrowString = wandArrowString;
+        //    }
 
-            if (Input.GetButton(leftAttackButton) & Time.time > nextRangedAttack)
-            {
-                nextRangedAttack = Time.time + rangedAttackRate;
-                StartCoroutine(SpawnArrow(270 + movement.z));
-            }
-            if (Input.GetButton(rightAttackButton) & Time.time > nextRangedAttack)
-            {
-                nextRangedAttack = Time.time + rangedAttackRate;
-                StartCoroutine(SpawnArrow(90 - movement.z));
-            }
-            if (Input.GetButton(upAttackButton) & Time.time > nextRangedAttack)
-            {
-                nextRangedAttack = Time.time + rangedAttackRate;
-                StartCoroutine(SpawnArrow(0 + movement.x));
-            }
-            if (Input.GetButton(downAttackButton) & Time.time > nextRangedAttack)
-            {
-                nextRangedAttack = Time.time + rangedAttackRate;
-                StartCoroutine(SpawnArrow(180 - movement.x));
-            }
+        //    if (Input.GetButton(leftAttackButton) & Time.time > nextRangedAttack)
+        //    {
+        //        nextRangedAttack = Time.time + rangedAttackRate;
+        //        StartCoroutine(SpawnArrow(270 + movement.z));
+        //    }
+        //    if (Input.GetButton(rightAttackButton) & Time.time > nextRangedAttack)
+        //    {
+        //        nextRangedAttack = Time.time + rangedAttackRate;
+        //        StartCoroutine(SpawnArrow(90 - movement.z));
+        //    }
+        //    if (Input.GetButton(upAttackButton) & Time.time > nextRangedAttack)
+        //    {
+        //        nextRangedAttack = Time.time + rangedAttackRate;
+        //        StartCoroutine(SpawnArrow(0 + movement.x));
+        //    }
+        //    if (Input.GetButton(downAttackButton) & Time.time > nextRangedAttack)
+        //    {
+        //        nextRangedAttack = Time.time + rangedAttackRate;
+        //        StartCoroutine(SpawnArrow(180 - movement.x));
+        //    }
+        //}
+    }
+
+    public void LongbowShootEvent()
+    {
+        rangedAnimationDelay = longbowAnimationDelay;
+        rangedForce = longbowForce;
+        arrowString = longbowArrowString;
+        RangedAttack();
+    }
+
+    public void CrossbowShootEvent()
+    {
+        rangedAnimationDelay = crossbowAnimationDelay;
+        rangedForce = crossbowForce;
+        arrowString = crossbowArrowString;
+        RangedAttack();
+    }
+
+    public void WandShootEvent()
+    {
+        rangedAnimationDelay = wandAnimationDelay;
+        rangedForce = wandForce;
+        arrowString = wandArrowString;
+        RangedAttack();
+    }
+
+    private void RangedAttack()
+    {
+        if (Input.GetButton(leftAttackButton))
+        {
+            StartCoroutine(SpawnArrow(270 + movement.z));
+        }
+        if (Input.GetButton(rightAttackButton))
+        {
+            StartCoroutine(SpawnArrow(90 - movement.z));
+        }
+        if (Input.GetButton(upAttackButton))
+        {
+            StartCoroutine(SpawnArrow(0 + movement.x));
+        }
+        if (Input.GetButton(downAttackButton))
+        {
+            StartCoroutine(SpawnArrow(180 - movement.x));
         }
     }
 
@@ -355,23 +396,21 @@ public class HeroController : MonoBehaviour
         yield return new WaitForSeconds(rangedAnimationDelay);
         rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
 
-        Vector3 direction = new Vector3(moveH, 0.0f, moveV);
-        direction *= speed;
         if (Input.GetButton(leftAttackButton))
         {
-            y = 270 + direction.z;
+            y = 270 + movement.z;
         }
         if (Input.GetButton(rightAttackButton))
         {
-            y = 90 - direction.z;
+            y = 90 - movement.z;
         }
         if (Input.GetButton(upAttackButton))
         {
-            y = 0 + direction.x;
+            y = 0 + movement.x;
         }
         if (Input.GetButton(downAttackButton))
         {
-            y = 180 - direction.x;
+            y = 180 - movement.x;
         }
 
         GameObject arrow = Instantiate(Resources.Load("Prefabs/Weapons/Arrows/" + arrowString, typeof(GameObject)), rightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
