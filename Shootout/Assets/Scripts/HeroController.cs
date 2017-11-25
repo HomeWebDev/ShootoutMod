@@ -16,6 +16,22 @@ public class HeroController : MonoBehaviour
 
     public float speed;
     public float rotationDamping = 20f;
+    private float longbowAttackRate = 0.90f;
+    private float longbowAnimationDelay = 0.50f;
+    public float longbowForce = 30;
+    private float crossbowAttackRate = 0.57f;
+    private float crossbowAnimationDelay = 0.32f;
+    private float crossbowForce = 20;
+    private float wandAttackRate = 0.73f;
+    private float wandAnimationDelay = 0.45f;
+    private float wandForce = 40;
+    private float rangedAttackRate;
+    private float rangedAnimationDelay;
+    private float rangedForce;
+    private string longbowArrowString = "Arrow 01 Black";
+    private string crossbowArrowString = "Arrow 01 Purple";
+    private string wandArrowString = "Arrow 02 Fire";
+    private string arrowString;
 
     private int walkHash = Animator.StringToHash("Walk");
     private int walkBackwardHash = Animator.StringToHash("Walk Backward");
@@ -34,6 +50,12 @@ public class HeroController : MonoBehaviour
     private int wandShootHash = Animator.StringToHash("WandShoot");
 
     private WeaponType weaponType;
+    private float nextRangedAttack;
+    private GameObject rightHand;
+    private GameObject leftHand;
+
+    private float moveH;
+    private float moveV;
 
     // Use this for initialization
     void Start()
@@ -44,6 +66,8 @@ public class HeroController : MonoBehaviour
 
         weaponType = WeaponType.BareHands;
         GetWeaponType();
+
+
     }
 
     public enum WeaponType
@@ -78,8 +102,8 @@ public class HeroController : MonoBehaviour
 
     private void LateUpdate()
     {
-        float moveV = Input.GetAxis(verticalAxis);
-        float moveH = Input.GetAxis(horizontalAxis);
+        moveV = Input.GetAxis(verticalAxis);
+        moveH = Input.GetAxis(horizontalAxis);
         //moveV *= Time.deltaTime;
         //moveH *= Time.deltaTime;
         animator.SetFloat("animationSpeedMultiplier", speed * 0.5f);
@@ -91,9 +115,12 @@ public class HeroController : MonoBehaviour
         //Fix y position at 0
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
 
+        rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        leftHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
         //Handle movements based on axises
-        float moveV = Input.GetAxis(verticalAxis);
-        float moveH = Input.GetAxis(horizontalAxis);
+        moveV = Input.GetAxis(verticalAxis);
+        moveH = Input.GetAxis(horizontalAxis);
         //Debug.Log("h: " + moveH);
         Vector3 movement = new Vector3(moveH, 0.0f, moveV);
         movement *= speed;
@@ -274,15 +301,86 @@ public class HeroController : MonoBehaviour
                 animator.ResetTrigger(walkHash);
             }
         }
+
+        //Handle ranged weapons
+        if (weaponType == WeaponType.Crossbow | weaponType == WeaponType.Longbow | weaponType == WeaponType.Wand)
+        {
+            if(weaponType == WeaponType.Longbow)
+            {
+                rangedAttackRate = longbowAttackRate;
+                rangedAnimationDelay = longbowAnimationDelay;
+                rangedForce = longbowForce;
+                arrowString = longbowArrowString;
+            }
+            if (weaponType == WeaponType.Crossbow)
+            {
+                rangedAttackRate = crossbowAttackRate;
+                rangedAnimationDelay = crossbowAnimationDelay;
+                rangedForce = crossbowForce;
+                arrowString = crossbowArrowString;
+            }
+            if (weaponType == WeaponType.Wand)
+            {
+                rangedAttackRate = wandAttackRate;
+                rangedAnimationDelay = wandAnimationDelay;
+                rangedForce = wandForce;
+                arrowString = wandArrowString;
+            }
+
+            if (Input.GetButton(leftAttackButton) & Time.time > nextRangedAttack)
+            {
+                nextRangedAttack = Time.time + rangedAttackRate;
+                StartCoroutine(SpawnArrow(270 + movement.z));
+            }
+            if (Input.GetButton(rightAttackButton) & Time.time > nextRangedAttack)
+            {
+                nextRangedAttack = Time.time + rangedAttackRate;
+                StartCoroutine(SpawnArrow(90 - movement.z));
+            }
+            if (Input.GetButton(upAttackButton) & Time.time > nextRangedAttack)
+            {
+                nextRangedAttack = Time.time + rangedAttackRate;
+                StartCoroutine(SpawnArrow(0 + movement.x));
+            }
+            if (Input.GetButton(downAttackButton) & Time.time > nextRangedAttack)
+            {
+                nextRangedAttack = Time.time + rangedAttackRate;
+                StartCoroutine(SpawnArrow(180 - movement.x));
+            }
+        }
+    }
+
+    IEnumerator SpawnArrow(float y)
+    {
+        yield return new WaitForSeconds(rangedAnimationDelay);
+        rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        Vector3 direction = new Vector3(moveH, 0.0f, moveV);
+        direction *= speed;
+        if (Input.GetButton(leftAttackButton))
+        {
+            y = 270 + direction.z;
+        }
+        if (Input.GetButton(rightAttackButton))
+        {
+            y = 90 - direction.z;
+        }
+        if (Input.GetButton(upAttackButton))
+        {
+            y = 0 + direction.x;
+        }
+        if (Input.GetButton(downAttackButton))
+        {
+            y = 180 - direction.x;
+        }
+
+        GameObject arrow = Instantiate(Resources.Load("Prefabs/Weapons/Arrows/" + arrowString, typeof(GameObject)), rightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
+        arrow.tag = "Arrow";
+        arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * rangedForce;
     }
 
     private void GetWeaponType()
     {
-        //GameObject rightHand = GameObject.Find("Dummy Prop Right");
-
-        GameObject rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        Transform leftHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).transform;
-
         //Longbow only possible left hand weapon
         if (leftHand.transform.childCount > 0)
         {
@@ -337,35 +435,25 @@ public class HeroController : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
 private void SetLeftAttackingMovement(float moveH, float moveV)
     {
         if (moveH < 0)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveH > 0)
         {
             animator.SetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveV != 0)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else
         {
-            //animator.SetTrigger(relaxHash);
             animator.ResetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
         }
@@ -377,23 +465,19 @@ private void SetLeftAttackingMovement(float moveH, float moveV)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveH < 0)
         {
             animator.SetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveV != 0)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else
         {
-            //animator.SetTrigger(relaxHash);
             animator.ResetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
         }
@@ -405,23 +489,19 @@ private void SetLeftAttackingMovement(float moveH, float moveV)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveV < 0)
         {
             animator.SetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveH != 0)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else
         {
-            //animator.SetTrigger(relaxHash);
             animator.ResetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
         }
@@ -433,23 +513,19 @@ private void SetLeftAttackingMovement(float moveH, float moveV)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveV > 0)
         {
             animator.SetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else if (moveH != 0)
         {
             animator.SetTrigger(walkHash);
             animator.ResetTrigger(walkBackwardHash);
-            //animator.ResetTrigger(relaxHash);
         }
         else
         {
-            //animator.SetTrigger(relaxHash);
             animator.ResetTrigger(walkBackwardHash);
             animator.ResetTrigger(walkHash);
         }
