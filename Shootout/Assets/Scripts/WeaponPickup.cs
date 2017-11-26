@@ -20,9 +20,12 @@ public class WeaponPickup : MonoBehaviour {
             if (numberOfPickups > 1)
             {
                 Destroy(GetComponent<WeaponPickup>());
-                //Disable capsule collider not to generate damage before first strike
-                GetComponent<CapsuleCollider>().enabled = false;
-                GetComponent<ContactDamage>().pickedUp = true;
+                if(!gameObject.name.Contains("Longbow") & !gameObject.name.Contains("Shield") & !gameObject.name.Contains("Crossbow") & !gameObject.name.Contains("Wand"))
+                {
+                    //Disable capsule collider not to generate damage before first strike
+                    GetComponent<CapsuleCollider>().enabled = false;
+                    GetComponent<ContactDamage>().pickedUp = true;
+                }
             }
 
             GameObject player1 = other.gameObject;
