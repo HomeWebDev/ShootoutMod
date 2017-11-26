@@ -14,12 +14,15 @@ public class WeaponPickup : MonoBehaviour {
     {
         if (other.tag == "Player1")
         {
-            Debug.Log("Weapon: " + gameObject);
+            //Debug.Log("Weapon: " + gameObject);
 
             numberOfPickups++;
             if (numberOfPickups > 1)
             {
                 Destroy(GetComponent<WeaponPickup>());
+                //Disable capsule collider not to generate damage before first strike
+                GetComponent<CapsuleCollider>().enabled = false;
+                GetComponent<ContactDamage>().pickedUp = true;
             }
 
             GameObject player1 = other.gameObject;

@@ -14,6 +14,8 @@ public class HeroController : MonoBehaviour
     public string upAttackButton;
     public string downAttackButton;
 
+    public bool meleeAttackActive;
+
     public float speed;
     public float rotationDamping = 20f;
     private float longbowAnimationDelay = 0.50f;
@@ -47,7 +49,6 @@ public class HeroController : MonoBehaviour
     private int wandShootHash = Animator.StringToHash("WandShoot");
 
     private WeaponType weaponType;
-    private float nextRangedAttack;
     private GameObject rightHand;
     private GameObject leftHand;
 
@@ -298,53 +299,114 @@ public class HeroController : MonoBehaviour
                 animator.ResetTrigger(walkHash);
             }
         }
+    }
 
-        //Handle ranged weapons
-        //if (weaponType == WeaponType.Crossbow | weaponType == WeaponType.Longbow | weaponType == WeaponType.Wand)
-        //{
-        //    if(weaponType == WeaponType.Longbow)
-        //    {
-        //        rangedAttackRate = longbowAttackRate;
-        //        rangedAnimationDelay = longbowAnimationDelay;
-        //        rangedForce = longbowForce;
-        //        arrowString = longbowArrowString;
-        //    }
-        //    if (weaponType == WeaponType.Crossbow)
-        //    {
-        //        rangedAttackRate = crossbowAttackRate;
-        //        rangedAnimationDelay = crossbowAnimationDelay;
-        //        rangedForce = crossbowForce;
-        //        arrowString = crossbowArrowString;
-        //    }
-        //    if (weaponType == WeaponType.Wand)
-        //    {
-        //        rangedAttackRate = wandAttackRate;
-        //        rangedAnimationDelay = wandAnimationDelay;
-        //        rangedForce = wandForce;
-        //        arrowString = wandArrowString;
-        //    }
+    public void Melee1StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
 
-        //    if (Input.GetButton(leftAttackButton) & Time.time > nextRangedAttack)
-        //    {
-        //        nextRangedAttack = Time.time + rangedAttackRate;
-        //        StartCoroutine(SpawnArrow(270 + movement.z));
-        //    }
-        //    if (Input.GetButton(rightAttackButton) & Time.time > nextRangedAttack)
-        //    {
-        //        nextRangedAttack = Time.time + rangedAttackRate;
-        //        StartCoroutine(SpawnArrow(90 - movement.z));
-        //    }
-        //    if (Input.GetButton(upAttackButton) & Time.time > nextRangedAttack)
-        //    {
-        //        nextRangedAttack = Time.time + rangedAttackRate;
-        //        StartCoroutine(SpawnArrow(0 + movement.x));
-        //    }
-        //    if (Input.GetButton(downAttackButton) & Time.time > nextRangedAttack)
-        //    {
-        //        nextRangedAttack = Time.time + rangedAttackRate;
-        //        StartCoroutine(SpawnArrow(180 - movement.x));
-        //    }
-        //}
+    public void Melee1EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void Melee2StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void Melee2EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void Melee3StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void Melee3EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void ThMelee1StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void ThMelee1EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void ThMelee2StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void ThMelee2EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void Spear1StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void Spear1EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void Spear2StartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void LeftPunchStartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void LeftPunchEndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void RightPunchStartedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void RightPunchEndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void Spear2EndedEvent()
+    {
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        weapon.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public void LongbowShootEvent()
