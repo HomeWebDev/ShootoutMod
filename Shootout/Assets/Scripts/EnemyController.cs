@@ -47,12 +47,12 @@ public class EnemyController : MonoBehaviour {
 
 
         //Play animation if player is moving
-        if (moveV != 0 || moveH != 0)
-        {
-            anim.Play();
-        }
-        else
-            anim.Stop();
+        //if (moveV != 0 || moveH != 0)
+        //{
+        //    anim.Play();
+        //}
+        //else
+        //    anim.Stop();
 
         controller.Move(movement * Time.deltaTime);
 
