@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: d7a66d7725f4446468dcd6da2eff72df
+timeCreated: 1448008204
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Rig
+    100002: RigHead
+    100004: RigHeadGizmo
+    100006: RigLBackLeg1
+    100008: RigLBackLeg2
+    100010: RigLBackLegAnkle
+    100012: RigLBackLegPlatform
+    100014: RigLeafBack
+    100016: RigLeafBackGizmo
+    100018: RigLeafFrontGizmo
+    100020: RigLeafLeft
+    100022: RigLeafLeftGizmo
+    100024: RigLeafRight
+    100026: RigLeafRightGizmo
+    100028: RigLeftFront
+    100030: RigLFrontLeg1
+    100032: RigLFrontLeg2
+    100034: RigLFrontLegAnkle
+    100036: RigLFrontLegPlatform
+    100038: RigMouthLeft
+    100040: RigMouthLeftGizmo
+    100042: RigMouthRight
+    100044: RigMouthRightGizmo
+    100046: RigNeck1
+    100048: RigNeck2
+    100050: RigPelvis
+    100052: RigPelvisGizmo
+    100054: RigRBackLeg1
+    100056: RigRBackLeg2
+    100058: RigRBackLegAnkle
+    100060: RigRBackLegPlatform
+    100062: RigRFrontLeg1
+    100064: RigRFrontLeg2
+    100066: RigRFrontLegAnkle
+    100068: RigRFrontLegPlatform
+    100070: Toon Plant Monster
+    100072: //RootNode
+    400000: Rig
+    400002: RigHead
+    400004: RigHeadGizmo
+    400006: RigLBackLeg1
+    400008: RigLBackLeg2
+    400010: RigLBackLegAnkle
+    400012: RigLBackLegPlatform
+    400014: RigLeafBack
+    400016: RigLeafBackGizmo
+    400018: RigLeafFrontGizmo
+    400020: RigLeafLeft
+    400022: RigLeafLeftGizmo
+    400024: RigLeafRight
+    400026: RigLeafRightGizmo
+    400028: RigLeftFront
+    400030: RigLFrontLeg1
+    400032: RigLFrontLeg2
+    400034: RigLFrontLegAnkle
+    400036: RigLFrontLegPlatform
+    400038: RigMouthLeft
+    400040: RigMouthLeftGizmo
+    400042: RigMouthRight
+    400044: RigMouthRightGizmo
+    400046: RigNeck1
+    400048: RigNeck2
+    400050: RigPelvis
+    400052: RigPelvisGizmo
+    400054: RigRBackLeg1
+    400056: RigRBackLeg2
+    400058: RigRBackLegAnkle
+    400060: RigRBackLegPlatform
+    400062: RigRFrontLeg1
+    400064: RigRFrontLeg2
+    400066: RigRFrontLegAnkle
+    400068: RigRFrontLegPlatform
+    400070: Toon Plant Monster
+    400072: //RootNode
+    4300000: Toon Plant Monster
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Toon Plant Monster
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

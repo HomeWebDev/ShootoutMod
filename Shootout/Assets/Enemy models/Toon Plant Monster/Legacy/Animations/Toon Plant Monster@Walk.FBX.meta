@@ -1,0 +1,244 @@
+fileFormatVersion: 2
+guid: d246a46cb05ce234bb3f87f9fff79424
+timeCreated: 1448005575
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Rig
+    100002: RigHead
+    100004: RigLBackLeg1
+    100006: RigLBackLeg2
+    100008: RigLBackLegAnkle
+    100010: RigLBackLegPlatform
+    100012: RigLeafBack
+    100014: RigLeafBackGizmo
+    100016: RigLeafFrontGizmo
+    100018: RigLeafLeft
+    100020: RigLeafLeftGizmo
+    100022: RigLeafRight
+    100024: RigLeafRightGizmo
+    100026: RigLeftFront
+    100028: RigLFrontLeg1
+    100030: RigLFrontLeg2
+    100032: RigLFrontLegAnkle
+    100034: RigLFrontLegPlatform
+    100036: RigMouthLeft
+    100038: RigMouthLeftGizmo
+    100040: RigMouthRight
+    100042: RigMouthRightGizmo
+    100044: RigNeck1
+    100046: RigNeck2
+    100048: RigPelvis
+    100050: RigPelvisGizmo
+    100052: RigRBackLeg1
+    100054: RigRBackLeg2
+    100056: RigRBackLegAnkle
+    100058: RigRBackLegPlatform
+    100060: RigRFrontLeg1
+    100062: RigRFrontLeg2
+    100064: RigRFrontLegAnkle
+    100066: RigRFrontLegPlatform
+    100068: Toon Plant Monster
+    100070: //RootNode
+    400000: Rig
+    400002: RigHead
+    400004: RigLBackLeg1
+    400006: RigLBackLeg2
+    400008: RigLBackLegAnkle
+    400010: RigLBackLegPlatform
+    400012: RigLeafBack
+    400014: RigLeafBackGizmo
+    400016: RigLeafFrontGizmo
+    400018: RigLeafLeft
+    400020: RigLeafLeftGizmo
+    400022: RigLeafRight
+    400024: RigLeafRightGizmo
+    400026: RigLeftFront
+    400028: RigLFrontLeg1
+    400030: RigLFrontLeg2
+    400032: RigLFrontLegAnkle
+    400034: RigLFrontLegPlatform
+    400036: RigMouthLeft
+    400038: RigMouthLeftGizmo
+    400040: RigMouthRight
+    400042: RigMouthRightGizmo
+    400044: RigNeck1
+    400046: RigNeck2
+    400048: RigPelvis
+    400050: RigPelvisGizmo
+    400052: RigRBackLeg1
+    400054: RigRBackLeg2
+    400056: RigRBackLegAnkle
+    400058: RigRBackLegPlatform
+    400060: RigRFrontLeg1
+    400062: RigRFrontLeg2
+    400064: RigRFrontLegAnkle
+    400066: RigRFrontLegPlatform
+    400068: Toon Plant Monster
+    400070: //RootNode
+    4300000: Toon Plant Monster
+    7400000: Walk
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Toon Plant Monster
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Rig
+        weight: 1
+      - path: RigLBackLegPlatform
+        weight: 1
+      - path: RigLeafBackGizmo
+        weight: 1
+      - path: RigLeafFrontGizmo
+        weight: 1
+      - path: RigLeafLeftGizmo
+        weight: 1
+      - path: RigLeafRightGizmo
+        weight: 1
+      - path: RigLFrontLegPlatform
+        weight: 1
+      - path: RigMouthLeftGizmo
+        weight: 1
+      - path: RigMouthRightGizmo
+        weight: 1
+      - path: RigPelvis
+        weight: 1
+      - path: RigPelvis/RigLBackLeg1
+        weight: 1
+      - path: RigPelvis/RigLBackLeg1/RigLBackLeg2
+        weight: 1
+      - path: RigPelvis/RigLBackLeg1/RigLBackLeg2/RigLBackLegAnkle
+        weight: 1
+      - path: RigPelvis/RigLFrontLeg1
+        weight: 1
+      - path: RigPelvis/RigLFrontLeg1/RigLFrontLeg2
+        weight: 1
+      - path: RigPelvis/RigLFrontLeg1/RigLFrontLeg2/RigLFrontLegAnkle
+        weight: 1
+      - path: RigPelvis/RigNeck1
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigLeafBack
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigLeafLeft
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigLeafRight
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigLeftFront
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigNeck2
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigNeck2/RigHead
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigNeck2/RigHead/RigMouthLeft
+        weight: 1
+      - path: RigPelvis/RigNeck1/RigNeck2/RigHead/RigMouthRight
+        weight: 1
+      - path: RigPelvis/RigRBackLeg1
+        weight: 1
+      - path: RigPelvis/RigRBackLeg1/RigRBackLeg2
+        weight: 1
+      - path: RigPelvis/RigRBackLeg1/RigRBackLeg2/RigRBackLegAnkle
+        weight: 1
+      - path: RigPelvis/RigRFrontLeg1
+        weight: 1
+      - path: RigPelvis/RigRFrontLeg1/RigRFrontLeg2
+        weight: 1
+      - path: RigPelvis/RigRFrontLeg1/RigRFrontLeg2/RigRFrontLegAnkle
+        weight: 1
+      - path: RigPelvisGizmo
+        weight: 1
+      - path: RigRBackLegPlatform
+        weight: 1
+      - path: RigRFrontLegPlatform
+        weight: 1
+      - path: Toon Plant Monster
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

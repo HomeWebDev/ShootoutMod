@@ -1,0 +1,246 @@
+fileFormatVersion: 2
+guid: 0cbf9e7ee97077443b5cb6a425dfa934
+timeCreated: 1445421620
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Rig
+    100002: RigHead
+    100004: RigHeadGizmo
+    100006: RigJawDown
+    100008: RigJawDownGizmo
+    100010: RigJawUp
+    100012: RigJawUpGizmo
+    100014: RigLBackLeg1
+    100016: RigLBackLeg2
+    100018: RigLBackLegAnkle
+    100020: RigLBackLegFoot1
+    100022: RigLBackLegFoot2
+    100024: RigLBackLegPlatform
+    100026: RigLFrontLeg1
+    100028: RigLFrontLeg2
+    100030: RigLFrontLegAnkle
+    100032: RigLFrontLegFoot1
+    100034: RigLFrontLegFoot2
+    100036: RigLFrontLegPlatform
+    100038: RigLWing1
+    100040: RigLWing1Gizmo
+    100042: RigLWing2
+    100044: RigLWing2Gizmo
+    100046: RigLWingIndex1
+    100048: RigLWingIndex1Gizmo
+    100050: RigLWingIndex2
+    100052: RigLWingIndex2Gizmo
+    100054: RigLWingMiddle1
+    100056: RigLWingMiddle1Gizmo
+    100058: RigLWingMiddle2
+    100060: RigLWingMiddle2Gizmo
+    100062: RigLWingPalm
+    100064: RigLWingPalmGizmo
+    100066: RigNeck1
+    100068: RigNeck2
+    100070: RigNeck3
+    100072: RigNeck4
+    100074: RigPelvis
+    100076: RigPelvisGizmo
+    100078: RigRBackLeg1
+    100080: RigRBackLeg2
+    100082: RigRBackLegAnkle
+    100084: RigRBackLegFoot1
+    100086: RigRBackLegFoot2
+    100088: RigRBackLegPlatform
+    100090: RigRFrontLeg1
+    100092: RigRFrontLeg2
+    100094: RigRFrontLegAnkle
+    100096: RigRFrontLegFoot1
+    100098: RigRFrontLegFoot2
+    100100: RigRFrontLegPlatform
+    100102: RigRibcage
+    100104: RigRibcageGizmo
+    100106: RigRWing1
+    100108: RigRWing1Gizmo
+    100110: RigRWing2
+    100112: RigRWing2Gizmo
+    100114: RigRWingIndex1
+    100116: RigRWingIndex1Gizmo
+    100118: RigRWingIndex2
+    100120: RigRWingIndex2Gizmo
+    100122: RigRWingMiddle1
+    100124: RigRWingMiddle1Gizmo
+    100126: RigRWingMiddle2
+    100128: RigRWingMiddle2Gizmo
+    100130: RigRWingPalm
+    100132: RigRWingPalmGizmo
+    100134: RigSpine1
+    100136: RigSpine2
+    100138: RigSpine3
+    100140: RigTail1
+    100142: RigTail1Gizmo
+    100144: RigTail2
+    100146: RigTail2Gizmo
+    100148: RigTail3
+    100150: RigTail3Gizmo
+    100152: RigTail4
+    100154: RigTail4Gizmo
+    100156: RigTail5
+    100158: RigTail5Gizmo
+    100160: RigTail6
+    100162: RigTail6Gizmo
+    100164: RigTail7
+    100166: RigTail7Gizmo
+    100168: Toon Dragon
+    100170: //RootNode
+    400000: Rig
+    400002: RigHead
+    400004: RigHeadGizmo
+    400006: RigJawDown
+    400008: RigJawDownGizmo
+    400010: RigJawUp
+    400012: RigJawUpGizmo
+    400014: RigLBackLeg1
+    400016: RigLBackLeg2
+    400018: RigLBackLegAnkle
+    400020: RigLBackLegFoot1
+    400022: RigLBackLegFoot2
+    400024: RigLBackLegPlatform
+    400026: RigLFrontLeg1
+    400028: RigLFrontLeg2
+    400030: RigLFrontLegAnkle
+    400032: RigLFrontLegFoot1
+    400034: RigLFrontLegFoot2
+    400036: RigLFrontLegPlatform
+    400038: RigLWing1
+    400040: RigLWing1Gizmo
+    400042: RigLWing2
+    400044: RigLWing2Gizmo
+    400046: RigLWingIndex1
+    400048: RigLWingIndex1Gizmo
+    400050: RigLWingIndex2
+    400052: RigLWingIndex2Gizmo
+    400054: RigLWingMiddle1
+    400056: RigLWingMiddle1Gizmo
+    400058: RigLWingMiddle2
+    400060: RigLWingMiddle2Gizmo
+    400062: RigLWingPalm
+    400064: RigLWingPalmGizmo
+    400066: RigNeck1
+    400068: RigNeck2
+    400070: RigNeck3
+    400072: RigNeck4
+    400074: RigPelvis
+    400076: RigPelvisGizmo
+    400078: RigRBackLeg1
+    400080: RigRBackLeg2
+    400082: RigRBackLegAnkle
+    400084: RigRBackLegFoot1
+    400086: RigRBackLegFoot2
+    400088: RigRBackLegPlatform
+    400090: RigRFrontLeg1
+    400092: RigRFrontLeg2
+    400094: RigRFrontLegAnkle
+    400096: RigRFrontLegFoot1
+    400098: RigRFrontLegFoot2
+    400100: RigRFrontLegPlatform
+    400102: RigRibcage
+    400104: RigRibcageGizmo
+    400106: RigRWing1
+    400108: RigRWing1Gizmo
+    400110: RigRWing2
+    400112: RigRWing2Gizmo
+    400114: RigRWingIndex1
+    400116: RigRWingIndex1Gizmo
+    400118: RigRWingIndex2
+    400120: RigRWingIndex2Gizmo
+    400122: RigRWingMiddle1
+    400124: RigRWingMiddle1Gizmo
+    400126: RigRWingMiddle2
+    400128: RigRWingMiddle2Gizmo
+    400130: RigRWingPalm
+    400132: RigRWingPalmGizmo
+    400134: RigSpine1
+    400136: RigSpine2
+    400138: RigSpine3
+    400140: RigTail1
+    400142: RigTail1Gizmo
+    400144: RigTail2
+    400146: RigTail2Gizmo
+    400148: RigTail3
+    400150: RigTail3Gizmo
+    400152: RigTail4
+    400154: RigTail4Gizmo
+    400156: RigTail5
+    400158: RigTail5Gizmo
+    400160: RigTail6
+    400162: RigTail6Gizmo
+    400164: RigTail7
+    400166: RigTail7Gizmo
+    400168: Toon Dragon
+    400170: //RootNode
+    4300000: Toon Dragon
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Toon Dragon
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

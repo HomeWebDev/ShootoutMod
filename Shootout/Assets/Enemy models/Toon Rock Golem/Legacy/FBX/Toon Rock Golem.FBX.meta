@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: efd284349fcb2d24282098002acdcfdf
+timeCreated: 1445524124
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Knight
+    100002: //RootNode
+    100004: Toon Rock Golem
+    100006: Rig
+    100008: RigHead
+    100010: RigHeadGizmo
+    100012: RigLArm1
+    100014: RigLArm1Gizmo
+    100016: RigLArm2
+    100018: RigLArm2Gizmo
+    100020: RigLArmPalm
+    100022: RigLArmPalmGizmo
+    100024: RigMouth
+    100026: RigMouthGizmo
+    100028: RigNeck
+    100030: RigPelvis
+    100032: RigPelvisGizmo
+    100034: RigRArm1
+    100036: RigRArm1Gizmo
+    100038: RigRArm2
+    100040: RigRArm2Gizmo
+    100042: RigRArmPalm
+    100044: RigRArmPalmGizmo
+    100046: RigRibcage
+    100048: RigRibcageGizmo
+    100050: RigSpine1
+    100052: RigSpine2
+    100054: RigSpine3
+    100056: RigSpine4
+    100058: RigTail1
+    100060: RigTail2
+    100062: RigTail3
+    400000: Knight
+    400002: //RootNode
+    400004: Toon Rock Golem
+    400006: Rig
+    400008: RigHead
+    400010: RigHeadGizmo
+    400012: RigLArm1
+    400014: RigLArm1Gizmo
+    400016: RigLArm2
+    400018: RigLArm2Gizmo
+    400020: RigLArmPalm
+    400022: RigLArmPalmGizmo
+    400024: RigMouth
+    400026: RigMouthGizmo
+    400028: RigNeck
+    400030: RigPelvis
+    400032: RigPelvisGizmo
+    400034: RigRArm1
+    400036: RigRArm1Gizmo
+    400038: RigRArm2
+    400040: RigRArm2Gizmo
+    400042: RigRArmPalm
+    400044: RigRArmPalmGizmo
+    400046: RigRibcage
+    400048: RigRibcageGizmo
+    400050: RigSpine1
+    400052: RigSpine2
+    400054: RigSpine3
+    400056: RigSpine4
+    400058: RigTail1
+    400060: RigTail2
+    400062: RigTail3
+    2300000: Knight
+    2300002: Toon Rock Golem
+    2300004: //RootNode
+    3300000: Knight
+    3300002: Toon Rock Golem
+    3300004: //RootNode
+    4300000: Knight
+    4300002: Toon Rock Golem
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Toon Rock Golem
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

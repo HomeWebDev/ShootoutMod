@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: b30876ba34416cd4e8540f261c1f67d9
+timeCreated: 1454493744
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Apple
+    100002: Bag
+    100004: Barrel
+    100006: Book
+    100008: Box005
+    100010: Crate
+    100012: Crystal
+    100014: Dragon Tail
+    100016: Gem
+    100018: Gold
+    100020: Gold Pile
+    100022: Heart
+    100024: Key
+    100026: Log
+    100028: Meat
+    100030: Potion 01
+    100032: Potion 02
+    100034: Potion 03
+    100036: Potion 04
+    100038: Scroll
+    100040: Spell Book
+    100042: Star
+    100044: //RootNode
+    100046: Treasure Chest
+    100048: Urn 01
+    100050: Urn 02
+    100052: Urn 04
+    100054: Urn 03
+    400000: Apple
+    400002: Bag
+    400004: Barrel
+    400006: Book
+    400008: Box005
+    400010: Crate
+    400012: Crystal
+    400014: Dragon Tail
+    400016: Gem
+    400018: Gold
+    400020: Gold Pile
+    400022: Heart
+    400024: Key
+    400026: Log
+    400028: Meat
+    400030: Potion 01
+    400032: Potion 02
+    400034: Potion 03
+    400036: Potion 04
+    400038: Scroll
+    400040: Spell Book
+    400042: Star
+    400044: //RootNode
+    400046: Treasure Chest
+    400048: Urn 01
+    400050: Urn 02
+    400052: Urn 04
+    400054: Urn 03
+    2300000: Apple
+    2300002: Bag
+    2300004: Barrel
+    2300006: Book
+    2300008: Box005
+    2300010: Crate
+    2300012: Crystal
+    2300014: Dragon Tail
+    2300016: Gem
+    2300018: Gold
+    2300020: Gold Pile
+    2300022: Heart
+    2300024: Key
+    2300026: Log
+    2300028: Meat
+    2300030: Potion 01
+    2300032: Potion 02
+    2300034: Potion 03
+    2300036: Potion 04
+    2300038: Scroll
+    2300040: Spell Book
+    2300042: Star
+    2300044: Treasure Chest
+    2300046: Urn 01
+    2300048: Urn 02
+    2300050: Urn 04
+    2300052: Urn 03
+    3300000: Apple
+    3300002: Bag
+    3300004: Barrel
+    3300006: Book
+    3300008: Box005
+    3300010: Crate
+    3300012: Crystal
+    3300014: Dragon Tail
+    3300016: Gem
+    3300018: Gold
+    3300020: Gold Pile
+    3300022: Heart
+    3300024: Key
+    3300026: Log
+    3300028: Meat
+    3300030: Potion 01
+    3300032: Potion 02
+    3300034: Potion 03
+    3300036: Potion 04
+    3300038: Scroll
+    3300040: Spell Book
+    3300042: Star
+    3300044: Treasure Chest
+    3300046: Urn 01
+    3300048: Urn 02
+    3300050: Urn 04
+    3300052: Urn 03
+    4300000: Crate
+    4300002: Potion 01
+    4300004: Gold
+    4300006: Treasure Chest
+    4300008: Gold Pile
+    4300010: Urn 01
+    4300012: Urn 02
+    4300014: Box005
+    4300016: Urn 04
+    4300018: Barrel
+    4300020: Potion 02
+    4300022: Potion 03
+    4300024: Potion 04
+    4300026: Crystal
+    4300028: Gem
+    4300030: Key
+    4300032: Spell Book
+    4300034: Book
+    4300036: Dragon Tail
+    4300038: Meat
+    4300040: Apple
+    4300042: Scroll
+    4300044: Heart
+    4300046: Star
+    4300048: Log
+    4300050: Bag
+    4300052: Urn 03
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
