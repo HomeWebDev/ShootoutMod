@@ -16,7 +16,8 @@ public class HeroController : MonoBehaviour
 
     public bool meleeAttackActive;
 
-    public float speed;
+    public float movementSpeed;
+    public float attackSpeed;
     public float rotationDamping = 20f;
     private float longbowAnimationDelay = 0.50f;
     public float longbowForce = 30;
@@ -104,7 +105,8 @@ public class HeroController : MonoBehaviour
         moveH = Input.GetAxis(horizontalAxis);
         //moveV *= Time.deltaTime;
         //moveH *= Time.deltaTime;
-        animator.SetFloat("animationSpeedMultiplier", speed * 0.5f);
+        animator.SetFloat("MoveSpeedMultiplier", movementSpeed * 0.25f);
+        animator.SetFloat("AttackSpeedMultiplier", attackSpeed * 0.1f);
         //Debug.Log("movement: " + Mathf.Min(Mathf.Abs(moveV), Mathf.Abs(moveH)));
     }
 
@@ -121,7 +123,7 @@ public class HeroController : MonoBehaviour
         moveH = Input.GetAxis(horizontalAxis);
         //Debug.Log("h: " + moveH);
         movement = new Vector3(moveH, 0.0f, moveV);
-        movement *= speed;
+        movement *= movementSpeed / 2;
         controller.Move(movement * Time.deltaTime);
 
         GetWeaponType();
@@ -411,7 +413,7 @@ public class HeroController : MonoBehaviour
 
     public void LongbowShootEvent()
     {
-        rangedAnimationDelay = longbowAnimationDelay;
+        rangedAnimationDelay = longbowAnimationDelay / (attackSpeed * 0.1f);
         rangedForce = longbowForce;
         arrowString = longbowArrowString;
         RangedAttack();
@@ -419,7 +421,7 @@ public class HeroController : MonoBehaviour
 
     public void CrossbowShootEvent()
     {
-        rangedAnimationDelay = crossbowAnimationDelay;
+        rangedAnimationDelay = crossbowAnimationDelay / (attackSpeed * 0.1f);
         rangedForce = crossbowForce;
         arrowString = crossbowArrowString;
         RangedAttack();
@@ -427,7 +429,7 @@ public class HeroController : MonoBehaviour
 
     public void WandShootEvent()
     {
-        rangedAnimationDelay = wandAnimationDelay;
+        rangedAnimationDelay = wandAnimationDelay / (attackSpeed * 0.1f);
         rangedForce = wandForce;
         arrowString = wandArrowString;
         RangedAttack();
