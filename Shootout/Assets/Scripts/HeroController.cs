@@ -25,6 +25,8 @@ public class HeroController : MonoBehaviour
     private float crossbowAnimationDelay = 0.32f;
     private float crossbowForce = 20;
     private float wandAnimationDelay = 0.45f;
+    private float melee1AnimationDelay = 0.00f;
+    public float melee1ThrowForce = 20.0f;
     private float wandForce = 5;
     private float rangedAttackRate;
     private float rangedAnimationDelay;
@@ -49,6 +51,7 @@ public class HeroController : MonoBehaviour
     private int longbowShootHash = Animator.StringToHash("LongbowShoot");
     private int crossbowShootHash = Animator.StringToHash("CrossbowShoot");
     private int wandShootHash = Animator.StringToHash("WandShoot");
+    private int melee2ThrowHash = Animator.StringToHash("Melee2Throw");
 
     private WeaponType weaponType;
     private GameObject rightHand;
@@ -153,13 +156,17 @@ public class HeroController : MonoBehaviour
             {
                 animator.SetTrigger(melee1Hash);
             }
-            if (weaponType == WeaponType.Axe |
+            if (//weaponType == WeaponType.Axe |
                 weaponType == WeaponType.Hammer |
                 weaponType == WeaponType.Mace |
                 weaponType == WeaponType.Scepter |
                 weaponType == WeaponType.Club)
             {
                 animator.SetTrigger(melee2Hash);
+            }
+            if (weaponType == WeaponType.Axe)
+            {
+                animator.SetTrigger(melee2ThrowHash);
             }
             if (weaponType == WeaponType.Scythe)
             {
@@ -210,6 +217,7 @@ public class HeroController : MonoBehaviour
             animator.ResetTrigger(crossbowShootHash);
             animator.ResetTrigger(wandShootHash);
             animator.ResetTrigger(punchHash);
+            animator.ResetTrigger(melee2ThrowHash);
 
             if (weaponType == WeaponType.TwoHandedAxe | weaponType == WeaponType.TwoHandedSword)
             {
@@ -328,6 +336,25 @@ public class HeroController : MonoBehaviour
     {
         GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         weapon.GetComponent<CapsuleCollider>().enabled = true;
+
+        ////Test: Throwing all one-handed axes
+        //if (weaponType == WeaponType.Axe)
+        //{
+        //    rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+        //    rangedForce = melee1ThrowForce;
+        //    ThrowWeapon();
+        //}
+    }
+
+    public void Melee2ThrowEvent()
+    {
+        //Test: Throwing all one-handed axes
+        //if (weaponType == WeaponType.Axe)
+        {
+            rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+            rangedForce = melee1ThrowForce;
+            ThrowWeapon();
+        }
     }
 
     public void Melee2EndedEvent()
@@ -489,6 +516,61 @@ public class HeroController : MonoBehaviour
         GameObject arrow = Instantiate(Resources.Load("Prefabs/Weapons/Arrows/" + arrowString, typeof(GameObject)), rightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
         arrow.tag = "Arrow";
         arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * rangedForce;
+    }
+
+    private void ThrowWeapon()
+    {
+        if (Input.GetButton(leftAttackButton))
+        {
+            StartCoroutine(SpawnThrowWeapon(270 + movement.z));
+        }
+        if (Input.GetButton(rightAttackButton))
+        {
+            StartCoroutine(SpawnThrowWeapon(90 - movement.z));
+        }
+        if (Input.GetButton(upAttackButton))
+        {
+            StartCoroutine(SpawnThrowWeapon(0 + movement.x));
+        }
+        if (Input.GetButton(downAttackButton))
+        {
+            StartCoroutine(SpawnThrowWeapon(180 - movement.x));
+        }
+    }
+
+    IEnumerator SpawnThrowWeapon(float y)
+    {
+        yield return new WaitForSeconds(rangedAnimationDelay);
+        rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        GameObject rightShoulder = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).gameObject;
+        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        if (Input.GetButton(leftAttackButton))
+        {
+            y = 270 + movement.z;
+        }
+        if (Input.GetButton(rightAttackButton))
+        {
+            y = 90 - movement.z;
+        }
+        if (Input.GetButton(upAttackButton))
+        {
+            y = 0 + movement.x;
+        }
+        if (Input.GetButton(downAttackButton))
+        {
+            y = 180 - movement.x;
+        }
+
+        GameObject throwWeapon = Instantiate(weapon, weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
+
+        throwWeapon.GetComponent<CapsuleCollider>().enabled = true;
+        throwWeapon.AddComponent<Rigidbody>();
+
+        throwWeapon.tag = "Arrow";
+
+        throwWeapon.GetComponent<Rigidbody>().AddRelativeForce(-150, rangedForce*-20, rangedForce* 0);
+        throwWeapon.GetComponent<Rigidbody>().AddRelativeTorque(0, 1000, 0);
     }
 
     private void GetWeaponType()
