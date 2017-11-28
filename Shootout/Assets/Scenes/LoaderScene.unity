@@ -5060,7 +5060,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 821109891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -334.5, y: 111, z: 0}
+  m_LocalPosition: {x: -430, y: 215.5, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1542549405}
@@ -5557,7 +5557,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 945986420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -334.5, y: -111, z: 0}
+  m_LocalPosition: {x: -430, y: -215.5, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1300567221}
@@ -5735,7 +5735,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 968985203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 380.5, y: 208, z: 0}
+  m_LocalPosition: {x: 476, y: 312.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 821109892}
@@ -8200,7 +8200,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1335109571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 334.5, y: -111, z: 0}
+  m_LocalPosition: {x: 430, y: -215.5, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1443604799}
@@ -9667,8 +9667,8 @@ MonoBehaviour:
   upAttackButton: P1AttackUp
   downAttackButton: P1AttackDown
   meleeAttackActive: 0
-  movementSpeed: 10
-  attackSpeed: 10
+  movementSpeed: 15
+  attackSpeed: 15
   rotationDamping: 20
   longbowForce: 30
 --- !u!143 &1499076867
@@ -9818,7 +9818,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100460, guid: c6a5fbda98111fe47958dcde4e4a3c21, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6a5fbda98111fe47958dcde4e4a3c21, type: 2}
@@ -14013,7 +14013,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2098120597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 334.5, y: 111, z: 0}
+  m_LocalPosition: {x: 430, y: 215.5, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1710223482}

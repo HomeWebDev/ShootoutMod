@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -105,7 +106,7 @@ public class HeroController : MonoBehaviour
         moveH = Input.GetAxis(horizontalAxis);
         //moveV *= Time.deltaTime;
         //moveH *= Time.deltaTime;
-        animator.SetFloat("MoveSpeedMultiplier", movementSpeed * 0.25f);
+        animator.SetFloat("MoveSpeedMultiplier", movementSpeed * 0.125f);
         animator.SetFloat("AttackSpeedMultiplier", attackSpeed * 0.1f);
         //Debug.Log("movement: " + Mathf.Min(Mathf.Abs(moveV), Mathf.Abs(moveH)));
     }
@@ -121,8 +122,16 @@ public class HeroController : MonoBehaviour
         //Handle movements based on axises
         moveV = Input.GetAxis(verticalAxis);
         moveH = Input.GetAxis(horizontalAxis);
-        //Debug.Log("h: " + moveH);
-        movement = new Vector3(moveH, 0.0f, moveV);
+
+        //Normalize vector if length is more than 1 to get speed cap
+        if(Math.Sqrt(moveV * moveV + moveH * moveH) > 1)
+        {
+            movement = new Vector3(moveH, 0.0f, moveV).normalized;
+        }
+        else
+        {
+            movement = new Vector3(moveH, 0.0f, moveV);
+        }
         movement *= movementSpeed / 2;
         controller.Move(movement * Time.deltaTime);
 
