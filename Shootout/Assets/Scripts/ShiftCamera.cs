@@ -49,7 +49,7 @@ public class ShiftCamera : MonoBehaviour {
         //Get room position
         levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
         int xRoomPos = (int)(roomPosition.x / levelController.scaleX);
-        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)((roomPosition.z + 4.2f) / levelController.scaleZ) - 1;
+        int zRoomPos = levelController.GetLevelRepresentation().NormalRoomArray.GetLength(1) - (int)((roomPosition.z + 4.2f) / levelController.scaleZ) - 1;
 
         //Debug.Log("x: " + roomPosition.x + " z: " + roomPosition.z);
         //Debug.Log("xint: " + xRoomPos + " zint: " + zRoomPos);
