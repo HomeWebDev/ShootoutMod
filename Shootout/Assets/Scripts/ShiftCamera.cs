@@ -11,6 +11,76 @@ public class ShiftCamera : MonoBehaviour {
     private bool buzyShifting = false;
     private LevelController levelController;
 
+    // Update is called once per frame
+    private void Update()
+    {
+        GameObject player1 = GameObject.Find("Player1");
+
+
+        levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
+        int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
+        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
+
+        int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
+        int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
+
+
+        float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
+        float zPlayerRelativePos = zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(1) - player1.transform.position.z / levelController.scaleZ - 1);
+        //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
+
+        bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
+
+        //Debug.Log("xPlayerRoom: " + xPlayerRoom + " , zPlayerRoom: " + zPlayerRoom);
+        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+        {
+            blockNorth = true;
+        }
+        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+        {
+            blockSouth = true;
+        }
+        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+        {
+            blockWest = true;
+        }
+        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+        {
+            blockEast = true;
+        }
+
+        //Debug.Log("" + blockNorth + blockSouth + blockWest + blockEast);
+
+        Vector3 newCameraPos;
+
+        float xPos = player1.transform.position.x;
+        float yPos = Camera.main.transform.position.y;
+        float zPos = player1.transform.position.z - 4.2f;
+
+        if (blockNorth & zPlayerRelativePos > 0.5)
+        {
+            zPos = Camera.main.transform.position.z;
+        }
+        if (blockSouth & zPlayerRelativePos < 0.5)
+        {
+            zPos = Camera.main.transform.position.z;
+        }
+        if (blockWest & xPlayerRelativePos < 0.5)
+        {
+            xPos = Camera.main.transform.position.x;
+        }
+        if (blockEast & xPlayerRelativePos > 0.5)
+        {
+            xPos = Camera.main.transform.position.x;
+        }
+
+        newCameraPos = new Vector3(xPos, yPos, zPos);
+
+        //newCameraPos = new Vector3(player1.transform.position.x, Camera.main.transform.position.y, player1.transform.position.z-4.2f);
+
+        Camera.main.transform.position = newCameraPos;
+    }
+
     private void OnTriggerEnter(Collider other)
 
     {
@@ -49,7 +119,7 @@ public class ShiftCamera : MonoBehaviour {
         //Get room position
         levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
         int xRoomPos = (int)(roomPosition.x / levelController.scaleX);
-        int zRoomPos = levelController.GetLevelRepresentation().NormalRoomArray.GetLength(1) - (int)((roomPosition.z + 4.2f) / levelController.scaleZ) - 1;
+        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)((roomPosition.z + 4.2f) / levelController.scaleZ) - 1;
 
         //Debug.Log("x: " + roomPosition.x + " z: " + roomPosition.z);
         //Debug.Log("xint: " + xRoomPos + " zint: " + zRoomPos);
@@ -139,10 +209,7 @@ public class ShiftCamera : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
 }
 
 

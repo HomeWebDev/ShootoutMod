@@ -49,8 +49,8 @@ public class LevelController : MonoBehaviour {
         GameObject player2 = GameObject.Find("Player2");
 
         //Always start in center room
-        int iPosition = levelRepresentation.NormalRoomArray.GetLength(0) / 2;
-        int jPosition = levelRepresentation.NormalRoomArray.GetLength(1) / 2;
+        int iPosition = levelRepresentation.RoomArray.GetLength(0) / 2;
+        int jPosition = levelRepresentation.RoomArray.GetLength(1) / 2;
         int xPosition = iPosition * scaleX;
         int zPosition = jPosition * scaleZ;
 
@@ -75,58 +75,86 @@ public class LevelController : MonoBehaviour {
 
     private void GenerateLevel()
     {
-        for (int i = 0; i < levelRepresentation.NormalRoomArray.GetLength(0); i++)
+        for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
         {
-            for (int j = 0; j < levelRepresentation.NormalRoomArray.GetLength(1); j++)
+            for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
             {
-                GenerateRoom(levelRepresentation.NormalRoomArray[levelRepresentation.NormalRoomArray.GetLength(1) - i - 1, j], i, j);
+                GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(1) - i - 1, j], i, j);
             }
         }
     }
 
-    private void GenerateRoom(NormalRoom normalRoom, int i, int j)
+    private void GenerateRoom(Room room, int i, int j)
     {
         int x = j * scaleX;
         int z = i * scaleZ;
 
-        if (normalRoom.NoRoom == true)
+        if (room.NoRoom == true)
         {
             return;
         }
 
         //Add common objects
         GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Ground", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
-        GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
-        GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
-        fenceList.Add(fences);
+        //GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //fenceList.Add(fences);
 
-        if (normalRoom.NorthDoorOpen)
+        if (room.NorthDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/NorthDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/NorthFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            fenceList.Add(fences);
         }
-        else
+        else if(room.NorthWallOpen)
         {
-            GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            //Open
         }
-        if (normalRoom.SouthDoorOpen)
+		else
+		{
+			GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+		}
+        if (room.SouthDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/SouthDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/SouthFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            fenceList.Add(fences);
+        }
+		else if(room.SouthWallOpen)
+        {
+            //Open
         }
         else
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
         }
-        if (normalRoom.WestDoorOpen)
+        if (room.WestDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/WestDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/WestFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            fenceList.Add(fences);
+        }
+		else if(room.WestWallOpen)
+        {
+            //Open
         }
         else
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
         }
-        if (normalRoom.EastDoorOpen)
+        if (room.EastDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/Walls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/EastDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/EastFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            fenceList.Add(fences);
+        }
+		else if(room.EastWallOpen)
+        {
+            //Open
         }
         else
         {

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelRepresentation : MonoBehaviour {
 
-    public int roomArrayX = 11;
-    public int roomArrayZ = 11;
-    public int blockedPercentage = 50;
-    public int minNumberOfRooms = 20;
+    public int roomArrayX = 7;
+    public int roomArrayZ = 7;
+    public int blockedPercentage = 30;
+    public int minNumberOfRooms = 3;
 
     //public int roomArrayX = 3;
     //public int roomArrayZ = 3;
@@ -22,6 +22,13 @@ public class LevelRepresentation : MonoBehaviour {
         BossLevel1,
         EnemyLevel1,
         Treasure,
+    };
+	
+	private enum WallStatus
+    {
+        MustBeOpen,
+        CantBeOpen,
+        Any
     };
 
     public LevelRepresentation()
@@ -38,16 +45,23 @@ public class LevelRepresentation : MonoBehaviour {
     }
 
     public ContentType[,] ContentArray { get; set; }
-    public NormalRoom[,] NormalRoomArray { get; set; }
+    public Room[,] RoomArray { get; set; }
 
     //For test, creates simple room layout
     private void CreateRoomArray()
     {
-        NormalRoomArray = new NormalRoom[3, 3]
+        //RoomArray = new Room[3, 3]
+        //{
+        //    {new Room() { NoRoom = true }, new Room(){SouthDoorOpen = true }, new Room() {SouthDoorOpen = true } },
+        //    {new Room(){ EastDoorOpen = true }, new Room(){NorthDoorOpen = true, SouthDoorOpen = true, WestDoorOpen = true, EastDoorOpen = true }, new Room() {NorthDoorOpen = true, WestDoorOpen = true } },
+        //    {new Room() { EastWallOpen = true }, new Room() { NorthDoorOpen = true, WestWallOpen = true }, new Room() { NoRoom = true }}
+        //};
+
+        RoomArray = new Room[3, 3]
         {
-            {new NormalRoom() { NoRoom = true }, new NormalRoom(){SouthDoorOpen = true }, new NormalRoom() {SouthDoorOpen = true } },
-            {new NormalRoom(){ EastDoorOpen = true }, new NormalRoom(){NorthDoorOpen = true, SouthDoorOpen = true, WestDoorOpen = true, EastDoorOpen = true }, new NormalRoom() {NorthDoorOpen = true, WestDoorOpen = true } },
-            {new NormalRoom() { NoRoom = true }, new NormalRoom() { NorthDoorOpen = true}, new NormalRoom() { NoRoom = true }}
+            {new Room() { NoRoom = true }, new Room(){SouthDoorOpen = true }, new Room() {SouthDoorOpen = true } },
+            {new Room(){ EastDoorOpen = true, SouthWallOpen = true }, new Room(){NorthDoorOpen = true, SouthDoorOpen = true, WestDoorOpen = true, EastDoorOpen = true }, new Room() {NorthDoorOpen = true, WestDoorOpen = true } },
+            {new Room() { EastWallOpen = true, NorthWallOpen = true }, new Room() { NorthDoorOpen = true, WestWallOpen = true }, new Room() { NoRoom = true }}
         };
     }
 
@@ -56,20 +70,22 @@ public class LevelRepresentation : MonoBehaviour {
         while (true)
         {
             ContentArray = new ContentType[roomArrayX, roomArrayZ];
-            NormalRoomArray = new NormalRoom[roomArrayX, roomArrayZ];
+            RoomArray = new Room[roomArrayX, roomArrayZ];
 
             //Initialize with empty rooms
             for (int i = 0; i < roomArrayX; i++)
             {
                 for (int j = 0; j < roomArrayZ; j++)
                 {
-                    NormalRoomArray[i, j] = new NormalRoom() { NoRoom = true };
+                    RoomArray[i, j] = new Room() { NoRoom = true };
                     ContentArray[i, j] = ContentType.NoContent;
                 }
             }
 
             //Create first room
-            NormalRoomArray[roomArrayZ / 2, roomArrayX / 2] = GetRandomStartRoom();
+            RoomArray[roomArrayZ / 2, roomArrayX / 2] = GetRandomStartRoom();
+            //RoomArray[roomArrayZ / 2, roomArrayX / 2] = new Room() { EastWallOpen = true };
+
 
             int currentRoomX = roomArrayX / 2;
             int currentRoomZ = roomArrayZ / 2;
@@ -77,57 +93,57 @@ public class LevelRepresentation : MonoBehaviour {
             int numberOfRooms = 1;
             while (true)
             {
-                int nrOrOpenDoors = 0;
+                int nrOrOpenPaths = 0;
                 for (int i = 0; i < roomArrayX; i++)
                 {
                     for (int j = 0; j < roomArrayZ; j++)
                     {
-                        if (!NormalRoomArray[i, j].NoRoom)
+                        if (!RoomArray[i, j].NoRoom)
                         {
-                            if (NormalRoomArray[i, j].NorthDoorOpen)
+                            if (RoomArray[i, j].NorthDoorOpen | RoomArray[i, j].NorthWallOpen)
                             {
-                                if (NormalRoomArray[i - 1, j].NoRoom)
+                                if (RoomArray[i - 1, j].NoRoom)
                                 {
-                                    NormalRoomArray[i - 1, j] = GetRandomRoomThatFits(i - 1, j);
+                                    RoomArray[i - 1, j] = GetRandomRoomThatFits(i - 1, j);
                                     ContentArray[i - 1, j] = ContentType.EnemyLevel1;
-                                    nrOrOpenDoors++;
+                                    nrOrOpenPaths++;
                                     numberOfRooms++;
                                 }
                             }
-                            if (NormalRoomArray[i, j].SouthDoorOpen)
+                            if (RoomArray[i, j].SouthDoorOpen | RoomArray[i, j].SouthWallOpen)
                             {
-                                if (NormalRoomArray[i + 1, j].NoRoom)
+                                if (RoomArray[i + 1, j].NoRoom)
                                 {
-                                    NormalRoomArray[i + 1, j] = GetRandomRoomThatFits(i + 1, j);
+                                    RoomArray[i + 1, j] = GetRandomRoomThatFits(i + 1, j);
                                     ContentArray[i + 1, j] = ContentType.EnemyLevel1;
-                                    nrOrOpenDoors++;
+                                    nrOrOpenPaths++;
                                     numberOfRooms++;
                                 }
                             }
-                            if (NormalRoomArray[i, j].WestDoorOpen)
+                            if (RoomArray[i, j].WestDoorOpen | RoomArray[i, j].WestWallOpen)
                             {
-                                if (NormalRoomArray[i, j - 1].NoRoom)
+                                if (RoomArray[i, j - 1].NoRoom)
                                 {
-                                    NormalRoomArray[i, j - 1] = GetRandomRoomThatFits(i, j - 1);
+                                    RoomArray[i, j - 1] = GetRandomRoomThatFits(i, j - 1);
                                     ContentArray[i, j - 1] = ContentType.EnemyLevel1;
-                                    nrOrOpenDoors++;
+                                    nrOrOpenPaths++;
                                     numberOfRooms++;
                                 }
                             }
-                            if (NormalRoomArray[i, j].EastDoorOpen)
+                            if (RoomArray[i, j].EastDoorOpen | RoomArray[i, j].EastWallOpen)
                             {
-                                if (NormalRoomArray[i, j + 1].NoRoom)
+                                if (RoomArray[i, j + 1].NoRoom)
                                 {
-                                    NormalRoomArray[i, j + 1] = GetRandomRoomThatFits(i, j + 1);
+                                    RoomArray[i, j + 1] = GetRandomRoomThatFits(i, j + 1);
                                     ContentArray[i, j + 1] = ContentType.EnemyLevel1;
-                                    nrOrOpenDoors++;
+                                    nrOrOpenPaths++;
                                     numberOfRooms++;
                                 }
                             }
                         }
                     }
                 }
-                if (nrOrOpenDoors == 0)
+                if (nrOrOpenPaths == 0)
                 {
                     break;
                 }
@@ -139,9 +155,9 @@ public class LevelRepresentation : MonoBehaviour {
         }
     }
 
-    private NormalRoom GetRandomStartRoom()
+    private Room GetRandomStartRoom()
     {
-        NormalRoom normalRoom = new NormalRoom();
+        Room normalRoom = new Room();
         while(true)
         {
             normalRoom.NorthDoorOpen = rand.NextDouble() > 0.5;
@@ -157,12 +173,16 @@ public class LevelRepresentation : MonoBehaviour {
         return normalRoom;
     }
 
-    private NormalRoom GetRandomRoomThatFits(int z, int x)
+    private Room GetRandomRoomThatFits(int z, int x)
     {
         bool northDoor = false;
         bool southDoor = false;
         bool westDoor = false;
         bool eastDoor = false;
+		WallStatus northWallStatus = WallStatus.Any;
+		WallStatus southWallStatus = WallStatus.Any;
+		WallStatus westWallStatus = WallStatus.Any;
+		WallStatus eastWallStatus = WallStatus.Any;
 
         //Check outer blocks
         bool northBlocked = (z <= 0);
@@ -176,99 +196,227 @@ public class LevelRepresentation : MonoBehaviour {
         //Check which rooms fit
         if (!northBlocked)
         {
-            northDoor = NormalRoomArray[z - 1, x].SouthDoorOpen;
+            northDoor = RoomArray[z - 1, x].SouthDoorOpen;
+			if(RoomArray[z - 1, x].NoRoom)
+			{
+				northWallStatus = WallStatus.Any;
+			}
+			else if(RoomArray[z - 1, x].SouthWallOpen)
+			{
+				northWallStatus = WallStatus.MustBeOpen;
+			}
+			else
+			{
+				northWallStatus = WallStatus.CantBeOpen;
+			}
         }
         if (!southBlocked)
         {
-            southDoor = NormalRoomArray[z + 1, x].NorthDoorOpen;
+            southDoor = RoomArray[z + 1, x].NorthDoorOpen;
+			if(RoomArray[z + 1, x].NoRoom)
+			{
+				southWallStatus = WallStatus.Any;
+			}
+			else if(RoomArray[z + 1, x].NorthWallOpen)
+			{
+				southWallStatus = WallStatus.MustBeOpen;
+			}
+			else
+			{
+				southWallStatus = WallStatus.CantBeOpen;
+			}
         }
         if (!westBlocked)
         {
-            westDoor = NormalRoomArray[z, x - 1].EastDoorOpen;
+            westDoor = RoomArray[z, x - 1].EastDoorOpen;
+			if(RoomArray[z, x - 1].NoRoom)
+			{
+				westWallStatus = WallStatus.Any;
+			}
+			else if(RoomArray[z, x - 1].EastWallOpen)
+			{
+				westWallStatus = WallStatus.MustBeOpen;
+			}
+			else
+			{
+				westWallStatus = WallStatus.CantBeOpen;
+			}
         }
         if (!eastBlocked)
         {
-            eastDoor = NormalRoomArray[z, x + 1].WestDoorOpen;
+            eastDoor = RoomArray[z, x + 1].WestDoorOpen;
+			if(RoomArray[z, x + 1].NoRoom)
+			{
+				eastWallStatus = WallStatus.Any;
+			}
+			else if(RoomArray[z, x + 1].WestWallOpen)
+			{
+				eastWallStatus = WallStatus.MustBeOpen;
+			}
+			else
+			{
+				eastWallStatus = WallStatus.CantBeOpen;
+			}
         }
 
         //Add additional blocks
-        if (rand.Next(100) < blockedPercentage && !northDoor)
+        if (rand.Next(100) < blockedPercentage & !northDoor & (northWallStatus != WallStatus.MustBeOpen))
         {
             northBlocked = true;
         }
-        if (rand.Next(100) < blockedPercentage && !southDoor)
+        if (rand.Next(100) < blockedPercentage & !southDoor & (southWallStatus != WallStatus.MustBeOpen))
         {
             southBlocked = true;
         }
-        if (rand.Next(100) < blockedPercentage && !westDoor)
+        if (rand.Next(100) < blockedPercentage & !westDoor & (westWallStatus != WallStatus.MustBeOpen))
         {
             westBlocked = true;
         }
-        if (rand.Next(100) < blockedPercentage && !eastDoor)
+        if (rand.Next(100) < blockedPercentage & !eastDoor & (eastWallStatus != WallStatus.MustBeOpen))
         {
             eastBlocked = true;
         }
 
-        //Get array with all fitting room types
-        NormalRoom normalRoom = GetRandomRoom(northDoor, southDoor, westDoor, eastDoor, northBlocked, southBlocked, westBlocked, eastBlocked);
+        //Get random room that fits
+        Room room = GetRandomRoom(northDoor, southDoor, westDoor, eastDoor, northBlocked, southBlocked, westBlocked, eastBlocked, northWallStatus, southWallStatus, westWallStatus, eastWallStatus);
 
-        return normalRoom;
+        return room;
     }
 
-    private NormalRoom GetRandomRoom(bool northDoor, bool southDoor, bool westDoor, bool eastDoor, bool northBlocked, bool southBlocked, bool westBlocked, bool eastBlocked)
+    private Room GetRandomRoom(bool northDoor, bool southDoor, bool westDoor, bool eastDoor, bool northBlocked, bool southBlocked, bool westBlocked, bool eastBlocked, WallStatus northWallStatus, WallStatus southWallStatus, WallStatus westWallStatus, WallStatus eastWallStatus)
     {
-        NormalRoom normalRoom = new NormalRoom();
+        Room room = new Room();
 
         if (northDoor)
         {
-            normalRoom.NorthDoorOpen = true;
+            room.NorthDoorOpen = true;
+			room.NorthWallOpen = false;
         }
         else if (northBlocked)
         {
-            normalRoom.NorthDoorOpen = false;
+            room.NorthDoorOpen = false;
+			room.NorthWallOpen = false;
+        }
+        else if (northWallStatus == WallStatus.CantBeOpen)
+        {
+            room.NorthDoorOpen = false;
+            room.NorthWallOpen = false;
+        }
+        else if (northWallStatus == WallStatus.MustBeOpen)
+        {
+            room.NorthDoorOpen = false;
+            room.NorthWallOpen = true;
         }
         else
         {
-            normalRoom.NorthDoorOpen = rand.NextDouble() > 0.5;
+            room.NorthDoorOpen = rand.NextDouble() > 0.67;
+			if(room.NorthDoorOpen)
+			{
+				room.NorthWallOpen = false;
+			}
+			else
+			{
+				room.NorthWallOpen = rand.NextDouble() > 0.67;
+			}
         }
         if (southDoor)
         {
-            normalRoom.SouthDoorOpen = true;
+            room.SouthDoorOpen = true;
+			room.SouthWallOpen = false;
         }
         else if (southBlocked)
         {
-            normalRoom.SouthDoorOpen = false;
+            room.SouthDoorOpen = false;
+			room.SouthWallOpen = false;
+        }
+        else if (southWallStatus == WallStatus.CantBeOpen)
+        {
+            room.SouthDoorOpen = false;
+            room.SouthWallOpen = false;
+        }
+        else if (southWallStatus == WallStatus.MustBeOpen)
+        {
+            room.SouthDoorOpen = false;
+            room.SouthWallOpen = true;
         }
         else
         {
-            normalRoom.SouthDoorOpen = rand.NextDouble() > 0.5;
+            room.SouthDoorOpen = rand.NextDouble() > 0.67;
+            if (room.SouthDoorOpen)
+            {
+                room.SouthWallOpen = false;
+            }
+            else
+            {
+                room.SouthWallOpen = rand.NextDouble() > 0.67;
+            }
         }
         if (westDoor)
         {
-            normalRoom.WestDoorOpen = true;
+            room.WestDoorOpen = true;
+			room.WestWallOpen = false;
         }
         else if (westBlocked)
         {
-            normalRoom.WestDoorOpen = false;
+            room.WestDoorOpen = false;
+			room.WestWallOpen = false;
+        }
+        else if (westWallStatus == WallStatus.CantBeOpen)
+        {
+            room.WestDoorOpen = false;
+            room.WestWallOpen = false;
+        }
+        else if (westWallStatus == WallStatus.MustBeOpen)
+        {
+            room.WestDoorOpen = false;
+            room.WestWallOpen = true;
         }
         else
         {
-            normalRoom.WestDoorOpen = rand.NextDouble() > 0.5;
+            room.WestDoorOpen = rand.NextDouble() > 0.67;
+            if (room.WestDoorOpen)
+            {
+                room.WestWallOpen = false;
+            }
+            else
+            {
+                room.WestWallOpen = rand.NextDouble() > 0.67;
+            }
         }
         if (eastDoor)
         {
-            normalRoom.EastDoorOpen = true;
+            room.EastDoorOpen = true;
+			room.EastWallOpen = false;
         }
         else if (eastBlocked)
         {
-            normalRoom.EastDoorOpen = false;
+            room.EastDoorOpen = false;
+			room.EastWallOpen = false;
+        }
+        else if (eastWallStatus == WallStatus.CantBeOpen)
+        {
+            room.EastDoorOpen = false;
+            room.EastWallOpen = false;
+        }
+        else if (eastWallStatus == WallStatus.MustBeOpen)
+        {
+            room.EastDoorOpen = false;
+            room.EastWallOpen = true;
         }
         else
         {
-            normalRoom.EastDoorOpen = rand.NextDouble() > 0.5;
+            room.EastDoorOpen = rand.NextDouble() > 0.67;
+            if (room.EastDoorOpen)
+            {
+                room.EastWallOpen = false;
+            }
+            else
+            {
+                room.EastWallOpen = rand.NextDouble() > 0.67;
+            }
         }
 
-        return normalRoom;
+        return room;
     }
 
     // Update is called once per frame
