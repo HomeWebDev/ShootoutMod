@@ -10,14 +10,15 @@ public class ShiftCamera : MonoBehaviour {
     public float shiftSpeed;
     private bool buzyShifting = false;
     private LevelController levelController;
+    GameObject player1;
 
     // Update is called once per frame
     private void Update()
     {
-        GameObject player1 = GameObject.Find("Player1");
+        
 
 
-        levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
+        
         int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
         int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
 
@@ -206,8 +207,9 @@ public class ShiftCamera : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
+        player1 = GameObject.Find("Player1");
+    }
 	
 	
 }
