@@ -49,8 +49,8 @@ public class LevelController : MonoBehaviour {
         GameObject player2 = GameObject.Find("Player2");
 
         //Always start in center room
-        int iPosition = levelRepresentation.RoomArray.GetLength(0) / 2;
-        int jPosition = levelRepresentation.RoomArray.GetLength(1) / 2;
+        int iPosition = levelRepresentation.RoomArray.GetLength(1) / 2;
+        int jPosition = levelRepresentation.RoomArray.GetLength(0) / 2;
         int xPosition = iPosition * scaleX;
         int zPosition = jPosition * scaleZ;
 
@@ -79,7 +79,8 @@ public class LevelController : MonoBehaviour {
         {
             for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
             {
-                GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(1) - i - 1, j], i, j);
+                //Debug.Log("i: " + i + " , j: " + j + " , value: " + (levelRepresentation.RoomArray.GetLength(0) - i - 1));
+                GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
             }
         }
     }

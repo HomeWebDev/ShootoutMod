@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,39 +16,92 @@ public class ShiftCamera : MonoBehaviour {
     // Update is called once per frame
     private void Update()
     {
-        
-
-
-        
         int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
-        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
+        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
 
         int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
-        int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(1) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
+        int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
 
 
         float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
-        float zPlayerRelativePos = zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(1) - player1.transform.position.z / levelController.scaleZ - 1);
+        float zPlayerRelativePos = zPlayerRoom + 2.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(1) - player1.transform.position.z / levelController.scaleZ - 1);
         //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
 
         bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
 
         //Debug.Log("xPlayerRoom: " + xPlayerRoom + " , zPlayerRoom: " + zPlayerRoom);
+
         if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
         {
             blockNorth = true;
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].NorthWallOpen)
+                {
+                    blockNorth = false;
+                }
+            }
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].NorthWallOpen)
+                {
+                    blockNorth = false;
+                }
+            }
         }
         if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
         {
             blockSouth = true;
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].SouthWallOpen)
+                {
+                    blockSouth = false;
+                }
+            }
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].SouthWallOpen)
+                {
+                    blockSouth = false;
+                }
+            }
         }
         if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
         {
             blockWest = true;
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].WestWallOpen)
+                {
+                    blockWest = false;
+                }
+            }
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].WestWallOpen)
+                {
+                    blockWest = false;
+                }
+            }
         }
         if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
         {
             blockEast = true;
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].EastWallOpen)
+                {
+                    blockEast = false;
+                }
+            }
+            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+            {
+                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].EastWallOpen)
+                {
+                    blockEast = false;
+                }
+            }
         }
 
         //Debug.Log("" + blockNorth + blockSouth + blockWest + blockEast);
@@ -57,33 +111,45 @@ public class ShiftCamera : MonoBehaviour {
         float xPos = player1.transform.position.x;
         float yPos = Camera.main.transform.position.y;
         float zPos = player1.transform.position.z - 4.2f;
+		
+		float xPosCentered = xPlayerRoom * levelController.scaleX;
+		float zPosCentered = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (zPlayerRoom - 0.5f) * levelController.scaleZ - 4.2f + 15;
 
         if (blockNorth & zPlayerRelativePos > 0.5)
         {
-            zPos = Camera.main.transform.position.z;
+            //zPos = Camera.main.transform.position.z;
+			zPos = zPosCentered;
         }
         if (blockSouth & zPlayerRelativePos < 0.5)
         {
-            zPos = Camera.main.transform.position.z;
+            //zPos = Camera.main.transform.position.z;
+			zPos = zPosCentered;
         }
         if (blockWest & xPlayerRelativePos < 0.5)
         {
-            xPos = Camera.main.transform.position.x;
+            //xPos = Camera.main.transform.position.x;
+			xPos = xPosCentered;
         }
         if (blockEast & xPlayerRelativePos > 0.5)
         {
-            xPos = Camera.main.transform.position.x;
+            //xPos = Camera.main.transform.position.x;
+			xPos = xPosCentered;
         }
 
         newCameraPos = new Vector3(xPos, yPos, zPos);
 
-        //newCameraPos = new Vector3(player1.transform.position.x, Camera.main.transform.position.y, player1.transform.position.z-4.2f);
-
-        Camera.main.transform.position = newCameraPos;
+        if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
+        {
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 1.0f);
+            //Camera.main.transform.position = newCameraPos;
+        }
+        else
+        {
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.02f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
-
     {
         //Debug.Log("EnterTrigger");
         GameObject player1 = GameObject.Find("Player1");
@@ -95,10 +161,20 @@ public class ShiftCamera : MonoBehaviour {
 
         //Debug.Log("EnterTrigger, shouldMove = " + shouldShiftCamera(other) + " zShift = " + zShift);
 
-        if ((other.tag == "Player1" || other.tag == "Player2") && ShouldShiftCamera(other))
+        if ((other.tag == "Player1" || other.tag == "Player2") && ShouldShiftCamera(other) & false)
         {
             Vector3 diff = new Vector3(xShift, 0, zShift);
-            Vector3 newDesiredPosition = Camera.main.transform.position - diff;
+            Vector3 newDesiredPositionRaw = Camera.main.transform.position - diff;
+
+            int xRoom = (int)((newDesiredPositionRaw.x / levelController.scaleX) + 0.5f) + 0;
+            int zRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((newDesiredPositionRaw.z) / levelController.scaleZ) + 1.5f);
+
+            float xRoomCentered = xRoom * levelController.scaleX;
+            float zRoomCentered = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (zRoom - 0.5f) * levelController.scaleZ - 4.2f + 15;
+
+            Vector3 newDesiredPosition = new Vector3(xRoomCentered, newDesiredPositionRaw.y, zRoomCentered);
+
+
             StartCoroutine(LerpFromTo(Camera.main.transform.position, newDesiredPosition, shiftSpeed));
 
             if(other.tag == "Player1")
@@ -127,14 +203,14 @@ public class ShiftCamera : MonoBehaviour {
         //Debug.Log("ContentType: " + levelController.GetLevelRepresentation().ContentArray[xRoomPos, zRoomPos]);
 
         //Add enemies and close doors
-        if (levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] == LevelRepresentation.ContentType.EnemyLevel1)
-        {
-            CloseDoors(roomPosition);
-            //TODO: Add random enemies of appropriate level
-            Vector3 enemyPosition = new Vector3(roomPosition.x, 0, roomPosition.z + 4.2f);
-            GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
-            levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] = LevelRepresentation.ContentType.NoContent;
-        }
+        //if (levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] == LevelRepresentation.ContentType.EnemyLevel1)
+        //{
+        //    CloseDoors(roomPosition);
+        //    //TODO: Add random enemies of appropriate level
+        //    Vector3 enemyPosition = new Vector3(roomPosition.x, 0, roomPosition.z + 4.2f);
+        //    GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        //    levelController.GetLevelRepresentation().ContentArray[zRoomPos, xRoomPos] = LevelRepresentation.ContentType.NoContent;
+        //}
     }
 
     IEnumerator LerpFromTo(Vector3 pos1, Vector3 pos2, float duration)

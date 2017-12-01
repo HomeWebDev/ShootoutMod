@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelRepresentation : MonoBehaviour {
 
-    public int roomArrayX = 11;
-    public int roomArrayZ = 11;
-    public int blockedPercentage = 30;
-    public int minNumberOfRooms = 30;
+    public int roomArrayX = 5;
+    public int roomArrayZ = 3;
+    public int blockedPercentage = 0;
+    public int minNumberOfRooms = 5;
 
     //public int roomArrayX = 3;
     //public int roomArrayZ = 3;
@@ -57,8 +57,16 @@ public class LevelRepresentation : MonoBehaviour {
         //    {new Room() { EastWallOpen = true }, new Room() { NorthDoorOpen = true, WestWallOpen = true }, new Room() { NoRoom = true }}
         //};
 
-        RoomArray = new Room[3, 3]
+        //RoomArray = new Room[3, 3]
+        //{
+        //    {new Room() { NoRoom = true }, new Room(){SouthDoorOpen = true }, new Room() {SouthDoorOpen = true } },
+        //    {new Room(){ EastDoorOpen = true, SouthWallOpen = true }, new Room(){NorthDoorOpen = true, SouthDoorOpen = true, WestDoorOpen = true, EastDoorOpen = true }, new Room() {NorthDoorOpen = true, WestDoorOpen = true } },
+        //    {new Room() { EastWallOpen = true, NorthWallOpen = true }, new Room() { NorthDoorOpen = true, WestWallOpen = true }, new Room() { NoRoom = true }}
+        //};
+
+        RoomArray = new Room[4, 3]
         {
+            {new Room() { NoRoom = true }, new Room(){SouthDoorOpen = true }, new Room() {SouthDoorOpen = true } },
             {new Room() { NoRoom = true }, new Room(){SouthDoorOpen = true }, new Room() {SouthDoorOpen = true } },
             {new Room(){ EastDoorOpen = true, SouthWallOpen = true }, new Room(){NorthDoorOpen = true, SouthDoorOpen = true, WestDoorOpen = true, EastDoorOpen = true }, new Room() {NorthDoorOpen = true, WestDoorOpen = true } },
             {new Room() { EastWallOpen = true, NorthWallOpen = true }, new Room() { NorthDoorOpen = true, WestWallOpen = true }, new Room() { NoRoom = true }}
@@ -69,13 +77,13 @@ public class LevelRepresentation : MonoBehaviour {
     {
         while (true)
         {
-            ContentArray = new ContentType[roomArrayX, roomArrayZ];
-            RoomArray = new Room[roomArrayX, roomArrayZ];
+            ContentArray = new ContentType[roomArrayZ, roomArrayX];
+            RoomArray = new Room[roomArrayZ, roomArrayX];
 
             //Initialize with empty rooms
-            for (int i = 0; i < roomArrayX; i++)
+            for (int i = 0; i < roomArrayZ; i++)
             {
-                for (int j = 0; j < roomArrayZ; j++)
+                for (int j = 0; j < roomArrayX; j++)
                 {
                     RoomArray[i, j] = new Room() { NoRoom = true };
                     ContentArray[i, j] = ContentType.NoContent;
@@ -94,9 +102,9 @@ public class LevelRepresentation : MonoBehaviour {
             while (true)
             {
                 int nrOrOpenPaths = 0;
-                for (int i = 0; i < roomArrayX; i++)
+                for (int i = 0; i < roomArrayZ; i++)
                 {
-                    for (int j = 0; j < roomArrayZ; j++)
+                    for (int j = 0; j < roomArrayX; j++)
                     {
                         if (!RoomArray[i, j].NoRoom)
                         {
