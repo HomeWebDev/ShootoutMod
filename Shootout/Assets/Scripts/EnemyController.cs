@@ -21,8 +21,8 @@ public class EnemyController : MonoBehaviour {
     void Start()
     {
         controller = (CharacterController)(GetComponent(typeof(CharacterController)));
-        anim = GetComponent<Animation>();
-        anim["Walk"].speed = 3.0f;
+        //anim = GetComponent<Animation>();
+        //anim["Walk"].speed = 3.0f;
     }
 
     // Update is called once per frame

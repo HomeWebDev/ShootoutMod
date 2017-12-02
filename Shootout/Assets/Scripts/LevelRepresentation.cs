@@ -22,6 +22,7 @@ public class LevelRepresentation : MonoBehaviour {
         BossLevel1,
         EnemyLevel1,
         Treasure,
+        EnemiesSpawned
     };
 	
 	private enum WallStatus
