@@ -75,6 +75,13 @@ public class LevelController : MonoBehaviour {
 
     private void GenerateLevel()
     {
+        int terrainId = Random.Range(0, 31);
+        //terrainId = 31;
+        Debug.Log("TerrainId: " + terrainId);
+        GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
+        ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
+
+
         for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
         {
             for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
@@ -83,6 +90,8 @@ public class LevelController : MonoBehaviour {
                 GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
             }
         }
+
+        GameObject.Destroy(ground);
     }
 
     private void GenerateRoom(Room room, int i, int j)
@@ -97,6 +106,9 @@ public class LevelController : MonoBehaviour {
 
         //Add common objects
         GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(x - scaleX/2 - 0.2f, 0, z - scaleZ/2), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
+        //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
+
         //GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
         //GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
         //fenceList.Add(fences);

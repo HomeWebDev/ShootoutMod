@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TerrainHandler : MonoBehaviour {
 
+    //public int TerrainId;
     private System.Random rand = new System.Random();
 
     // Use this for initialization
@@ -21,8 +22,13 @@ public class TerrainHandler : MonoBehaviour {
 
     //   }
 
-
     private void Start()
+    {
+        
+    }
+
+
+    public void ShiftTerrain(int TerrainId)
     {
         Terrain terrain = GetComponent<Terrain>();
 
@@ -30,7 +36,8 @@ public class TerrainHandler : MonoBehaviour {
 
         float[,,] splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
-        float randNr = (float)rand.NextDouble();
+        //int terrainIndex = Random.Range(0, terrainData.alphamapLayers - 1);
+        //Debug.Log("terrainIndex: " + terrainIndex);
 
         for (int y = 0; y < terrainData.alphamapHeight; y++)
         {
@@ -56,7 +63,13 @@ public class TerrainHandler : MonoBehaviour {
                 //splatWeights[1] = 0.1f;
                 //splatWeights[3] = randNr;
 
-                splatWeights[4] = 1.0f;
+                //splatWeights[4] = 1.0f;
+
+                //splatWeights[9] = 1.0f;
+
+                splatWeights[TerrainId] = 1.0f;
+
+                
 
                 // Sum of all textures weights must add to 1, so calculate normalization factor from sum of weights
                 float z = 0f;
