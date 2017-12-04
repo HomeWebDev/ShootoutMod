@@ -1,0 +1,397 @@
+fileFormatVersion: 2
+guid: 299bf6902d84010429e91f5291287b50
+timeCreated: 1448270094
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Border-Center
+    100002: Border-Corner
+    100004: Knight
+    100006: Platform-Side
+    100008: Platform-Top
+    100010: //RootNode
+    100012: Wall-Side
+    100014: Wall-Top
+    100016: Bush
+    100018: Cone Tree
+    100020: Bridge
+    100022: Flower
+    100024: Well
+    100026: Tree Chopped
+    100028: Tree Log
+    100030: Tree Log Bridge
+    100032: Wall Rock 01
+    100034: Wall Rock 02
+    100036: Wall Rock 03
+    100038: Tree 01
+    100040: Bone Pillar 01
+    100042: Bone Pillar 02
+    100044: Bone Pillar 03
+    100046: Log Pin 01
+    100048: Log Pin 02
+    100050: Big Tree 01
+    100052: Box002
+    100054: Log Hollow
+    100056: Waterfall
+    100058: Border wall 01
+    100060: Border wall 02
+    100062: Stairs Side Wall
+    100064: Stairs Step 01
+    100066: Stairs Step 02
+    100068: Stairs Step 03
+    100070: Tombstone
+    100072: Tombstone02
+    100074: Fence
+    100076: Fence Pillar
+    100078: Tombstone 01
+    100080: Tombstone 02
+    100082: Tombstone 03
+    100084: Campfire
+    100086: Campfire Stone
+    100088: Dungeon Entrance
+    100090: Fence Middle
+    100092: Lamp
+    100094: Waypoint
+    100096: Box003
+    100098: Hut
+    100100: Windmill
+    100102: Crystal
+    100104: Crystal Base
+    100106: Lily Pad
+    100108: Log
+    100110: Sun Ray
+    100112: Hideout
+    100114: Hideout Cover
+    100116: Manhole Cover
+    100118: Graveyard Statue
+    100120: Vine01
+    100122: Vine Ground
+    100124: Tent
+    100126: Fence Pillar 1
+    100128: Grass
+    100130: Ground Glow
+    400000: Border-Center
+    400002: Border-Corner
+    400004: Knight
+    400006: Platform-Side
+    400008: Platform-Top
+    400010: //RootNode
+    400012: Wall-Side
+    400014: Wall-Top
+    400016: Bush
+    400018: Cone Tree
+    400020: Bridge
+    400022: Flower
+    400024: Well
+    400026: Tree Chopped
+    400028: Tree Log
+    400030: Tree Log Bridge
+    400032: Wall Rock 01
+    400034: Wall Rock 02
+    400036: Wall Rock 03
+    400038: Tree 01
+    400040: Bone Pillar 01
+    400042: Bone Pillar 02
+    400044: Bone Pillar 03
+    400046: Log Pin 01
+    400048: Log Pin 02
+    400050: Big Tree 01
+    400052: Box002
+    400054: Log Hollow
+    400056: Waterfall
+    400058: Border wall 01
+    400060: Border wall 02
+    400062: Stairs Side Wall
+    400064: Stairs Step 01
+    400066: Stairs Step 02
+    400068: Stairs Step 03
+    400070: Tombstone
+    400072: Tombstone02
+    400074: Fence
+    400076: Fence Pillar
+    400078: Tombstone 01
+    400080: Tombstone 02
+    400082: Tombstone 03
+    400084: Campfire
+    400086: Campfire Stone
+    400088: Dungeon Entrance
+    400090: Fence Middle
+    400092: Lamp
+    400094: Waypoint
+    400096: Box003
+    400098: Hut
+    400100: Windmill
+    400102: Crystal
+    400104: Crystal Base
+    400106: Lily Pad
+    400108: Log
+    400110: Sun Ray
+    400112: Hideout
+    400114: Hideout Cover
+    400116: Manhole Cover
+    400118: Graveyard Statue
+    400120: Vine01
+    400122: Vine Ground
+    400124: Tent
+    400126: Fence Pillar 1
+    400128: Grass
+    400130: Ground Glow
+    2300000: Border-Center
+    2300002: Border-Corner
+    2300004: Knight
+    2300006: Platform-Side
+    2300008: Platform-Top
+    2300010: Wall-Side
+    2300012: Wall-Top
+    2300014: Bush
+    2300016: Cone Tree
+    2300018: Bridge
+    2300020: Flower
+    2300022: Well
+    2300024: Tree Chopped
+    2300026: Tree Log
+    2300028: Tree Log Bridge
+    2300030: Wall Rock 01
+    2300032: Wall Rock 02
+    2300034: Wall Rock 03
+    2300036: Tree 01
+    2300038: Bone Pillar 01
+    2300040: Bone Pillar 02
+    2300042: Bone Pillar 03
+    2300044: Log Pin 01
+    2300046: Log Pin 02
+    2300048: Big Tree 01
+    2300050: Box002
+    2300052: Log Hollow
+    2300054: Waterfall
+    2300056: Border wall 01
+    2300058: Border wall 02
+    2300060: Stairs Side Wall
+    2300062: Stairs Step 01
+    2300064: Stairs Step 02
+    2300066: Stairs Step 03
+    2300068: Tombstone
+    2300070: Tombstone02
+    2300072: Fence
+    2300074: Fence Pillar
+    2300076: Tombstone 01
+    2300078: Tombstone 02
+    2300080: Tombstone 03
+    2300082: Campfire
+    2300084: Campfire Stone
+    2300086: Dungeon Entrance
+    2300088: Fence Middle
+    2300090: Lamp
+    2300092: Waypoint
+    2300094: Box003
+    2300096: Hut
+    2300098: Windmill
+    2300100: Crystal
+    2300102: Crystal Base
+    2300104: Lily Pad
+    2300106: Log
+    2300108: Sun Ray
+    2300110: Hideout
+    2300112: Hideout Cover
+    2300114: Manhole Cover
+    2300116: Graveyard Statue
+    2300118: Vine01
+    2300120: Vine Ground
+    2300122: Tent
+    2300124: Fence Pillar 1
+    2300126: Grass
+    2300128: Ground Glow
+    3300000: Border-Center
+    3300002: Border-Corner
+    3300004: Knight
+    3300006: Platform-Side
+    3300008: Platform-Top
+    3300010: Wall-Side
+    3300012: Wall-Top
+    3300014: Bush
+    3300016: Cone Tree
+    3300018: Bridge
+    3300020: Flower
+    3300022: Well
+    3300024: Tree Chopped
+    3300026: Tree Log
+    3300028: Tree Log Bridge
+    3300030: Wall Rock 01
+    3300032: Wall Rock 02
+    3300034: Wall Rock 03
+    3300036: Tree 01
+    3300038: Bone Pillar 01
+    3300040: Bone Pillar 02
+    3300042: Bone Pillar 03
+    3300044: Log Pin 01
+    3300046: Log Pin 02
+    3300048: Big Tree 01
+    3300050: Box002
+    3300052: Log Hollow
+    3300054: Waterfall
+    3300056: Border wall 01
+    3300058: Border wall 02
+    3300060: Stairs Side Wall
+    3300062: Stairs Step 01
+    3300064: Stairs Step 02
+    3300066: Stairs Step 03
+    3300068: Tombstone
+    3300070: Tombstone02
+    3300072: Fence
+    3300074: Fence Pillar
+    3300076: Tombstone 01
+    3300078: Tombstone 02
+    3300080: Tombstone 03
+    3300082: Campfire
+    3300084: Campfire Stone
+    3300086: Dungeon Entrance
+    3300088: Fence Middle
+    3300090: Lamp
+    3300092: Waypoint
+    3300094: Box003
+    3300096: Hut
+    3300098: Windmill
+    3300100: Crystal
+    3300102: Crystal Base
+    3300104: Lily Pad
+    3300106: Log
+    3300108: Sun Ray
+    3300110: Hideout
+    3300112: Hideout Cover
+    3300114: Manhole Cover
+    3300116: Graveyard Statue
+    3300118: Vine01
+    3300120: Vine Ground
+    3300122: Tent
+    3300124: Fence Pillar 1
+    3300126: Grass
+    3300128: Ground Glow
+    4300000: Knight
+    4300002: Platform-Top
+    4300004: Platform-Side
+    4300006: Border-Center
+    4300008: Border-Corner
+    4300010: Wall-Side
+    4300012: Wall-Top
+    4300014: Cone Tree
+    4300016: Bush
+    4300018: Flower
+    4300020: Bridge
+    4300022: Well
+    4300024: Tree Chopped
+    4300026: Tree Log
+    4300028: Tree Log Bridge
+    4300030: Wall Rock 03
+    4300032: Wall Rock 01
+    4300034: Wall Rock 02
+    4300036: Tree 01
+    4300038: Bone Pillar 01
+    4300040: Bone Pillar 02
+    4300042: Bone Pillar 03
+    4300044: Log Pin 01
+    4300046: Log Pin 02
+    4300048: Big Tree 01
+    4300050: Box002
+    4300052: Waterfall
+    4300054: Log Hollow
+    4300056: Stairs Side Wall
+    4300058: Stairs Step 01
+    4300060: Stairs Step 02
+    4300062: Stairs Step 03
+    4300064: Border wall 01
+    4300066: Border wall 02
+    4300068: Tombstone
+    4300070: Tombstone02
+    4300072: Tombstone 01
+    4300074: Tombstone 02
+    4300076: Tombstone 03
+    4300078: Fence
+    4300080: Fence Pillar
+    4300082: Campfire
+    4300084: Campfire Stone
+    4300086: Waypoint
+    4300088: Lamp
+    4300090: Dungeon Entrance
+    4300092: Fence Middle
+    4300094: Box003
+    4300096: Hut
+    4300098: Windmill
+    4300100: Crystal Base
+    4300102: Crystal
+    4300104: Log
+    4300106: Sun Ray
+    4300108: Lily Pad
+    4300110: Hideout
+    4300112: Hideout Cover
+    4300114: Manhole Cover
+    4300116: Graveyard Statue
+    4300118: Vine01
+    4300120: Vine Ground
+    4300122: Tent
+    4300124: Grass
+    4300126: Ground Glow
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

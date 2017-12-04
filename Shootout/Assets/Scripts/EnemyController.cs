@@ -17,16 +17,22 @@ public class EnemyController : MonoBehaviour {
     private bool firstTime = true;
     private int initLoops = 4;
 
+    private GameObject player1;
+    private GameObject player2;
+
     // Use this for initialization
     void Start()
     {
         controller = (CharacterController)(GetComponent(typeof(CharacterController)));
         //anim = GetComponent<Animation>();
-        //anim["Walk"].speed = 3.0f;
+        //anim["Walk"].speed = 3.0f
+
+        player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("Player2");
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //transform.position = new Vector3(transform.position.x, 0.001f, transform.position.z);
 
@@ -36,8 +42,8 @@ public class EnemyController : MonoBehaviour {
         //float moveV = Input.GetAxis(verticalAxis);
         //float moveH = Input.GetAxis(horizontalAxis);
 
-        GameObject player1 = GameObject.Find("Player1");
-        GameObject player2 = GameObject.Find("Player2");
+        //GameObject player1 = GameObject.Find("Player1");
+        //GameObject player2 = GameObject.Find("Player2");
 
         float moveH = player1.transform.position.x - gameObject.transform.position.x;
         float moveV = player1.transform.position.z - gameObject.transform.position.z;
