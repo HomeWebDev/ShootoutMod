@@ -60,21 +60,21 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        // Decrement the player's health or shield by amount.
-        if (shield > 0)
-            shield -= amount;
-        else
-            health -= amount;
+        //// Decrement the player's health or shield by amount.
+        //if (shield > 0)
+        //    shield -= amount;
+        //else
+        //    health -= amount;
 
-        healthSlider.value = health;
-        shieldSlider.value = shield;
+        //healthSlider.value = health;
+        //shieldSlider.value = shield;
 
-        if (health <= 0)
-        {
-            //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-            //render.enabled = false;
-            PlayerKilled();
-        }
+        //if (health <= 0)
+        //{
+        //    //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        //    //render.enabled = false;
+        //    PlayerKilled();
+        //}
     }
 
             /// <summary>
@@ -84,7 +84,7 @@ public class PlayerHealth : MonoBehaviour
             /// <param name="other"></param>
             /// <param name="amount"></param>
             /// <param name="bullet"></param>
-            public void TakeDamage(Collider other, int amount, GameObject bullet)
+    public void TakeDamage(Collider other, int amount, GameObject bullet)
     {
         // Decrement the player's health or shield by amount.
         if (shield > 0)

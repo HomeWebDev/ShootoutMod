@@ -17,6 +17,15 @@ public class ShiftCamera : MonoBehaviour {
     // Update is called once per frame
     private void Update()
     {
+        if(player1 == null)
+        {
+            return;
+        }
+        if (levelController == null)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.N))
         {
             levelController.OpenDoors();

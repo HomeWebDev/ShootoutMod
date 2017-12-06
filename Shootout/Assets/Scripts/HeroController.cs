@@ -68,9 +68,13 @@ public class HeroController : MonoBehaviour
         controller = GetComponent(typeof(CharacterController)) as CharacterController;
         animator = GetComponent<Animator>();
 
+
+
+    }
+    void Awake()
+    {
         weaponType = WeaponType.BareHands;
         GetWeaponType();
-
 
     }
 
@@ -575,6 +579,10 @@ public class HeroController : MonoBehaviour
 
     private void GetWeaponType()
     {
+        if(leftHand == null)
+        {
+            return;
+        }
         //Longbow only possible left hand weapon
         if (leftHand.transform.childCount > 0)
         {
