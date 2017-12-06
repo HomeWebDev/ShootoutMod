@@ -12,12 +12,14 @@ public class WeaponConfig : MonoBehaviour {
     public bool Melee;
     public Vector3 WeaponRotationLeftHand;
     public Vector3 WeaponRotationRightHand;
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

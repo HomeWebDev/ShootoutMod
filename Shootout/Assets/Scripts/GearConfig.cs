@@ -12,12 +12,14 @@ public class GearConfig : MonoBehaviour {
     public Vector3 ItemRotation;
 
 
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

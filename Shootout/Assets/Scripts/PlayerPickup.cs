@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class PlayerPickup : MonoBehaviour {
+
     public GameObject RightHandWepon;
     public GameObject LeftHandWepon;
     public GameObject DoublehandWepon;
@@ -41,7 +42,7 @@ public class PlayerPickup : MonoBehaviour {
 
             weapon = other.gameObject;
             Physics.IgnoreCollision(weapon.GetComponent<Collider>(), GetComponent<Collider>());
-            WeaponConfig wc= weapon.GetComponent<WeaponConfig>();
+            WeaponConfig wc = weapon.GetComponent<WeaponConfig>();
 
             //rightHandTransform = GameObject.FindWithTag("RightHand").transform;
             //leftHandTransform = GameObject.FindWithTag("LeftHand").transform;
@@ -81,7 +82,7 @@ public class PlayerPickup : MonoBehaviour {
         }
         if (other.tag == "BackGear")
         {
-            if(Back == null)
+            if (Back == null)
             {
                 return;
             }
@@ -92,7 +93,7 @@ public class PlayerPickup : MonoBehaviour {
         }
         if (other.tag == "HeadGear")
         {
-            if(Head == null)
+            if (Head == null)
             {
                 return;
             }
