@@ -21,6 +21,8 @@ TagManager:
   - LevelController
   - Weapon
   - Arrow
+  - HeadGear
+  - BackGear
   layers:
   - Default
   - TransparentFX
