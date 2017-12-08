@@ -5,103 +5,91 @@ using System.Linq;
 
 public class PlayerPickup : MonoBehaviour {
 
-    public GameObject RightHandWepon;
-    public GameObject LeftHandWepon;
-    public GameObject DoublehandWepon;
-    public GameObject RangeWepon;
-    public GameObject RightHand;
-    public GameObject LeftHand;
-    public GameObject Head;
-    public GameObject Back;
 
-
-    public int numberOfPickups = 0;
-    public bool weaponEQ = false;
-
-    public GameObject weapon = null;
-    public GameObject headGear = null;
-    public GameObject backGear = null;
-
+    public Equipment ActiveGear; 
 
     void OnTriggerEnter(Collider other)
     {
+
+        ActiveGear = GetComponent<Equipment>();
+
         if (other.tag.StartsWith("Weapon"))
         {
-            if ((RightHand == null) || (LeftHand == null))
+            if ((ActiveGear.RightHand == null) || (ActiveGear.LeftHand == null))
             {
                 return;
             }
 
             Debug.Log("Weapon: " + gameObject);
 
-            numberOfPickups++;
-            //if (numberOfPickups > 1)
-            //{
-            //    Destroy(GetComponent<WeaponPickup>());
-            //}
+            ActiveGear.weapon = other.gameObject;
+            Physics.IgnoreCollision(ActiveGear.weapon.GetComponent<Collider>(), GetComponent<Collider>());
+            WeaponConfig wc = ActiveGear.weapon.GetComponent<WeaponConfig>();
 
-            weapon = other.gameObject;
-            Physics.IgnoreCollision(weapon.GetComponent<Collider>(), GetComponent<Collider>());
-            WeaponConfig wc = weapon.GetComponent<WeaponConfig>();
+            Debug.Log("RightHand: " + ActiveGear.RightHand.transform);
+            Debug.Log("LeftHand: " + ActiveGear.LeftHand.transform);
 
-            //rightHandTransform = GameObject.FindWithTag("RightHand").transform;
-            //leftHandTransform = GameObject.FindWithTag("LeftHand").transform;
+            RemoveItemsFrom(ActiveGear.RightHand.transform);
+            RemoveItemsFrom(ActiveGear.LeftHand.transform);
 
-            Debug.Log("RightHand: " + RightHand.transform);
-            Debug.Log("LeftHand: " + LeftHand.transform);
-
-            RemoveItemsFrom(RightHand.transform);
-            RemoveItemsFrom(LeftHand.transform);
-
-            if (weapon.name.Contains("Longbow"))
+            if (ActiveGear.weapon.name.Contains("Longbow"))
             {
 
-                PutItemsPlace(weapon, LeftHand.transform, weapon.GetComponent<WeaponConfig>().WeaponRotationLeftHand);
+                PutItemsPlace(ActiveGear.weapon, ActiveGear.LeftHand.transform, 
+                    ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationLeftHand);
             }
-            else if (weapon.GetComponent<WeaponConfig>().RightHandCopy)
+            else if (ActiveGear.weapon.GetComponent<WeaponConfig>().RightHandCopy)
             {
 
             }
-            else if (weapon.GetComponent<WeaponConfig>().LeftHandCopy)
+            else if (ActiveGear.weapon.GetComponent<WeaponConfig>().LeftHandCopy)
             {
 
-                PutItemsPlace(weapon, LeftHand.transform, weapon.GetComponent<WeaponConfig>().WeaponRotationLeftHand);
-                PutItemsPlace(CreateWeponCopy(), RightHand.transform, weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
+                PutItemsPlace(ActiveGear.weapon, 
+                    ActiveGear.LeftHand.transform, 
+                    ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationLeftHand);
+                PutItemsPlace(CreateWeponCopy(), 
+                    ActiveGear.RightHand.transform, 
+                    ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
-            else if (weapon.GetComponent<WeaponConfig>().DoubleHanded)
+            else if (ActiveGear.weapon.GetComponent<WeaponConfig>().DoubleHanded)
             {
 
-                PutItemsPlace(weapon, RightHand.transform, weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
+                PutItemsPlace(ActiveGear.weapon, ActiveGear.RightHand.transform, 
+                    ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
             else
             {
 
-                PutItemsPlace(weapon, RightHand.transform, weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
-                weaponEQ = true;
+                PutItemsPlace(ActiveGear.weapon, 
+                    ActiveGear.RightHand.transform,
+                    ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
         }
         if (other.tag == "BackGear")
         {
-            if (Back == null)
+            if (ActiveGear.Back == null)
             {
                 return;
             }
-            backGear = other.gameObject;
+            ActiveGear.backGear = other.gameObject;
 
             //RemoveItemsFrom(Back.transform);
-            PutItemsPlace(backGear, Back.transform, backGear.GetComponent<GearConfig>().ItemRotation);
+            PutItemsPlace(ActiveGear.backGear, ActiveGear.Back.transform, 
+                ActiveGear.backGear.GetComponent<GearConfig>().ItemRotation);
         }
         if (other.tag == "HeadGear")
         {
-            if (Head == null)
+            if (ActiveGear.Head == null)
             {
                 return;
             }
-            headGear = other.gameObject;
+            ActiveGear.headGear = other.gameObject;
 
             //RemoveItemsFrom(Head.transform);
 
-            PutItemsPlace(headGear, Head.transform, headGear.GetComponent<GearConfig>().ItemRotation);
+            PutItemsPlace(ActiveGear.headGear, ActiveGear.Head.transform, 
+                ActiveGear.headGear.GetComponent<GearConfig>().ItemRotation);
         }
     }
 
@@ -111,7 +99,7 @@ public class PlayerPickup : MonoBehaviour {
         var children = new List<GameObject>();
         foreach (Transform child in LocationTransform)
         {
-            if (child.gameObject != weapon.gameObject)
+            if (child.gameObject != ActiveGear.weapon.gameObject)
             {
                 children.Add(child.gameObject);
             }
@@ -123,7 +111,9 @@ public class PlayerPickup : MonoBehaviour {
     {
 
         bodypart.transform.parent = locationTransform;
-        bodypart.transform.position = new Vector3(locationTransform.position.x, locationTransform.position.y, locationTransform.position.z);
+        bodypart.transform.position = new Vector3(locationTransform.position.x, 
+                                                    locationTransform.position.y, 
+                                                    locationTransform.position.z);
         bodypart.transform.localEulerAngles = itemRotation;
 
 
@@ -134,7 +124,7 @@ public class PlayerPickup : MonoBehaviour {
         Debug.Log("PutCopyInRightHand: ");
 
         //Add new weapon in right hand
-        GameObject newWeapon = Instantiate<GameObject>(weapon);
+        GameObject newWeapon = Instantiate<GameObject>(ActiveGear.weapon);
         Physics.IgnoreCollision(newWeapon.GetComponent<Collider>(), GetComponent<Collider>());
         return newWeapon;
     }

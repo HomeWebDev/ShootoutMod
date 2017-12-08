@@ -8,10 +8,12 @@ public class WeaponConfig : MonoBehaviour {
     public bool DoubleHanded;
     public bool LeftHandCopy;
     public bool RightHandCopy;
-    public bool Range;
-    public bool Melee;
     public Vector3 WeaponRotationLeftHand;
     public Vector3 WeaponRotationRightHand;
+    public HeroController.WeaponType WeaponType;
+    public HeroController.WeponAttackType AttackAnimation;
+    public int AttackAnimationHash = 0;
+    
     void Start()
     {
 
@@ -20,6 +22,6 @@ public class WeaponConfig : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        AttackAnimationHash = Animator.StringToHash(AttackAnimation.ToString().Replace('_',' '));
     }
 }

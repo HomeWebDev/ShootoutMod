@@ -1730,10 +1730,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 180}
+  WeaponType: 1
+  AttackAnimation: 10
+  AttackAnimationHash: 0
 --- !u!136 &249297092
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1996,10 +1997,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!136 &297967170
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2130,10 +2132,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -45, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 2
+  AttackAnimationHash: 0
 --- !u!114 &301722743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,10 +2281,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!114 &320605367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3488,10 +3492,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!114 &465208651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7296,10 +7301,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 1
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
 --- !u!136 &1088511596
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8255,10 +8261,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 1
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
 --- !u!136 &1224170015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8670,10 +8677,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 2
+  AttackAnimationHash: 0
 --- !u!4 &1269595726 stripped
 Transform:
   m_PrefabParentObject: {fileID: 486832, guid: 803d70bffc891594b99edd0f0426b3ca, type: 2}
@@ -12801,10 +12809,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
 --- !u!114 &1351511130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12915,10 +12924,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 5
+  AttackAnimationHash: 0
 --- !u!136 &1362362564
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13889,6 +13899,25 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 141760, guid: efbc92da4eb4c8e41936406738b5b144, type: 2}
   m_PrefabInternal: {fileID: 1546206964}
+--- !u!114 &1489604871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1489604870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!114 &1489604874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14054,17 +14083,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f713344adcfb954ebcff35b6f1b8d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightHandWepon: {fileID: 0}
-  LeftHandWepon: {fileID: 0}
-  DoublehandWepon: {fileID: 0}
-  RangeWepon: {fileID: 0}
+  ActiveGear: {fileID: 1499076870}
+--- !u!114 &1499076870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1499076863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdbbaeb50c5ec24480791e92fafeb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   RightHand: {fileID: 1219037742}
   LeftHand: {fileID: 403889143}
   Head: {fileID: 1460607383}
   Back: {fileID: 1589230261}
-  numberOfPickups: 0
-  weaponEQ: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: 1489604870}
   headGear: {fileID: 0}
   backGear: {fileID: 0}
 --- !u!4 &1499184440 stripped
@@ -17789,10 +17824,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 2
+  AttackAnimation: 9
+  AttackAnimationHash: 0
 --- !u!136 &1546689796
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17998,10 +18034,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!136 &1553866125
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22284,10 +22321,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!114 &1633342089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22731,10 +22769,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -45, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 2
+  AttackAnimationHash: 0
 --- !u!114 &1675402843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23159,10 +23198,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!136 &1750298812
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27769,11 +27809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
-  rightHandTransform: {fileID: 0}
-  leftHandTransform: {fileID: 0}
 --- !u!65 &1919006217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28788,10 +28823,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
 --- !u!136 &2079263202
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28924,10 +28960,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 1
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
 --- !u!136 &2086496131
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29514,10 +29551,11 @@ MonoBehaviour:
   DoubleHanded: 0
   LeftHandCopy: 0
   RightHandCopy: 0
-  Range: 0
-  Melee: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 1
+  AttackAnimationHash: 0
 --- !u!136 &2131969151
 CapsuleCollider:
   m_ObjectHideFlags: 0

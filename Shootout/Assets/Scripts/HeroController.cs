@@ -36,6 +36,7 @@ public class HeroController : MonoBehaviour
     private string wandArrowString = "Arrow 02 Fire";
     private string arrowString;
 
+    public int currentWeaponHash = 0;
     private int walkHash = Animator.StringToHash("Walk");
     private int walkBackwardHash = Animator.StringToHash("Walk Backward");
     private int twoHandedIdleHash = Animator.StringToHash("TH Sword Idle");
@@ -53,13 +54,16 @@ public class HeroController : MonoBehaviour
     private int wandShootHash = Animator.StringToHash("WandShoot");
     private int melee2ThrowHash = Animator.StringToHash("Melee2Throw");
 
-    private WeaponType weaponType;
-    private GameObject rightHand;
-    private GameObject leftHand;
+    //private WeaponType weaponType;
+    //private GameObject rightHand;
+    //private GameObject leftHand;
 
     private float moveH;
     private float moveV;
     private Vector3 movement;
+    private Equipment ActiveEq;
+
+
 
     // Use this for initialization
     void Start()
@@ -67,45 +71,65 @@ public class HeroController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         controller = GetComponent(typeof(CharacterController)) as CharacterController;
         animator = GetComponent<Animator>();
+        ActiveEq = GetComponent<Equipment>();
 
 
 
     }
     void Awake()
     {
-        weaponType = WeaponType.BareHands;
-        GetWeaponType();
-
+        //GetWeaponType();
     }
 
     public enum WeaponType
     {
-        BareHands,
-        Axe,
-        Claws,
-        Club,
-        Crossbow,
-        Dagger,
-        Hammer,
-        HandAuras,
-        Knuckles,
-        Longbow,
-        Mace,
-        Scepter,
-        Scythe,
-        Spear,
-        LongSpear,
-        Sword,
-        TwoHandedAxe,
-        TwoHandedSword,
-        Wand,
+        Melee,
+        RangeShort,
+        RangeLong,
+        //BareHands,
+        //Axe,
+        //Claws,
+        //Club,
+        //Crossbow,
+        //Dagger,
+        //Hammer,
+        //HandAuras,
+        //Knuckles,
+        //Longbow,
+        //Mace,
+        //Scepter,
+        //Scythe,
+        //Spear,
+        //LongSpear,
+        //Sword,
+        //TwoHandedAxe,
+        //TwoHandedSword,
+        //Wand,
+    };
+
+    public enum WeponAttackType
+    {
+        Punch,
+        Melee1,
+        Melee2,
+        Melee2Throw,
+        Melee3,
+        THMelee1,
+        THMelee2,
+        SpearMelee1,
+        SpearMelee2,
+        LongbowShoot,
+        CrossbowShoot,
+        WandShoot,
+        TwoHanded_Idle,
+        Spear_Idle
+
     };
 
     // Update is called once per frame
     void Update()
     {
-
-    }
+     }
 
     private void LateUpdate()
     {
@@ -123,9 +147,6 @@ public class HeroController : MonoBehaviour
         //Fix y position at 0
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
 
-        rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        leftHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).gameObject;
-
         //Handle movements based on axises
         moveV = Input.GetAxis(verticalAxis);
         moveH = Input.GetAxis(horizontalAxis);
@@ -142,204 +163,251 @@ public class HeroController : MonoBehaviour
         movement *= movementSpeed / 2;
         controller.Move(movement * Time.deltaTime);
 
-        GetWeaponType();
+        // GetWeaponType();
 
         //Debug.Log("Weapontype: " + weaponType.ToString());
 
-        if (Input.GetButton(leftAttackButton) | Input.GetButton(rightAttackButton) | Input.GetButton(upAttackButton) | Input.GetButton(downAttackButton))
+        //CHANGE!!!!
+        if (ActiveEq.weapon != null)
         {
-            if (weaponType == WeaponType.BareHands |
-                weaponType == WeaponType.Claws |
-                weaponType == WeaponType.HandAuras |
-                weaponType == WeaponType.Knuckles)
+            animator.ResetTrigger(currentWeaponHash);
+            if (Input.GetButton(leftAttackButton) | Input.GetButton(rightAttackButton) | Input.GetButton(upAttackButton) | Input.GetButton(downAttackButton))
             {
-                animator.SetTrigger(punchHash);
+                animator.SetTrigger(ActiveEq.weapon.GetComponent<WeaponConfig>().AttackAnimationHash);
+                currentWeaponHash = ActiveEq.weapon.GetComponent<WeaponConfig>().AttackAnimationHash;
             }
-            if (weaponType == WeaponType.Sword |
-                weaponType == WeaponType.Dagger)
-            {
-                animator.SetTrigger(melee1Hash);
-            }
-            if (//weaponType == WeaponType.Axe |
-                weaponType == WeaponType.Hammer |
-                weaponType == WeaponType.Mace |
-                weaponType == WeaponType.Scepter |
-                weaponType == WeaponType.Club)
-            {
-                animator.SetTrigger(melee2Hash);
-            }
-            if (weaponType == WeaponType.Axe)
-            {
-                animator.SetTrigger(melee2ThrowHash);
-            }
-            if (weaponType == WeaponType.Scythe)
-            {
-                animator.SetTrigger(melee3Hash);
-            }
-            if (weaponType == WeaponType.TwoHandedAxe)
-            {
-                animator.SetTrigger(thMelee1Hash);
-            }
-            if (weaponType == WeaponType.TwoHandedSword)
-            {
-                animator.SetTrigger(thMelee2Hash);
-            }
-            if (weaponType == WeaponType.Spear)
-            {
-                animator.SetTrigger(spearMelee1Hash);
-            }
-            if (weaponType == WeaponType.LongSpear)
-            {
-                animator.SetTrigger(spearMelee2Hash);
-            }
-            if (weaponType == WeaponType.Longbow)
-            {
-                animator.SetTrigger(longbowShootHash);
-            }
-            if (weaponType == WeaponType.Crossbow)
-            {
-                animator.SetTrigger(crossbowShootHash);
-            }
-            if (weaponType == WeaponType.Wand)
-            {
-                animator.SetTrigger(wandShootHash);
-            }
+            //else
+            //{
+            //    //animator.ResetTrigger(currentWeaponHash);
+            //    //animator.ResetTrigger(melee2Hash);
+            //    //animator.ResetTrigger(melee3Hash);
+            //    //animator.ResetTrigger(thMelee1Hash);
+            //    //animator.ResetTrigger(thMelee2Hash);
+            //    //animator.ResetTrigger(spearMelee1Hash);
+            //    //animator.ResetTrigger(spearMelee2Hash);
+            //    //animator.ResetTrigger(longbowShootHash);
+            //    //animator.ResetTrigger(crossbowShootHash);
+            //    //animator.ResetTrigger(wandShootHash);
+            //    //animator.ResetTrigger(punchHash);
+            //    //animator.ResetTrigger(melee2ThrowHash);
+            //    //animator.ResetTrigger(twoHandedIdleHash);
+            //    //animator.ResetTrigger(spearIdleHash);
+            //}
+            #region old way of handleing animation triggers.
 
-            animator.ResetTrigger(twoHandedIdleHash);
-            animator.ResetTrigger(spearIdleHash);
-        }
-        else
-        {
-            animator.ResetTrigger(melee1Hash);
-            animator.ResetTrigger(melee2Hash);
-            animator.ResetTrigger(melee3Hash);
-            animator.ResetTrigger(thMelee1Hash);
-            animator.ResetTrigger(thMelee2Hash);
-            animator.ResetTrigger(spearMelee1Hash);
-            animator.ResetTrigger(spearMelee2Hash);
-            animator.ResetTrigger(longbowShootHash);
-            animator.ResetTrigger(crossbowShootHash);
-            animator.ResetTrigger(wandShootHash);
-            animator.ResetTrigger(punchHash);
-            animator.ResetTrigger(melee2ThrowHash);
+            //if (weaponType == WeaponType.BareHands |
+            //    weaponType == WeaponType.Claws |
+            //    weaponType == WeaponType.HandAuras |
+            //    weaponType == WeaponType.Knuckles)
+            //{
+            //    animator.SetTrigger(Animator.StringToHash(ActiveEq.weapon.GetComponent<WeaponConfig>().AttackAnimation.ToString()));
+            //}
+            //if (weaponType == WeaponType.Sword |
+            //    weaponType == WeaponType.Dagger)
+            //{
+            //    animator.SetTrigger(melee1Hash);
+            //}
+            //if (//weaponType == WeaponType.Axe |
+            //    weaponType == WeaponType.Hammer |
+            //    weaponType == WeaponType.Mace |
+            //    weaponType == WeaponType.Scepter |
+            //      weaponType == WeaponType.Club)
+            //{
+            //    animator.SetTrigger(melee2Hash);
+            //}
+            //if (weaponType == WeaponType.Axe)
+            //{
+            //    animator.SetTrigger(melee2ThrowHash);
+            //}
+            //if (weaponType == WeaponType.Scythe)
+            //{
+            //    animator.SetTrigger(melee3Hash);
+            //}
+            //if (weaponType == WeaponType.TwoHandedAxe)
+            //{
+            //    animator.SetTrigger(thMelee1Hash);
+            //}
+            //if (weaponType == WeaponType.TwoHandedSword)
+            //{
+            //    animator.SetTrigger(thMelee2Hash);
+            //}
+            //if (weaponType == WeaponType.Spear)
+            //{
+            //    animator.SetTrigger(spearMelee1Hash);
+            //}
+            //if (weaponType == WeaponType.LongSpear)
+            //{
+            //    animator.SetTrigger(spearMelee2Hash);
+            //}
+            //if (weaponType == WeaponType.Longbow)
+            //{
+            //    animator.SetTrigger(longbowShootHash);
+            //}
+            //if (weaponType == WeaponType.Crossbow)
+            //{
+            //    animator.SetTrigger(crossbowShootHash);
+            //}
+            //if (weaponType == WeaponType.Wand)
+            //{
+            //    animator.SetTrigger(wandShootHash);
+            //}
 
-            if (weaponType == WeaponType.TwoHandedAxe | weaponType == WeaponType.TwoHandedSword)
-            {
-                animator.SetTrigger(twoHandedIdleHash);
-                animator.ResetTrigger(spearIdleHash);
-            }
-            else if(weaponType == WeaponType.Spear | weaponType == WeaponType.LongSpear)
-            {
-                animator.SetTrigger(spearIdleHash);
-                animator.ResetTrigger(twoHandedIdleHash);
-            }
-            else
-            {
-                animator.ResetTrigger(twoHandedIdleHash);
-                animator.ResetTrigger(spearIdleHash);
-            }
-        }
+            //animator.ResetTrigger(twoHandedIdleHash);
+            //animator.ResetTrigger(spearIdleHash);
+            //}
+            //else
+            //{
+            //    animator.ResetTrigger(melee1Hash);
+            //    animator.ResetTrigger(melee2Hash);
+            //    animator.ResetTrigger(melee3Hash);
+            //    animator.ResetTrigger(thMelee1Hash);
+            //    animator.ResetTrigger(thMelee2Hash);
+            //    animator.ResetTrigger(spearMelee1Hash);
+            //    animator.ResetTrigger(spearMelee2Hash);
+            //    animator.ResetTrigger(longbowShootHash);
+            //    animator.ResetTrigger(crossbowShootHash);
+            //    animator.ResetTrigger(wandShootHash);
+            //    animator.ResetTrigger(punchHash);
+            //    animator.ResetTrigger(melee2ThrowHash);
 
-        //Handle rotation, look in attack direction
-        if (Input.GetButton(leftAttackButton))
-        {
-            if (weaponType == WeaponType.Longbow)
+            //    if (weaponType == WeaponType.TwoHandedAxe | weaponType == WeaponType.TwoHandedSword)
+            //    {
+            //        animator.SetTrigger(twoHandedIdleHash);
+            //        animator.ResetTrigger(spearIdleHash);
+            //    }
+            //    else if(weaponType == WeaponType.Spear | weaponType == WeaponType.LongSpear)
+            //    {
+            //        animator.SetTrigger(spearIdleHash);
+            //        animator.ResetTrigger(twoHandedIdleHash);
+            //    }
+            //    else
+            //    {
+            //        animator.ResetTrigger(twoHandedIdleHash);
+            //        animator.ResetTrigger(spearIdleHash);
+            //    }
+            //}
+
+            //Handle rotation, look in attack direction
+            #endregion
+
+            if (Input.GetButton(leftAttackButton))
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(-1, 0, 1)),
-                    Time.deltaTime * rotationDamping);
+                //weaponType == WeaponType.Longbow
+                if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(-1, 0, 1)),
+                        Time.deltaTime * rotationDamping);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(-1, 0, 0)),
+                        Time.deltaTime * rotationDamping);
+                }
+                SetLeftAttackingMovement(moveH, moveV);
             }
+            else if (Input.GetButton(rightAttackButton))
+            {
+                if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(1, 0, -1)),
+                        Time.deltaTime * rotationDamping);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(1, 0, 0)),
+                        Time.deltaTime * rotationDamping);
+                }
+                SetRightAttackingMovement(moveH, moveV);
+            }
+            else if (Input.GetButton(upAttackButton))
+            {
+                if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(1, 0, 1)),
+                        Time.deltaTime * rotationDamping);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(0, 0, 1)),
+                        Time.deltaTime * rotationDamping);
+                }
+                SetUpAttackingMovement(moveH, moveV);
+            }
+            else if (Input.GetButton(downAttackButton))
+            {
+                if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(-1, 0, -1)),
+                        Time.deltaTime * rotationDamping);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(new Vector3(0, 0, -1)),
+                        Time.deltaTime * rotationDamping);
+                }
+                SetDownAttackingMovement(moveH, moveV);
+            }
+            //If not attacking look forwards
             else
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(-1, 0, 0)),
-                    Time.deltaTime * rotationDamping);
-            }
-            SetLeftAttackingMovement(moveH, moveV);
-        }
-        else if (Input.GetButton(rightAttackButton))
-        {
-            if (weaponType == WeaponType.Longbow)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(1, 0, -1)),
-                    Time.deltaTime * rotationDamping);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(1, 0, 0)),
-                    Time.deltaTime * rotationDamping);
-            }
-            SetRightAttackingMovement(moveH, moveV);
-        }
-        else if (Input.GetButton(upAttackButton))
-        {
-            if (weaponType == WeaponType.Longbow)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(1, 0, 1)),
-                    Time.deltaTime * rotationDamping);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(0, 0, 1)),
-                    Time.deltaTime * rotationDamping);
-            }
-            SetUpAttackingMovement(moveH, moveV);
-        }
-        else if (Input.GetButton(downAttackButton))
-        {
-            if (weaponType == WeaponType.Longbow)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(-1, 0, -1)),
-                    Time.deltaTime * rotationDamping);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(new Vector3(0, 0, -1)),
-                    Time.deltaTime * rotationDamping);
-            }
-            SetDownAttackingMovement(moveH, moveV);
-        }
-        //If not attacking look forwards
-        else
-        {
-            if (movement != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                    Quaternion.LookRotation(movement),
-                    Time.deltaTime * rotationDamping);
-                animator.SetTrigger(walkHash);
-                animator.ResetTrigger(walkBackwardHash);
-            }
-            else
-            {
-                animator.ResetTrigger(walkBackwardHash);
-                animator.ResetTrigger(walkHash);
+                if (movement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(movement),
+                        Time.deltaTime * rotationDamping);
+                    animator.SetTrigger(walkHash);
+                    animator.ResetTrigger(walkBackwardHash);
+                }
+                else
+                {
+                    animator.ResetTrigger(walkBackwardHash);
+                    animator.ResetTrigger(walkHash);
+                }
             }
         }
     }
 
     public void Melee1StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
+        if(ActiveEq.weapon == null)
+        {
+            return;
+        }
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     public void Melee1EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public void Melee2StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
 
         ////Test: Throwing all one-handed axes
         //if (weaponType == WeaponType.Axe)
@@ -354,6 +422,11 @@ public class HeroController : MonoBehaviour
     {
         //Test: Throwing all one-handed axes
         //if (weaponType == WeaponType.Axe)
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
         {
             rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
             rangedForce = melee1ThrowForce;
@@ -363,96 +436,206 @@ public class HeroController : MonoBehaviour
 
     public void Melee2EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public void Melee3StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+
     }
 
     public void Melee3EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
     }
 
     public void ThMelee1StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+
     }
 
     public void ThMelee1EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
     }
 
     public void ThMelee2StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+
     }
 
     public void ThMelee2EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
     }
 
     public void Spear1StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+
     }
 
     public void Spear1EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
     }
 
     public void Spear2StartedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
-    }
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
 
-    public void LeftPunchStartedEvent()
-    {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
-    }
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
 
-    public void LeftPunchEndedEvent()
-    {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
-    }
-
-    public void RightPunchStartedEvent()
-    {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = true;
-    }
-
-    public void RightPunchEndedEvent()
-    {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public void Spear2EndedEvent()
     {
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        weapon.GetComponent<CapsuleCollider>().enabled = false;
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
     }
+    public void LeftPunchStartedEvent()
+    {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+
+    }
+
+    public void LeftPunchEndedEvent()
+    {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
+    }
+
+    public void RightPunchStartedEvent()
+    {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = true;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = true;
+
+    }
+
+    public void RightPunchEndedEvent()
+    {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //weapon.GetComponent<CapsuleCollider>().enabled = false;
+        ActiveEq.weapon.GetComponent<CapsuleCollider>().enabled = false;
+
+    }
+
+
 
     public void LongbowShootEvent()
     {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
         rangedAnimationDelay = longbowAnimationDelay / (attackSpeed * 0.1f);
         rangedForce = longbowForce;
         arrowString = longbowArrowString;
@@ -461,6 +644,11 @@ public class HeroController : MonoBehaviour
 
     public void CrossbowShootEvent()
     {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
         rangedAnimationDelay = crossbowAnimationDelay / (attackSpeed * 0.1f);
         rangedForce = crossbowForce;
         arrowString = crossbowArrowString;
@@ -469,6 +657,11 @@ public class HeroController : MonoBehaviour
 
     public void WandShootEvent()
     {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
         rangedAnimationDelay = wandAnimationDelay / (attackSpeed * 0.1f);
         rangedForce = wandForce;
         arrowString = wandArrowString;
@@ -477,6 +670,7 @@ public class HeroController : MonoBehaviour
 
     private void RangedAttack()
     {
+
         if (Input.GetButton(leftAttackButton))
         {
             StartCoroutine(SpawnArrow(270 + movement.z));
@@ -498,7 +692,7 @@ public class HeroController : MonoBehaviour
     IEnumerator SpawnArrow(float y)
     {
         yield return new WaitForSeconds(rangedAnimationDelay);
-        rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
 
         if (Input.GetButton(leftAttackButton))
         {
@@ -517,7 +711,7 @@ public class HeroController : MonoBehaviour
             y = 180 - movement.x;
         }
 
-        GameObject arrow = Instantiate(Resources.Load("Prefabs/Weapons/Arrows/" + arrowString, typeof(GameObject)), rightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
+        GameObject arrow = Instantiate(Resources.Load("Prefabs/Weapons/Arrows/" + arrowString, typeof(GameObject)), ActiveEq.RightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
         arrow.tag = "Arrow";
         arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * rangedForce;
     }
@@ -545,9 +739,11 @@ public class HeroController : MonoBehaviour
     IEnumerator SpawnThrowWeapon(float y)
     {
         yield return new WaitForSeconds(rangedAnimationDelay);
-        rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        GameObject rightShoulder = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).gameObject;
-        GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        //GameObject rightShoulder = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).gameObject;
+        //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+
 
         if (Input.GetButton(leftAttackButton))
         {
@@ -566,7 +762,7 @@ public class HeroController : MonoBehaviour
             y = 180 - movement.x;
         }
 
-        GameObject throwWeapon = Instantiate(weapon, weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
+        GameObject throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
 
         throwWeapon.GetComponent<CapsuleCollider>().enabled = true;
         throwWeapon.AddComponent<Rigidbody>();
@@ -577,65 +773,67 @@ public class HeroController : MonoBehaviour
         throwWeapon.GetComponent<Rigidbody>().AddRelativeTorque(0, 1000, 0);
     }
 
-    private void GetWeaponType()
-    {
-        if(leftHand == null)
-        {
-            return;
-        }
-        //Longbow only possible left hand weapon
-        if (leftHand.transform.childCount > 0)
-        {
-            string weaponName = leftHand.transform.GetChild(0).name;
 
-            if (weaponName.Contains("Longbow"))
-                weaponType = WeaponType.Longbow;
-        }
+    //NOT USED ANYMORE
+    //private void GetWeaponType()
+    //{
+    //    if(leftHand == null)
+    //    {
+    //        return;
+    //    }
+    //    //Longbow only possible left hand weapon
+    //    if (leftHand.transform.childCount > 0)
+    //    {
+    //        string weaponName = leftHand.transform.GetChild(0).name;
 
-        if (rightHand.transform.childCount > 0)
-        {
-            string weaponName = rightHand.transform.GetChild(0).name;
+    //        if (weaponName.Contains("Longbow"))
+    //            weaponType = WeaponType.Longbow;
+    //    }
 
-            //Debug.Log("weaponName: " + weaponName);
+    //    if (rightHand.transform.childCount > 0)
+    //    {
+    //        string weaponName = rightHand.transform.GetChild(0).name;
 
-            if (weaponName.Contains("Axe"))
-                weaponType = WeaponType.Axe;
-            if (weaponName.Contains("Claw"))
-                weaponType = WeaponType.Claws;
-            if (weaponName.Contains("Club"))
-                weaponType = WeaponType.Club;
-            if (weaponName.Contains("Crossbow"))
-                weaponType = WeaponType.Crossbow;
-            if (weaponName.Contains("Dagger"))
-                weaponType = WeaponType.Dagger;
-            if (weaponName.Contains("Hammer"))
-                weaponType = WeaponType.Hammer;
-            if (weaponName.Contains("Claw"))
-                weaponType = WeaponType.Claws;
-            if (weaponName.Contains("Hand Aura"))
-                weaponType = WeaponType.HandAuras;
-            if (weaponName.Contains("Knuckles"))
-                weaponType = WeaponType.Knuckles;
-            if (weaponName.Contains("Mace"))
-                weaponType = WeaponType.Mace;
-            if (weaponName.Contains("Scepter"))
-                weaponType = WeaponType.Scepter;
-            if (weaponName.Contains("Scythe"))
-                weaponType = WeaponType.Scythe;
-            if (weaponName.Contains("Spear"))
-                weaponType = WeaponType.Spear;
-            if (weaponName.Contains("Spear 03")) //Alternate longer attack movement for spear type 3
-                weaponType = WeaponType.LongSpear;
-            if (weaponName.Contains("Sword"))
-                weaponType = WeaponType.Sword;
-            if (weaponName.Contains("TH Axe"))
-                weaponType = WeaponType.TwoHandedAxe;
-            if (weaponName.Contains("TH Sword"))
-                weaponType = WeaponType.TwoHandedSword;
-            if (weaponName.Contains("Wand"))
-                weaponType = WeaponType.Wand;
-        }
-    }
+    //        //Debug.Log("weaponName: " + weaponName);
+
+    //        if (weaponName.Contains("Axe"))
+    //            weaponType = WeaponType.Axe;
+    //        if (weaponName.Contains("Claw"))
+    //            weaponType = WeaponType.Claws;
+    //        if (weaponName.Contains("Club"))
+    //            weaponType = WeaponType.Club;
+    //        if (weaponName.Contains("Crossbow"))
+    //            weaponType = WeaponType.Crossbow;
+    //        if (weaponName.Contains("Dagger"))
+    //            weaponType = WeaponType.Dagger;
+    //        if (weaponName.Contains("Hammer"))
+    //            weaponType = WeaponType.Hammer;
+    //        if (weaponName.Contains("Claw"))
+    //            weaponType = WeaponType.Claws;
+    //        if (weaponName.Contains("Hand Aura"))
+    //            weaponType = WeaponType.HandAuras;
+    //        if (weaponName.Contains("Knuckles"))
+    //            weaponType = WeaponType.Knuckles;
+    //        if (weaponName.Contains("Mace"))
+    //            weaponType = WeaponType.Mace;
+    //        if (weaponName.Contains("Scepter"))
+    //            weaponType = WeaponType.Scepter;
+    //        if (weaponName.Contains("Scythe"))
+    //            weaponType = WeaponType.Scythe;
+    //        if (weaponName.Contains("Spear"))
+    //            weaponType = WeaponType.Spear;
+    //        if (weaponName.Contains("Spear 03")) //Alternate longer attack movement for spear type 3
+    //            weaponType = WeaponType.LongSpear;
+    //        if (weaponName.Contains("Sword"))
+    //            weaponType = WeaponType.Sword;
+    //        if (weaponName.Contains("TH Axe"))
+    //            weaponType = WeaponType.TwoHandedAxe;
+    //        if (weaponName.Contains("TH Sword"))
+    //            weaponType = WeaponType.TwoHandedSword;
+    //        if (weaponName.Contains("Wand"))
+    //            weaponType = WeaponType.Wand;
+    //    }
+    //}
 
 private void SetLeftAttackingMovement(float moveH, float moveV)
     {
