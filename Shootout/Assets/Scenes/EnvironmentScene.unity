@@ -1703,9 +1703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &249297092
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1973,9 +1970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &297967170
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2030,9 +2024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!114 &301722743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,9 +2135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!114 &320605367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3126,9 +3114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!114 &465208651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4342,7 +4327,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 693890717}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 688ce7b52ed442a46b1da6f898f29d74, type: 3}
   m_Name: 
@@ -6870,9 +6855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1088511596
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7765,9 +7747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1224170015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8073,9 +8052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1268996627
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8773,9 +8749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!114 &1351511130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8875,9 +8848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1362362564
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10339,9 +10309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1546689796
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10513,9 +10480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1553866125
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11252,9 +11216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!114 &1633342089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11669,9 +11630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!114 &1675402843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11975,9 +11933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &1750298812
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13111,9 +13066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!65 &1919006217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14188,9 +14140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &2079263202
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14290,9 +14239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &2086496131
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14889,9 +14835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb9452270fa2f49975958e5f136532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPickups: 0
-  leftHandCopy: 0
-  rightHandCopy: 0
 --- !u!136 &2131969151
 CapsuleCollider:
   m_ObjectHideFlags: 0

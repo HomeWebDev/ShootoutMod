@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour {
     private LevelRepresentation levelRepresentation = new LevelRepresentation();
     public int scaleX = 17;
     public int scaleZ = 12;
+    private Color wallColor;
 
     void Awake()
     {
@@ -76,11 +77,11 @@ public class LevelController : MonoBehaviour {
     private void GenerateLevel()
     {
         int terrainId = Random.Range(0, 31);
-        //terrainId = 31;
         Debug.Log("TerrainId: " + terrainId);
         GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
 
+        wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
 
         for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
         {
@@ -91,7 +92,8 @@ public class LevelController : MonoBehaviour {
             }
         }
 
-        GameObject.Destroy(ground);
+        Destroy(ground);
+        //Destroy(wall);
     }
 
     private void GenerateRoom(Room room, int i, int j)
@@ -116,6 +118,7 @@ public class LevelController : MonoBehaviour {
         if (room.NorthDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall);
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/NorthDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/NorthFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
@@ -128,10 +131,13 @@ public class LevelController : MonoBehaviour {
 		{
             GameObject wall1 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/NorthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
-		}
+            SetColorOfChildren(wall1);
+            SetColorOfChildren(wall2);
+        }
         if (room.SouthDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall);
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/SouthDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/SouthFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
@@ -144,10 +150,13 @@ public class LevelController : MonoBehaviour {
         {
             GameObject wall1 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/SouthWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall1);
+            SetColorOfChildren(wall2);
         }
         if (room.WestDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall);
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/WestDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/WestFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
@@ -160,10 +169,13 @@ public class LevelController : MonoBehaviour {
         {
             GameObject wall1 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/WestWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall1);
+            SetColorOfChildren(wall2);
         }
         if (room.EastDoorOpen)
         {
             GameObject wall = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall);
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/EastDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/EastFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
@@ -176,10 +188,18 @@ public class LevelController : MonoBehaviour {
         {
             GameObject wall1 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/EastWallOpen", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+            SetColorOfChildren(wall1);
+            SetColorOfChildren(wall2);
         }
     }
 
-
+    private void SetColorOfChildren(GameObject wall)
+    {
+        for (int i = 0; i < wall.transform.childCount; i++)
+        {
+            wall.transform.GetChild(i).GetComponent<MeshRenderer>().material.SetColor("_Color", wallColor);
+        }
+    }
 
 
     private void GenerateLevelOld()
