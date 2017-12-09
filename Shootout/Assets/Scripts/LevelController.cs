@@ -10,14 +10,23 @@ public class LevelController : MonoBehaviour {
     public int scaleX = 17;
     public int scaleZ = 12;
     private Color wallColor;
+    private int obstacleIndex;
+    private int obstacleDensity = 10;
+    private System.Random rand = new System.Random();
+
+    List<GameObject> obstacleList = new List<GameObject>();
 
     void Awake()
     {
+
+
         GenerateLevel();
 
         OpenDoors();
 
         PositionPlayersAndCamera();
+
+
 
         //Debug.Log("This was run");
     }
@@ -77,22 +86,87 @@ public class LevelController : MonoBehaviour {
     private void GenerateLevel()
     {
         int terrainId = Random.Range(0, 31);
-        Debug.Log("TerrainId: " + terrainId);
+        //Debug.Log("TerrainId: " + terrainId);
         GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
 
         wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
 
+        int obstacleType = rand.Next(8);
+
+        obstacleList.Clear();
+        if (obstacleType == 0)
+        {
+            obstacleDensity = 10;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Green") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Grey") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Lime") as GameObject);
+        }
+        if (obstacleType == 1)
+        {
+            obstacleDensity = 10;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Decrepit Tree 01 Brown") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Vine01") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Log") as GameObject);
+        }
+        if (obstacleType == 2)
+        {
+            obstacleDensity = 5;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 01") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 02") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 03") as GameObject);
+        }
+        if (obstacleType == 3)
+        {
+            obstacleDensity = 3;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Lamp") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Pillar 01 Brown") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Pillar 01 Grey") as GameObject);
+        }
+        if (obstacleType == 4)
+        {
+            obstacleDensity = 5;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Tombstone 01A") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Tombstone 01B") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Tombstone 02A") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Tombstone 02B") as GameObject);
+        }
+        if (obstacleType == 5)
+        {
+            obstacleDensity = 1;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Tombstone 03") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Graveyard Statue") as GameObject);
+        }
+        if (obstacleType == 6)
+        {
+            obstacleDensity = 3;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Pot 01 Blue") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Pot 01 Green") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Pot 01 Orange") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Pot 01 Purple") as GameObject);
+        }
+        if (obstacleType == 7)
+        {
+            obstacleDensity = 1;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Big Rock 01") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Big Rock 02") as GameObject);
+        }
+
+
+        obstacleIndex = Random.Range(0, obstacleList.Count);
+
         for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
         {
             for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
             {
+                obstacleIndex = Random.Range(0, obstacleList.Count);
+
                 //Debug.Log("i: " + i + " , j: " + j + " , value: " + (levelRepresentation.RoomArray.GetLength(0) - i - 1));
                 GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
 
                 if(levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.BossLevel1)
                 {
-                    Debug.Log("Bossroom");
+                    //Debug.Log("Bossroom");
                     AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
                 }
             }
@@ -145,6 +219,22 @@ public class LevelController : MonoBehaviour {
         //GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
         //GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
         //fenceList.Add(fences);
+
+        //Debug.Log("Obstacle: " + obstacleList[obstacleIndex].ToString());
+
+        //Instantiate(obstacleList[obstacleIndex], new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0));
+
+        
+        if(rand.Next(100) > 50)
+        {
+            for (int l = 0; l < obstacleDensity; l++)
+            {
+                if (rand.Next(100) > 50)
+                {
+                    Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4) / 2, (scaleX - 3) / 2), 0, z + rand.Next(-(scaleZ - 3) / 2, (scaleZ - 2) / 2)), Quaternion.Euler(-90, 0, 0));
+                }
+            }
+        }
 
         if (room.NorthDoorOpen)
         {
