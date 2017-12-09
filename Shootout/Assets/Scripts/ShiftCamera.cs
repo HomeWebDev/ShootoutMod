@@ -178,6 +178,10 @@ public class ShiftCamera : MonoBehaviour {
             SetAllConnectedRoomsEmpty(zThisRoom, xThisRoom);
             return true;
         }
+        else if (levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom] == LevelRepresentation.ContentType.BossLevel1)
+        {
+            return true;
+        }
         else
         {
             return false;
@@ -265,9 +269,20 @@ public class ShiftCamera : MonoBehaviour {
                 int xThisRoom = (int)(((transform.position.x + xShift / 2) / levelController.scaleX) + 0.5f) + 0;
                 int zThisRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((transform.position.z + zShift / 2) / levelController.scaleZ) + 1.5f);
 
-                SpawnEnemies(zThisRoom, xThisRoom);
+                //Debug.Log("" + levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom]);
+
+                if (levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom] == LevelRepresentation.ContentType.BossLevel1)
+                {
+                    SpawnBoss(zThisRoom, xThisRoom);
+                }
+                else
+                {
+                    SpawnEnemies(zThisRoom, xThisRoom);
+                }
             }
         }
+
+
 
 
         //StartCoroutine(LerpFromTo(Camera.main.transform.position, newDesiredPosition, shiftSpeed));
@@ -283,6 +298,18 @@ public class ShiftCamera : MonoBehaviour {
         //    player1.transform.position = player2.transform.position;
         //}
         //Debug.Log("Camera shift");
+    }
+
+    private void SpawnBoss(int zThisRoom, int xThisRoom)
+    {
+        float xPosCentered = xThisRoom * levelController.scaleX;
+        float zPosCentered = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (zThisRoom - 0.9f) * levelController.scaleZ - 4.2f + 15;
+
+        Vector3 bossPosition = new Vector3(xPosCentered, 0, zPosCentered);
+
+        GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), bossPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+
+        levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom] = LevelRepresentation.ContentType.NoContent;
     }
 
     private void SpawnEnemies(int zThisRoom, int xThisRoom)

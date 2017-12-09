@@ -76,6 +76,9 @@ public class LevelRepresentation : MonoBehaviour {
 
     private void CreateRandomRoomArray()
     {
+        int finalRoomI = 0;
+        int finalRoomJ = 0;
+
         while (true)
         {
             ContentArray = new ContentType[roomArrayZ, roomArrayX];
@@ -117,6 +120,8 @@ public class LevelRepresentation : MonoBehaviour {
                                     ContentArray[i - 1, j] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
+                                    finalRoomI = i - 1;
+                                    finalRoomJ = j;
                                 }
                             }
                             if (RoomArray[i, j].SouthDoorOpen | RoomArray[i, j].SouthWallOpen)
@@ -127,6 +132,8 @@ public class LevelRepresentation : MonoBehaviour {
                                     ContentArray[i + 1, j] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
+                                    finalRoomI = i + 1;
+                                    finalRoomJ = j;
                                 }
                             }
                             if (RoomArray[i, j].WestDoorOpen | RoomArray[i, j].WestWallOpen)
@@ -137,6 +144,8 @@ public class LevelRepresentation : MonoBehaviour {
                                     ContentArray[i, j - 1] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
+                                    finalRoomI = i;
+                                    finalRoomJ = j - 1;
                                 }
                             }
                             if (RoomArray[i, j].EastDoorOpen | RoomArray[i, j].EastWallOpen)
@@ -147,6 +156,8 @@ public class LevelRepresentation : MonoBehaviour {
                                     ContentArray[i, j + 1] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
+                                    finalRoomI = i;
+                                    finalRoomJ = j + 1;
                                 }
                             }
                         }
@@ -162,24 +173,90 @@ public class LevelRepresentation : MonoBehaviour {
                 break;
             }
         }
+
+        //Create boss room in last room that was created
+        RoomArray[finalRoomI, finalRoomJ] = GetBossRoom(finalRoomI, finalRoomJ);
+        ContentArray[finalRoomI, finalRoomJ] = ContentType.BossLevel1;
+    }
+
+    private Room GetBossRoom(int z, int x)
+    {
+        List<string> directionList = new List<string>();
+
+        if (RoomArray[z, x].NorthDoorOpen | RoomArray[z, x].NorthWallOpen)
+        {
+            directionList.Add("north");
+            RoomArray[z - 1, x].SouthDoorOpen = false;
+            RoomArray[z - 1, x].SouthWallOpen = false;
+        }
+        if (RoomArray[z, x].SouthDoorOpen | RoomArray[z, x].SouthWallOpen)
+        {
+            directionList.Add("south");
+            RoomArray[z + 1, x].NorthDoorOpen = false;
+            RoomArray[z + 1, x].NorthWallOpen = false;
+        }
+        if (RoomArray[z, x].WestDoorOpen | RoomArray[z, x].WestWallOpen)
+        {
+            directionList.Add("west");
+            RoomArray[z, x - 1].EastDoorOpen = false;
+            RoomArray[z, x - 1].EastWallOpen = false;
+        }
+        if (RoomArray[z, x].EastDoorOpen | RoomArray[z, x].EastWallOpen)
+        {
+            directionList.Add("east");
+            RoomArray[z, x + 1].WestDoorOpen = false;
+            RoomArray[z, x + 1].WestWallOpen = false;
+        }
+
+        int randPos = rand.Next(directionList.Count);
+        string direction = directionList[randPos];
+
+        Room room = new Room();
+        room.NorthDoorOpen = false;
+        room.SouthDoorOpen = false;
+        room.WestDoorOpen = false;
+        room.EastDoorOpen = false;
+
+        if (direction == "north")
+        {
+            room.NorthDoorOpen = true;
+            RoomArray[z - 1, x].SouthDoorOpen = true;
+        }
+        if (direction == "south")
+        {
+            room.SouthDoorOpen = true;
+            RoomArray[z + 1, x].NorthDoorOpen = true;
+        }
+        if (direction == "west")
+        {
+            room.WestDoorOpen = true;
+            RoomArray[z, x - 1].EastDoorOpen = true;
+        }
+        if (direction == "east")
+        {
+            room.EastDoorOpen = true;
+            RoomArray[z, x + 1].WestDoorOpen = true;
+        }
+
+        return room;
     }
 
     private Room GetRandomStartRoom()
     {
-        Room normalRoom = new Room();
+        Room room = new Room();
         while(true)
         {
-            normalRoom.NorthDoorOpen = rand.NextDouble() > 0.5;
-            normalRoom.SouthDoorOpen = rand.NextDouble() > 0.5;
-            normalRoom.WestDoorOpen = rand.NextDouble() > 0.5;
-            normalRoom.EastDoorOpen = rand.NextDouble() > 0.5;
+            room.NorthDoorOpen = rand.NextDouble() > 0.5;
+            room.SouthDoorOpen = rand.NextDouble() > 0.5;
+            room.WestDoorOpen = rand.NextDouble() > 0.5;
+            room.EastDoorOpen = rand.NextDouble() > 0.5;
 
-            if(normalRoom.NorthDoorOpen | normalRoom.SouthDoorOpen | normalRoom.WestDoorOpen | normalRoom.EastDoorOpen)
+            if(room.NorthDoorOpen | room.SouthDoorOpen | room.WestDoorOpen | room.EastDoorOpen)
             {
                 break;
             }
         }
-        return normalRoom;
+        return room;
     }
 
     private Room GetRandomRoomThatFits(int z, int x)

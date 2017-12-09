@@ -89,11 +89,42 @@ public class LevelController : MonoBehaviour {
             {
                 //Debug.Log("i: " + i + " , j: " + j + " , value: " + (levelRepresentation.RoomArray.GetLength(0) - i - 1));
                 GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+
+                if(levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.BossLevel1)
+                {
+                    Debug.Log("Bossroom");
+                    AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                }
             }
         }
 
         Destroy(ground);
         //Destroy(wall);
+    }
+
+    private void AddBossEntrance(Room room, int i, int j)
+    {
+        int x = j * scaleX;
+        int z = i * scaleZ;
+
+        if(room.NorthDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x, 0, z + 6.9f), Quaternion.Euler(-90, 180, 0)) as GameObject;
+        }
+        if (room.SouthDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x, 0, z - 6.9f), Quaternion.Euler(-90, 180, 0)) as GameObject;
+        }
+        if (room.WestDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x - 9.3f, 0, z), Quaternion.Euler(-90, 90, 0)) as GameObject;
+        }
+        if (room.EastDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x + 9.3f, 0, z), Quaternion.Euler(-90, 270, 0)) as GameObject;
+        }
+
+
     }
 
     private void GenerateRoom(Room room, int i, int j)
