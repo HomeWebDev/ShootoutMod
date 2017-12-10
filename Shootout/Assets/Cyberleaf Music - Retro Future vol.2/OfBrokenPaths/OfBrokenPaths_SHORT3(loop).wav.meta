@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 7fbc4745992d349d797d02a892536a11
+labels:
+- Cyberleaf
+- Loopable
+- Music
+timeCreated: 1493843782
+licenseType: Store
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
