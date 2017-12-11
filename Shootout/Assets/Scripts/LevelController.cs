@@ -231,7 +231,8 @@ public class LevelController : MonoBehaviour {
             {
                 if (rand.Next(100) > 50)
                 {
-                    Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4) / 2, (scaleX - 3) / 2), 0, z + rand.Next(-(scaleZ - 3) / 2, (scaleZ - 2) / 2)), Quaternion.Euler(-90, 0, 0));
+                    GameObject obstacle = Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4) / 2, (scaleX - 3) / 2), 0, z + rand.Next(-(scaleZ - 3) / 2, (scaleZ - 2) / 2)), Quaternion.Euler(-90, 0, 0));
+					room.ObstacleList.Add(obstacle);
                 }
             }
         }
