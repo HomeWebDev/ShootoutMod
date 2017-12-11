@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour {
     private int obstacleIndex;
     private int obstacleDensity = 10;
     private System.Random rand = new System.Random();
+    private int obstacleType;
 
     List<GameObject> obstacleList = new List<GameObject>();
 
@@ -92,7 +93,7 @@ public class LevelController : MonoBehaviour {
 
         wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
 
-        int obstacleType = rand.Next(8);
+        obstacleType = rand.Next(8);
 
         obstacleList.Clear();
         if (obstacleType == 0)
@@ -147,7 +148,7 @@ public class LevelController : MonoBehaviour {
         }
         if (obstacleType == 7)
         {
-            obstacleDensity = 1;
+            obstacleDensity = 2;
             obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Big Rock 01") as GameObject);
             obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Big Rock 02") as GameObject);
         }
@@ -231,8 +232,31 @@ public class LevelController : MonoBehaviour {
             {
                 if (rand.Next(100) > 50)
                 {
-                    GameObject obstacle = Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4) / 2, (scaleX - 3) / 2), 0, z + rand.Next(-(scaleZ - 3) / 2, (scaleZ - 2) / 2)), Quaternion.Euler(-90, 0, 0));
-					room.ObstacleList.Add(obstacle);
+                    int xSize = 1;
+                    int zSize = 1;
+                    int zRotation = 0;
+
+                    if (obstacleType == 7) //Hard code rock size to 4
+                    {
+                        xSize = 4;
+                        zSize = 4;
+                    }
+                    else
+                    {
+                        xSize = (int)System.Math.Round((obstacleList[obstacleIndex].GetComponent<BoxCollider>().size.x * obstacleList[obstacleIndex].transform.localScale.x), 0);
+                        zSize = (int)System.Math.Round((obstacleList[obstacleIndex].GetComponent<BoxCollider>().size.y * obstacleList[obstacleIndex].transform.localScale.y), 0);
+                    }
+
+                    if (obstacleType == 5) //Hard code rock size to 4
+                    {
+                        zRotation = -90;
+                    }
+
+                    GameObject obstacle = Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4 - xSize) / 2, (scaleX - 2 - xSize) / 2), 0, z + rand.Next(-(scaleZ - 3 - zSize) / 2, (scaleZ - 1 - zSize) / 2)), Quaternion.Euler(-90, 0, zRotation));
+
+                    //GameObject obstacle = Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4) / 2, (scaleX - 3) / 2), 0, z + rand.Next(-(scaleZ - 3) / 2, (scaleZ - 2) / 2)), Quaternion.Euler(-90, 0, 0));
+
+                    room.ObstacleList.Add(obstacle);
                 }
             }
         }
