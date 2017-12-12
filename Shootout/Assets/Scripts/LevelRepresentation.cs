@@ -6,8 +6,11 @@ public class LevelRepresentation : MonoBehaviour {
 
     public int roomArrayX = 5;
     public int roomArrayZ = 3;
-    public int blockedPercentage = 0;
+    public int blockedPercentage = 10;
     public int minNumberOfRooms = 5;
+
+    private int itemRoomX;
+    private int itemRoomZ;
 
     //public int roomArrayX = 3;
     //public int roomArrayZ = 3;
@@ -21,7 +24,7 @@ public class LevelRepresentation : MonoBehaviour {
         NoContent,
         BossLevel1,
         EnemyLevel1,
-        Treasure,
+        ItemLevel1,
         EnemiesSpawned
     };
 	
@@ -103,6 +106,7 @@ public class LevelRepresentation : MonoBehaviour {
             int currentRoomZ = roomArrayZ / 2;
 
             int numberOfRooms = 1;
+
             while (true)
             {
                 int nrOrOpenPaths = 0;
@@ -177,6 +181,154 @@ public class LevelRepresentation : MonoBehaviour {
         //Create boss room in last room that was created
         RoomArray[finalRoomI, finalRoomJ] = GetBossRoom(finalRoomI, finalRoomJ);
         ContentArray[finalRoomI, finalRoomJ] = ContentType.BossLevel1;
+
+        //Create item room
+        if (FindSuitableItemRoomLocation())
+        {
+            RoomArray[itemRoomZ, itemRoomX] = GetItemRoom(itemRoomZ, itemRoomX);
+            ContentArray[itemRoomZ, itemRoomX] = ContentType.ItemLevel1;
+        }
+    }
+
+    private bool FindSuitableItemRoomLocation()
+    {
+        //List<Room> availableRoomList = new List<Room>();
+
+        List<int> iList = new List<int>();
+        List<int> jList = new List<int>();
+
+        for (int i = 0; i < roomArrayZ; i++)
+        {
+            for (int j = 0; j < roomArrayX; j++)
+            {
+                if(RoomArray[i, j].NoRoom)
+                {
+                    if(NumberOfConnectedNormalRooms(i, j) >= 1)
+                    {
+                        //availableRoomList.Add(RoomArray[i, j]);
+                        iList.Add(i);
+                        jList.Add(j);
+                    }
+                }
+            }
+        }
+
+        if (iList.Count > 0)
+        {
+            int index = rand.Next(iList.Count);
+            itemRoomX = jList[index];
+            itemRoomZ = iList[index];
+            return true;
+        }
+        return false;
+    }
+
+    private int NumberOfConnectedNormalRooms(int i, int j)
+    {
+        int numberOfConnectedNormalRooms = 0;
+
+        if (i > 0)
+        {
+            if (ContentArray[i - 1, j] == ContentType.EnemyLevel1)
+            {
+                numberOfConnectedNormalRooms++;
+            }
+        }
+        if (i < roomArrayZ - 1)
+        {
+            if (ContentArray[i + 1, j] == ContentType.EnemyLevel1)
+            {
+                numberOfConnectedNormalRooms++;
+            }
+        }
+        if (j > 0)
+        {
+            if (ContentArray[i, j - 1] == ContentType.EnemyLevel1)
+            {
+                numberOfConnectedNormalRooms++;
+            }
+        }
+        if (j < roomArrayX - 1)
+        {
+            if (ContentArray[i, j + 1] == ContentType.EnemyLevel1)
+            {
+                numberOfConnectedNormalRooms++;
+            }
+        }
+
+        //Debug.Log("numberOfConnectedNormalRooms: " + numberOfConnectedNormalRooms);
+
+        return numberOfConnectedNormalRooms;
+    }
+
+    private Room GetItemRoom(int z, int x)
+    {
+        List<string> directionList = new List<string>();
+
+
+        //Debug.Log("z: " + z + " x: " + x);
+        if (z > 0)
+        {
+            if (ContentArray[z - 1, x] == ContentType.EnemyLevel1)
+            {
+                directionList.Add("north");
+            }
+        }
+        if (z < roomArrayZ - 1)
+        {
+            if (ContentArray[z + 1, x] == ContentType.EnemyLevel1)
+            {
+                directionList.Add("south");
+            }
+        }
+        if (x > 0)
+        {
+            if (ContentArray[z, x - 1] == ContentType.EnemyLevel1)
+            {
+                directionList.Add("west");
+            }
+        }
+        if (x < roomArrayX - 1)
+        {
+            if (ContentArray[z, x + 1] == ContentType.EnemyLevel1)
+            {
+                directionList.Add("east");
+            }
+        }
+
+        int randPos = rand.Next(directionList.Count);
+        string direction = directionList[randPos];
+
+        Room room = new Room();
+        room.NorthDoorOpen = false;
+        room.SouthDoorOpen = false;
+        room.WestDoorOpen = false;
+        room.EastDoorOpen = false;
+
+        if (direction == "north")
+        {
+            room.NorthDoorOpen = true;
+            RoomArray[z - 1, x].SouthDoorOpen = true;
+        }
+        if (direction == "south")
+        {
+            room.SouthDoorOpen = true;
+            RoomArray[z + 1, x].NorthDoorOpen = true;
+        }
+        if (direction == "west")
+        {
+            room.WestDoorOpen = true;
+            RoomArray[z, x - 1].EastDoorOpen = true;
+        }
+        if (direction == "east")
+        {
+            room.EastDoorOpen = true;
+            RoomArray[z, x + 1].WestDoorOpen = true;
+        }
+
+        //Debug.Log("Itemroom x: " + x + " , z: " + z);
+
+        return room;
     }
 
     private Room GetBossRoom(int z, int x)
