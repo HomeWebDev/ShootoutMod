@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour {
     private LevelRepresentation levelRepresentation = new LevelRepresentation();
     public int scaleX = 17;
     public int scaleZ = 12;
-    public List<Bounds> RoomData;
+    public List<BoundsInt> RoomData;
     private Color wallColor;
     private int obstacleIndex;
     private int obstacleDensity = 10;
@@ -174,7 +174,7 @@ public class LevelController : MonoBehaviour {
                 }
             }
         }
-        //RoomData.AddRange(levelRepresentation.RoomArray.Cast<Room>().Select(r => r.GetRoomArea()));
+        RoomData.AddRange(levelRepresentation.RoomArray.Cast<Room>().Select(r => r.GetRoomArea()));
 
         Destroy(ground);
         //Destroy(wall);
@@ -216,7 +216,7 @@ public class LevelController : MonoBehaviour {
         }
 
         //Create the bounds of the room
-        room.SetRoomArea(new Vector3(x, 0, z), new Vector3(x, 0, z));
+        room.SetRoomArea(new Vector3Int(x - scaleX / 2, 0, z - scaleZ / 2), new Vector3Int(x + scaleX / 2, 0, z + scaleZ / 2));
 
         //Add common objects
         GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(x - scaleX/2 - 0.2f, 0, z - scaleZ/2), Quaternion.Euler(0, 0, 0)) as GameObject;

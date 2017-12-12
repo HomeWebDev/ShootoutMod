@@ -8,7 +8,8 @@ public class Room : MonoBehaviour {
     public bool NorthDoorOpen, SouthDoorOpen, WestDoorOpen, EastDoorOpen;
     public bool NorthWallOpen, SouthWallOpen, WestWallOpen, EastWallOpen;
 	public List<GameObject> ObstacleList;
-    public Bounds RoomArea;
+    public BoundsInt RoomArea;
+    public int RoomParentId;
 
     public Room()
     {
@@ -18,14 +19,14 @@ public class Room : MonoBehaviour {
     /// <summary>
     /// Set the room Area
     /// </summary>
-    /// <param name="Center">Center of the room</param>
+    /// <param name="Position">Center of the room</param>
     /// <param name="Size">Size in X,Y,Z plane </param>
-    public void SetRoomArea(Vector3 Center,Vector3 Size)
+    public void SetRoomArea(Vector3Int Position, Vector3Int Size)
     {
 
-        RoomArea = new Bounds(Center, Size);
+        RoomArea = new BoundsInt(Position, Size);
     }
-    public Bounds GetRoomArea()
+    public BoundsInt GetRoomArea()
     {
         return RoomArea;
     }

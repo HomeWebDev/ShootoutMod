@@ -170,7 +170,8 @@ public class HeroController : MonoBehaviour
         //CHANGE!!!!
         if (ActiveEq.weapon != null)
         {
-            animator.ResetTrigger(currentWeaponHash);
+            if (currentWeaponHash != 0)
+                animator.ResetTrigger(currentWeaponHash);
             if (Input.GetButton(leftAttackButton) | Input.GetButton(rightAttackButton) | Input.GetButton(upAttackButton) | Input.GetButton(downAttackButton))
             {
                 animator.SetTrigger(ActiveEq.weapon.GetComponent<WeaponConfig>().AttackAnimationHash);

@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour {
     public string verticalAxis;
     public int health;
     public float meleeDamage;
+    public bool GeneratePathToPlayer = false;
+    public List<GameObject> FoundPath = new List<GameObject>();
 
     private bool firstTime = true;
     private int initLoops = 4;
@@ -51,7 +53,13 @@ public class EnemyController : MonoBehaviour {
         Vector3 movement = new Vector3(moveH, 0.0f, moveV);
         movement *= speed;
 
+        //stand still
+        movement = new Vector3(0, 0, 0);
 
+        if (GeneratePathToPlayer)
+        {
+            GetComponent<Star>().GetPathToPlayer(out FoundPath);
+        }
         //Play animation if player is moving
         //if (moveV != 0 || moveH != 0)
         //{
