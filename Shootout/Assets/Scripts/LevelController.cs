@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class LevelController : MonoBehaviour {
     private LevelRepresentation levelRepresentation = new LevelRepresentation();
     public int scaleX = 17;
     public int scaleZ = 12;
+    public List<Bounds> RoomData;
     private Color wallColor;
     private int obstacleIndex;
     private int obstacleDensity = 10;
@@ -171,6 +173,7 @@ public class LevelController : MonoBehaviour {
                 }
             }
         }
+        //RoomData.AddRange(levelRepresentation.RoomArray.Cast<Room>().Select(r => r.GetRoomArea()));
 
         Destroy(ground);
         //Destroy(wall);
@@ -210,6 +213,9 @@ public class LevelController : MonoBehaviour {
         {
             return;
         }
+
+        //Create the bounds of the room
+        room.SetRoomArea(new Vector3(x, 0, z), new Vector3(x, 0, z));
 
         //Add common objects
         GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(x - scaleX/2 - 0.2f, 0, z - scaleZ/2), Quaternion.Euler(0, 0, 0)) as GameObject;
