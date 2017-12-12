@@ -603,6 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleX: 17
   scaleZ: 12
+  RoomData: []
 --- !u!114 &1855270843
 MonoBehaviour:
   m_ObjectHideFlags: 0

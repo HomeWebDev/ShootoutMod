@@ -170,7 +170,7 @@ public class ShiftCamera : MonoBehaviour {
         int xThisRoom = (int)(((transform.position.x + xShift/2) / levelController.scaleX) + 0.5f) + 0;
         int zThisRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((transform.position.z + zShift/2) / levelController.scaleZ) + 1.5f);
 
-        //Debug.Log("Content: " + levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom]);
+        Debug.Log("Content: " + levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom]);
         //Debug.Log("xThisRoom: " + xThisRoom + " , zThisRoom: " + zThisRoom);
 
         if (levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom] == LevelRepresentation.ContentType.EnemyLevel1)
