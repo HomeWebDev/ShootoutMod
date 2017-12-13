@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelRepresentation : MonoBehaviour {
 
     public int roomArrayX = 5;
-    public int roomArrayZ = 3;
+    public int roomArrayZ = 5;
     public int blockedPercentage = 10;
     public int minNumberOfRooms = 5;
 

@@ -38,9 +38,10 @@ public class ShiftCamera : MonoBehaviour {
         int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
         int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
 
-
         float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
-        float zPlayerRelativePos = zPlayerRoom + 2.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(1) - player1.transform.position.z / levelController.scaleZ - 1);
+        float zPlayerRelativePos =  zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - player1.transform.position.z / levelController.scaleZ - 1);
+
+
         //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
 
         bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
@@ -129,26 +130,22 @@ public class ShiftCamera : MonoBehaviour {
         float zPos = player1.transform.position.z - 4.2f;
 		
 		float xPosCentered = xPlayerRoom * levelController.scaleX;
-		float zPosCentered = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (zPlayerRoom - 0.5f) * levelController.scaleZ - 4.2f + 15;
+        float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
 
         if (blockNorth & zPlayerRelativePos > 0.5)
         {
-            //zPos = Camera.main.transform.position.z;
 			zPos = zPosCentered;
         }
         if (blockSouth & zPlayerRelativePos < 0.5)
         {
-            //zPos = Camera.main.transform.position.z;
 			zPos = zPosCentered;
         }
         if (blockWest & xPlayerRelativePos < 0.5)
         {
-            //xPos = Camera.main.transform.position.x;
 			xPos = xPosCentered;
         }
         if (blockEast & xPlayerRelativePos > 0.5)
         {
-            //xPos = Camera.main.transform.position.x;
 			xPos = xPosCentered;
         }
 
@@ -157,7 +154,6 @@ public class ShiftCamera : MonoBehaviour {
         if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
         {
             Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 1.0f);
-            //Camera.main.transform.position = newCameraPos;
         }
         else
         {
@@ -303,7 +299,7 @@ public class ShiftCamera : MonoBehaviour {
     private void SpawnBoss(int zThisRoom, int xThisRoom)
     {
         float xPosCentered = xThisRoom * levelController.scaleX;
-        float zPosCentered = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (zThisRoom - 0.9f) * levelController.scaleZ - 4.2f + 15;
+        float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1) * levelController.scaleZ - zThisRoom * levelController.scaleZ;
 
         Vector3 bossPosition = new Vector3(xPosCentered, 0, zPosCentered);
 
@@ -320,7 +316,9 @@ public class ShiftCamera : MonoBehaviour {
     private void SpawnEnemiesInAllConnectedRooms(int zThisRoom, int xThisRoom)
     {
         float xPosCentered = xThisRoom * levelController.scaleX;
-        float zPosCentered = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (zThisRoom - 0.9f) * levelController.scaleZ - 4.2f + 15;
+        float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1) * levelController.scaleZ - zThisRoom * levelController.scaleZ;
+
+        //Debug.Log("RoomArray.GetLength(0): " + levelController.GetLevelRepresentation().RoomArray.GetLength(0));
 
         Vector3 enemyPosition = new Vector3(xPosCentered, 0, zPosCentered);
 
