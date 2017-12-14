@@ -31,27 +31,11 @@ class Star : MonoBehaviour
         
     }
 
-    public bool GetPathToPlayer(out List<GameObject> Path)
+    public bool GetPathToPlayer(out List<Vector3> Path)
     {
         if (CheckDistanceToPlayer() && working == false)
         {
             working = true;
-            CreateGrid();
-            CalculatePath();
-            Path = BuildListPath(currentNod);
-            FoundPath = Path;
-            working = false;
-            return true;
-        }
-
-        Path = new List<GameObject>();
-        return false;
-    }
-
-    public bool GetPathToPlayer(List<GameObject> obstacleList, out List<GameObject> Path)
-    {
-        if(CheckDistanceToPlayer())
-        {
             GridList.Clear();
             OpenList.Clear();
             CloseList.Clear();
@@ -60,11 +44,34 @@ class Star : MonoBehaviour
             CreateGrid();
             CalculatePath();
             Path = BuildListPath(currentNod);
-            FoundPath = Path;
+            //FoundPath = Path;
+            working = false;
             return true;
         }
 
-        Path = new List<GameObject>();
+        Path = new List<Vector3>();
+        return false;
+    }
+
+    public bool GetPathToPlayer(List<GameObject> obstacleList, out List<Vector3> Path)
+    {
+        if(CheckDistanceToPlayer())
+        {
+            working = true;
+            GridList.Clear();
+            OpenList.Clear();
+            CloseList.Clear();
+            Blocked.Clear();
+            FoundPath.Clear();
+            CreateGrid();
+            CalculatePath();
+            Path = BuildListPath(currentNod);
+            working = false;
+            //FoundPath = Path;
+            return true;
+        }
+
+        Path = new List<Vector3>();
         return false;
     }
 
@@ -133,17 +140,17 @@ class Star : MonoBehaviour
     public double CalculateH(TagObject curr, TagObject goal)
     {
         //return  1.5*(Math.Abs((((TagObject)goal.Tag).X - ((TagObject)curr.Tag).X)) + Math.Abs((((TagObject)goal.Tag).Y - ((TagObject)curr.Tag).Y)));
-        return 4 * Math.Max(Math.Abs(goal.X - curr.X), Math.Abs(goal.Y - curr.Y));
+        return 1.5 * Math.Max(Math.Abs(goal.X - curr.X), Math.Abs(goal.Y - curr.Y));
     }
 
-    public List<GameObject> BuildListPath(TagObject last)
+    public List<Vector3> BuildListPath(TagObject last)
     {
-        List<GameObject> localstack = new List<GameObject>();
+        List<Vector3> localstack = new List<Vector3>();
         while (last != null)
         {
-            var ng = new GameObject();
-            ng.transform.position = new Vector3(last.X, 0, last.Y);
-            localstack.Add(ng);
+            //var ng = new GameObject();
+            //ng.transform.position = new Vector3(last.X, 0, last.Y);
+            localstack.Add(new Vector3(last.X, 0, last.Y));
             last = last.Parant;
         }
         return localstack;

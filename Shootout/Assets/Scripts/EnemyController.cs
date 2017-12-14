@@ -19,9 +19,10 @@ public class EnemyController : MonoBehaviour {
     public bool MovePathToPlayer = false;
 
     public List<GameObject> FoundPath = new List<GameObject>();
+    public List<Vector3> FoundPathVector = new List<Vector3>();
+    public Vector3 currentvector = Vector3.zero;
+    public float smoothTime = 2.0f;
 
-    private bool firstTime = true;
-    private int initLoops = 4;
 
     private GameObject player1;
     private GameObject player2;
@@ -55,32 +56,76 @@ public class EnemyController : MonoBehaviour {
         float moveV = player1.transform.position.z - gameObject.transform.position.z;
         //Vector3 movement = new Vector3(moveH, 0.0f, moveV);
 
+        #region using Gameobjects
+        //if (GeneratePathToPlayer && FoundPath.Count == 0)
+        //{
+        //    GeneratePathToPlayer = false;
+        //    GetComponent<Star>().GetPathToPlayer(out FoundPath);
+        //    FoundPath.Reverse();
+        //}
+
+        //Vector3 movement = new Vector3(0, 0, 0);
+
+        //if (MovePathToPlayer)
+        //{
+        //    //MovePathToPlayer = false;
+        //    movement = new Vector3(FoundPath.First().transform.position.x - gameObject.transform.position.x, 
+        //                           0.0f,
+        //                           FoundPath.First().transform.position.z - gameObject.transform.position.z);
+
+        //    Decimal x1 = System.Math.Round((Decimal)transform.position.x, 0, MidpointRounding.AwayFromZero);
+        //    Decimal z1 = System.Math.Round((Decimal)transform.position.z, 0, MidpointRounding.AwayFromZero);
+        //    Decimal x2 = System.Math.Round((Decimal)FoundPath.First().transform.position.x, 0, MidpointRounding.AwayFromZero);
+        //    Decimal z2 = System.Math.Round((Decimal)FoundPath.First().transform.position.z, 0, MidpointRounding.AwayFromZero);
+        //    if ((x1 == x2) && (z1 == z2))
+        //    {
+        //        Destroy(FoundPath.First());
+        //        FoundPath.RemoveAt(0);
+        //    }
+        //}
+        #endregion
+
+
+        #region using vectors
         if (GeneratePathToPlayer && FoundPath.Count == 0)
         {
             GeneratePathToPlayer = false;
-            GetComponent<Star>().GetPathToPlayer(out FoundPath);
-            FoundPath.Reverse();
+            GetComponent<Star>().GetPathToPlayer(out FoundPathVector);
+            FoundPathVector.Reverse();
         }
 
         Vector3 movement = new Vector3(0, 0, 0);
 
+        if (FoundPathVector.Count == 0)
+        {
+            MovePathToPlayer = false;
+        }
         if (MovePathToPlayer)
         {
+
             //MovePathToPlayer = false;
-            movement = new Vector3(FoundPath.First().transform.position.x - gameObject.transform.position.x, 
+            movement = new Vector3(FoundPathVector.First().x - gameObject.transform.position.x,
                                    0.0f,
-                                   FoundPath.First().transform.position.z - gameObject.transform.position.z);
+                                   FoundPathVector.First().z - gameObject.transform.position.z);
 
             Decimal x1 = System.Math.Round((Decimal)transform.position.x, 0, MidpointRounding.AwayFromZero);
             Decimal z1 = System.Math.Round((Decimal)transform.position.z, 0, MidpointRounding.AwayFromZero);
-            Decimal x2 = System.Math.Round((Decimal)FoundPath.First().transform.position.x, 0, MidpointRounding.AwayFromZero);
-            Decimal z2 = System.Math.Round((Decimal)FoundPath.First().transform.position.z, 0, MidpointRounding.AwayFromZero);
+            Decimal x2 = System.Math.Round((Decimal)FoundPathVector.First().x, 0, MidpointRounding.AwayFromZero);
+            Decimal z2 = System.Math.Round((Decimal)FoundPathVector.First().z, 0, MidpointRounding.AwayFromZero);
             if ((x1 == x2) && (z1 == z2))
             {
-                Destroy(FoundPath.First());
-                FoundPath.RemoveAt(0);
+                FoundPathVector.RemoveAt(0);
+                if (FoundPathVector.Count != 0)
+                {
+                    movement = new Vector3(FoundPathVector.First().x - gameObject.transform.position.x,
+                                           0.0f,
+                                           FoundPathVector.First().z - gameObject.transform.position.z);
+
+                }
             }
         }
+        #endregion 
+
         movement *= speed;
 
         //stand still
@@ -93,8 +138,8 @@ public class EnemyController : MonoBehaviour {
         //else
         //    anim.Stop();
 
-        controller.Move(movement * Time.deltaTime);
-
+        //controller.Move(movement * Time.deltaTime);
+        transform.position= Vector3.SmoothDamp(transform.position, transform.position + movement, ref currentvector, smoothTime);
         //Debug.Log("Cat moving " + movement + " moveH = " + moveH + " moveV = " + moveV);
 
         //look forwards
@@ -121,7 +166,6 @@ public class EnemyController : MonoBehaviour {
         //    PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
         //    playerHealth.TakeDamage(meleeDamage);
         //}
-
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -129,9 +173,11 @@ public class EnemyController : MonoBehaviour {
         //Debug.Log("This entered cat: " + hit.gameObject);
         if (hit.gameObject.tag == "Player1" || hit.gameObject.tag == "Player2")
         {
+            FoundPathVector.Clear();
             PlayerHealth playerHealth = hit.gameObject.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(meleeDamage);
         }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -139,9 +185,11 @@ public class EnemyController : MonoBehaviour {
         //Debug.Log("This stays in cat: " + other);
         if (other.tag == "Player1" || other.tag == "Player2")
         {
+            FoundPathVector.Clear();
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(meleeDamage);
         }
+
     }
 
     public void TakeDamage(int damageValue)
