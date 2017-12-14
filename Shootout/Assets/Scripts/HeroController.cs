@@ -39,20 +39,20 @@ public class HeroController : MonoBehaviour
     public int currentWeaponHash = 0;
     private int walkHash = Animator.StringToHash("Walk");
     private int walkBackwardHash = Animator.StringToHash("Walk Backward");
-    private int twoHandedIdleHash = Animator.StringToHash("TH Sword Idle");
-    private int spearIdleHash = Animator.StringToHash("Spear Idle");
-    private int punchHash = Animator.StringToHash("Punch");
-    private int melee1Hash = Animator.StringToHash("Melee1"); //Strike forward like dagger or light sword
-    private int melee2Hash = Animator.StringToHash("Melee2"); //Strike in arch like axe or hammer
-    private int melee3Hash = Animator.StringToHash("Melee3"); //Strike in low arc/towards right side like scythe
-    private int thMelee1Hash = Animator.StringToHash("THMelee1"); //Twohanded strike in up to down arch (axe)
-    private int thMelee2Hash = Animator.StringToHash("THMelee2"); //Twohanded strike in left to right arch (sword)
-    private int spearMelee1Hash = Animator.StringToHash("SpearMelee1"); //Normal spear attack
-    private int spearMelee2Hash = Animator.StringToHash("SpearMelee2"); //Long range spear attack
-    private int longbowShootHash = Animator.StringToHash("LongbowShoot");
-    private int crossbowShootHash = Animator.StringToHash("CrossbowShoot");
-    private int wandShootHash = Animator.StringToHash("WandShoot");
-    private int melee2ThrowHash = Animator.StringToHash("Melee2Throw");
+    //private int twoHandedIdleHash = Animator.StringToHash("TH Sword Idle");
+    //private int spearIdleHash = Animator.StringToHash("Spear Idle");
+    //private int punchHash = Animator.StringToHash("Punch");
+    //private int melee1Hash = Animator.StringToHash("Melee1"); //Strike forward like dagger or light sword
+    //private int melee2Hash = Animator.StringToHash("Melee2"); //Strike in arch like axe or hammer
+    //private int melee3Hash = Animator.StringToHash("Melee3"); //Strike in low arc/towards right side like scythe
+    //private int thMelee1Hash = Animator.StringToHash("THMelee1"); //Twohanded strike in up to down arch (axe)
+    //private int thMelee2Hash = Animator.StringToHash("THMelee2"); //Twohanded strike in left to right arch (sword)
+    //private int spearMelee1Hash = Animator.StringToHash("SpearMelee1"); //Normal spear attack
+    //private int spearMelee2Hash = Animator.StringToHash("SpearMelee2"); //Long range spear attack
+    //private int longbowShootHash = Animator.StringToHash("LongbowShoot");
+    //private int crossbowShootHash = Animator.StringToHash("CrossbowShoot");
+    //private int wandShootHash = Animator.StringToHash("WandShoot");
+    //private int melee2ThrowHash = Animator.StringToHash("Melee2Throw");
 
     //private WeaponType weaponType;
     //private GameObject rightHand;

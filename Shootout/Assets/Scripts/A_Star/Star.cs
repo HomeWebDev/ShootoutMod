@@ -19,6 +19,7 @@ class Star : MonoBehaviour
     public TagObject start = new TagObject();
     public double F = 0.0;
     public double tentative_g_score = 0.0;
+    public bool working = false;
 
     void Start()
     {
@@ -32,12 +33,14 @@ class Star : MonoBehaviour
 
     public bool GetPathToPlayer(out List<GameObject> Path)
     {
-        if (CheckDistanceToPlayer())
+        if (CheckDistanceToPlayer() && working == false)
         {
+            working = true;
             CreateGrid();
             CalculatePath();
             Path = BuildListPath(currentNod);
             FoundPath = Path;
+            working = false;
             return true;
         }
 
@@ -49,6 +52,11 @@ class Star : MonoBehaviour
     {
         if(CheckDistanceToPlayer())
         {
+            GridList.Clear();
+            OpenList.Clear();
+            CloseList.Clear();
+            Blocked.Clear();
+            FoundPath.Clear();
             CreateGrid();
             CalculatePath();
             Path = BuildListPath(currentNod);
@@ -105,34 +113,27 @@ class Star : MonoBehaviour
 
     private void CreateGrid()
     {
-        start.X = transform.position.x;
-        start.Y = transform.position.z;
-        goal.X = Player.transform.position.x;
-        goal.Y = Player.transform.position.z;
+        start.X = (int)transform.position.x;
+        start.Y = (int)transform.position.z;
+        goal.X = (int)Player.transform.position.x;
+        goal.Y = (int)Player.transform.position.z;
 
-        Vector3 targetDir = Player.transform.position - transform.position;
-        Vector3 forward = transform.forward;
-
+        //Vector3 targetDir = Player.transform.position - transform.position;
+        //Vector3 forward = transform.forward; 
         //float angle = Vector3.SignedAngle(targetDir, forward, Vector3.up);
 
-        for (int x = 0; x < AgroDistance; x++)
+        for (float x =-AgroDistance - 1; x < AgroDistance + 1; x++)
         {
-            for (int y = 0; y < AgroDistance; y++)
+            for (float y = -AgroDistance -1; y < AgroDistance + 1; y++)
             {
                 GridList.Add(new TagObject() { X = start.X + x, Y = start.Y + y });
-                GridList.Add(new TagObject() { X = start.X + x, Y = start.Y - y });
-                if (x != 0)
-                {
-                    GridList.Add(new TagObject() { X = start.X - x, Y = start.Y + y });
-                    GridList.Add(new TagObject() { X = start.X - x, Y = start.Y - y });
-                }
             }
         }
     }
     public double CalculateH(TagObject curr, TagObject goal)
     {
         //return  1.5*(Math.Abs((((TagObject)goal.Tag).X - ((TagObject)curr.Tag).X)) + Math.Abs((((TagObject)goal.Tag).Y - ((TagObject)curr.Tag).Y)));
-        return 1.5 * Math.Max(Math.Abs(goal.X - curr.X), Math.Abs(goal.Y - curr.Y));
+        return 4 * Math.Max(Math.Abs(goal.X - curr.X), Math.Abs(goal.Y - curr.Y));
     }
 
     public List<GameObject> BuildListPath(TagObject last)
@@ -157,7 +158,8 @@ class Star : MonoBehaviour
         {
             currentNod = OpenList.OrderBy(x => x.F).First();
 
-            if (currentNod == goal)
+            if ((currentNod.X == goal.X) &&
+                (currentNod.Y == goal.Y))
             {
                 return;
             }
@@ -237,33 +239,37 @@ class Star : MonoBehaviour
         List<TagObject> returnList = new List<TagObject>();
         TagObject temp = new TagObject();
 
-        returnList.Add(GridList.Where(x => x.X.Equals(current.X)
-                                                    && x.Y.Equals(current.Y + 1)
-                                                    && !CheckIfBlocked(x)) as TagObject);
 
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X) 
-                                                    && x.Y.Equals(current.Y - 1)
-                                                    && !CheckIfBlocked(x)));
+        var checker = GridList.First() as TagObject;
 
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X + 1) 
-                                                    && x.Y.Equals(current.Y)
-                                                    && !CheckIfBlocked(x)));
+        checker = GridList.Where(x => x.X.Equals(current.X)
+                                                    && x.Y.Equals(current.Y + 1)
+                                                    && !CheckIfBlocked(x)) as TagObject;
 
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X - 1) 
-                                                    && x.Y.Equals(current.Y)
-                                                    && !CheckIfBlocked(x)));
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X + 1) 
-                                                    && x.Y.Equals(current.Y + 1)
-                                                    && !CheckIfBlocked(x)));
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X - 1) 
-                                                    && x.Y.Equals(current.Y - 1)
-                                                    && !CheckIfBlocked(x)));
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X + 1) 
-                                                    && x.Y.Equals(current.Y - 1)
-                                                    && !CheckIfBlocked(x)));
-        returnList.Add((TagObject)GridList.Where(x => x.X.Equals(current.X - 1) 
-                                                    && x.Y.Equals(current.Y + 1)
-                                                    && !CheckIfBlocked(x)));
+        temp = GridList.Find(x => x.X.Equals(current.X) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
+        if(temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
+        temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
+        if (temp != null)
+            returnList.Add(temp);
 
         return returnList;
     }

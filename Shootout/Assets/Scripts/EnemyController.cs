@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class EnemyController : MonoBehaviour {
 
@@ -14,6 +16,8 @@ public class EnemyController : MonoBehaviour {
     public int health;
     public float meleeDamage;
     public bool GeneratePathToPlayer = false;
+    public bool MovePathToPlayer = false;
+
     public List<GameObject> FoundPath = new List<GameObject>();
 
     private bool firstTime = true;
@@ -49,17 +53,38 @@ public class EnemyController : MonoBehaviour {
 
         float moveH = player1.transform.position.x - gameObject.transform.position.x;
         float moveV = player1.transform.position.z - gameObject.transform.position.z;
+        //Vector3 movement = new Vector3(moveH, 0.0f, moveV);
 
-        Vector3 movement = new Vector3(moveH, 0.0f, moveV);
+        if (GeneratePathToPlayer && FoundPath.Count == 0)
+        {
+            GeneratePathToPlayer = false;
+            GetComponent<Star>().GetPathToPlayer(out FoundPath);
+            FoundPath.Reverse();
+        }
+
+        Vector3 movement = new Vector3(0, 0, 0);
+
+        if (MovePathToPlayer)
+        {
+            //MovePathToPlayer = false;
+            movement = new Vector3(FoundPath.First().transform.position.x - gameObject.transform.position.x, 
+                                   0.0f,
+                                   FoundPath.First().transform.position.z - gameObject.transform.position.z);
+
+            Decimal x1 = System.Math.Round((Decimal)transform.position.x, 0, MidpointRounding.AwayFromZero);
+            Decimal z1 = System.Math.Round((Decimal)transform.position.z, 0, MidpointRounding.AwayFromZero);
+            Decimal x2 = System.Math.Round((Decimal)FoundPath.First().transform.position.x, 0, MidpointRounding.AwayFromZero);
+            Decimal z2 = System.Math.Round((Decimal)FoundPath.First().transform.position.z, 0, MidpointRounding.AwayFromZero);
+            if ((x1 == x2) && (z1 == z2))
+            {
+                Destroy(FoundPath.First());
+                FoundPath.RemoveAt(0);
+            }
+        }
         movement *= speed;
 
         //stand still
-        movement = new Vector3(0, 0, 0);
 
-        if (GeneratePathToPlayer)
-        {
-            GetComponent<Star>().GetPathToPlayer(out FoundPath);
-        }
         //Play animation if player is moving
         //if (moveV != 0 || moveH != 0)
         //{
@@ -80,6 +105,11 @@ public class EnemyController : MonoBehaviour {
                                     Time.deltaTime * rotationDamping);
 
         }
+    }
+
+    void Walk()
+    {
+
     }
 
     private void OnTriggerEnter(Collider other)
