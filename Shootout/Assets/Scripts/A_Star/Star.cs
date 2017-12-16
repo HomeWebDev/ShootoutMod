@@ -5,21 +5,26 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class Star : MonoBehaviour
+public class Star : MonoBehaviour
 {
-    public GameObject Player;
+
+    public Vector3 startPostion;
+    public Vector3 endPostion;
     public float AgroDistance = 5f;
+
     public List<TagObject> GridList = new List<TagObject>();
     public List<TagObject> OpenList = new List<TagObject>();
     public List<TagObject> CloseList = new List<TagObject>();
-    public List<TagObject> Blocked = new List<TagObject>();
-    public List<GameObject> FoundPath = new List<GameObject>();
+    public List<GameObject> Blocked = new List<GameObject>();
+    private List<GameObject> FoundPath = new List<GameObject>();
     public TagObject currentNod = new TagObject();
     public TagObject goal = new TagObject();
     public TagObject start = new TagObject();
-    public double F = 0.0;
-    public double tentative_g_score = 0.0;
+    private double F = 0.0;
+    private double tentative_g_score = 0.0;
     public bool working = false;
+    public float H = 1.5f;
+    public float MoveCost = 1.5f;
 
     void Start()
     {
@@ -31,17 +36,29 @@ class Star : MonoBehaviour
         
     }
 
-    public bool GetPathToPlayer(out List<Vector3> Path)
+
+    public void CleanUp()
     {
+        GridList.Clear();
+        OpenList.Clear();
+        CloseList.Clear();
+        FoundPath.Clear();
+    }
+
+    public bool GetPathToPlayer(List<GameObject> Blocklist, Vector3 StartPosition, Vector3 EndPosition, out List<Vector3> Path)
+    {
+        startPostion = StartPosition;
+        endPostion = EndPosition;
         if (CheckDistanceToPlayer() && working == false)
         {
             working = true;
             GridList.Clear();
             OpenList.Clear();
             CloseList.Clear();
-            Blocked.Clear();
             FoundPath.Clear();
             CreateGrid();
+            Blocked = Blocklist;
+            CheckifinsideBlocklist();
             CalculatePath();
             Path = BuildListPath(currentNod);
             //FoundPath = Path;
@@ -51,6 +68,20 @@ class Star : MonoBehaviour
 
         Path = new List<Vector3>();
         return false;
+    }
+
+    private void CheckifinsideBlocklist()
+    {
+        //foreach (GameObject t in Blocked)
+        //{
+        //    List<GameObject> temp = new List<GameObject>();
+        //    if (t.GetComponent<BoxCollider>().bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
+        //    {
+
+        //        temp.Add(t);
+        //    }
+
+        //}
     }
 
     public bool GetPathToPlayer(List<GameObject> obstacleList, out List<Vector3> Path)
@@ -108,7 +139,7 @@ class Star : MonoBehaviour
     public bool CheckDistanceToPlayer()
     {
 
-        float distance = Vector3.Distance(transform.position, Player.transform.position);
+        float distance = Vector3.Distance(startPostion, endPostion);
 
         if (distance < AgroDistance)
         {
@@ -120,10 +151,15 @@ class Star : MonoBehaviour
 
     private void CreateGrid()
     {
-        start.X = (int)transform.position.x;
-        start.Y = (int)transform.position.z;
-        goal.X = (int)Player.transform.position.x;
-        goal.Y = (int)Player.transform.position.z;
+
+        start.X = (float)System.Math.Round((Decimal)startPostion.x, 0, MidpointRounding.AwayFromZero);
+        start.Y = (float)System.Math.Round((Decimal)startPostion.z, 0, MidpointRounding.AwayFromZero);
+        goal.X = (float)System.Math.Round((Decimal)endPostion.x, 0, MidpointRounding.AwayFromZero);
+        goal.Y = (float)System.Math.Round((Decimal)endPostion.z, 0, MidpointRounding.AwayFromZero);
+        //start.X = (int)startPostion.x;
+        //start.Y = (int)startPostion.z;
+        //goal.X = (int)endPostion.x;
+        //goal.Y = (int)endPostion.z;
 
         //Vector3 targetDir = Player.transform.position - transform.position;
         //Vector3 forward = transform.forward; 
@@ -140,7 +176,7 @@ class Star : MonoBehaviour
     public double CalculateH(TagObject curr, TagObject goal)
     {
         //return  1.5*(Math.Abs((((TagObject)goal.Tag).X - ((TagObject)curr.Tag).X)) + Math.Abs((((TagObject)goal.Tag).Y - ((TagObject)curr.Tag).Y)));
-        return 1.5 * Math.Max(Math.Abs(goal.X - curr.X), Math.Abs(goal.Y - curr.Y));
+        return H * Math.Max(Math.Abs(goal.X - curr.X), Math.Abs(goal.Y - curr.Y));
     }
 
     public List<Vector3> BuildListPath(TagObject last)
@@ -208,38 +244,12 @@ class Star : MonoBehaviour
     {
         //return 1;
         if (Math.Abs(curr.X - neighbor.X) + Math.Abs(curr.Y - neighbor.Y) == 2)
-            return 1.5;
+            return MoveCost;
         else
             return 1;
         //return Math.Abs((((TagObject)curr.Tag).X - ((TagObject)neighbor.Tag).X)) + Math.Abs((((TagObject)curr.Tag).Y - ((TagObject)neighbor.Tag).Y));
     }
 
-
-    //public void DrawFastLine()
-    //{
-    //    TagObject t = new TagObject();
-    //    t = ((TagObject)currentNod.Tag);
-
-    //    foreach (Transform c in CloseList)
-    //    {
-    //        ColorTransform(c.Name, Brushes.Black);
-    //    }
-
-    //    while (t != null)
-    //    {
-    //        ColorTransform("X" + t.X + "Y" + t.Y, Brushes.SkyBlue);
-    //        path.Content = path.Content + "::" + t.X.ToString() + "," + t.Y.ToString();
-
-    //        t = t.Parant;
-    //    }
-    //    //foreach (Transform r in CloseList)
-    //    //{
-    //    //    ColorTransform(r.Name, Brushes.Black);
-    //    //}
-    //    ColorTransform(CloseList.First().Name, Brushes.Gold);
-    //    ColorTransform(currentNod.Name, Brushes.Red);
-    //    Count.Content = "OpenList: " + OpenList.Count + " " + "CloseList: " + CloseList.Count;
-    //}
 
     public List<TagObject> GetNeigborNods(TagObject current)
     {
@@ -283,13 +293,27 @@ class Star : MonoBehaviour
 
     public bool CheckIfBlocked(TagObject to)
     {
-        foreach (TagObject t in Blocked)
+
+        foreach (GameObject t in Blocked)
         {
-            if ((t.X == to.X) && (t.Y == to.Y))
+            if (t.GetComponent<BoxCollider>().bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
+            {
+
+                return false;
+            }
+            if (t.GetComponent<BoxCollider>().bounds.Contains(new Vector3(to.X, 0f, to.Y)))
             {
                 return true;
             }
         }
         return false;
+        //foreach (TagObject t in Blocked)
+        //{
+        //    if ((t.X == to.X) && (t.Y == to.Y))
+        //    {
+        //        return true;
+        //    }
+        //}
+        //return false;
     }
 }
