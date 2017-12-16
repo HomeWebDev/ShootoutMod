@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 54625389729827906}
   - component: {fileID: 143204919523719176}
   - component: {fileID: 114647196744638540}
+  - component: {fileID: 114118979341082496}
   m_Layer: 0
   m_Name: Toon Bat-Pink
   m_TagString: Enemy
@@ -490,7 +491,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177656}
-  m_LocalRotation: {x: -0.25573808, y: 0.66009474, z: 0.6602234, w: -0.2509541}
+  m_LocalRotation: {x: -0.2557381, y: 0.6600948, z: 0.6602235, w: -0.25095412}
   m_LocalPosition: {x: 0.8077168, y: 1.0897548, z: -0.21276775}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
@@ -591,8 +592,26 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &114118979341082496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f256bdb365f49fa458a4cc21dc8e388e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPostion: {x: 0, y: 0, z: 0}
+  endPostion: {x: 0, y: 0, z: 0}
+  AgroDistance: 5
+  Blocked: []
+  working: 0
+  H: 1.5
+  MoveCost: 1.5
 --- !u!114 &114647196744638540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,10 +625,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotationDamping: 20
-  horizontalAxis: 
-  verticalAxis: 
   health: 1
   meleeDamage: 1
+  UseNewMoveWithAstar: 1
+  GeneratePathToPlayer: 0
+  MovePathToPlayer: 0
+  moveGap: 1
+  LookAtposition: {x: 0, y: 0, z: 0}
+  FoundPathVector: []
+  BlockList: []
+  currentvector: {x: 0, y: 0, z: 0}
+  smoothTime: 0.2
+  maxSpeed: 7
 --- !u!143 &143204919523719176
 CharacterController:
   m_ObjectHideFlags: 1
