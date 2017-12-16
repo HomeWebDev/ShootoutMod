@@ -163,7 +163,7 @@ public class EnemyController : MonoBehaviour {
             controller.Move(new Vector3(xsmooth - transform.position.x, 0f, zsmooth - transform.position.z));
             //transform.position = new Vector3(xsmooth, 0f, zsmooth);
 
-            //transform.position = Vector3.SmoothDamp(transform.position, movement, ref currentvector, smoothTime,maxSpeed,Time.deltaTime);
+            //transform.position = Vector3.SmoothDamp(transform.position, movement, ref currentvector, smoothTime, maxSpeed, Time.deltaTime);
         }
         #endregion
 
@@ -200,6 +200,30 @@ public class EnemyController : MonoBehaviour {
     void Walk()
     {
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Crate")
+        {
+            if (!BlockList.Exists(v => v == collision.gameObject))
+                BlockList.Add(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Player1")
+            FoundPathVector.Clear();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Crate")
+        {
+            if (!BlockList.Exists(v => v == collision.gameObject))
+                BlockList.Add(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Player1")
+            FoundPathVector.Clear();
     }
 
     private void OnTriggerEnter(Collider other)

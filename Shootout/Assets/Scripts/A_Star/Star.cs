@@ -296,12 +296,18 @@ public class Star : MonoBehaviour
 
         foreach (GameObject t in Blocked)
         {
-            if (t.GetComponent<BoxCollider>().bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
+            var check = t.GetComponent<Collider>();
+            if(check == null)
+            {
+                Debug.Log("No collider attached to object");
+                return false;
+            }
+            if (t.GetComponent<Collider>().bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
             {
 
                 return false;
             }
-            if (t.GetComponent<BoxCollider>().bounds.Contains(new Vector3(to.X, 0f, to.Y)))
+            if (t.GetComponent<Collider>().bounds.Contains(new Vector3(to.X, 0f, to.Y)))
             {
                 return true;
             }
