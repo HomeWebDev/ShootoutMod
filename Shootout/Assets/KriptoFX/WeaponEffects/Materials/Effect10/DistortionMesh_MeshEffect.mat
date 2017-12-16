@@ -81,4 +81,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.41911763, g: 0.41911763, b: 0.41911763, a: 0.5}
     - _Speed: {r: 0, g: 5, b: 0, a: 0}
-    - _TintColor: {r: 3.7648063, g: 2.2132354, b: 7, a: 1}
+    - _TintColor: {r: 3.7648067, g: 2.2132354, b: 7.0000014, a: 1}

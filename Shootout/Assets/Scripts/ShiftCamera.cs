@@ -153,7 +153,7 @@ public class ShiftCamera : MonoBehaviour {
 
         if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
         {
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 1.0f);
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 2.0f);
         }
         else
         {
