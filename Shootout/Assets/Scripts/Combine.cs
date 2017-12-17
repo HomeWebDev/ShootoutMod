@@ -12,20 +12,26 @@ public class Combine : MonoBehaviour {
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
         var colliders = GetComponentsInChildren<BoxCollider>();
+        if (colliders.Length == 0)
+        {
+            return;
+        }
         int i = 0;
         while (i < meshFilters.Length)
         {
             combine[i].mesh = meshFilters[i].sharedMesh;
             combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+
+            //combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
             meshFilters[i].gameObject.SetActive(false);
-            var c =gameObject.AddComponent<BoxCollider>();
-            var u = new BoxCollider();
+            var c = gameObject.AddComponent<BoxCollider>();
+
             c.center = new Vector3(colliders[i].transform.position.x,
                          colliders[i].transform.position.y,
                          colliders[i].transform.position.z);
-            c.size = new Vector3(colliders[i].size.x,
-                         colliders[i].size.y,
-                         colliders[i].size.z);
+            c.size = new Vector3(colliders[i].size.x * 0.3f,
+                                   colliders[i].size.y * 0.28f,
+                                   colliders[i].size.z * 0.25f);
             i++;
         }
 
@@ -38,4 +44,36 @@ public class Combine : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void CombineStuff(GameObject MeshList)
+    {
+        MeshFilter[] meshFilters = MeshList.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+
+        var colliders = MeshList.GetComponentsInChildren<BoxCollider>();
+        if (colliders.Length == 0)
+        {
+            return;
+        }
+        int i = 0;
+        while (i < meshFilters.Length)
+        {
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].gameObject.SetActive(false);
+            var c = MeshList.AddComponent<BoxCollider>();
+            var u = new BoxCollider();
+            c.center = new Vector3(colliders[i].transform.position.x,
+                         colliders[i].transform.position.y,
+                         colliders[i].transform.position.z);
+            c.size = new Vector3(colliders[i].size.x,
+                         colliders[i].size.y,
+                         colliders[i].size.z);
+            i++;
+        }
+
+        MeshList.transform.GetComponent<MeshFilter>().mesh = new Mesh();
+        MeshList.transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        MeshList.transform.gameObject.SetActive(true);
+    }
 }

@@ -208,6 +208,12 @@ public class LevelController : MonoBehaviour {
         }
         RoomData.AddRange(levelRepresentation.RoomArray.Cast<Room>().Select(r => r.GetRoomArea()));
 
+
+        //var comby =  GetComponent<Combine>();
+        //foreach (Transform go in Walls.transform)
+        //{
+        //    comby.CombineStuff(go.gameObject);
+        //}
         //Destroy(ground);
 
         //StaticBatchingUtility.Combine(Walls);
