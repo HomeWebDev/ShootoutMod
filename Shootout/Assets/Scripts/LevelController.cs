@@ -16,6 +16,12 @@ public class LevelController : MonoBehaviour {
     private int obstacleDensity = 10;
     private System.Random rand = new System.Random();
     private int obstacleType;
+    private GameObject Walls;
+    private GameObject Doors;
+    private GameObject Grounds;
+    private GameObject Fences;
+    private GameObject Obstacles;
+    private string groundPrefab;
 
     List<GameObject> obstacleList = new List<GameObject>();
 
@@ -88,10 +94,14 @@ public class LevelController : MonoBehaviour {
 
     private void GenerateLevel()
     {
-        int terrainId = Random.Range(0, 31);
-        //Debug.Log("TerrainId: " + terrainId);
-        GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
-        ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
+        //int terrainId = Random.Range(0, 31);
+        ////Debug.Log("TerrainId: " + terrainId);
+        //GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
+
+        int groundId = Random.Range(1, 31);
+        groundPrefab = "Prefabs/Environment/Grounds/Ground" + groundId;
+
 
         wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
 
@@ -158,26 +168,128 @@ public class LevelController : MonoBehaviour {
 
         obstacleIndex = Random.Range(0, obstacleList.Count);
 
-        for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
+        Walls = new GameObject();
+        Walls.name = "Walls";
+        Doors = new GameObject();
+        Doors.name = "Doors";
+        Fences = new GameObject();
+        Fences.name = "Fences";
+        Obstacles = new GameObject();
+        Obstacles.name = "Obstacles";
+        Grounds = new GameObject();
+        Grounds.name = "Grounds";
+
+        for (int test = 0; test < 1; test++)
         {
-            for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
+
+            for (int i = 0; i < levelRepresentation.RoomArray.GetLength(0); i++)
             {
-                obstacleIndex = Random.Range(0, obstacleList.Count);
-
-                //Debug.Log("i: " + i + " , j: " + j + " , value: " + (levelRepresentation.RoomArray.GetLength(0) - i - 1));
-                GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
-
-                if(levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.BossLevel1)
+                for (int j = 0; j < levelRepresentation.RoomArray.GetLength(1); j++)
                 {
-                    //Debug.Log("Bossroom");
-                    AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                    obstacleIndex = Random.Range(0, obstacleList.Count);
+
+                    //Debug.Log("i: " + i + " , j: " + j + " , value: " + (levelRepresentation.RoomArray.GetLength(0) - i - 1));
+                    GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+
+                    if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.BossLevel1)
+                    {
+                        //Debug.Log("Bossroom");
+                        AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                    }
+
+                    if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.ItemLevel1)
+                    {
+                        //Debug.Log("Bossroom");
+                        AddItems(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                    }
                 }
             }
+
         }
         RoomData.AddRange(levelRepresentation.RoomArray.Cast<Room>().Select(r => r.GetRoomArea()));
 
-        Destroy(ground);
-        //Destroy(wall);
+        //Destroy(ground);
+
+        //StaticBatchingUtility.Combine(Walls);
+        //StaticBatchingUtility.Combine(Obstacles);
+        //StaticBatchingUtility.Combine(Grounds);
+
+        //MergeMeshes(Walls);
+        //MergeMeshes(Obstacles);
+        //MergeMeshes(Grounds);
+
+        //StaticBatchingUtility.Combine(walls);
+    }
+
+    private void MergeMeshes(GameObject mergeObject)
+    {
+        Vector3 position = mergeObject.transform.position;
+        mergeObject.transform.position = Vector3.zero;
+
+        MeshRenderer meshRenderer = mergeObject.AddComponent<MeshRenderer>();
+        MeshFilter meshFilter = mergeObject.AddComponent<MeshFilter>();
+        MeshFilter[] meshFilters = mergeObject.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+        int i = 0;
+        while (i < meshFilters.Length)
+        {
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            //meshFilters[i].gameObject.GetComponent<MeshRenderer>().enabled = false;
+            //meshFilters[i].gameObject.GetComponent<MeshFilter>();
+
+            meshFilters[i].gameObject.SetActive(false);
+            Debug.Log(meshFilters[i].gameObject.name);
+            i++;
+        }
+        Debug.Log("Length: " + meshFilters.Length);
+        mergeObject.transform.GetComponent<MeshFilter>().mesh = new Mesh();
+        mergeObject.transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        mergeObject.transform.gameObject.SetActive(true);
+        mergeObject.GetComponent<MeshRenderer>().enabled = true;
+
+        Mesh mesh = mergeObject.GetComponent<MeshFilter>().mesh;
+        mesh.RecalculateBounds();
+
+        //Reset position
+        mergeObject.transform.position = position;
+
+        while (i < meshFilters.Length)
+        {
+            Destroy(meshFilters[i].gameObject.GetComponent<MeshRenderer>());
+            Destroy(meshFilters[i].gameObject.GetComponent<MeshFilter>());
+            Destroy(meshFilters[i].gameObject.GetComponentInChildren<MeshRenderer>());
+            Destroy(meshFilters[i].gameObject.GetComponentInChildren<MeshFilter>());
+            Destroy(meshFilters[i].gameObject.transform);
+            i++;
+        }
+
+        var children = new List<GameObject>();
+        foreach (Transform child in mergeObject.transform) children.Add(child.gameObject);
+        children.ForEach(child => Destroy(child));
+    }
+
+    private void AddItems(Room room, int i, int j)
+    {
+        int x = j * scaleX;
+        int z = i * scaleZ;
+
+        List<int> usedIndexes = new List<int>();
+        List<int> availableIndexes = Enumerable.Range(1, 6).ToList();
+
+        for (int k = 0; k < 4; k++)
+        {
+            int l = availableIndexes[Random.Range(0, availableIndexes.Count)];
+            availableIndexes.Remove(l);
+            usedIndexes.Add(l);
+        }
+
+        //Debug.Log("usedIndexes: " + usedIndexes[0] + ":" + usedIndexes[1] + ":" + usedIndexes[2] + ":" + usedIndexes[3]);
+
+        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x+5, 0, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
     }
 
     private void AddBossEntrance(Room room, int i, int j)
@@ -201,8 +313,6 @@ public class LevelController : MonoBehaviour {
         {
             GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x + 9.3f, 0, z), Quaternion.Euler(-90, 270, 0)) as GameObject;
         }
-
-
     }
 
     private void GenerateRoom(Room room, int i, int j)
@@ -219,7 +329,9 @@ public class LevelController : MonoBehaviour {
         room.SetRoomArea(new Vector3Int(x - scaleX / 2, 0, z - scaleZ / 2), new Vector3Int(x + scaleX / 2, 0, z + scaleZ / 2));
 
         //Add common objects
-        GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(x - scaleX/2 - 0.2f, 0, z - scaleZ/2), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(x - scaleX/2 - 0.2f, 0, z - scaleZ/2), Quaternion.Euler(0, 0, 0)) as GameObject;
+        GameObject ground = Instantiate(Resources.Load(groundPrefab, typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        ground.transform.parent = Grounds.transform;
         //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
         //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
 
@@ -231,8 +343,8 @@ public class LevelController : MonoBehaviour {
 
         //Instantiate(obstacleList[obstacleIndex], new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0));
 
-        
-        if(rand.Next(100) > 50)
+        if(room)
+        if (rand.Next(100) > 50)
         {
             for (int l = 0; l < obstacleDensity; l++)
             {
@@ -263,6 +375,7 @@ public class LevelController : MonoBehaviour {
                     //GameObject obstacle = Instantiate(obstacleList[obstacleIndex], new Vector3(x + rand.Next(-(scaleX - 4) / 2, (scaleX - 3) / 2), 0, z + rand.Next(-(scaleZ - 3) / 2, (scaleZ - 2) / 2)), Quaternion.Euler(-90, 0, 0));
 
                     room.ObstacleList.Add(obstacle);
+                    obstacle.transform.parent = Obstacles.transform;
                 }
             }
         }
@@ -274,6 +387,9 @@ public class LevelController : MonoBehaviour {
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/NorthDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/NorthFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
+            wall.transform.parent = Walls.transform;
+            doors.transform.parent = Doors.transform;
+            fences.transform.parent = Fences.transform;
         }
         else if(room.NorthWallOpen)
         {
@@ -285,6 +401,8 @@ public class LevelController : MonoBehaviour {
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/NorthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             SetColorOfChildren(wall1);
             SetColorOfChildren(wall2);
+            wall1.transform.parent = Walls.transform;
+            wall2.transform.parent = Walls.transform;
         }
         if (room.SouthDoorOpen)
         {
@@ -293,8 +411,11 @@ public class LevelController : MonoBehaviour {
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/SouthDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/SouthFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
+            wall.transform.parent = Walls.transform;
+            doors.transform.parent = Doors.transform;
+            fences.transform.parent = Fences.transform;
         }
-		else if(room.SouthWallOpen)
+        else if(room.SouthWallOpen)
         {
             //Open
         }
@@ -304,6 +425,8 @@ public class LevelController : MonoBehaviour {
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/SouthWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             SetColorOfChildren(wall1);
             SetColorOfChildren(wall2);
+            wall1.transform.parent = Walls.transform;
+            wall2.transform.parent = Walls.transform;
         }
         if (room.WestDoorOpen)
         {
@@ -312,8 +435,11 @@ public class LevelController : MonoBehaviour {
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/WestDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/WestFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
+            wall.transform.parent = Walls.transform;
+            doors.transform.parent = Doors.transform;
+            fences.transform.parent = Fences.transform;
         }
-		else if(room.WestWallOpen)
+        else if(room.WestWallOpen)
         {
             //Open
         }
@@ -323,6 +449,8 @@ public class LevelController : MonoBehaviour {
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/WestWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             SetColorOfChildren(wall1);
             SetColorOfChildren(wall2);
+            wall1.transform.parent = Walls.transform;
+            wall2.transform.parent = Walls.transform;
         }
         if (room.EastDoorOpen)
         {
@@ -331,8 +459,11 @@ public class LevelController : MonoBehaviour {
             GameObject doors = Instantiate(Resources.Load("Prefabs/Environment/Doors/EastDoorBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             GameObject fences = Instantiate(Resources.Load("Prefabs/Environment/Fences/EastFenceBase", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             fenceList.Add(fences);
+            wall.transform.parent = Walls.transform;
+            doors.transform.parent = Doors.transform;
+            fences.transform.parent = Fences.transform;
         }
-		else if(room.EastWallOpen)
+        else if(room.EastWallOpen)
         {
             //Open
         }
@@ -342,6 +473,8 @@ public class LevelController : MonoBehaviour {
             GameObject wall2 = Instantiate(Resources.Load("Prefabs/Environment/ToonWalls/EastWallClosed", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(0, 0, 0)) as GameObject;
             SetColorOfChildren(wall1);
             SetColorOfChildren(wall2);
+            wall1.transform.parent = Walls.transform;
+            wall2.transform.parent = Walls.transform;
         }
     }
 
