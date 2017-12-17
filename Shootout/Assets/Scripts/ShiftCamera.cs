@@ -157,7 +157,7 @@ public class ShiftCamera : MonoBehaviour {
         }
         else
         {
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.02f);
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.01f);
         }
     }
 
