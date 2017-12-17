@@ -25,6 +25,7 @@ public class Star : MonoBehaviour
     public bool working = false;
     public float H = 1.5f;
     public float MoveCost = 1.5f;
+    private bool UseOldWayOfColliderFind;
 
     void Start()
     {
@@ -256,6 +257,11 @@ public class Star : MonoBehaviour
         List<TagObject> returnList = new List<TagObject>();
         TagObject temp = new TagObject();
 
+        bool topblocked = false;
+        bool rightblocked = false;
+        bool bottomblocked = false;
+        bool leftblocked = false;
+
 
         var checker = GridList.First() as TagObject;
 
@@ -264,30 +270,66 @@ public class Star : MonoBehaviour
                                                     && !CheckIfBlocked(x)) as TagObject;
 
         temp = GridList.Find(x => x.X.Equals(current.X) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
-        if(temp != null)
+        if (temp != null)
+        {
             returnList.Add(temp);
+        }
+        else
+        {
+            topblocked = true;
+        }
         temp = GridList.Find(x => x.X.Equals(current.X) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
         if (temp != null)
+        {
             returnList.Add(temp);
+        }
+        else
+        {
+            bottomblocked = true;
+        }
         temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y) && !CheckIfBlocked(x));
         if (temp != null)
+        {
             returnList.Add(temp);
+        }
+        else
+        {
+            rightblocked = true;
+        }
         temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y) && !CheckIfBlocked(x));
         if (temp != null)
+        {
             returnList.Add(temp);
-        temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
-        if (temp != null)
-            returnList.Add(temp);
-        temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
-        if (temp != null)
-            returnList.Add(temp);
-        temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
-        if (temp != null)
-            returnList.Add(temp);
-        temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
-        if (temp != null)
-            returnList.Add(temp);
+        }
+        else
+        {
+            leftblocked = true;
+        }
 
+        if (!(topblocked && rightblocked))
+        {
+            temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
+            if (temp != null)
+                returnList.Add(temp);
+        }
+        if (!(bottomblocked && leftblocked))
+        {
+            temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
+            if (temp != null)
+                returnList.Add(temp);
+        }
+        if (!(topblocked && leftblocked))
+        {
+            temp = GridList.Find(x => x.X.Equals(current.X - 1) && x.Y.Equals(current.Y + 1) && !CheckIfBlocked(x));
+            if (temp != null)
+                returnList.Add(temp);
+        }
+        if (!(bottomblocked && rightblocked))
+        {
+            temp = GridList.Find(x => x.X.Equals(current.X + 1) && x.Y.Equals(current.Y - 1) && !CheckIfBlocked(x));
+            if (temp != null)
+                returnList.Add(temp);
+        }
         return returnList;
     }
 
@@ -296,21 +338,49 @@ public class Star : MonoBehaviour
 
         foreach (GameObject t in Blocked)
         {
-            var check = t.GetComponent<Collider>();
-            if(check == null)
+            if (UseOldWayOfColliderFind)
             {
-                Debug.Log("No collider attached to object");
-                return false;
-            }
-            if (t.GetComponent<Collider>().bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
-            {
+                var check = t.GetComponent<Collider>();
+                if (check == null)
+                {
+                    Debug.Log("No collider attached to object");
+                    return false;
+                }
+                if (t.GetComponent<Collider>().bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
+                {
 
-                return false;
+                    return false;
+                }
+                if (t.GetComponent<Collider>().bounds.Contains(new Vector3(to.X, 0f, to.Y)))
+                {
+                    return true;
+                }
             }
-            if (t.GetComponent<Collider>().bounds.Contains(new Vector3(to.X, 0f, to.Y)))
+            else
             {
-                return true;
+                #region Does not work-.... multi-colliders
+                //Debug.Log("number of colliders: " + t.GetComponents<Collider>().Length);
+                foreach (Collider co in t.GetComponents<Collider>())
+                {
+
+                    if (co.bounds.Contains(new Vector3(goal.X, 0f, goal.Y)))
+                    {
+                        //Debug.Log(i+" Is goal:" + co.bounds.ToString());
+                        return false;
+                    }
+                    if (co.bounds.Contains(new Vector3(to.X, 0f, to.Y)))
+                    {
+                        //Debug.Log(i +" Is blocked:" + co.bounds.ToString());
+                        return true;
+                    }
+                    //if (co.bounds.Intersects(gameObject.GetComponent<Collider>().bounds))
+                    //{
+                    //    return true;
+                    //}
+                    
+                }
             }
+            #endregion
         }
         return false;
         //foreach (TagObject t in Blocked)
