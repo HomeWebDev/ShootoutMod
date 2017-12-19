@@ -22,6 +22,8 @@ public class PlayerPickup : MonoBehaviour {
 
             Debug.Log("Weapon: " + gameObject);
 
+            other.gameObject.GetComponent<ContactDamage>().pickedUp = true;
+
             ActiveGear.weapon = other.gameObject;
             Physics.IgnoreCollision(ActiveGear.weapon.GetComponent<Collider>(), GetComponent<Collider>());
             WeaponConfig wc = ActiveGear.weapon.GetComponent<WeaponConfig>();

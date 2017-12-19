@@ -281,7 +281,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 6).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 16).ToList();
 
         for (int k = 0; k < 4; k++)
         {
@@ -292,10 +292,10 @@ public class LevelController : MonoBehaviour {
 
         //Debug.Log("usedIndexes: " + usedIndexes[0] + ":" + usedIndexes[1] + ":" + usedIndexes[2] + ":" + usedIndexes[3]);
 
-        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x+5, 0, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
-        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
-        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
-        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x+5, 0.2f, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0.2f, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.2f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.2f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
     }
 
     private void AddBossEntrance(Room room, int i, int j)
