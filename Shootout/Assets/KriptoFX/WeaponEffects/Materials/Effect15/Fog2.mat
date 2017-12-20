@@ -7,12 +7,13 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Fog2
-  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: adcfda7b7929cc349b00f2cd07f6de2a, type: 3}
+  m_ShaderKeywords: BlendAdd Clip_OFF FrameBlend_OFF FresnelFade_OFF SoftParticles_OFF
+    VertLight_OFF
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -55,11 +56,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - CullMode: 2
+    - DstMode: 1
+    - SrcMode: 5
     - _BumpScale: 1
     - _ColorStrength: 3
     - _Cutoff: 0.5
+    - _Cutout: 0.2
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FresnelStr: 1
     - _Glossiness: 0.5
     - _InvFade: 3
     - _Metallic: 0
@@ -72,4 +78,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 0.1010769, g: 0.090506054, b: 0.39705884, a: 0.23529412}
+    - _TintColor: {r: 0.1010769, g: 0.090506054, b: 0.39705884, a: 0.3}

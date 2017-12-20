@@ -7,12 +7,13 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Particles
-  m_Shader: {fileID: 4800000, guid: fec7c3a66c8b0914e9ebd0014e85c677, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: adcfda7b7929cc349b00f2cd07f6de2a, type: 3}
+  m_ShaderKeywords: BlendAlpha Clip_OFF FrameBlend_ON FresnelFade_OFF SoftParticles_OFF
+    VertLight4Normal_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -55,10 +56,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - CullMode: 2
+    - DstMode: 10
+    - SrcMode: 5
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _Cutout: 0.05
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FresnelStr: 1
     - _Glossiness: 0.5
     - _InvFade: 70
     - _Metallic: 0
@@ -72,4 +78,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tiling: {r: 800, g: 800, b: 8, a: 8}
-    - _TintColor: {r: 0.6466263, g: 0.6767569, b: 0.7647059, a: 0.743}
+    - _TintColor: {r: 0.546064, g: 0.5962265, b: 0.74264705, a: 0.57}

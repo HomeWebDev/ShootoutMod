@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Effects/WeaponFX/GlowCutout" {
+Shader "KriptoFX/ME/GlowCutout" {
 	Properties{
 	[HDR]_TintColor("Tint Color", Color) = (0.5,0.5,0.5,1)
 	_TimeScale("Time Scale", Vector) = (1,1,1,1)
@@ -14,11 +14,11 @@ Shader "Effects/WeaponFX/GlowCutout" {
 						Cull Off
 						Lighting Off
 						ZWrite Off
+						Offset -1, -1
 
 			SubShader {
 				Pass {
-
-
+				
 					CGPROGRAM
 					#pragma vertex vert
 					#pragma fragment frag
@@ -42,7 +42,7 @@ Shader "Effects/WeaponFX/GlowCutout" {
 						fixed4 color : COLOR;
 						float2 texcoord : TEXCOORD0;
 						float3 normal : NORMAL;
-						float3 worldPos : TEXCOORD1;
+						float3 worldPosScaled : TEXCOORD1;
 					};
 
 					float4 _MainTex_ST;
@@ -54,33 +54,24 @@ Shader "Effects/WeaponFX/GlowCutout" {
 						o.vertex = UnityObjectToClipPos(v.vertex);
 						o.color = v.color;
 						o.texcoord = TRANSFORM_TEX(v.texcoord,_MainTex);
-						o.worldPos = v.vertex.xyz;
-						o.normal = v.normal;
+						o.worldPosScaled = v.vertex.xyz *  _MainTex_ST.x;
+						o.normal = abs(v.normal);
 						return o;
 					}
 
-					half4 tex2DTriplanar(sampler2D tex, float2 offset, float3 worldPos, float3 normal)
+					half2 tex2DTriplanar(sampler2D tex, float2 offset, float3 worldPos, float3 normal)
 					{
-						half2 yUV = worldPos.xz * _MainTex_ST.x;
-						half2 xUV = worldPos.zy * _MainTex_ST.x;
-						half2 zUV = worldPos.xy * _MainTex_ST.x;
-
-						half4 yDiff = tex2D(tex, yUV + offset);
-						half4 xDiff = tex2D(tex, xUV + offset);
-						half4 zDiff = tex2D(tex, zUV + offset);
-
-						half3 blendWeights = pow(abs(normal), 1);
-
-						blendWeights = blendWeights / (blendWeights.x + blendWeights.y + blendWeights.z);
-
-						return xDiff * blendWeights.x + yDiff * blendWeights.y + zDiff * blendWeights.z;
+						half2 yDiff = tex2D(tex, worldPos.xz + offset);
+						half2 xDiff = tex2D(tex, worldPos.zy + offset);
+						half2 zDiff = tex2D(tex, worldPos.xy + offset);
+						normal = normal / (normal.x + normal.y + normal.z);
+						return xDiff * normal.x + yDiff * normal.y + zDiff * normal.z;
 					}
-					sampler2D _CameraDepthTexture;
 
 					half4 frag(v2f i) : COLOR
 					{
-						half4 mask = tex2DTriplanar(_MainTex, _Time.xx * _TimeScale.xy, i.worldPos, i.normal);
-						half4 tex = tex2DTriplanar(_MainTex, mask + _Time.xx * _TimeScale.zw, i.worldPos, i.normal);
+						half2 mask = tex2DTriplanar(_MainTex, _Time.xx * _TimeScale.xy, i.worldPosScaled, i.normal);
+						half2 tex = tex2DTriplanar(_MainTex, mask + _Time.xx * _TimeScale.zw, i.worldPosScaled, i.normal);
 						float4 res = 0;
 						res.r = step(tex.r, _BorderScale.x);
 						res.r -= step(tex.r, _BorderScale.x - _BorderScale.y);
