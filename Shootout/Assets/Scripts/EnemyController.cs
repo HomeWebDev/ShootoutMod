@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour {
     public bool UseNewMoveWithAstar = false;
     public bool GeneratePathToPlayer = false;
     public bool MovePathToPlayer = false;
+    public bool UpdatePostionNew = false;
     public float moveGap = 1;
     public Vector3 LookAtposition;
 
@@ -160,10 +161,18 @@ public class EnemyController : MonoBehaviour {
             var xsmooth = Mathf.SmoothDamp(transform.position.x, movement.x, ref currentvector.x, smoothTime, maxSpeed, Time.deltaTime);
             var zsmooth = Mathf.SmoothDamp(transform.position.z, movement.z, ref currentvector.z, smoothTime, maxSpeed, Time.deltaTime);
 
-            controller.Move(new Vector3(xsmooth - transform.position.x, 0f, zsmooth - transform.position.z));
-            //transform.position = new Vector3(xsmooth, 0f, zsmooth);
+            if (UpdatePostionNew)
+            {
+                transform.position = new Vector3(xsmooth, 0f, zsmooth);
 
-            //transform.position = Vector3.SmoothDamp(transform.position, movement, ref currentvector, smoothTime, maxSpeed, Time.deltaTime);
+            }
+            else
+            {
+                controller.Move(new Vector3(xsmooth - transform.position.x, 0f, zsmooth - transform.position.z));
+                //transform.position = new Vector3(xsmooth, 0f, zsmooth);
+
+                //transform.position = Vector3.SmoothDamp(transform.position, movement, ref currentvector, smoothTime, maxSpeed, Time.deltaTime);
+            }
         }
         #endregion
 
@@ -186,9 +195,10 @@ public class EnemyController : MonoBehaviour {
         //look forwards
         if (movement != Vector3.zero && MovePathToPlayer)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                    Quaternion.LookRotation(LookAtposition),
-                                    Time.deltaTime * rotationDamping);
+            transform.LookAt(movement);
+            //transform.rotation = Quaternion.Slerp(transform.rotation,
+            //                        Quaternion.LookRotation(LookAtposition),
+            //                        Time.deltaTime * rotationDamping);
 
         }
         else
