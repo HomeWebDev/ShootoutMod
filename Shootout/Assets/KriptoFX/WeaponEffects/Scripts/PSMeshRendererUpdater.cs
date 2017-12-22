@@ -6,56 +6,77 @@ using System.Linq;
 public class PSMeshRendererUpdater : MonoBehaviour
 {
     public GameObject MeshObject;
-
+    public Color Color = Color.black;
     const string materialName = "MeshEffect";
     List<Material[]> rendererMaterials = new List<Material[]>();
     List<Material[]> skinnedMaterials = new List<Material[]>();
-    public bool IsActive = true;
+    //public bool IsActive = true;
 
-    bool currentActiveStatus = true;
+    //bool currentActiveStatus = true;
+
+    Color oldColor = Color.black;
 
     void Update()
     {
-        if (currentActiveStatus != IsActive)
+    //    if (currentActiveStatus != IsActive)
+    //    {
+    //        currentActiveStatus = IsActive;
+    //        Activation(currentActiveStatus);
+    //    }
+
+        if (Color != oldColor)
         {
-            currentActiveStatus = IsActive;
-            Activation(currentActiveStatus);
+            oldColor = Color;
+            UpdateColor(Color);
         }
     }
 
-    public void Activation(bool activeStatus)
+    //public void Activation(bool activeStatus)
+    //{
+    //    if (MeshObject == null) return;
+    //    var particles = MeshObject.GetComponentsInChildren<ParticleSystem>();
+    //    foreach (var ps in particles)
+    //    {
+    //        if (activeStatus) ps.Play();
+    //        else ps.Stop();
+    //    }
+    //    var light = MeshObject.GetComponentInChildren<Light>();
+    //    if (light != null) light.enabled = IsActive;
+    //    var meshRend = MeshObject.GetComponentInChildren<MeshRenderer>();
+    //    if (meshRend != null)
+    //    {
+    //        var mat = meshRend.sharedMaterials[meshRend.sharedMaterials.Length - 1];
+    //        Color color = Color.black;
+    //        if (mat.HasProperty("_TintColor"))
+    //            color = mat.GetColor("_TintColor");
+    //        color.a = !activeStatus ? 0 : 1;
+
+    //        meshRend.sharedMaterials[meshRend.sharedMaterials.Length - 1].SetColor("_TintColor", color);
+    //    }
+    //    var skinMeshRend = MeshObject.GetComponentInChildren<SkinnedMeshRenderer>();
+    //    if (skinMeshRend != null)
+    //    {
+    //        var mat = skinMeshRend.sharedMaterials[skinMeshRend.sharedMaterials.Length - 1];
+    //        Color color = Color.black;
+    //        if (mat.HasProperty("_TintColor"))
+    //            color = mat.GetColor("_TintColor");
+
+    //        color.a = !activeStatus ? 0 : 1;
+    //        skinMeshRend.sharedMaterials[skinMeshRend.sharedMaterials.Length - 1].SetColor("_TintColor", color);
+    //    }
+    //}
+
+    public void UpdateColor(Color color)
     {
         if (MeshObject == null) return;
-        var particles = MeshObject.GetComponentsInChildren<ParticleSystem>();
-        foreach (var ps in particles)
-        {
-            if (activeStatus) ps.Play();
-            else ps.Stop();
-        }
-        var light = MeshObject.GetComponentInChildren<Light>();
-        if (light != null) light.enabled = IsActive;
-        var meshRend = MeshObject.GetComponentInChildren<MeshRenderer>();
-        if (meshRend != null)
-        {
-            var mat = meshRend.sharedMaterials[meshRend.sharedMaterials.Length - 1];
-            Color color = Color.black;
-            if (mat.HasProperty("_TintColor"))
-                color = mat.GetColor("_TintColor");
-            color.a = !activeStatus ? 0 : 1;
+        var hsv = ME_ColorHelper.ColorToHSV(color);
+        ME_ColorHelper.ChangeObjectColorByHUE(MeshObject, hsv.H);
+    }
 
-            meshRend.sharedMaterials[meshRend.sharedMaterials.Length - 1].SetColor("_TintColor", color);
-        }
-        var skinMeshRend = MeshObject.GetComponentInChildren<SkinnedMeshRenderer>();
-        if (skinMeshRend != null)
-        {
-            var mat = skinMeshRend.sharedMaterials[skinMeshRend.sharedMaterials.Length - 1];
-            Color color = Color.black;
-            if (mat.HasProperty("_TintColor"))
-                color = mat.GetColor("_TintColor");
-
-            color.a = !activeStatus ? 0 : 1;
-            skinMeshRend.sharedMaterials[skinMeshRend.sharedMaterials.Length - 1].SetColor("_TintColor", color);
-        }
+    public void UpdateColor(float HUE)
+    {
+        if (MeshObject == null) return;
+        ME_ColorHelper.ChangeObjectColorByHUE(MeshObject, HUE);
     }
 
     public void UpdateMeshEffect()
@@ -86,6 +107,7 @@ public class PSMeshRendererUpdater : MonoBehaviour
         var ps = GetComponentsInChildren<ParticleSystem>();
         var meshRend = go.GetComponentInChildren<MeshRenderer>();
         var skinMeshRend = go.GetComponentInChildren<SkinnedMeshRenderer>();
+        var lights = GetComponentsInChildren<Light>();
         foreach (var particleSys in ps)
         {
             particleSys.transform.gameObject.SetActive(false);
@@ -96,39 +118,46 @@ public class PSMeshRendererUpdater : MonoBehaviour
                 {
                     sh.shapeType = ParticleSystemShapeType.MeshRenderer;
                     sh.meshRenderer = meshRend;
+                    
                 }
                 if (skinMeshRend != null)
                 {
                     sh.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
                     sh.skinnedMeshRenderer = skinMeshRend;
+                   
                 }
             }
             particleSys.transform.gameObject.SetActive(true);
         }
+        if (meshRend != null) foreach (var light1 in lights) light1.transform.position = meshRend.bounds.center;
+        if (skinMeshRend != null) foreach (var light1 in lights) light1.transform.position = skinMeshRend.bounds.center;
+
     }
 
     private void AddMaterialToMesh(GameObject go)
     {
-        var meshMatEffect = GetComponentInChildren<WFX_MeshMaterialEffect>();
+        var meshMatEffect = GetComponentInChildren<ME_MeshMaterialEffect>();
         if (meshMatEffect == null) return;
 
-        var meshRenderers = go.GetComponentsInChildren<MeshRenderer>();
-        var skinMeshRenderers = go.GetComponentsInChildren<SkinnedMeshRenderer>();
+        var meshRenderer = go.GetComponentInChildren<MeshRenderer>();
+        var skinMeshRenderer = go.GetComponentInChildren<SkinnedMeshRenderer>();
 
-        foreach (var meshRenderer in meshRenderers)
+        // foreach (var meshRenderer in meshRenderers)
+        if (meshRenderer != null)
         {
             rendererMaterials.Add(meshRenderer.sharedMaterials);
             meshRenderer.sharedMaterials = AddToSharedMaterial(meshRenderer.sharedMaterials, meshMatEffect);
         }
 
-        foreach (var skinMeshRenderer in skinMeshRenderers)
+       // foreach (var skinMeshRenderer in skinMeshRenderers)
+        if(skinMeshRenderer!=null)
         {
             skinnedMaterials.Add(skinMeshRenderer.sharedMaterials);
             skinMeshRenderer.sharedMaterials = AddToSharedMaterial(skinMeshRenderer.sharedMaterials, meshMatEffect);
         }
     }
 
-    Material[] AddToSharedMaterial(Material[] sharedMaterials, WFX_MeshMaterialEffect meshMatEffect)
+    Material[] AddToSharedMaterial(Material[] sharedMaterials, ME_MeshMaterialEffect meshMatEffect)
     {
         if (meshMatEffect.IsFirstMaterial) return new[] { meshMatEffect.Material };
         var materials = sharedMaterials.ToList();
@@ -143,7 +172,7 @@ public class PSMeshRendererUpdater : MonoBehaviour
 
     void OnDestroy()
     {
-        Activation(true);
+        //Activation(true);
         if (MeshObject == null) return;
         var meshRenderers = MeshObject.GetComponentsInChildren<MeshRenderer>();
         var skinMeshRenderers = MeshObject.GetComponentsInChildren<SkinnedMeshRenderer>();

@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Effects/WeaponFX/SlimeMobile" {
+Shader "KriptoFX/ME/SlimeMobile" {
 	Properties{
 			_TintColor("Main Color", Color) = (1,1,1,1)
 			_MainTex("Base (RGB) Emission Tex (A)", 2D) = "white" {}

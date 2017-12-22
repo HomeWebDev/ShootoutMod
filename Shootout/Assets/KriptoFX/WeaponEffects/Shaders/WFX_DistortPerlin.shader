@@ -1,7 +1,6 @@
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Effects/WeaponFX/DistortPerlin" {
+Shader "KriptoFX/ME/DistortPerlin" {
 	Properties{
 			_TintColor("Main Color", Color) = (1,1,1,1)
 			_RimColor("Rim Color", Color) = (1,1,1,0.5)
@@ -62,9 +61,9 @@ Shader "Effects/WeaponFX/DistortPerlin" {
 						half4 vertex : POSITION;
 						half2 uv_BumpMap : TEXCOORD0;
 						half4 grab : TEXCOORD1;
-						half3 normal: TEXCOORD2;
 						half3 viewDir : TEXCOORD3;
 						fixed4 color : COLOR;
+						half4 localPos : TEXCOORD4;
 					};
 
 					v2f vert(appdata_full v)
@@ -100,8 +99,7 @@ Shader "Effects/WeaponFX/DistortPerlin" {
 
 						o.uv_BumpMap = TRANSFORM_TEX(v.texcoord, _BumpMap) + _Time.xx * _Speed.xy * _DropWavesScale;
 						o.color = v.color;
-						o.normal = v.normal;
-
+						o.localPos = v.vertex;
 						o.viewDir = normalize(ObjSpaceViewDir(v.vertex));
 						return o;
 					}
@@ -109,8 +107,13 @@ Shader "Effects/WeaponFX/DistortPerlin" {
 					fixed4 frag(v2f i) : COLOR
 					{
 						fixed3 normal = UnpackNormal(tex2D(_BumpMap, i.uv_BumpMap));
+						#ifdef UNITY_UV_STARTS_AT_TOP
+							half3 n = normalize(cross(ddx(i.localPos.xyz), ddy(i.localPos.xyz) * _ProjectionParams.x ));
+						#else
+							half3 n = normalize(cross(ddx(i.localPos.xyz), -ddy(i.localPos.xyz) * _ProjectionParams.x ));
+						#endif
 
-						half fresnelRim = saturate(1 - dot(i.normal, i.viewDir));
+						half fresnelRim = saturate(1 - dot(n, i.viewDir));
 						fresnelRim = pow(fresnelRim, _FPOW);
 						fresnelRim = saturate(_R0 + (1.0 - _R0) * fresnelRim);
 						fresnelRim = fresnelRim*fresnelRim + fresnelRim;
@@ -118,7 +121,7 @@ Shader "Effects/WeaponFX/DistortPerlin" {
 						half2 offset = normal.rg * _BumpAmt * _GrabTexture_TexelSize.xy * i.color.a;
 						i.grab.xy = offset * i.grab.z + i.grab.xy;
 						half4 col = tex2Dproj(_GrabTexture, UNITY_PROJ_COORD(i.grab));
-						half3 emission = _RimColor * _LightColor0.rgb * _LightColor0.w * 2 * i.color.rgb;
+						half3 emission = _RimColor * i.color.rgb * 2;
 						emission = lerp(col.xyz * _TintColor.xyz, col.xyz * emission + emission / 2, saturate(fresnelRim));
 						return fixed4(emission, _TintColor.a * i.color.a);
 					}
