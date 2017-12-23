@@ -11,9 +11,13 @@ public class LoadOnClick : MonoBehaviour
     //}
 
     //// Update is called once per frame
-    //void Update () {
-
-    //}
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LoaderScene");
+        }
+    }
 
     //public void LoadScene(int level)
     //{

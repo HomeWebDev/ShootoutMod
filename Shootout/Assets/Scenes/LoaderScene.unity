@@ -19553,6 +19553,7 @@ MonoBehaviour:
   UseNewMoveWithAstar: 0
   GeneratePathToPlayer: 0
   MovePathToPlayer: 0
+  UpdatePostionNew: 0
   moveGap: 1
   LookAtposition: {x: 0, y: 0, z: 0}
   FoundPathVector: []
