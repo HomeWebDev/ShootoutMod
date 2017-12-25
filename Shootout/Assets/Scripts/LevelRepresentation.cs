@@ -7,7 +7,7 @@ public class LevelRepresentation : MonoBehaviour {
     public int roomArrayX = 5;
     public int roomArrayZ = 5;
     public int blockedPercentage = 10;
-    public int minNumberOfRooms = 5;
+    public int minNumberOfRooms = 20;
 
     private int itemRoomX;
     private int itemRoomZ;

@@ -71,7 +71,7 @@ public class StreamVideo : MonoBehaviour {
         videoPlayer.Play();
 
         //Play Sound
-        audioSource.Play();
+        //audioSource.Play();
 
         Debug.Log("Playing Video");
         while (videoPlayer.isPlaying)

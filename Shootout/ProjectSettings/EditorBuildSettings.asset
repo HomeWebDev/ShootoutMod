@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: 0ec4c031a5aa13d4c8d79bd002855235
   - enabled: 1
+    path: Assets/Scenes/HeroSelectionScene.unity
+    guid: 0fadc0ee3accc79419c59cb0ce2b31a0
+  - enabled: 1
     path: Assets/Scenes/IntroSceneOld.unity
     guid: 59ef09f59cabd7e44ae66fb36983fd3d
   - enabled: 1

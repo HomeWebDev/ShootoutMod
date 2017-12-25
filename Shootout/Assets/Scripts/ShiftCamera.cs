@@ -224,8 +224,10 @@ public class ShiftCamera : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("EnterTrigger");
-        GameObject player1 = GameObject.Find("Player1");
-        GameObject player2 = GameObject.Find("Player2");
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        //GameObject player2 = GameObject.Find("Player2");
+
+        //Debug.Log("Player1: " + player1);
 
         if (other.tag == "Player1")
         { 
@@ -473,7 +475,7 @@ public class ShiftCamera : MonoBehaviour {
     // Use this for initialization
     void Start () {
         levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
-        player1 = GameObject.Find("Player1");
+        player1 = GameObject.FindGameObjectWithTag("Player1");
     }
 	
 	

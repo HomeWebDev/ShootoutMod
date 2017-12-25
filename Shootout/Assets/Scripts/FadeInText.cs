@@ -8,13 +8,10 @@ public class FadeInText : MonoBehaviour {
     public float waitTime;
     public float fadeTime;
 
-
 	// Use this for initialization
 	void Start () {
 
         StartCoroutine(FadeIn());
-
-
     }
 
     IEnumerator FadeIn()

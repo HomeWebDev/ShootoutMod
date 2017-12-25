@@ -64,8 +64,8 @@ public class LevelController : MonoBehaviour {
 
     private void PositionPlayersAndCamera()
     {
-        GameObject player1 = GameObject.Find("Player1");
-        GameObject player2 = GameObject.Find("Player2");
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        //GameObject player2 = GameObject.Find("Player2");
 
         //Always start in center room
         int iPosition = levelRepresentation.RoomArray.GetLength(1) / 2;
@@ -76,7 +76,7 @@ public class LevelController : MonoBehaviour {
         Vector3 player1Position = new Vector3(xPosition, 0, zPosition);
 
         player1.transform.position = player1Position;
-        player2.transform.position = player1Position;
+        //player2.transform.position = player1Position;
 
         Vector3 cameraPosition = new Vector3(xPosition, Camera.main.transform.position.y, zPosition - 4.2f);
         Camera.main.transform.position = cameraPosition;

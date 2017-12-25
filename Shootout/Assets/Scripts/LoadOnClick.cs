@@ -15,7 +15,7 @@ public class LoadOnClick : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LoaderScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("HeroSelectionScene");
         }
     }
 

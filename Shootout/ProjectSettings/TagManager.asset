@@ -23,6 +23,8 @@ TagManager:
   - Arrow
   - HeadGear
   - BackGear
+  - IntroSoundPlayer
+  - CharacterText
   layers:
   - Default
   - TransparentFX

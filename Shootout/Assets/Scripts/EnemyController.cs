@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour {
         controller = (CharacterController)(GetComponent(typeof(CharacterController)));
 
 
-        player1 = GameObject.Find("Player1");
+        player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.Find("Player2");
     }
 
