@@ -14,7 +14,7 @@ public class HeroSelector : MonoBehaviour {
     private float shiftRate = 0.25f;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
 
         playerList = new List<GameObject>();
 
@@ -30,9 +30,9 @@ public class HeroSelector : MonoBehaviour {
 
         SetCharacterText();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (Input.GetKey(KeyCode.RightArrow) && Time.time > nextShift)
         {
             nextShift = Time.time + shiftRate;
@@ -61,8 +61,21 @@ public class HeroSelector : MonoBehaviour {
         player1.GetComponent<HeroController>().enabled = true;
         DontDestroyOnLoad(player1);
 
+        SceneManager.LoadScene("LoadLevelScene");
 
-        SceneManager.LoadScene("LevelScene");
+        //StartCoroutine(LoadAsyncronously());
+    }
+
+    IEnumerator LoadAsyncronously()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync("LoadLevelScene");
+
+        while (!operation.isDone)
+        {
+            Debug.Log(operation.progress);
+
+            yield return null;
+        }
     }
 
     private void SetCharacterText()

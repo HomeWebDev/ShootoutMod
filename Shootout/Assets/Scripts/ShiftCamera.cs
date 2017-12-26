@@ -31,6 +31,12 @@ public class ShiftCamera : MonoBehaviour {
             levelController.OpenDoors();
         }
 
+        if (Input.GetKey(KeyCode.X))
+        {
+            //StartCoroutine(LoadAsyncronously());
+            SceneManager.LoadScene("LoadLevelScene");
+        }
+
 
         int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
         int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
@@ -158,6 +164,21 @@ public class ShiftCamera : MonoBehaviour {
         else
         {
             Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.01f);
+        }
+    }
+
+    IEnumerator LoadAsyncronously()
+    {
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync("LoadLevelScene");
+
+        
+
+        while (!operation.isDone)
+        {
+            Debug.Log(operation.progress);
+
+            yield return null;
         }
     }
 

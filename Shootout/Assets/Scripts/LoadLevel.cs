@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadLevel : MonoBehaviour {
 
-    public GameObject crate1;
+    private int nextLevel;
 
     // Use this for initialization
     void Start () {
+        nextLevel = GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel;
 
-        GenerateLevel();
+        Text text = GameObject.FindGameObjectWithTag("LoadingLevelText").GetComponent<Text>();
+        text.text = "Loading Level " + nextLevel;
 
-        SceneManager.LoadScene("LevelScene");
+        GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel++;
+
+        StartCoroutine(DelayedSceneLoadStart());
     }
 
-	private void GenerateLevel()
+    IEnumerator DelayedSceneLoadStart()
     {
-        GameObject crate = Instantiate(crate1, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene("LevelScene" + nextLevel);
     }
 
     // Update is called once per frame

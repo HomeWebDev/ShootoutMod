@@ -25,6 +25,8 @@ TagManager:
   - BackGear
   - IntroSoundPlayer
   - CharacterText
+  - ProgressController
+  - LoadingLevelText
   layers:
   - Default
   - TransparentFX
