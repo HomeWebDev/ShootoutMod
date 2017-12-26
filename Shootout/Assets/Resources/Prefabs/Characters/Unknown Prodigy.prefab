@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 114889901701916088}
   - component: {fileID: 114615053043694470}
   m_Layer: 0
-  m_Name: Naked Prodigy
+  m_Name: Unknown Prodigy
   m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
