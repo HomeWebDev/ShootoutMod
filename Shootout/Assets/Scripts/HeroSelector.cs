@@ -58,7 +58,7 @@ public class HeroSelector : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("IntroSoundPlayer"));
 
         GameObject player1 = playerList[currentInt];
-        player1.GetComponent<HeroController>().enabled = true;
+        //player1.GetComponent<HeroController>().enabled = true;
         DontDestroyOnLoad(player1);
 
         SceneManager.LoadScene("LoadLevelScene");

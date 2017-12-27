@@ -34,6 +34,7 @@ public class ShiftCamera : MonoBehaviour {
         if (Input.GetKey(KeyCode.X))
         {
             //StartCoroutine(LoadAsyncronously());
+            player1.GetComponent<HeroController>().enabled = false;
             SceneManager.LoadScene("LoadLevelScene");
         }
 

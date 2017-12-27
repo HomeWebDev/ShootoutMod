@@ -28,15 +28,11 @@ public class LevelController : MonoBehaviour {
 
     void Awake()
     {
-
-
         GenerateLevel();
 
         OpenDoors();
 
         PositionPlayersAndCamera();
-
-
 
         //Debug.Log("This was run");
     }
@@ -86,6 +82,15 @@ public class LevelController : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
+        StartCoroutine(DelayedAllowMovement());
+    }
+
+    IEnumerator DelayedAllowMovement()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        player1.GetComponent<HeroController>().enabled = true;
     }
 
     // Update is called once per frame

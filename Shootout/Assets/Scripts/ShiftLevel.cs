@@ -19,7 +19,10 @@ public class ShiftLevel : MonoBehaviour {
     {
         if (other.tag == "Player1")
         {
+            other.GetComponent<HeroController>().enabled = false;
+
             SceneManager.LoadScene("LoadLevelScene");
         }  
     }
+
 }
