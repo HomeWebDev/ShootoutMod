@@ -22,6 +22,7 @@ public class LevelController : MonoBehaviour {
     private GameObject Fences;
     private GameObject Obstacles;
     private string groundPrefab;
+    public GameObject WayPoint;
 
     List<GameObject> obstacleList = new List<GameObject>();
 
@@ -195,6 +196,7 @@ public class LevelController : MonoBehaviour {
                     {
                         //Debug.Log("Bossroom");
                         AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                        AddWaypoint(i, j);
                     }
 
                     if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.ItemLevel1)
@@ -324,6 +326,15 @@ public class LevelController : MonoBehaviour {
         {
             GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x + 9.3f, 0, z), Quaternion.Euler(-90, 270, 0)) as GameObject;
         }
+    }
+
+    private void AddWaypoint(int i, int j)
+    {
+        int x = j * scaleX;
+        int z = i * scaleZ;
+
+        WayPoint = Instantiate(Resources.Load("Prefabs/Environment/Waypoint", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        WayPoint.SetActive(false);
     }
 
     private void GenerateRoom(Room room, int i, int j)

@@ -55,14 +55,14 @@ public class StreamVideo : MonoBehaviour {
         WaitForSeconds waitTime = new WaitForSeconds(0.4f);
         while (!videoPlayer.isPrepared)
         {
-            Debug.Log("Preparing Video");
+            //Debug.Log("Preparing Video");
             yield return waitTime;
             break;
         }
 
         GetComponent<RawImage>().color = new Color(255, 255, 255);
 
-        Debug.Log("Done Preparing Video");
+        //Debug.Log("Done Preparing Video");
 
         //Assign the Texture from Video to RawImage to be displayed
         image.texture = videoPlayer.texture;
@@ -73,7 +73,7 @@ public class StreamVideo : MonoBehaviour {
         //Play Sound
         //audioSource.Play();
 
-        Debug.Log("Playing Video");
+        //Debug.Log("Playing Video");
         while (videoPlayer.isPlaying)
         {
             Debug.LogWarning("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));

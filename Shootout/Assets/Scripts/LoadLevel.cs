@@ -10,10 +10,14 @@ public class LoadLevel : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        player1.transform.position = new Vector3(0, 0, 0);
+
         nextLevel = GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel;
 
-        Text text = GameObject.FindGameObjectWithTag("LoadingLevelText").GetComponent<Text>();
-        text.text = "Loading Level " + nextLevel;
+        TextMesh textMesh = GameObject.FindGameObjectWithTag("LoadingLevelText").GetComponent<TextMesh>();
+        textMesh.text = "Loading Level " + nextLevel;
 
         GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel++;
 
@@ -23,7 +27,7 @@ public class LoadLevel : MonoBehaviour {
     IEnumerator DelayedSceneLoadStart()
     {
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene("LevelScene" + nextLevel);
+        SceneManager.LoadScene("LevelScene");// + nextLevel);
     }
 
     // Update is called once per frame

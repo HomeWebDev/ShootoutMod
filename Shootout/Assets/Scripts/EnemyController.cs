@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour {
     public Vector3 currentvector = Vector3.zero;
     public float smoothTime = 0.2f;
     public float maxSpeed = 7f;
+    public bool IsBoss;
 
 
     private GameObject player1;
@@ -296,6 +297,11 @@ public class EnemyController : MonoBehaviour {
 
         if (health <= 0)
         {
+            if (IsBoss)
+            {
+                GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().WayPoint.SetActive(true);
+            }
+
             Destroy(gameObject);
 
             CheckDoorsOpen();
