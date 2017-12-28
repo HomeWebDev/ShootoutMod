@@ -27,19 +27,23 @@ public class EnemyController : MonoBehaviour {
     public float smoothTime = 0.2f;
     public float maxSpeed = 7f;
     public bool IsBoss;
+    private int maxHealth;
+    public UltimateStatusBar healthStatusBar;
 
 
     private GameObject player1;
-    private GameObject player2;
+    //private GameObject player2;
 
     // Use this for initialization
     void Start()
     {
+        maxHealth = health;
+
         controller = (CharacterController)(GetComponent(typeof(CharacterController)));
 
 
         player1 = GameObject.FindGameObjectWithTag("Player1");
-        player2 = GameObject.Find("Player2");
+        //player2 = GameObject.Find("Player2");
     }
 
     // Update is called once per frame
@@ -294,6 +298,8 @@ public class EnemyController : MonoBehaviour {
     public void TakeDamage(int damageValue)
     {
         health -= damageValue;
+
+        healthStatusBar.UpdateStatus(health, maxHealth);
 
         if (health <= 0)
         {
