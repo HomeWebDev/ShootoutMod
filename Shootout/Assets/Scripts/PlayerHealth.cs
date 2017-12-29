@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Class used to handle player health
@@ -13,10 +14,20 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public Slider shieldSlider;
 
+    private float maxHealth;
+    public UltimateStatusBar healthStatusBar;
+
     // Use this for initialization
     void Start()
     {
         //shieldSlider.value = shield;
+
+        maxHealth = health;
+
+        healthStatusBar.screenSpaceOptions.xRatio = maxHealth / 1000;
+        healthStatusBar.UpdatePositioning();
+
+        healthStatusBar.UpdateStatus(health, maxHealth);
     }
 
     /// <summary>
@@ -66,15 +77,33 @@ public class PlayerHealth : MonoBehaviour
         //else
         //    health -= amount;
 
-        //healthSlider.value = health;
-        //shieldSlider.value = shield;
+        health -= amount;
 
-        //if (health <= 0)
-        //{
-        //    //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-        //    //render.enabled = false;
-        //    PlayerKilled();
-        //}
+        healthStatusBar.UpdateStatus(health, maxHealth);
+
+        if (health <= 0)
+        {
+            GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+            Destroy(player1);
+            GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
+            Destroy(progressController);
+            SceneManager.LoadScene("IntroScene");
+        }
+
+
+        //Example to increase length of health bar
+        //healthStatusBar.screenSpaceOptions.xRatio = 1f;
+        //healthStatusBar.UpdatePositioning();
+
+            //healthSlider.value = health;
+            //shieldSlider.value = shield;
+
+            //if (health <= 0)
+            //{
+            //    //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+            //    //render.enabled = false;
+            //    PlayerKilled();
+            //}
     }
 
             /// <summary>
