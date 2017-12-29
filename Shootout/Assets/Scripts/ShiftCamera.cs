@@ -12,7 +12,7 @@ public class ShiftCamera : MonoBehaviour {
     private bool buzyShifting = false;
     private System.Random rand = new System.Random();
     private LevelController levelController;
-    GameObject player1;
+    private GameObject player1;
 
     // Update is called once per frame
     private void Update()
@@ -37,7 +37,6 @@ public class ShiftCamera : MonoBehaviour {
             player1.GetComponent<HeroController>().enabled = false;
             SceneManager.LoadScene("LoadLevelScene");
         }
-
 
         int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
         int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;

@@ -28,6 +28,7 @@ TagManager:
   - ProgressController
   - LoadingLevelText
   - Waypoint
+  - PauseCanvas
   layers:
   - Default
   - TransparentFX
