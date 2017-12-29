@@ -39,6 +39,8 @@ public class EnemyController : MonoBehaviour {
     {
         maxHealth = health;
 
+        healthStatusBar.UpdateStatus(health, maxHealth);
+
         controller = (CharacterController)(GetComponent(typeof(CharacterController)));
 
 
