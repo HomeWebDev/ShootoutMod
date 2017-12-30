@@ -96,20 +96,15 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger(takeDamageHash);
         }
 
+        //healthSlider.value = health;
+        //shieldSlider.value = shield;
 
-        //Example to increase length of health bar
-        //healthStatusBar.screenSpaceOptions.xRatio = 1f;
-        //healthStatusBar.UpdatePositioning();
-
-            //healthSlider.value = health;
-            //shieldSlider.value = shield;
-
-            //if (health <= 0)
-            //{
-            //    //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-            //    //render.enabled = false;
-            //    PlayerKilled();
-            //}
+        //if (health <= 0)
+        //{
+        //    //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+        //    //render.enabled = false;
+        //    PlayerKilled();
+        //}
     }
 
     private void Die()

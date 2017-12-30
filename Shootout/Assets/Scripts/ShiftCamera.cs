@@ -345,18 +345,7 @@ public class ShiftCamera : MonoBehaviour {
 
         Vector3 enemyPosition = new Vector3(xPosCentered, 0, zPosCentered);
 
-        if (rand.NextDouble() > 0.67)
-        {
-            GameObject greenBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
-        }
-        else if (rand.NextDouble() > 0.50)
-        {
-            GameObject pinkBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
-        }
-        else
-        {
-            GameObject redBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
-        }
+        InstantiateEnemies(enemyPosition);
 
         //GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
 
@@ -393,6 +382,50 @@ public class ShiftCamera : MonoBehaviour {
             {
                 SpawnEnemiesInAllConnectedRooms(zThisRoom, xThisRoom + 1);
             }
+        }
+    }
+
+    private void InstantiateEnemies(Vector3 enemyPosition)
+    {
+        if(rand.NextDouble() > 0.50)
+        {
+            InstantiateBats(enemyPosition);
+        }
+        else
+        {
+            InstantiateGhosts(enemyPosition);
+        }
+    }
+
+    private void InstantiateBats(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.67)
+        {
+            GameObject greenBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.50)
+        {
+            GameObject pinkBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject redBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+    }
+
+    private void InstantiateGhosts(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.67)
+        {
+            GameObject greenBat = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.50)
+        {
+            GameObject pinkBat = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject redBat = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
     }
 
