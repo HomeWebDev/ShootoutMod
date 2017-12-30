@@ -729,7 +729,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110205590}
-  m_Solo: 0
+  m_Solo: 1
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
@@ -8356,8 +8356,6 @@ AnimatorStateMachine:
   - first: {fileID: 0}
     second:
     - {fileID: 1109654129706439180}
-  - first: {fileID: 110745516}
-    second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -768, y: -348, z: 0}
   m_EntryPosition: {x: 360, y: 12, z: 0}

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseController : MonoBehaviour {
 
     public GameObject pauseCanvas;
+    public GameObject gameOverCanvas;
+    private bool gameOver = false;
 
     // Use this for initialization
     void Start () {
@@ -14,7 +16,7 @@ public class PauseController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOver)
         {
             Pause();
         }
@@ -36,14 +38,24 @@ public class PauseController : MonoBehaviour {
         }
     }
 
+    public void GameOver()
+    {
+        gameOver = true;
+        gameOverCanvas.SetActive(true);
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+    }
+
     public void BackToMainMenu()
     {
+        gameOver = false;
+        Time.timeScale = 1;
+        SceneManager.LoadScene("IntroScene");
+        AudioListener.pause = false;
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
         Destroy(player1);
         GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
         Destroy(progressController);
-
-        SceneManager.LoadScene("IntroScene");
     }
 
     public void ExitGame()

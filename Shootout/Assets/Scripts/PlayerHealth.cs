@@ -17,6 +17,10 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth;
     public UltimateStatusBar healthStatusBar;
 
+    private Animator animator;
+    private int takeDamageHash = Animator.StringToHash("Take Damage");
+    private int dieHash = Animator.StringToHash("Die");
+
     // Use this for initialization
     void Start()
     {
@@ -28,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
         healthStatusBar.UpdatePositioning();
 
         healthStatusBar.UpdateStatus(health, maxHealth);
+
+        animator = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -83,11 +89,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
-            Destroy(player1);
-            GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
-            Destroy(progressController);
-            SceneManager.LoadScene("IntroScene");
+            Die();
+        }
+        else
+        {
+            animator.SetTrigger(takeDamageHash);
         }
 
 
@@ -104,6 +110,23 @@ public class PlayerHealth : MonoBehaviour
             //    //render.enabled = false;
             //    PlayerKilled();
             //}
+    }
+
+    private void Die()
+    {
+        animator.SetTrigger(dieHash);
+
+        GameObject.FindGameObjectWithTag("Player1").GetComponent<HeroController>().enabled = false;
+
+        StartCoroutine(DelayedGameOverMenu());
+    }
+
+    IEnumerator DelayedGameOverMenu()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        gameController.GetComponent<PauseController>().GameOver();
     }
 
             /// <summary>
