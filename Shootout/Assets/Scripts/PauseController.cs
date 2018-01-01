@@ -50,12 +50,15 @@ public class PauseController : MonoBehaviour {
     {
         gameOver = false;
         Time.timeScale = 1;
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("HeroSelectionScene");
         AudioListener.pause = false;
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
         Destroy(player1);
         GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
         Destroy(progressController);
+
+        GameObject introMusicPlayer = Instantiate(Resources.Load("Prefabs/Music/IntroSoundPlayer") as GameObject);
+        DontDestroyOnLoad(introMusicPlayer);
     }
 
     public void ExitGame()

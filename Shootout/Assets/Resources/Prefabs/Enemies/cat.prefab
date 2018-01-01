@@ -3346,6 +3346,7 @@ GameObject:
   - component: {fileID: 143703634897081558}
   - component: {fileID: 65685251105086328}
   - component: {fileID: 54845000394794134}
+  - component: {fileID: 114412224513321214}
   m_Layer: 0
   m_Name: cat
   m_TagString: Enemy
@@ -7614,7 +7615,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339135195479940}
-  m_LocalRotation: {x: 0.04034817, y: -0.17224142, z: 0.6517837, w: 0.7374843}
+  m_LocalRotation: {x: 0.040348165, y: -0.1722414, z: 0.65178365, w: 0.7374842}
   m_LocalPosition: {x: 0.10629454, y: 0.39675346, z: -0.19422723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9773,6 +9774,7 @@ MonoBehaviour:
   maxSpeed: 7
   IsBoss: 1
   healthStatusBar: {fileID: 114635915532215738}
+  damageController: {fileID: 114412224513321214}
 --- !u!114 &114301900785559070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9819,6 +9821,17 @@ MonoBehaviour:
   secondsDelay: 0.2
   resetSensitivity: 0.1
   fillSpeed: 0.5
+--- !u!114 &114412224513321214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644225061688358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114557659085504770
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 114321367424539278}
   - component: {fileID: 114390473028693432}
   - component: {fileID: 114649359319285026}
+  - component: {fileID: 114313394748126748}
   m_Layer: 0
   m_Name: Toon Ghost-Blue
   m_TagString: Enemy
@@ -672,6 +673,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114313394748126748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774693905116170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114321367424539278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -700,6 +712,7 @@ MonoBehaviour:
   maxSpeed: 2
   IsBoss: 0
   healthStatusBar: {fileID: 114995046863962540}
+  damageController: {fileID: 114313394748126748}
 --- !u!114 &114376618152628748
 MonoBehaviour:
   m_ObjectHideFlags: 1

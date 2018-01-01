@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114647196744638540}
   - component: {fileID: 114118979341082496}
   - component: {fileID: 114223929529181082}
+  - component: {fileID: 114646780220555744}
   m_Layer: 0
   m_Name: Toon Bat-Pink
   m_TagString: Enemy
@@ -884,6 +885,17 @@ MonoBehaviour:
   secondsDelay: 0.2
   resetSensitivity: 0.1
   fillSpeed: 0.5
+--- !u!114 &114646780220555744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114647196744638540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -912,6 +924,7 @@ MonoBehaviour:
   maxSpeed: 7
   IsBoss: 0
   healthStatusBar: {fileID: 114422508473651938}
+  damageController: {fileID: 114646780220555744}
 --- !u!114 &114818325834367244
 MonoBehaviour:
   m_ObjectHideFlags: 1

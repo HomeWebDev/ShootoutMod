@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour {
     public bool IsBoss;
     private int maxHealth;
     public UltimateStatusBar healthStatusBar;
+    public DamageController damageController;
 
 
     private GameObject player1;
@@ -302,6 +303,7 @@ public class EnemyController : MonoBehaviour {
         health -= damageValue;
 
         healthStatusBar.UpdateStatus(health, maxHealth);
+        damageController.TakeDamage();
 
         if (health <= 0)
         {
@@ -310,17 +312,35 @@ public class EnemyController : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().WayPoint.SetActive(true);
             }
 
-            Destroy(gameObject);
+            damageController.Die();
 
-            CheckDoorsOpen();
-        } 
+            maxSpeed = 0;
+            speed = 0;
+
+            //Destroy(gameObject);
+
+            StartCoroutine(DelayedDelete());
+
+            //
+
+            tag = "Untagged";
+        }
+    }
+
+    IEnumerator DelayedDelete()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        Destroy(gameObject);
+
+        CheckDoorsOpen();
     }
 
     private void CheckDoorsOpen()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (enemies.Length <= 1)
+        if (enemies.Length <= 0)
         {
             GameObject levelController = GameObject.FindGameObjectWithTag("LevelController");
             levelController.GetComponent<LevelController>().OpenDoors();

@@ -1,9 +1,9 @@
 fileFormatVersion: 2
 guid: f7691fac9d2cca0439850f4964b64a9b
-timeCreated: 1447408099
+timeCreated: 1514813711
 licenseType: Free
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: Arrow
     100002: Bow
@@ -52,6 +52,18 @@ ModelImporter:
     100088: RigCape3Gizmo
     100090: RigNeck1
     100092: RigNeck2
+    100094: Armature
+    100096: Camera
+    100098: Cube
+    100100: Dummy-BowString_end
+    100102: Lamp
+    100104: RigCape3_end
+    100106: RigHead_end
+    100108: RigLLegFoot1_end
+    100110: RigLLegPlatform_end
+    100112: RigRArmPalm_end
+    100114: RigRLegFoot1_end
+    100116: RigRLegPlatform_end
     400000: Arrow
     400002: Bow
     400004: Dummy-Arrow
@@ -99,37 +111,61 @@ ModelImporter:
     400088: RigCape3Gizmo
     400090: RigNeck1
     400092: RigNeck2
+    400094: Armature
+    400096: Camera
+    400098: Cube
+    400100: Dummy-BowString_end
+    400102: Lamp
+    400104: RigCape3_end
+    400106: RigHead_end
+    400108: RigLLegFoot1_end
+    400110: RigLLegPlatform_end
+    400112: RigRArmPalm_end
+    400114: RigRLegFoot1_end
+    400116: RigRLegPlatform_end
+    2100000: Material
+    2100002: 01 - Default
     2300000: Arrow
     2300002: Bow
     2300004: Toon Skeleton Archer
+    2300006: Cube
     3300000: Arrow
     3300002: Bow
     3300004: Toon Skeleton Archer
+    3300006: Cube
     4300000: Arrow
     4300002: Bow
     4300004: Toon Skeleton Archer
+    4300006: Cube
     9500000: //RootNode
     13700000: Bow
     13700002: Toon Skeleton Archer
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -137,13 +173,18 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 1
     importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -151,24 +192,30 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

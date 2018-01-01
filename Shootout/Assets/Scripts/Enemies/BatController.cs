@@ -88,10 +88,19 @@ public class BatController : MonoBehaviour {
     public void SoundwaveAttackStartedEvent()
     {
         Soundwave.SetActive(true);
+
+        StartCoroutine(DelayedEndSoundwaveAttack());
     }
 
-    public void SoundwaveAttackEndedEvent()
+    IEnumerator DelayedEndSoundwaveAttack()
     {
+        yield return new WaitForSeconds(1.5f);
+
         Soundwave.SetActive(false);
     }
+
+    //public void SoundwaveAttackEndedEvent()
+    //{
+    //    Soundwave.SetActive(false);
+    //}
 }

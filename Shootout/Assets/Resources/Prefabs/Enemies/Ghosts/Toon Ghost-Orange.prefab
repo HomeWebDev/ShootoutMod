@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 114100993354144812}
   - component: {fileID: 114323223159078674}
   - component: {fileID: 114976923577306084}
+  - component: {fileID: 114353898089801826}
   m_Layer: 0
   m_Name: Toon Ghost-Orange
   m_TagString: Enemy
@@ -724,9 +725,10 @@ MonoBehaviour:
   BlockList: []
   currentvector: {x: 0, y: 0, z: 0}
   smoothTime: 0.2
-  maxSpeed: 7
+  maxSpeed: 4
   IsBoss: 0
   healthStatusBar: {fileID: 114916442839568762}
+  damageController: {fileID: 114353898089801826}
 --- !u!114 &114253841031770694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -767,6 +769,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPattern: 2
   AttackDistance: 2
+--- !u!114 &114353898089801826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378101446017010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114637486643587918
 MonoBehaviour:
   m_ObjectHideFlags: 1

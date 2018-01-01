@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 114070839637677542}
   - component: {fileID: 114841024606854992}
   - component: {fileID: 114029997721712132}
+  - component: {fileID: 114746640857050182}
   m_Layer: 0
   m_Name: Toon Bat-Red
   m_TagString: Enemy
@@ -738,6 +739,7 @@ MonoBehaviour:
   maxSpeed: 7
   IsBoss: 0
   healthStatusBar: {fileID: 114184936692304760}
+  damageController: {fileID: 114746640857050182}
 --- !u!114 &114120162476781876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -867,6 +869,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114746640857050182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114841024606854992
 MonoBehaviour:
   m_ObjectHideFlags: 1

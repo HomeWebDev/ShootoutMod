@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114247831467772348}
   - component: {fileID: 114431495060920988}
   - component: {fileID: 114334841849107958}
+  - component: {fileID: 114852510856214972}
   m_Layer: 0
   m_Name: Toon Bat-Green
   m_TagString: Enemy
@@ -743,6 +744,7 @@ MonoBehaviour:
   maxSpeed: 7
   IsBoss: 0
   healthStatusBar: {fileID: 114635910727225182}
+  damageController: {fileID: 114852510856214972}
 --- !u!114 &114334841849107958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -912,6 +914,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114852510856214972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114925652258147836
 MonoBehaviour:
   m_ObjectHideFlags: 1

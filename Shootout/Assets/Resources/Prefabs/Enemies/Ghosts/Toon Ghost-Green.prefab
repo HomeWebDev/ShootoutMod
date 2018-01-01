@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 114571674894110698}
   - component: {fileID: 114334436017043320}
   - component: {fileID: 114682204979133860}
+  - component: {fileID: 114092061036393374}
   m_Layer: 0
   m_Name: Toon Ghost-Green
   m_TagString: Enemy
@@ -699,6 +700,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114092061036393374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647733965839110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f79905104859c42b44310ce350766a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114241359936175368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -839,9 +851,10 @@ MonoBehaviour:
   BlockList: []
   currentvector: {x: 0, y: 0, z: 0}
   smoothTime: 0.2
-  maxSpeed: 7
+  maxSpeed: 3
   IsBoss: 0
   healthStatusBar: {fileID: 114479688514499734}
+  damageController: {fileID: 114092061036393374}
 --- !u!114 &114682204979133860
 MonoBehaviour:
   m_ObjectHideFlags: 1
