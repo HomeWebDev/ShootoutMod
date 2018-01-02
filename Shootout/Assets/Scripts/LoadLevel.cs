@@ -8,6 +8,11 @@ public class LoadLevel : MonoBehaviour {
 
     private int nextLevel;
 
+    private List<string> levelStringList = new List<string> { "Grass Plains", "Flower Field", "Friendly Forest", "Stony Forest", "Autumn", "Late Autumn",
+                                                              "Stone and Sand", "Sand", "More Sand", "Desert", "Drought", "Metal", "Pavement", "More Pavement",
+                                                              "Rock", "Tiles", "Stones", "Cracked Stone", "Less Cracked Stone", "Stone", "Dirt", "Ash",
+                                                              "Indoor Pavement", "Further Indoor Pavement", "Bricks", "Indoor", "Snow", "Ice", "Water", "Lava"};
+
     private void Awake()
     {
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
@@ -21,7 +26,8 @@ public class LoadLevel : MonoBehaviour {
         nextLevel = GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel;
 
         TextMesh textMesh = GameObject.FindGameObjectWithTag("LoadingLevelText").GetComponent<TextMesh>();
-        textMesh.text = "Loading Level " + nextLevel;
+        //textMesh.text = "Loading Level " + nextLevel;
+        textMesh.text = levelStringList[nextLevel-1];
 
         GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel++;
 

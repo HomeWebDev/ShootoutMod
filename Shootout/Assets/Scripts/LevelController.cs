@@ -106,7 +106,13 @@ public class LevelController : MonoBehaviour {
         //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
 
         int groundId = Random.Range(1, 31);
+
+        GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
+        groundId = progressController.GetComponent<ProgressController>().NextLevel - 1;
+
         groundPrefab = "Prefabs/Environment/Grounds/Ground" + groundId;
+
+
 
 
         wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
