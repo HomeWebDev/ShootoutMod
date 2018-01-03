@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour {
 
     private List<GameObject> fenceList = new List<GameObject>();
-    private LevelRepresentation levelRepresentation = new LevelRepresentation();
+    private LevelRepresentation levelRepresentation;// = new LevelRepresentation();
     public int scaleX = 17;
     public int scaleZ = 12;
     public List<BoundsInt> RoomData;
@@ -28,6 +28,9 @@ public class LevelController : MonoBehaviour {
 
     void Awake()
     {
+        levelRepresentation = GetComponent<LevelRepresentation>();
+        levelRepresentation.CreateRoomArray();
+
         GenerateLevel();
 
         OpenDoors();
@@ -111,9 +114,6 @@ public class LevelController : MonoBehaviour {
         groundId = progressController.GetComponent<ProgressController>().NextLevel - 1;
 
         groundPrefab = "Prefabs/Environment/Grounds/Ground" + groundId;
-
-
-
 
         wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
 

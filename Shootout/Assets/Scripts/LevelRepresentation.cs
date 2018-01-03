@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LevelRepresentation : MonoBehaviour {
 
-    public int roomArrayX = 5;
-    public int roomArrayZ = 5;
-    public int blockedPercentage = 10;
-    public int minNumberOfRooms = 20;
+    private int roomArrayX = 21;
+    private int roomArrayZ = 21;
+    private int blockedPercentage = 10;
+    private int minNumberOfRooms;
+    private int nrOfRoomsMultiplierPerLevel = 3;
 
     private int itemRoomX;
     private int itemRoomZ;
@@ -35,24 +36,28 @@ public class LevelRepresentation : MonoBehaviour {
         Any
     };
 
-    public LevelRepresentation()
-    {
-        //CreateRoomArray();
-
-        CreateRandomRoomArray();
-    }
-
-
     // Use this for initialization
     void Start () {
-        
+
     }
 
     public ContentType[,] ContentArray { get; set; }
     public Room[,] RoomArray { get; set; }
 
+    public void CreateRoomArray()
+    {
+        GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
+        int levelID = progressController.GetComponent<ProgressController>().NextLevel - 1;
+
+        minNumberOfRooms = levelID * nrOfRoomsMultiplierPerLevel;
+
+        //Debug.Log("Level: " + levelID + "rooms: " + minNumberOfRooms);
+
+        CreateRandomRoomArray();
+    }
+
     //For test, creates simple room layout
-    private void CreateRoomArray()
+    private void CreateBasicRoomArray()
     {
         //RoomArray = new Room[3, 3]
         //{
@@ -99,8 +104,8 @@ public class LevelRepresentation : MonoBehaviour {
 
             //Create first room
             RoomArray[roomArrayZ / 2, roomArrayX / 2] = GetRandomStartRoom();
+            int nrOfOpenPathsFromStartRoom = GetNumberOfOpenPaths(RoomArray[roomArrayZ / 2, roomArrayX / 2]);
             //RoomArray[roomArrayZ / 2, roomArrayX / 2] = new Room() { EastWallOpen = true };
-
 
             int currentRoomX = roomArrayX / 2;
             int currentRoomZ = roomArrayZ / 2;
@@ -120,7 +125,14 @@ public class LevelRepresentation : MonoBehaviour {
                             {
                                 if (RoomArray[i - 1, j].NoRoom)
                                 {
-                                    RoomArray[i - 1, j] = GetRandomRoomThatFits(i - 1, j);
+                                    if (numberOfRooms + nrOrOpenPaths > minNumberOfRooms + nrOfOpenPathsFromStartRoom)
+                                    {
+                                        RoomArray[i - 1, j] = GetRandomRoomThatFits(i - 1, j, true);
+                                    }
+                                    else
+                                    {
+                                        RoomArray[i - 1, j] = GetRandomRoomThatFits(i - 1, j, false);
+                                    }
                                     ContentArray[i - 1, j] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
@@ -132,7 +144,14 @@ public class LevelRepresentation : MonoBehaviour {
                             {
                                 if (RoomArray[i + 1, j].NoRoom)
                                 {
-                                    RoomArray[i + 1, j] = GetRandomRoomThatFits(i + 1, j);
+                                    if (numberOfRooms + nrOrOpenPaths > minNumberOfRooms + nrOfOpenPathsFromStartRoom)
+                                    {
+                                        RoomArray[i + 1, j] = GetRandomRoomThatFits(i + 1, j, true);
+                                    }
+                                    else
+                                    {
+                                        RoomArray[i + 1, j] = GetRandomRoomThatFits(i + 1, j, false);
+                                    }
                                     ContentArray[i + 1, j] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
@@ -144,7 +163,14 @@ public class LevelRepresentation : MonoBehaviour {
                             {
                                 if (RoomArray[i, j - 1].NoRoom)
                                 {
-                                    RoomArray[i, j - 1] = GetRandomRoomThatFits(i, j - 1);
+                                    if (numberOfRooms + nrOrOpenPaths > minNumberOfRooms + nrOfOpenPathsFromStartRoom)
+                                    {
+                                        RoomArray[i, j - 1] = GetRandomRoomThatFits(i, j - 1, true);
+                                    }
+                                    else
+                                    {
+                                        RoomArray[i, j - 1] = GetRandomRoomThatFits(i, j - 1, false);
+                                    }
                                     ContentArray[i, j - 1] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
@@ -156,7 +182,14 @@ public class LevelRepresentation : MonoBehaviour {
                             {
                                 if (RoomArray[i, j + 1].NoRoom)
                                 {
-                                    RoomArray[i, j + 1] = GetRandomRoomThatFits(i, j + 1);
+                                    if (numberOfRooms + nrOrOpenPaths > minNumberOfRooms + nrOfOpenPathsFromStartRoom)
+                                    {
+                                        RoomArray[i, j + 1] = GetRandomRoomThatFits(i, j + 1, true);
+                                    }
+                                    else
+                                    {
+                                        RoomArray[i, j + 1] = GetRandomRoomThatFits(i, j + 1, false);
+                                    }
                                     ContentArray[i, j + 1] = ContentType.EnemyLevel1;
                                     nrOrOpenPaths++;
                                     numberOfRooms++;
@@ -188,6 +221,30 @@ public class LevelRepresentation : MonoBehaviour {
             RoomArray[itemRoomZ, itemRoomX] = GetItemRoom(itemRoomZ, itemRoomX);
             ContentArray[itemRoomZ, itemRoomX] = ContentType.ItemLevel1;
         }
+    }
+
+    private int GetNumberOfOpenPaths(Room room)
+    {
+        int nrOfPaths = 0;
+        
+        if(room.NorthDoorOpen)
+        {
+            nrOfPaths++;
+        }
+        if (room.SouthDoorOpen)
+        {
+            nrOfPaths++;
+        }
+        if (room.WestDoorOpen)
+        {
+            nrOfPaths++;
+        }
+        if (room.EastDoorOpen)
+        {
+            nrOfPaths++;
+        }
+
+        return nrOfPaths;
     }
 
     private bool FindSuitableItemRoomLocation()
@@ -411,7 +468,7 @@ public class LevelRepresentation : MonoBehaviour {
         return room;
     }
 
-    private Room GetRandomRoomThatFits(int z, int x)
+    private Room GetRandomRoomThatFits(int z, int x, bool closeRoom)
     {
         bool northDoor = false;
         bool southDoor = false;
@@ -437,7 +494,14 @@ public class LevelRepresentation : MonoBehaviour {
             northDoor = RoomArray[z - 1, x].SouthDoorOpen;
 			if(RoomArray[z - 1, x].NoRoom)
 			{
-				northWallStatus = WallStatus.Any;
+                if(closeRoom)
+                {
+                    northWallStatus = WallStatus.CantBeOpen;
+                }
+                else
+                {
+                    northWallStatus = WallStatus.Any;
+                }
 			}
 			else if(RoomArray[z - 1, x].SouthWallOpen)
 			{
@@ -453,7 +517,14 @@ public class LevelRepresentation : MonoBehaviour {
             southDoor = RoomArray[z + 1, x].NorthDoorOpen;
 			if(RoomArray[z + 1, x].NoRoom)
 			{
-				southWallStatus = WallStatus.Any;
+                if (closeRoom)
+                {
+                    southWallStatus = WallStatus.CantBeOpen;
+                }
+                else
+                {
+                    southWallStatus = WallStatus.Any;
+                }
 			}
 			else if(RoomArray[z + 1, x].NorthWallOpen)
 			{
@@ -469,7 +540,14 @@ public class LevelRepresentation : MonoBehaviour {
             westDoor = RoomArray[z, x - 1].EastDoorOpen;
 			if(RoomArray[z, x - 1].NoRoom)
 			{
-				westWallStatus = WallStatus.Any;
+                if (closeRoom)
+                {
+                    westWallStatus = WallStatus.CantBeOpen;
+                }
+                else
+                {
+                    westWallStatus = WallStatus.Any;
+                }
 			}
 			else if(RoomArray[z, x - 1].EastWallOpen)
 			{
@@ -485,7 +563,14 @@ public class LevelRepresentation : MonoBehaviour {
             eastDoor = RoomArray[z, x + 1].WestDoorOpen;
 			if(RoomArray[z, x + 1].NoRoom)
 			{
-				eastWallStatus = WallStatus.Any;
+                if (closeRoom)
+                {
+                    eastWallStatus = WallStatus.CantBeOpen;
+                }
+                else
+                {
+                    eastWallStatus = WallStatus.Any;
+                }
 			}
 			else if(RoomArray[z, x + 1].WestWallOpen)
 			{
