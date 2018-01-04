@@ -63,7 +63,7 @@ public class HeroController : MonoBehaviour
     private Vector3 movement;
     private Equipment ActiveEq;
 
-
+    private PlayerStamina playerStamina;
 
     // Use this for initialization
     void Start()
@@ -73,7 +73,7 @@ public class HeroController : MonoBehaviour
         animator = GetComponent<Animator>();
         ActiveEq = GetComponent<Equipment>();
 
-
+        playerStamina = GetComponent<PlayerStamina>();
 
     }
     void Awake()
@@ -111,6 +111,7 @@ public class HeroController : MonoBehaviour
     {
         Punch,
         Melee1,
+        Melee1Throw,
         Melee2,
         Melee2Throw,
         Melee3,
@@ -419,6 +420,27 @@ public class HeroController : MonoBehaviour
         //}
     }
 
+    public void Melee1ThrowEvent()
+    {
+        //Test: Throwing all one-handed axes
+        //if (weaponType == WeaponType.Axe)
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        {
+            rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+            rangedForce = melee1ThrowForce;
+
+            if (playerStamina.DepleteStamina(10))
+            {
+                ThrowWeapon();
+            }
+
+        }
+    }
+
     public void Melee2ThrowEvent()
     {
         //Test: Throwing all one-handed axes
@@ -431,7 +453,12 @@ public class HeroController : MonoBehaviour
         {
             rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
             rangedForce = melee1ThrowForce;
-            ThrowWeapon();
+
+            if (playerStamina.DepleteStamina(10))
+            {
+                ThrowWeapon();
+            }
+            
         }
     }
 
