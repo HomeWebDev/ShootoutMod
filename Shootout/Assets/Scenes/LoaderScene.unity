@@ -692,7 +692,7 @@ MonoBehaviour:
   attackSpeed: 15
   rotationDamping: 20
   longbowForce: 30
-  melee1ThrowForce: 20
+  melee1ThrowForce: 30
   currentWeaponHash: 0
 --- !u!143 &71965476
 CharacterController:
@@ -6188,7 +6188,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100460, guid: 80950c97aadbea1428736ac146e79755, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431495060920988, guid: 80950c97aadbea1428736ac146e79755,
+        type: 2}
+      propertyPath: AgroDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114247831467772348, guid: 80950c97aadbea1428736ac146e79755,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80950c97aadbea1428736ac146e79755, type: 2}

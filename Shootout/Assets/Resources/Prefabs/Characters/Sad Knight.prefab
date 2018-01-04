@@ -1728,8 +1728,8 @@ MonoBehaviour:
   upAttackButton: P1AttackUp
   downAttackButton: P1AttackDown
   meleeAttackActive: 0
-  movementSpeed: 15
-  attackSpeed: 15
+  movementSpeed: 20
+  attackSpeed: 20
   rotationDamping: 20
   longbowForce: 30
   melee1ThrowForce: 20
@@ -1834,7 +1834,7 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 6
+  AttackAnimation: 7
   AttackAnimationHash: 0
 --- !u!114 &114512123865401952
 MonoBehaviour:
@@ -2233,8 +2233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.65002, y: 165.21692}
-  m_SizeDelta: {x: 98.700005, y: 13.16}
+  m_AnchoredPosition: {x: -278.8, y: 164.77246}
+  m_SizeDelta: {x: 98.4, y: 13.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224881973302690758
 RectTransform:
@@ -2253,8 +2253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.65002, y: 178.41998}
-  m_SizeDelta: {x: 98.700005, y: 13.16}
+  m_AnchoredPosition: {x: -278.8, y: 177.94}
+  m_SizeDelta: {x: 98.4, y: 13.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224888361719379906
 RectTransform:

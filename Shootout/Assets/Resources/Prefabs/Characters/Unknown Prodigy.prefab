@@ -1640,7 +1640,7 @@ MonoBehaviour:
   downAttackButton: P1AttackDown
   meleeAttackActive: 0
   movementSpeed: 15
-  attackSpeed: 15
+  attackSpeed: 10
   rotationDamping: 20
   longbowForce: 30
   melee1ThrowForce: 20
