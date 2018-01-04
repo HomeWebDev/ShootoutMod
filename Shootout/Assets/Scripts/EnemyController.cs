@@ -201,20 +201,25 @@ public class EnemyController : MonoBehaviour {
                                         player1.transform.position.z - transform.position.z);
 
         //look forwards
-        if (movement != Vector3.zero && MovePathToPlayer)
-        {
-            transform.LookAt(movement);
-            //transform.rotation = Quaternion.Slerp(transform.rotation,
-            //                        Quaternion.LookRotation(LookAtposition),
-            //                        Time.deltaTime * rotationDamping);
+        //if (movement != Vector3.zero && MovePathToPlayer)
+        //{
+        //    transform.LookAt(movement);
+        //    //transform.rotation = Quaternion.Slerp(transform.rotation,
+        //    //                        Quaternion.LookRotation(LookAtposition),
+        //    //                        Time.deltaTime * rotationDamping);
 
-        }
-        else
-        {
-            Vector3 neutralLookAtPlayerPosition = new Vector3(player1.transform.position.x, 1, player1.transform.position.z);
-            transform.LookAt(neutralLookAtPlayerPosition);
-            //transform.LookAt(player1.transform);
-        }
+        //}
+        //else
+        //{
+        //    //Vector3 neutralLookAtPlayerPosition = new Vector3(player1.transform.position.x, 1, player1.transform.position.z);
+        //    //transform.LookAt(neutralLookAtPlayerPosition);
+        //    transform.LookAt(LookAtposition);
+        //    //transform.LookAt(player1.transform);
+        //}
+
+        //Temporary fix, always look at player to avoid strange behaviour when switching between if-else above
+        Vector3 neutralLookAtPlayerPosition = new Vector3(player1.transform.position.x, 1, player1.transform.position.z);
+        transform.LookAt(neutralLookAtPlayerPosition);
     }
 
     void Walk()

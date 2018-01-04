@@ -58,6 +58,11 @@ public class ArrowDamage : MonoBehaviour {
             enemy.TakeDamage(damageImpact);
         }
 
+        if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Boundary")
+        {
+            Destroy(gameObject);
+        }
+
         //Destroy arrow
         //Destroy(gameObject);
     }
