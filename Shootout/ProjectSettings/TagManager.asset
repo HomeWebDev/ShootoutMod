@@ -29,6 +29,7 @@ TagManager:
   - LoadingLevelText
   - Waypoint
   - PauseCanvas
+  - Obstacle
   layers:
   - Default
   - TransparentFX

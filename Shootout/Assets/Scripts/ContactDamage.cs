@@ -28,7 +28,8 @@ public class ContactDamage : MonoBehaviour {
                 EnemyController enemy = other.GetComponent<EnemyController>();
                 enemy.TakeDamage(damageImpact);
             }
-            else if(other.tag == "Boundary")
+
+            if(tag == "Arrow" && (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Boundary"))
             {
                 Destroy(gameObject);
             }

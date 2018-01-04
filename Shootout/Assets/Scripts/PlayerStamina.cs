@@ -56,4 +56,9 @@ public class PlayerStamina : MonoBehaviour {
             return false;
         }
     }
+
+    public void SetMaxStamina()
+    {
+        Stamina = maxStamina;
+    }
 }

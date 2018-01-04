@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65578139378096318}
   m_Layer: 0
   m_Name: SouthWallWestCorner
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65823750016431764}
   m_Layer: 0
   m_Name: SouthWallEast3
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 65349818406261664}
   m_Layer: 0
   m_Name: SouthWallWest4
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 65585268822477562}
   m_Layer: 0
   m_Name: SouthWallEastCorner
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 65639834104745646}
   m_Layer: 0
   m_Name: SouthWallEast2
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 65270000154522440}
   m_Layer: 0
   m_Name: SouthWallWest2
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 65642985836853886}
   m_Layer: 0
   m_Name: SouthWallWest3
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 65504336004461224}
   m_Layer: 0
   m_Name: SouthWallWest1
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 65141899036582626}
   m_Layer: 0
   m_Name: SouthWallEast1
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 65502585204180950}
   m_Layer: 0
   m_Name: SouthWallEast4
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

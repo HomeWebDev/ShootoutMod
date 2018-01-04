@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65829284866301080}
   m_Layer: 0
   m_Name: EastWallSouth2
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65902399485207528}
   m_Layer: 0
   m_Name: EastWallNorth2
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 65367949356324692}
   m_Layer: 0
   m_Name: EastWallSouth1
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 65647628152124890}
   m_Layer: 0
   m_Name: EastWallSouthCorner
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 65866503013423736}
   m_Layer: 0
   m_Name: EastWallNorth1
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 65736506292940766}
   m_Layer: 0
   m_Name: EastWallNorthCorner
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

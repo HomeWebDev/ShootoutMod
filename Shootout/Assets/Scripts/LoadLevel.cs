@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class LoadLevel : MonoBehaviour {
 
     private int nextLevel;
+    private GameObject player1;
 
     private List<string> levelStringList = new List<string> { "Grass Plains", "Flower Field", "Friendly Forest", "Stony Forest", "Autumn", "Late Autumn",
                                                               "Stone and Sand", "Sand", "More Sand", "Desert", "Drought", "Metal", "Pavement", "More Pavement",
@@ -15,7 +16,7 @@ public class LoadLevel : MonoBehaviour {
 
     private void Awake()
     {
-        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        player1 = GameObject.FindGameObjectWithTag("Player1");
         player1.transform.position = new Vector3(0, 0, 0);
         player1.GetComponent<HeroController>().enabled = false;
     }
@@ -39,7 +40,9 @@ public class LoadLevel : MonoBehaviour {
     IEnumerator DelayedSceneLoadStart()
     {
         yield return new WaitForSeconds(0.1f);
-        //SceneManager.LoadScene("LevelScene");// + nextLevel);
+
+        player1.GetComponent<PlayerStamina>().SetMaxStamina();
+
         SceneManager.LoadSceneAsync("LevelScene");
     }
 

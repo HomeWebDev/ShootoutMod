@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 114563727053900344}
   m_Layer: 0
   m_Name: NorthDoor
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
