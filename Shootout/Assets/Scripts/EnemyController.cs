@@ -211,7 +211,9 @@ public class EnemyController : MonoBehaviour {
         }
         else
         {
-            transform.LookAt(player1.transform);
+            Vector3 neutralLookAtPlayerPosition = new Vector3(player1.transform.position.x, 1, player1.transform.position.z);
+            transform.LookAt(neutralLookAtPlayerPosition);
+            //transform.LookAt(player1.transform);
         }
     }
 
