@@ -2205,6 +2205,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 35908614}
   shieldSlider: {fileID: 1542549406}
+  healthStatusBar: {fileID: 0}
 --- !u!114 &375141249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4313,6 +4314,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
+  healthStatusBar: {fileID: 0}
 --- !u!114 &769704547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7723,6 +7725,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d57dd91bd4b9af14b885bef2bfd7e612, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1371370769
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000052432114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.6961422
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944238427682682, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+      propertyPath: m_RootOrder
+      value: 52
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 52afeed68c32fb74b98b960836dd2dca, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1379047673
 Prefab:
   m_ObjectHideFlags: 0
@@ -11083,6 +11127,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 1443604800}
   shieldSlider: {fileID: 2117781475}
+  healthStatusBar: {fileID: 0}
 --- !u!114 &1903224004
 MonoBehaviour:
   m_ObjectHideFlags: 0

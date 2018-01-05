@@ -26,6 +26,7 @@ public class LevelRepresentation : MonoBehaviour {
         BossLevel1,
         EnemyLevel1,
         ItemLevel1,
+        HiddenRoom,
         EnemiesSpawned
     };
 	
@@ -220,6 +221,13 @@ public class LevelRepresentation : MonoBehaviour {
         {
             RoomArray[itemRoomZ, itemRoomX] = GetItemRoom(itemRoomZ, itemRoomX);
             ContentArray[itemRoomZ, itemRoomX] = ContentType.ItemLevel1;
+        }
+
+        //Create hidden pathway
+        if (FindSuitableItemRoomLocation())
+        {
+            RoomArray[itemRoomZ, itemRoomX] = GetItemRoom(itemRoomZ, itemRoomX);
+            ContentArray[itemRoomZ, itemRoomX] = ContentType.HiddenRoom;
         }
     }
 

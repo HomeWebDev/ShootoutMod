@@ -209,11 +209,15 @@ public class LevelController : MonoBehaviour {
                         AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
                         AddWaypoint(i, j);
                     }
-
                     if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.ItemLevel1)
                     {
-                        //Debug.Log("Bossroom");
+                        //Debug.Log("Itemroom");
                         AddItems(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                    }
+                    if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.HiddenRoom)
+                    {
+                        //Debug.Log("Hidden room");
+                        AddHiddenDoor(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
                     }
                 }
             }
@@ -316,6 +320,29 @@ public class LevelController : MonoBehaviour {
         item4.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
     }
 
+    private void AddHiddenDoor(Room room, int i, int j)
+    {
+        int x = j * scaleX;
+        int z = i * scaleZ;
+
+        if (room.NorthDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 03a", typeof(GameObject)), new Vector3(x, 0, z + 6.0f), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        }
+        if (room.SouthDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 03a", typeof(GameObject)), new Vector3(x, 0, z - 6.0f), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        }
+        if (room.WestDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 03b", typeof(GameObject)), new Vector3(x - 8.5f, 0, z), Quaternion.Euler(-90, 270, 0)) as GameObject;
+        }
+        if (room.EastDoorOpen)
+        {
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/Obstacles/Wall Rock 03b", typeof(GameObject)), new Vector3(x + 8.5f, 0, z), Quaternion.Euler(-90, 90, 0)) as GameObject;
+        }
+    }
+
     private void AddBossEntrance(Room room, int i, int j)
     {
         int x = j * scaleX;
@@ -331,11 +358,11 @@ public class LevelController : MonoBehaviour {
         }
         if (room.WestDoorOpen)
         {
-            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x - 9.3f, 0, z), Quaternion.Euler(-90, 90, 0)) as GameObject;
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x - 9.3f, 0, z), Quaternion.Euler(-90, 270, 0)) as GameObject;
         }
         if (room.EastDoorOpen)
         {
-            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x + 9.3f, 0, z), Quaternion.Euler(-90, 270, 0)) as GameObject;
+            GameObject bossEntrance = Instantiate(Resources.Load("Prefabs/Environment/BossEntrance", typeof(GameObject)), new Vector3(x + 9.3f, 0, z), Quaternion.Euler(-90, 90, 0)) as GameObject;
         }
     }
 
