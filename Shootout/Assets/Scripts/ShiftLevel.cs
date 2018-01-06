@@ -21,7 +21,16 @@ public class ShiftLevel : MonoBehaviour {
         {
             other.GetComponent<HeroController>().enabled = false;
 
-            SceneManager.LoadScene("LoadLevelScene");
+            int nextLevel = GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel;
+
+            if(nextLevel == 5)
+            {
+                SceneManager.LoadScene("LoadLevelScene");
+            }
+            else
+            {
+                SceneManager.LoadScene("EndingScene");
+            }
         }  
     }
 

@@ -403,7 +403,6 @@ public class LevelController : MonoBehaviour {
 
         //Instantiate(obstacleList[obstacleIndex], new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0));
 
-
         if (rand.Next(100) > 50)
         {
             for (int l = 0; l < obstacleDensity; l++)

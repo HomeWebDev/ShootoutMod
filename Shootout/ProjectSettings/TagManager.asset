@@ -30,6 +30,7 @@ TagManager:
   - Waypoint
   - PauseCanvas
   - Obstacle
+  - EndingText
   layers:
   - Default
   - TransparentFX
