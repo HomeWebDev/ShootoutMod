@@ -13,6 +13,7 @@ public class ShiftCamera : MonoBehaviour {
     private System.Random rand = new System.Random();
     private LevelController levelController;
     private GameObject player1;
+    private bool alreadyLoaded = false;
 
     // Update is called once per frame
     private void Update()
@@ -37,6 +38,13 @@ public class ShiftCamera : MonoBehaviour {
             player1.GetComponent<HeroController>().enabled = false;
             SceneManager.LoadScene("LoadLevelScene");
         }
+
+        //if (Input.GetKey(KeyCode.V) && !alreadyLoaded)
+        //{
+        //    alreadyLoaded = true;
+        //    Debug.Log("Loading");
+        //    SaveLoad.Load();
+        //}
 
         int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
         int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
@@ -530,6 +538,8 @@ public class ShiftCamera : MonoBehaviour {
     void Start () {
         levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
         player1 = GameObject.FindGameObjectWithTag("Player1");
+
+        Collectibles.current = new Collectibles();
     }
 	
 	

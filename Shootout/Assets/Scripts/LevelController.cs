@@ -217,7 +217,10 @@ public class LevelController : MonoBehaviour {
                     if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.HiddenRoom)
                     {
                         //Debug.Log("Hidden room");
-                        AddHiddenDoor(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                        if (!Collectibles.current.collectibleItemsList.Where(item => item.name == "ForestCleared").FirstOrDefault().collected)
+                        {
+                            AddHiddenDoor(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                        }
                     }
                 }
             }

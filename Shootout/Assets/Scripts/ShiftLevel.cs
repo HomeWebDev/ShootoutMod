@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ShiftLevel : MonoBehaviour {
 
@@ -23,13 +24,17 @@ public class ShiftLevel : MonoBehaviour {
 
             int nextLevel = GameObject.FindGameObjectWithTag("ProgressController").GetComponent<ProgressController>().NextLevel;
 
-            if(nextLevel == 5)
+            if(nextLevel == 6)
             {
-                SceneManager.LoadScene("LoadLevelScene");
+                //Set ForestCleared to true
+                Collectibles.current.collectibleItemsList.Where(i => i.name == "ForestCleared").FirstOrDefault().collected = true;
+                SaveLoad.Save();
+
+                SceneManager.LoadScene("EndingScene");
             }
             else
             {
-                SceneManager.LoadScene("EndingScene");
+                SceneManager.LoadScene("LoadLevelScene");
             }
         }  
     }

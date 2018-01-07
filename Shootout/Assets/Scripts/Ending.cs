@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Ending : MonoBehaviour {
 
@@ -31,6 +32,8 @@ public class Ending : MonoBehaviour {
 
         Destroy(player1);
         Destroy(GameObject.FindGameObjectWithTag("ProgressController"));
+
+
 
         SceneManager.LoadSceneAsync("IntroScene");
     }

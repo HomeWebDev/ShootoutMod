@@ -61,6 +61,9 @@ public class HeroSelector : MonoBehaviour {
         //player1.GetComponent<HeroController>().enabled = true;
         DontDestroyOnLoad(player1);
 
+        SaveLoad.Load();
+        Debug.Log("Loading Data");
+
         SceneManager.LoadScene("LoadLevelScene");
 
         //StartCoroutine(LoadAsyncronously());
