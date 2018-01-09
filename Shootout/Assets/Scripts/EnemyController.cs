@@ -229,7 +229,7 @@ public class EnemyController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary")
+        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Obstacle")
         {
             if (!BlockList.Exists(v => v == collision.gameObject))
                 BlockList.Add(collision.gameObject);
@@ -241,7 +241,7 @@ public class EnemyController : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary")
+        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Obstacle")
         {
             if (!BlockList.Exists(v => v == collision.gameObject))
                 BlockList.Add(collision.gameObject);
@@ -261,7 +261,7 @@ public class EnemyController : MonoBehaviour {
         //    playerHealth.TakeDamage(meleeDamage);
         //}
 
-        if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary")
+        if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary" || other.gameObject.tag == "Obstacle")
         {
             if (!BlockList.Exists(v => v == other.gameObject))
                 BlockList.Add(other.gameObject);
@@ -280,7 +280,7 @@ public class EnemyController : MonoBehaviour {
             PlayerHealth playerHealth = hit.gameObject.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(meleeDamage);
         }
-        if (hit.gameObject.tag == "Crate" || hit.gameObject.tag == "Boundary")
+        if (hit.gameObject.tag == "Crate" || hit.gameObject.tag == "Boundary" || hit.gameObject.tag == "Obstacle")
         {
             if (!BlockList.Exists(v => v == hit.gameObject))
             BlockList.Add(hit.gameObject);
@@ -297,7 +297,7 @@ public class EnemyController : MonoBehaviour {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(meleeDamage);
         }
-        if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary")
+        if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary" || other.gameObject.tag == "Obstacle")
         {
             if (!BlockList.Exists(v => v == other.gameObject))
                 BlockList.Add(other.gameObject);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class HeroSelector : MonoBehaviour {
 
@@ -51,6 +52,17 @@ public class HeroSelector : MonoBehaviour {
         {
             StartGame();
         }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            Debug.Log("ForestCleared: " + Collectibles.current.collectibleItemsList.Where(i => i.name == "ForestCleared").FirstOrDefault().collected);
+        }
+
+        if (Input.GetKey(KeyCode.V))
+        {
+            Debug.Log("LoadingHero");
+            SaveLoad.Load();
+        }
     }
 
     private void StartGame()
@@ -60,9 +72,6 @@ public class HeroSelector : MonoBehaviour {
         GameObject player1 = playerList[currentInt];
         //player1.GetComponent<HeroController>().enabled = true;
         DontDestroyOnLoad(player1);
-
-        SaveLoad.Load();
-        Debug.Log("Loading Data");
 
         SceneManager.LoadScene("LoadLevelScene");
 

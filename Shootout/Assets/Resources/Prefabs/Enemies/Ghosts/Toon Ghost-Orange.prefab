@@ -911,6 +911,7 @@ MonoBehaviour:
   working: 0
   H: 1.5
   MoveCost: 1.5
+  UseOldWayOfColliderFind: 1
 --- !u!137 &137388871733072514
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

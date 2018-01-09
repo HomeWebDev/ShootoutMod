@@ -857,6 +857,7 @@ MonoBehaviour:
   working: 0
   H: 1.5
   MoveCost: 1.5
+  UseOldWayOfColliderFind: 1
 --- !u!114 &114858512902798832
 MonoBehaviour:
   m_ObjectHideFlags: 1

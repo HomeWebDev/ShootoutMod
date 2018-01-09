@@ -94,6 +94,11 @@ public class LevelController : MonoBehaviour {
 
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
         player1.GetComponent<HeroController>().enabled = true;
+
+        //Debug.Log("Loading");
+        //SaveLoad.Save();
+        SaveLoad.Load();
+        
     }
 
     // Update is called once per frame

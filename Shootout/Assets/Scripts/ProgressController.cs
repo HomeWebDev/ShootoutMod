@@ -34,7 +34,7 @@ public class ProgressController : MonoBehaviour
             Debug.Log("ForestCleared: " + Collectibles.current.collectibleItemsList.Where(i => i.name == "ForestCleared").FirstOrDefault().collected);
         }
 
-        if (Input.GetKey(KeyCode.V))// && !alreadyLoaded)
+        if (Input.GetKey(KeyCode.V) && !alreadyLoaded)
         {
             alreadyLoaded = true;
             Debug.Log("Loading");

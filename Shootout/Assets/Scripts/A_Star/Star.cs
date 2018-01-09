@@ -25,7 +25,7 @@ public class Star : MonoBehaviour
     public bool working = false;
     public float H = 1.5f;
     public float MoveCost = 1.5f;
-    private bool UseOldWayOfColliderFind;
+    public bool UseOldWayOfColliderFind;
 
     void Start()
     {
