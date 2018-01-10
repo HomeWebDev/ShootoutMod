@@ -33,8 +33,6 @@ public class Ending : MonoBehaviour {
         Destroy(player1);
         Destroy(GameObject.FindGameObjectWithTag("ProgressController"));
 
-
-
         SceneManager.LoadSceneAsync("IntroScene");
     }
 

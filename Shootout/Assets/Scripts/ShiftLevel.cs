@@ -32,6 +32,48 @@ public class ShiftLevel : MonoBehaviour {
 
                 SceneManager.LoadScene("EndingScene");
             }
+            else if (nextLevel == 11)
+            {
+                //Set ForestCleared to true
+                Collectibles.current.collectibleItemsList.Where(i => i.name == "DesertCleared").FirstOrDefault().collected = true;
+                SaveLoad.Save();
+
+                SceneManager.LoadScene("EndingScene");
+            }
+            else if (nextLevel == 17)
+            {
+                //Set ForestCleared to true
+                Collectibles.current.collectibleItemsList.Where(i => i.name == "CastleGroundsCleared").FirstOrDefault().collected = true;
+                SaveLoad.Save();
+
+                SceneManager.LoadScene("EndingScene");
+            }
+            else if (nextLevel == 27)
+            {
+                //Set ForestCleared to true
+                Collectibles.current.collectibleItemsList.Where(i => i.name == "CastleCleared").FirstOrDefault().collected = true;
+                SaveLoad.Save();
+
+                SceneManager.LoadScene("EndingScene");
+            }
+            else if (nextLevel == 30)
+            {
+                //Set ForestCleared to true
+                Collectibles.current.collectibleItemsList.Where(i => i.name == "MountainCleared").FirstOrDefault().collected = true;
+                SaveLoad.Save();
+
+                SceneManager.LoadScene("EndingScene");
+            }
+            else if (nextLevel == 31)
+            {
+                //Set ForestCleared to true
+                Collectibles.current.collectibleItemsList.Where(i => i.name == "HellCleared").FirstOrDefault().collected = true;
+                SaveLoad.Save();
+
+                SceneManager.LoadScene("EndingScene");
+            }
+
+
             else
             {
                 SceneManager.LoadScene("LoadLevelScene");

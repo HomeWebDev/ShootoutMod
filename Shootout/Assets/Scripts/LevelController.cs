@@ -22,7 +22,9 @@ public class LevelController : MonoBehaviour {
     private GameObject Fences;
     private GameObject Obstacles;
     private string groundPrefab;
+    private int groundId;
     public GameObject WayPoint;
+    public GameObject HiddenWayPoint;
 
     List<GameObject> obstacleList = new List<GameObject>();
 
@@ -113,7 +115,7 @@ public class LevelController : MonoBehaviour {
         //GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
 
-        int groundId = Random.Range(1, 31);
+        groundId = Random.Range(1, 31);
 
         GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
         groundId = progressController.GetComponent<ProgressController>().NextLevel - 1;
@@ -214,7 +216,8 @@ public class LevelController : MonoBehaviour {
                         AddBossEntrance(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
                         AddWaypoint(i, j);
                     }
-                    if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.ItemLevel1)
+                    if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.ItemLevel1 ||
+                        levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.HiddenRoom)
                     {
                         //Debug.Log("Itemroom");
                         AddItems(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
@@ -222,9 +225,15 @@ public class LevelController : MonoBehaviour {
                     if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.HiddenRoom)
                     {
                         //Debug.Log("Hidden room");
-                        if (!Collectibles.current.collectibleItemsList.Where(item => item.name == "ForestCleared").FirstOrDefault().collected)
+                        if (ShouldAddHiddenDoor())
                         {
+                            Debug.Log("Add hidden door");
                             AddHiddenDoor(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
+                        }
+                        else
+                        {
+                            Debug.Log("Add hidden door");
+                            AddHiddenWaypoint(i, j);
                         }
                     }
                 }
@@ -250,6 +259,31 @@ public class LevelController : MonoBehaviour {
         //MergeMeshes(Grounds);
 
         //StaticBatchingUtility.Combine(walls);
+    }
+
+    private bool ShouldAddHiddenDoor()
+    {
+        Debug.Log("ForestCleared: " + Collectibles.current.collectibleItemsList.Where(item => item.name == "ForestCleared").FirstOrDefault().collected);
+        Debug.Log("groundId: " + groundId);
+        if (Collectibles.current.collectibleItemsList.Where(item => item.name == "ForestCleared").FirstOrDefault().collected && groundId == 3)
+        {
+            //If Forest finished open path in Forest level 3 to Desert
+            return false;
+        }
+        if (Collectibles.current.collectibleItemsList.Where(item => item.name == "DesertCleared").FirstOrDefault().collected && groundId == 4)
+        {
+            //If Desert finished open path in Forest level 4 to Castle Grounds
+            return false;
+        }
+        if (Collectibles.current.collectibleItemsList.Where(item => item.name == "CastleCleared").FirstOrDefault().collected && groundId == 9)
+        {
+            //If Castle finished open path in Desert level 3 to Mountains
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private void MergeMeshes(GameObject mergeObject)
@@ -381,6 +415,15 @@ public class LevelController : MonoBehaviour {
 
         WayPoint = Instantiate(Resources.Load("Prefabs/Environment/Waypoint", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0)) as GameObject;
         WayPoint.SetActive(false);
+    }
+
+    private void AddHiddenWaypoint(int i, int j)
+    {
+        int x = j * scaleX;
+        int z = i * scaleZ;
+
+        HiddenWayPoint = Instantiate(Resources.Load("Prefabs/Environment/HiddenWaypoint", typeof(GameObject)), new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        //HiddenWayPoint.SetActive(false);
     }
 
     private void GenerateRoom(Room room, int i, int j)
