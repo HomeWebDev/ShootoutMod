@@ -76,7 +76,7 @@ public class StreamVideo : MonoBehaviour {
         //Debug.Log("Playing Video");
         while (videoPlayer.isPlaying)
         {
-            Debug.LogWarning("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));
+            //Debug.LogWarning("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));
             yield return null;
         }
         //Debug.Log("Done Playing Video");

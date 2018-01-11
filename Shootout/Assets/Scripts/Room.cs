@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour {
+public class Room : ScriptableObject {
 
     public bool NoRoom;
     public bool NorthDoorOpen, SouthDoorOpen, WestDoorOpen, EastDoorOpen;

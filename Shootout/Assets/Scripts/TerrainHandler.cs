@@ -5,7 +5,7 @@ using UnityEngine;
 public class TerrainHandler : MonoBehaviour {
 
     //public int TerrainId;
-    private System.Random rand = new System.Random();
+    //private System.Random rand = new System.Random();
 
     // Use this for initialization
     //void Start () {

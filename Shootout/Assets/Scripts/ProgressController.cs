@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class ProgressController : MonoBehaviour
 {
     public int NextLevel = 1;
-
-
+    private LevelController levelController;
+    private GameObject player1;
 
     //Test for save / load
     private bool alreadyLoaded = false;
+
+    private void Start()
+    {
+        levelController = FindObjectOfType(typeof(LevelController)) as LevelController;
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.B))

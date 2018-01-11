@@ -98,7 +98,10 @@ public class LevelRepresentation : MonoBehaviour {
             {
                 for (int j = 0; j < roomArrayX; j++)
                 {
-                    RoomArray[i, j] = new Room() { NoRoom = true };
+                    //RoomArray[i, j] = new Room() { NoRoom = true };
+                    Room newRoom = (Room)ScriptableObject.CreateInstance(typeof(Room));
+                    newRoom.NoRoom = true;
+                    RoomArray[i, j] = newRoom;
                     ContentArray[i, j] = ContentType.NoContent;
                 }
             }
@@ -364,7 +367,7 @@ public class LevelRepresentation : MonoBehaviour {
         int randPos = rand.Next(directionList.Count);
         string direction = directionList[randPos];
 
-        Room room = new Room();
+        Room room = (Room)ScriptableObject.CreateInstance(typeof(Room));
         room.NorthDoorOpen = false;
         room.SouthDoorOpen = false;
         room.WestDoorOpen = false;
@@ -428,7 +431,7 @@ public class LevelRepresentation : MonoBehaviour {
         int randPos = rand.Next(directionList.Count);
         string direction = directionList[randPos];
 
-        Room room = new Room();
+        Room room = (Room)ScriptableObject.CreateInstance(typeof(Room));
         room.NorthDoorOpen = false;
         room.SouthDoorOpen = false;
         room.WestDoorOpen = false;
@@ -460,8 +463,8 @@ public class LevelRepresentation : MonoBehaviour {
 
     private Room GetRandomStartRoom()
     {
-        Room room = new Room();
-        while(true)
+        Room room = (Room)ScriptableObject.CreateInstance(typeof(Room));
+        while (true)
         {
             room.NorthDoorOpen = rand.NextDouble() > 0.5;
             room.SouthDoorOpen = rand.NextDouble() > 0.5;
@@ -616,7 +619,7 @@ public class LevelRepresentation : MonoBehaviour {
 
     private Room GetRandomRoom(bool northDoor, bool southDoor, bool westDoor, bool eastDoor, bool northBlocked, bool southBlocked, bool westBlocked, bool eastBlocked, WallStatus northWallStatus, WallStatus southWallStatus, WallStatus westWallStatus, WallStatus eastWallStatus)
     {
-        Room room = new Room();
+        Room room = (Room)ScriptableObject.CreateInstance(typeof(Room));
 
         if (northDoor)
         {

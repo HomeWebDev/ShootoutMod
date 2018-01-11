@@ -13,167 +13,150 @@ public class ShiftCamera : MonoBehaviour {
     private System.Random rand = new System.Random();
     private LevelController levelController;
     private GameObject player1;
-    private bool alreadyLoaded = false;
 
     // Update is called once per frame
-    private void Update()
-    {
-        if(player1 == null)
-        {
-            return;
-        }
-        if (levelController == null)
-        {
-            return;
-        }
+  //  private void Update()
+  //  {
+  //      if(player1 == null)
+  //      {
+  //          return;
+  //      }
+  //      if (levelController == null)
+  //      {
+  //          return;
+  //      }
 
-        if (Input.GetKey(KeyCode.N))
-        {
-            levelController.OpenDoors();
-        }
+  //      numberOfUpdates++;
+  //      Debug.Log("numberOfUpdates: " + numberOfUpdates);
 
-        if (Input.GetKey(KeyCode.X))
-        {
-            //StartCoroutine(LoadAsyncronously());
-            player1.GetComponent<HeroController>().enabled = false;
-            SceneManager.LoadScene("LoadLevelScene");
-        }
+  //      int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
+  //      int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
 
-        //if (Input.GetKey(KeyCode.V) && !alreadyLoaded)
-        //{
-        //    alreadyLoaded = true;
-        //    Debug.Log("Loading");
-        //    SaveLoad.Load();
-        //}
+  //      int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
+  //      int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
 
-        int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
-        int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
-
-        int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
-        int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
-
-        float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
-        float zPlayerRelativePos =  zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - player1.transform.position.z / levelController.scaleZ - 1);
+  //      float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
+  //      float zPlayerRelativePos =  zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - player1.transform.position.z / levelController.scaleZ - 1);
 
 
-        //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
+  //      //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
 
-        bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
+  //      bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
 
-        //Debug.Log("xPlayerRoom: " + xPlayerRoom + " , zPlayerRoom: " + zPlayerRoom);
+  //      //Debug.Log("xPlayerRoom: " + xPlayerRoom + " , zPlayerRoom: " + zPlayerRoom);
 
-        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
-        {
-            blockNorth = true;
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].NorthWallOpen)
-                {
-                    blockNorth = false;
-                }
-            }
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].NorthWallOpen)
-                {
-                    blockNorth = false;
-                }
-            }
-        }
-        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
-        {
-            blockSouth = true;
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].SouthWallOpen)
-                {
-                    blockSouth = false;
-                }
-            }
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].SouthWallOpen)
-                {
-                    blockSouth = false;
-                }
-            }
-        }
-        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
-        {
-            blockWest = true;
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].WestWallOpen)
-                {
-                    blockWest = false;
-                }
-            }
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].WestWallOpen)
-                {
-                    blockWest = false;
-                }
-            }
-        }
-        if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
-        {
-            blockEast = true;
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].EastWallOpen)
-                {
-                    blockEast = false;
-                }
-            }
-            if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
-            {
-                if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].EastWallOpen)
-                {
-                    blockEast = false;
-                }
-            }
-        }
+  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+  //      {
+  //          blockNorth = true;
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].NorthWallOpen)
+  //              {
+  //                  blockNorth = false;
+  //              }
+  //          }
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].NorthWallOpen)
+  //              {
+  //                  blockNorth = false;
+  //              }
+  //          }
+  //      }
+  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+  //      {
+  //          blockSouth = true;
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].SouthWallOpen)
+  //              {
+  //                  blockSouth = false;
+  //              }
+  //          }
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].SouthWallOpen)
+  //              {
+  //                  blockSouth = false;
+  //              }
+  //          }
+  //      }
+  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+  //      {
+  //          blockWest = true;
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].WestWallOpen)
+  //              {
+  //                  blockWest = false;
+  //              }
+  //          }
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].WestWallOpen)
+  //              {
+  //                  blockWest = false;
+  //              }
+  //          }
+  //      }
+  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+  //      {
+  //          blockEast = true;
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].EastWallOpen)
+  //              {
+  //                  blockEast = false;
+  //              }
+  //          }
+  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+  //          {
+  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].EastWallOpen)
+  //              {
+  //                  blockEast = false;
+  //              }
+  //          }
+  //      }
 
-        //Debug.Log("" + blockNorth + blockSouth + blockWest + blockEast);
+  //      //Debug.Log("" + blockNorth + blockSouth + blockWest + blockEast);
 
-        Vector3 newCameraPos;
+  //      Vector3 newCameraPos;
 
-        float xPos = player1.transform.position.x;
-        float yPos = Camera.main.transform.position.y;
-        float zPos = player1.transform.position.z - 4.2f;
+  //      float xPos = player1.transform.position.x;
+  //      float yPos = Camera.main.transform.position.y;
+  //      float zPos = player1.transform.position.z - 4.2f;
 		
-		float xPosCentered = xPlayerRoom * levelController.scaleX;
-        float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
+		//float xPosCentered = xPlayerRoom * levelController.scaleX;
+  //      float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
 
-        if (blockNorth & zPlayerRelativePos > 0.5)
-        {
-			zPos = zPosCentered;
-        }
-        if (blockSouth & zPlayerRelativePos < 0.5)
-        {
-			zPos = zPosCentered;
-        }
-        if (blockWest & xPlayerRelativePos < 0.5)
-        {
-			xPos = xPosCentered;
-        }
-        if (blockEast & xPlayerRelativePos > 0.5)
-        {
-			xPos = xPosCentered;
-        }
+  //      if (blockNorth & zPlayerRelativePos > 0.5)
+  //      {
+		//	zPos = zPosCentered;
+  //      }
+  //      if (blockSouth & zPlayerRelativePos < 0.5)
+  //      {
+		//	zPos = zPosCentered;
+  //      }
+  //      if (blockWest & xPlayerRelativePos < 0.5)
+  //      {
+		//	xPos = xPosCentered;
+  //      }
+  //      if (blockEast & xPlayerRelativePos > 0.5)
+  //      {
+		//	xPos = xPosCentered;
+  //      }
 
-        newCameraPos = new Vector3(xPos, yPos, zPos);
+  //      newCameraPos = new Vector3(xPos, yPos, zPos);
 
-        if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
-        {
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 2.0f);
-        }
-        else
-        {
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.01f);
-        }
-    }
+  //      if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
+  //      {
+  //          Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 2.0f);
+  //      }
+  //      else
+  //      {
+  //          Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.01f);
+  //      }
+  //  }
 
     IEnumerator LoadAsyncronously()
     {

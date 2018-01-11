@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 389402272}
   - component: {fileID: 389402271}
   - component: {fileID: 389402276}
+  - component: {fileID: 389402277}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -459,6 +460,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 7e5a109997bc64746b430fe0e46c4c62, type: 2}
+--- !u!114 &389402277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389402270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d674497f7b3e3ce458a1f77c822d880e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FastSpeed: 0.1
+  SlowSpeed: 2
 --- !u!1 &405023710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +1970,7 @@ MonoBehaviour:
   scaleZ: 12
   RoomData: []
   WayPoint: {fileID: 0}
+  HiddenWayPoint: {fileID: 0}
 --- !u!114 &1855270843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,10 +1982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e3366678562f04b8f32bb58f4cadd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomArrayX: 5
-  roomArrayZ: 5
-  blockedPercentage: 10
-  minNumberOfRooms: 20
 --- !u!4 &1855270844
 Transform:
   m_ObjectHideFlags: 0
