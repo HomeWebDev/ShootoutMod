@@ -8,7 +8,7 @@ public class PlayerStamina : MonoBehaviour {
     public float StaminaRegenRate = 1;
     public UltimateStatusBar StaminaStatusBar;
 
-    private float maxStamina;
+    public float maxStamina;
     private float nextUpdate = 0.1f;
 
     // Use this for initialization
@@ -20,9 +20,17 @@ public class PlayerStamina : MonoBehaviour {
 
         StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void UpdateStatusBar()
+    {
+        StaminaStatusBar.screenSpaceOptions.xRatio = maxStamina / 1000;
+        StaminaStatusBar.UpdatePositioning();
+
+        StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         //Regenerate stamina every interval
         if (Time.time >= nextUpdate)

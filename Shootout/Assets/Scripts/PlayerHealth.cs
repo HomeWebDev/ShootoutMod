@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public Slider shieldSlider;
 
-    private float maxHealth;
+    public float maxHealth;
     public UltimateStatusBar healthStatusBar;
 
     private Animator animator;
@@ -34,6 +34,14 @@ public class PlayerHealth : MonoBehaviour
         healthStatusBar.UpdateStatus(health, maxHealth);
 
         animator = GetComponent<Animator>();
+    }
+
+    public void UpdateStatusBar()
+    {
+        healthStatusBar.screenSpaceOptions.xRatio = maxHealth / 1000;
+        healthStatusBar.UpdatePositioning();
+
+        healthStatusBar.UpdateStatus(health, maxHealth);
     }
 
     /// <summary>

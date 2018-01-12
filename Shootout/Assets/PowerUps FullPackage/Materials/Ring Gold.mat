@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ring Gold
+  m_Shader: {fileID: 23, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 631628eb14db94d4e8529c705be23818, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 95391a15d2d734b41bc928e9f1af1549, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 8900000, guid: dc040cde3d92b624ca71f0f6c4d213f5, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: .0163684767
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .147058845, g: .147058845, b: .147058845, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 1, g: .558620572, b: 0, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: 1, g: .64949286, b: .20588237, a: .501960814}

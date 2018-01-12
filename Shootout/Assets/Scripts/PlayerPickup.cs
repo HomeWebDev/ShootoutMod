@@ -93,6 +93,30 @@ public class PlayerPickup : MonoBehaviour {
             PutItemsPlace(ActiveGear.headGear, ActiveGear.Head.transform, 
                 ActiveGear.headGear.GetComponent<GearConfig>().ItemRotation);
         }
+
+        if(other.tag == "Powerup")
+        {
+            //Debug.Log("Powerup");
+            GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+
+            player1.GetComponent<PlayerPowerups>().HealthIncrease += other.GetComponent<PowerupStats>().HealthIncrease;
+            player1.GetComponent<PlayerHealth>().maxHealth += other.GetComponent<PowerupStats>().HealthIncrease;
+            player1.GetComponent<PlayerHealth>().health += other.GetComponent<PowerupStats>().HealthIncrease;
+            player1.GetComponent<PlayerHealth>().UpdateStatusBar();
+
+            player1.GetComponent<PlayerPowerups>().StaminaIncrease += other.GetComponent<PowerupStats>().StaminaIncrease;
+            player1.GetComponent<PlayerStamina>().maxStamina += other.GetComponent<PowerupStats>().StaminaIncrease;
+            player1.GetComponent<PlayerStamina>().Stamina += other.GetComponent<PowerupStats>().StaminaIncrease;
+            player1.GetComponent<PlayerStamina>().UpdateStatusBar();
+
+
+            player1.GetComponent<PlayerPowerups>().WalkSpeedIncrease += other.GetComponent<PowerupStats>().WalkSpeedIncrease;
+            player1.GetComponent<PlayerPowerups>().AttackSpeedIncrease += other.GetComponent<PowerupStats>().AttackSpeedIncrease;
+            player1.GetComponent<PlayerPowerups>().ThrowForceIncrease += other.GetComponent<PowerupStats>().ThrowForceIncrease;
+            player1.GetComponent<PlayerPowerups>().SizeIncrease += other.GetComponent<PowerupStats>().SizeIncrease;
+
+            Destroy(other.gameObject);
+        }
     }
 
     private void RemoveItemsFrom(Transform LocationTransform)
