@@ -6,7 +6,7 @@ public class PowerupStats : MonoBehaviour {
 
     public float HealthIncrease;
     public float StaminaIncrease;
-    public float WalkSpeedIncrease;
+    public float MovementSpeedIncrease;
     public float AttackSpeedIncrease;
     public float ThrowForceIncrease;
     public float SizeIncrease;

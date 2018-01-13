@@ -527,6 +527,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
+  maxHealth: 0
   healthStatusBar: {fileID: 1195283487}
 --- !u!114 &71965475
 MonoBehaviour:
@@ -551,7 +552,7 @@ MonoBehaviour:
   attackSpeed: 15
   rotationDamping: 20
   longbowForce: 30
-  melee1ThrowForce: 30
+  ThrowForce: 20
   currentWeaponHash: 0
 --- !u!143 &71965476
 CharacterController:
@@ -619,6 +620,7 @@ MonoBehaviour:
   Stamina: 100
   StaminaRegenRate: 1
   StaminaStatusBar: {fileID: 143735723}
+  maxStamina: 0
 --- !u!114 &71965480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +632,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
 --- !u!1 &73879002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 0
   StaminaIncrease: 0
-  WalkSpeedIncrease: 10
+  MovementSpeedIncrease: 10
   AttackSpeedIncrease: 0
   ThrowForceIncrease: 0
   SizeIncrease: 0
@@ -2535,6 +2543,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 35908614}
   shieldSlider: {fileID: 1542549406}
+  maxHealth: 0
   healthStatusBar: {fileID: 0}
 --- !u!114 &375141249
 MonoBehaviour:
@@ -3364,7 +3373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 0
   StaminaIncrease: 0
-  WalkSpeedIncrease: 0
+  MovementSpeedIncrease: 0
   AttackSpeedIncrease: 10
   ThrowForceIncrease: 0
   SizeIncrease: 0
@@ -4156,7 +4165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 10
   StaminaIncrease: 0
-  WalkSpeedIncrease: 0
+  MovementSpeedIncrease: 0
   AttackSpeedIncrease: 0
   ThrowForceIncrease: 0
   SizeIncrease: 0
@@ -9780,7 +9789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 0
   StaminaIncrease: 0
-  WalkSpeedIncrease: 0
+  MovementSpeedIncrease: 0
   AttackSpeedIncrease: 0
   ThrowForceIncrease: 10
   SizeIncrease: 0
@@ -10250,7 +10259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 0
   StaminaIncrease: 10
-  WalkSpeedIncrease: 0
+  MovementSpeedIncrease: 0
   AttackSpeedIncrease: 0
   ThrowForceIncrease: 0
   SizeIncrease: 0
@@ -10979,6 +10988,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 1443604800}
   shieldSlider: {fileID: 2117781475}
+  maxHealth: 0
   healthStatusBar: {fileID: 0}
 --- !u!114 &1903224004
 MonoBehaviour:
@@ -11911,7 +11921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthIncrease: 0
   StaminaIncrease: 0
-  WalkSpeedIncrease: 0
+  MovementSpeedIncrease: 0
   AttackSpeedIncrease: 0
   ThrowForceIncrease: 0
   SizeIncrease: 10

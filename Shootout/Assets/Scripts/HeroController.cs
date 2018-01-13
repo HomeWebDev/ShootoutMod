@@ -26,7 +26,7 @@ public class HeroController : MonoBehaviour
     private float crossbowForce = 20;
     private float wandAnimationDelay = 0.45f;
     private float melee1AnimationDelay = 0.00f;
-    public float melee1ThrowForce = 20.0f;
+    public float ThrowForce = 20.0f;
     private float wandForce = 5;
     private float rangedAttackRate;
     private float rangedAnimationDelay;
@@ -431,7 +431,7 @@ public class HeroController : MonoBehaviour
 
         {
             rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
-            rangedForce = melee1ThrowForce;
+            rangedForce = ThrowForce;
 
             if (playerStamina.DepleteStamina(10))
             {
@@ -452,7 +452,7 @@ public class HeroController : MonoBehaviour
 
         {
             rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
-            rangedForce = melee1ThrowForce;
+            rangedForce = ThrowForce;
 
             if (playerStamina.DepleteStamina(10))
             {

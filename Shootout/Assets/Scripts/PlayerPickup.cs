@@ -109,10 +109,15 @@ public class PlayerPickup : MonoBehaviour {
             player1.GetComponent<PlayerStamina>().Stamina += other.GetComponent<PowerupStats>().StaminaIncrease;
             player1.GetComponent<PlayerStamina>().UpdateStatusBar();
 
+            player1.GetComponent<PlayerPowerups>().MovementSpeedIncrease += other.GetComponent<PowerupStats>().MovementSpeedIncrease;
+            player1.GetComponent<HeroController>().movementSpeed += other.GetComponent<PowerupStats>().MovementSpeedIncrease;
 
-            player1.GetComponent<PlayerPowerups>().WalkSpeedIncrease += other.GetComponent<PowerupStats>().WalkSpeedIncrease;
             player1.GetComponent<PlayerPowerups>().AttackSpeedIncrease += other.GetComponent<PowerupStats>().AttackSpeedIncrease;
+            player1.GetComponent<HeroController>().attackSpeed += other.GetComponent<PowerupStats>().AttackSpeedIncrease;
+
             player1.GetComponent<PlayerPowerups>().ThrowForceIncrease += other.GetComponent<PowerupStats>().ThrowForceIncrease;
+            player1.GetComponent<HeroController>().ThrowForce += other.GetComponent<PowerupStats>().ThrowForceIncrease;
+
             player1.GetComponent<PlayerPowerups>().SizeIncrease += other.GetComponent<PowerupStats>().SizeIncrease;
 
             Destroy(other.gameObject);
