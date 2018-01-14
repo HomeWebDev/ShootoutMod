@@ -791,6 +791,7 @@ public class HeroController : MonoBehaviour
         }
 
         GameObject throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
+        throwWeapon = ResizeThrownItem(throwWeapon);
 
         throwWeapon.GetComponent<CapsuleCollider>().enabled = true;
         throwWeapon.AddComponent<Rigidbody>();
@@ -799,6 +800,14 @@ public class HeroController : MonoBehaviour
 
         throwWeapon.GetComponent<Rigidbody>().AddRelativeForce(-150, rangedForce*-20, rangedForce* 0);
         throwWeapon.GetComponent<Rigidbody>().AddRelativeTorque(0, 1000, 0);
+    }
+
+    private GameObject ResizeThrownItem(GameObject item)
+    {
+        Vector3 adjustedScale = new Vector3(item.transform.localScale.x + GetComponent<PlayerPowerups>().SizeIncrease, item.transform.localScale.y + GetComponent<PlayerPowerups>().SizeIncrease, item.transform.localScale.z + GetComponent<PlayerPowerups>().SizeIncrease);
+        item.transform.localScale = adjustedScale;
+
+        return item;
     }
 
 

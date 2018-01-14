@@ -6,7 +6,13 @@ using System.Linq;
 public class PlayerPickup : MonoBehaviour {
 
 
-    public Equipment ActiveGear; 
+    public Equipment ActiveGear;
+    private GameObject player1;
+
+    private void Start()
+    {
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -97,7 +103,7 @@ public class PlayerPickup : MonoBehaviour {
         if(other.tag == "Powerup")
         {
             //Debug.Log("Powerup");
-            GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+            //GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
 
             player1.GetComponent<PlayerPowerups>().HealthIncrease += other.GetComponent<PowerupStats>().HealthIncrease;
             player1.GetComponent<PlayerHealth>().maxHealth += other.GetComponent<PowerupStats>().HealthIncrease;
@@ -119,8 +125,17 @@ public class PlayerPickup : MonoBehaviour {
             player1.GetComponent<HeroController>().ThrowForce += other.GetComponent<PowerupStats>().ThrowForceIncrease;
 
             player1.GetComponent<PlayerPowerups>().SizeIncrease += other.GetComponent<PowerupStats>().SizeIncrease;
+            Vector3 adjustedScale = new Vector3(player1.transform.localScale.x + other.GetComponent<PowerupStats>().SizeIncrease, player1.transform.localScale.y + other.GetComponent<PowerupStats>().SizeIncrease, player1.transform.localScale.z + other.GetComponent<PowerupStats>().SizeIncrease);
+            player1.transform.localScale = adjustedScale;
 
             Destroy(other.gameObject);
+        }
+
+        //Rescale weapon to match current player size
+        if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear")
+        {
+            other.transform.localScale = new Vector3(1, 1, 1);
+            //Debug.Log("Item rescaled");
         }
     }
 
