@@ -356,10 +356,10 @@ public class LevelController : MonoBehaviour {
         GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.2f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
         GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.2f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
 
-        item1.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
-        item2.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
-        item3.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
-        item4.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
+        //item1.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
+        //item2.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
+        //item3.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
+        //item4.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
     }
 
     private void AddHiddenDoor(Room room, int i, int j)

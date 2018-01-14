@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114927358104415798}
   - component: {fileID: 136358159666245744}
   - component: {fileID: 114849148569816166}
+  - component: {fileID: 114988445114522964}
   m_Layer: 0
   m_Name: 13
   m_TagString: Weapon
@@ -117,6 +118,19 @@ MonoBehaviour:
   WeaponType: 0
   AttackAnimation: 1
   AttackAnimationHash: 0
+--- !u!114 &114988445114522964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Assasin Sword
+  Description: Description
 --- !u!136 &136358159666245744
 CapsuleCollider:
   m_ObjectHideFlags: 1

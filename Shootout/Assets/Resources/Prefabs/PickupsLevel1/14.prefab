@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114604297391245058}
   - component: {fileID: 136913913001604274}
   - component: {fileID: 114056653499951322}
+  - component: {fileID: 114972820235953378}
   m_Layer: 0
   m_Name: 14
   m_TagString: Weapon
@@ -117,6 +118,19 @@ MonoBehaviour:
   WeaponType: 0
   AttackAnimation: 2
   AttackAnimationHash: 0
+--- !u!114 &114972820235953378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Butcher's Knife
+  Description: Description
 --- !u!136 &136913913001604274
 CapsuleCollider:
   m_ObjectHideFlags: 1

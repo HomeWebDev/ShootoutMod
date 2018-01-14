@@ -131,11 +131,16 @@ public class PlayerPickup : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        //Rescale weapon to match current player size
+        
         if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear")
         {
+            //Rescale weapon to match current player size
             other.transform.localScale = new Vector3(1, 1, 1);
             //Debug.Log("Item rescaled");
+
+            //Activate found item canvas
+            GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+            gameController.GetComponent<PauseController>().FoundItem(other.gameObject.GetComponent<ItemName>().Name, other.gameObject.GetComponent<ItemName>().Description);
         }
     }
 

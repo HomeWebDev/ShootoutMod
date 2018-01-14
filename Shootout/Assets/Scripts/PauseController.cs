@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseController : MonoBehaviour {
 
     public GameObject pauseCanvas;
     public GameObject gameOverCanvas;
+    public GameObject foundItemCanvas;
     private bool gameOver = false;
 
     // Use this for initialization
@@ -44,6 +46,24 @@ public class PauseController : MonoBehaviour {
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0;
         AudioListener.pause = true;
+    }
+
+    public void FoundItem(string itemName, string itemDescription)
+    {
+        //Debug.Log("itemName: " + itemName);
+        //Debug.Log("itemDescription: " + itemDescription);
+        foundItemCanvas.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = itemName;
+        foundItemCanvas.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = itemDescription;
+        StartCoroutine(ShowFoundItemCanvas());
+    }
+
+    private IEnumerator ShowFoundItemCanvas()
+    {
+        foundItemCanvas.SetActive(true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        foundItemCanvas.SetActive(false);
     }
 
     public void BackToMainMenu()

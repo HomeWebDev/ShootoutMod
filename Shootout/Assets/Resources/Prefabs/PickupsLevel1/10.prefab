@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114771600331688092}
   - component: {fileID: 136593184204970182}
   - component: {fileID: 114939939354261224}
+  - component: {fileID: 114533643284758734}
   m_Layer: 0
   m_Name: 10
   m_TagString: Weapon
@@ -85,6 +86,19 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104530}
   m_IsPrefabParent: 1
+--- !u!114 &114533643284758734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Gladius
+  Description: Description
 --- !u!114 &114771600331688092
 MonoBehaviour:
   m_ObjectHideFlags: 1

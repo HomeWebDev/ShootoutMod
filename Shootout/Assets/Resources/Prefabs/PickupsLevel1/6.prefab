@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2335106}
   - component: {fileID: 65824108205760168}
   - component: {fileID: 114846395707678524}
+  - component: {fileID: 114228399414688368}
   m_Layer: 0
   m_Name: 6
   m_TagString: HeadGear
@@ -100,6 +101,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9299919, y: 1.1514332, z: 0.8127353}
   m_Center: {x: 0.00000014901161, y: 0.07546817, z: 0.51665765}
+--- !u!114 &114228399414688368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: White Wizard Hat
+  Description: Description
 --- !u!114 &114846395707678524
 MonoBehaviour:
   m_ObjectHideFlags: 1

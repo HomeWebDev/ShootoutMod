@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114148895612030994}
   - component: {fileID: 136874557842242268}
   - component: {fileID: 114304396223255200}
+  - component: {fileID: 114482823807909558}
   m_Layer: 0
   m_Name: 7
   m_TagString: Weapon
@@ -117,6 +118,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageImpact: 1
   pickedUp: 0
+--- !u!114 &114482823807909558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Short Sword
+  Description: Description
 --- !u!136 &136874557842242268
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2365244}
   - component: {fileID: 65995422342752620}
   - component: {fileID: 114468293152270418}
+  - component: {fileID: 114627720737231974}
   m_Layer: 0
   m_Name: 2
   m_TagString: HeadGear
@@ -120,3 +121,16 @@ MonoBehaviour:
   LegGear: 0
   ArmGear: 0
   ItemRotation: {x: -90, y: 0, z: 0}
+--- !u!114 &114627720737231974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Blue Wizard Hat
+  Description: Description
