@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 114853991796239420}
   - component: {fileID: 114201236405167462}
   - component: {fileID: 114690993974804258}
+  - component: {fileID: 114270224245617598}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Player1
@@ -15790,7 +15791,7 @@ MonoBehaviour:
   attackSpeed: 10
   rotationDamping: 20
   longbowForce: 30
-  melee1ThrowForce: 20
+  ThrowForce: 20
   currentWeaponHash: 0
 --- !u!114 &114155260937305346
 MonoBehaviour:
@@ -16030,6 +16031,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114270224245617598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
 --- !u!114 &114281011434233456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16072,6 +16090,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
+  maxHealth: 0
   healthStatusBar: {fileID: 114166957662164100}
 --- !u!114 &114364256618139424
 MonoBehaviour:
@@ -16233,6 +16252,7 @@ MonoBehaviour:
   Stamina: 100
   StaminaRegenRate: 1
   StaminaStatusBar: {fileID: 114155260937305346}
+  maxStamina: 0
 --- !u!114 &114824940932937002
 MonoBehaviour:
   m_ObjectHideFlags: 1

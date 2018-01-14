@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 114889901701916088}
   - component: {fileID: 114615053043694470}
   - component: {fileID: 114359003748728364}
+  - component: {fileID: 114714594645534112}
   m_Layer: 0
   m_Name: Unknown Prodigy
   m_TagString: Player1
@@ -1560,6 +1561,7 @@ MonoBehaviour:
   shield: 0
   healthSlider: {fileID: 0}
   shieldSlider: {fileID: 0}
+  maxHealth: 0
   healthStatusBar: {fileID: 114183918160568148}
 --- !u!114 &114359003748728364
 MonoBehaviour:
@@ -1575,6 +1577,7 @@ MonoBehaviour:
   Stamina: 100
   StaminaRegenRate: 1
   StaminaStatusBar: {fileID: 114586800303693148}
+  maxStamina: 0
 --- !u!114 &114426413630130576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1643,7 +1646,7 @@ MonoBehaviour:
   attackSpeed: 10
   rotationDamping: 20
   longbowForce: 30
-  melee1ThrowForce: 20
+  ThrowForce: 20
   currentWeaponHash: 0
 --- !u!114 &114535042418452998
 MonoBehaviour:
@@ -1827,6 +1830,23 @@ MonoBehaviour:
     triggerValue: 0.2
     stateType: 0
     alternateStateText: {fileID: 0}
+--- !u!114 &114714594645534112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613629848881684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
 --- !u!114 &114731840277111720
 MonoBehaviour:
   m_ObjectHideFlags: 1

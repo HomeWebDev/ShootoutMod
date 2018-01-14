@@ -135,11 +135,14 @@ public class CameraMover : MonoBehaviour {
         Vector3 newCameraPos;
 
         float xPos = player1.transform.position.x;
-        float yPos = Camera.main.transform.position.y;
-        float zPos = player1.transform.position.z - 4.2f;
+        //float yPos = Camera.main.transform.position.y;
+        //float zPos = player1.transform.position.z - 4.2f;
+        float yPos = 20;
+        float zPos = player1.transform.position.z - 18.19f;
 
         float xPosCentered = xPlayerRoom * levelController.scaleX;
-        float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
+        //float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
+        float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 18.19f;
 
         if (blockNorth & zPlayerRelativePos > 0.5)
         {
