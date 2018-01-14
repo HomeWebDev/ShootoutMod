@@ -163,10 +163,10 @@ public class PlayerPickup : MonoBehaviour {
 
                 foreach (GameObject item in items)
                 {
-                    //Debug.Log("item: " + item + " group: " + group);
+                    Debug.Log("item: " + item + " group: " + group);
                     if (item.GetComponent<ItemName>().Group == group)
                     {
-                        //Debug.Log("deleteditem: " + item + " group: " + group);
+                        Debug.Log("deleteditem: " + item + " group: " + group);
                         Destroy(item);
                     }
                 }
