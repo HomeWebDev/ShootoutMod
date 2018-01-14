@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 2341994}
   - component: {fileID: 136614580437500506}
   - component: {fileID: 114629801974178876}
+  - component: {fileID: 114995612060325808}
   m_Layer: 0
   m_Name: Wand 05 Blue
   m_TagString: Untagged
@@ -1519,7 +1520,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.133021, y: 7.327145e-17, z: -3.959823}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417462}
@@ -16327,6 +16328,20 @@ MonoBehaviour:
   secondsDelay: 0.2
   resetSensitivity: 0.1
   fillSpeed: 0.5
+--- !u!114 &114995612060325808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Description: 
+  Group: 
 --- !u!136 &136614580437500506
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -16448,8 +16463,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.65002, y: 178.41998}
-  m_SizeDelta: {x: 98.700005, y: 13.16}
+  m_AnchoredPosition: {x: -318.32507, y: 203.00998}
+  m_SizeDelta: {x: 112.350006, y: 14.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224722911741584550
 RectTransform:
@@ -16542,6 +16557,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.65002, y: 165.21692}
-  m_SizeDelta: {x: 98.700005, y: 13.16}
+  m_AnchoredPosition: {x: -318.32507, y: 187.98727}
+  m_SizeDelta: {x: 112.350006, y: 14.98}
   m_Pivot: {x: 0.5, y: 0.5}

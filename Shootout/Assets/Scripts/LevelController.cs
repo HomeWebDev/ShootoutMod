@@ -25,6 +25,7 @@ public class LevelController : MonoBehaviour {
     private int groundId;
     public GameObject WayPoint;
     public GameObject HiddenWayPoint;
+    private int groupId = 0;
 
     List<GameObject> obstacleList = new List<GameObject>();
 
@@ -355,6 +356,14 @@ public class LevelController : MonoBehaviour {
         GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0.2f, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
         GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.2f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
         GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.2f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+
+        item1.GetComponent<ItemName>().Group = "Group" + groupId;
+        item2.GetComponent<ItemName>().Group = "Group" + groupId;
+        item3.GetComponent<ItemName>().Group = "Group" + groupId;
+        item4.GetComponent<ItemName>().Group = "Group" + groupId;
+
+        groupId++;
+
 
         //item1.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));
         //item2.GetComponent<MeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f));

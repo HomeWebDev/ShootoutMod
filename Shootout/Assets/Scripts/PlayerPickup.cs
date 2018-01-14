@@ -43,7 +43,7 @@ public class PlayerPickup : MonoBehaviour {
             if (ActiveGear.weapon.name.Contains("Longbow"))
             {
 
-                PutItemsPlace(ActiveGear.weapon, ActiveGear.LeftHand.transform, 
+                PutItemsPlace(ActiveGear.weapon, ActiveGear.LeftHand.transform,
                     ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationLeftHand);
             }
             else if (ActiveGear.weapon.GetComponent<WeaponConfig>().RightHandCopy)
@@ -53,23 +53,23 @@ public class PlayerPickup : MonoBehaviour {
             else if (ActiveGear.weapon.GetComponent<WeaponConfig>().LeftHandCopy)
             {
 
-                PutItemsPlace(ActiveGear.weapon, 
-                    ActiveGear.LeftHand.transform, 
+                PutItemsPlace(ActiveGear.weapon,
+                    ActiveGear.LeftHand.transform,
                     ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationLeftHand);
-                PutItemsPlace(CreateWeponCopy(), 
-                    ActiveGear.RightHand.transform, 
+                PutItemsPlace(CreateWeponCopy(),
+                    ActiveGear.RightHand.transform,
                     ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
             else if (ActiveGear.weapon.GetComponent<WeaponConfig>().DoubleHanded)
             {
 
-                PutItemsPlace(ActiveGear.weapon, ActiveGear.RightHand.transform, 
+                PutItemsPlace(ActiveGear.weapon, ActiveGear.RightHand.transform,
                     ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
             else
             {
 
-                PutItemsPlace(ActiveGear.weapon, 
+                PutItemsPlace(ActiveGear.weapon,
                     ActiveGear.RightHand.transform,
                     ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
@@ -83,7 +83,7 @@ public class PlayerPickup : MonoBehaviour {
             ActiveGear.backGear = other.gameObject;
 
             //RemoveItemsFrom(Back.transform);
-            PutItemsPlace(ActiveGear.backGear, ActiveGear.Back.transform, 
+            PutItemsPlace(ActiveGear.backGear, ActiveGear.Back.transform,
                 ActiveGear.backGear.GetComponent<GearConfig>().ItemRotation);
         }
         if (other.tag == "HeadGear")
@@ -96,11 +96,11 @@ public class PlayerPickup : MonoBehaviour {
 
             //RemoveItemsFrom(Head.transform);
 
-            PutItemsPlace(ActiveGear.headGear, ActiveGear.Head.transform, 
+            PutItemsPlace(ActiveGear.headGear, ActiveGear.Head.transform,
                 ActiveGear.headGear.GetComponent<GearConfig>().ItemRotation);
         }
 
-        if(other.tag == "Powerup")
+        if (other.tag == "Powerup")
         {
             //Debug.Log("Powerup");
             //GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
@@ -131,16 +131,46 @@ public class PlayerPickup : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        
         if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear")
         {
-            //Rescale weapon to match current player size
-            other.transform.localScale = new Vector3(1, 1, 1);
-            //Debug.Log("Item rescaled");
+            if (other.gameObject.GetComponent<ItemName>().Group != string.Empty)
+            {
+                //Rescale weapon to match current player size
+                other.transform.localScale = new Vector3(1, 1, 1);
+                //Debug.Log("Item rescaled");
+                Debug.Log("item: " + other);
 
-            //Activate found item canvas
-            GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-            gameController.GetComponent<PauseController>().FoundItem(other.gameObject.GetComponent<ItemName>().Name, other.gameObject.GetComponent<ItemName>().Description);
+                //Activate found item canvas
+                GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+                gameController.GetComponent<PauseController>().FoundItem(other.gameObject.GetComponent<ItemName>().Name, other.gameObject.GetComponent<ItemName>().Description);
+            }
+        }
+
+        //Remove other items in group
+        if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear" || other.tag == "Powerup")
+        {
+            if (other.gameObject.GetComponent<ItemName>().Group != string.Empty)
+            {
+                string group = other.gameObject.GetComponent<ItemName>().Group;
+                other.gameObject.GetComponent<ItemName>().Group = string.Empty;
+
+                GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+                GameObject[] backGear = GameObject.FindGameObjectsWithTag("BackGear");
+                GameObject[] headGear = GameObject.FindGameObjectsWithTag("HeadGear");
+                GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
+
+                GameObject[] items = weapons.Concat(backGear).ToArray().Concat(headGear).ToArray().Concat(powerups).ToArray();
+
+                foreach (GameObject item in items)
+                {
+                    //Debug.Log("item: " + item + " group: " + group);
+                    if (item.GetComponent<ItemName>().Group == group)
+                    {
+                        //Debug.Log("deleteditem: " + item + " group: " + group);
+                        Destroy(item);
+                    }
+                }
+            }
         }
     }
 
