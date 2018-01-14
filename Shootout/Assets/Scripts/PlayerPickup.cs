@@ -139,10 +139,6 @@ public class PlayerPickup : MonoBehaviour {
                 other.transform.localScale = new Vector3(1, 1, 1);
                 //Debug.Log("Item rescaled");
                 Debug.Log("item: " + other);
-
-                //Activate found item canvas
-                GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-                gameController.GetComponent<PauseController>().FoundItem(other.gameObject.GetComponent<ItemName>().Name, other.gameObject.GetComponent<ItemName>().Description);
             }
         }
 
@@ -151,6 +147,10 @@ public class PlayerPickup : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<ItemName>().Group != string.Empty)
             {
+                //Activate found item canvas
+                GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+                gameController.GetComponent<PauseController>().FoundItem(other.gameObject.GetComponent<ItemName>().Name, other.gameObject.GetComponent<ItemName>().Description);
+
                 string group = other.gameObject.GetComponent<ItemName>().Group;
                 other.gameObject.GetComponent<ItemName>().Group = string.Empty;
 

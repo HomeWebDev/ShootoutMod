@@ -3520,7 +3520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageImpact: 1
+  damageImpact: 6
   pickedUp: 0
 --- !u!114 &114361049445448910
 MonoBehaviour:
@@ -3539,7 +3539,7 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 1
+  AttackAnimation: 2
   AttackAnimationHash: 0
 --- !u!114 &114413827294521268
 MonoBehaviour:
@@ -3554,6 +3554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jagged Sword
   Description: Description
+  Group: 
 --- !u!136 &136224470100802806
 CapsuleCollider:
   m_ObjectHideFlags: 1

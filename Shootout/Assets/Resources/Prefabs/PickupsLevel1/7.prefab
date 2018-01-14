@@ -103,7 +103,7 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 1
+  AttackAnimation: 2
   AttackAnimationHash: 0
 --- !u!114 &114304396223255200
 MonoBehaviour:
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Short Sword
   Description: Description
+  Group: 
 --- !u!136 &136874557842242268
 CapsuleCollider:
   m_ObjectHideFlags: 1
