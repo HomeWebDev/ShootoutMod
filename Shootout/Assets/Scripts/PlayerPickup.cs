@@ -128,6 +128,12 @@ public class PlayerPickup : MonoBehaviour {
             Vector3 adjustedScale = new Vector3(player1.transform.localScale.x + other.GetComponent<PowerupStats>().SizeIncrease, player1.transform.localScale.y + other.GetComponent<PowerupStats>().SizeIncrease, player1.transform.localScale.z + other.GetComponent<PowerupStats>().SizeIncrease);
             player1.transform.localScale = adjustedScale;
 
+
+            player1.GetComponent<PlayerPowerups>().DoubleShot |= other.GetComponent<PowerupStats>().DoubleShot;
+            player1.GetComponent<PlayerPowerups>().TripleShot |= other.GetComponent<PowerupStats>().TripleShot;
+            player1.GetComponent<PlayerPowerups>().QuadShot |= other.GetComponent<PowerupStats>().QuadShot;
+
+
             Destroy(other.gameObject);
         }
 

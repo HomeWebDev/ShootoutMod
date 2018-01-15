@@ -11,6 +11,10 @@ public class PowerupStats : MonoBehaviour {
     public float ThrowForceIncrease;
     public float SizeIncrease;
 
+    public bool DoubleShot;
+    public bool TripleShot;
+    public bool QuadShot;
+
 	// Use this for initialization
 	void Start () {
 		

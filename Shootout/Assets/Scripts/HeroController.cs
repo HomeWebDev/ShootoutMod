@@ -746,49 +746,224 @@ public class HeroController : MonoBehaviour
 
     private void ThrowWeapon()
     {
+        int doubleAngle = 20;
+        int tripleAngle = 20;
+        int quadAngle = 90;
+
+        float angle = 0;
+        int buttonPressed = 0;
         if (Input.GetButton(leftAttackButton))
         {
-            StartCoroutine(SpawnThrowWeapon(270 + movement.z));
+            angle = 270 + movement.z;
+            buttonPressed = 1;
         }
         if (Input.GetButton(rightAttackButton))
         {
-            StartCoroutine(SpawnThrowWeapon(90 - movement.z));
+            angle = 90 - movement.z;
+            buttonPressed = 2;
         }
         if (Input.GetButton(upAttackButton))
         {
-            StartCoroutine(SpawnThrowWeapon(0 + movement.x));
+            angle = 0 + movement.x;
+            buttonPressed = 3;
         }
         if (Input.GetButton(downAttackButton))
         {
-            StartCoroutine(SpawnThrowWeapon(180 - movement.x));
+            angle = 180 - movement.x;
+            buttonPressed = 4;
         }
+
+        if (buttonPressed != 0)
+        {
+            if (GetComponent<PlayerPowerups>().DoubleShot && !GetComponent<PlayerPowerups>().TripleShot)
+            {
+                StartCoroutine(SpawnThrowWeapon(angle - doubleAngle, buttonPressed));
+                StartCoroutine(SpawnThrowWeapon(angle + doubleAngle, buttonPressed));
+            }
+            else
+            {
+                StartCoroutine(SpawnThrowWeapon(angle, buttonPressed));
+            }
+            if (GetComponent<PlayerPowerups>().TripleShot)
+            {
+                StartCoroutine(SpawnThrowWeapon(angle - tripleAngle, buttonPressed));
+                StartCoroutine(SpawnThrowWeapon(angle + tripleAngle, buttonPressed));
+            }
+            if (GetComponent<PlayerPowerups>().QuadShot)
+            {
+                StartCoroutine(SpawnThrowWeapon(angle + quadAngle, buttonPressed));
+                StartCoroutine(SpawnThrowWeapon(angle + 2 * quadAngle, buttonPressed));
+                StartCoroutine(SpawnThrowWeapon(angle + 3 * quadAngle, buttonPressed));
+            }
+        }
+
+        //if (GetComponent<PlayerPowerups>().DoubleShot)
+        //{
+        //    StartCoroutine(SpawnThrowWeapon(angle - doubleAngle));
+        //    StartCoroutine(SpawnThrowWeapon(290 + movement.z));
+        //}
+        //else
+        //{
+        //    StartCoroutine(SpawnThrowWeapon(270 + movement.z));
+        //}
+        //if (GetComponent<PlayerPowerups>().TripleShot)
+        //{
+        //    StartCoroutine(SpawnThrowWeapon(250 + movement.z));
+        //    StartCoroutine(SpawnThrowWeapon(290 + movement.z));
+        //}
+        //if (GetComponent<PlayerPowerups>().QuadShot)
+        //{
+        //    StartCoroutine(SpawnThrowWeapon(0 + movement.z));
+        //    StartCoroutine(SpawnThrowWeapon(90 + movement.z));
+        //    StartCoroutine(SpawnThrowWeapon(180 + movement.z));
+        //}
+
+
+
+        //if (Input.GetButton(leftAttackButton))
+        //{
+        //    if (GetComponent<PlayerPowerups>().DoubleShot)
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
+        //    }
+        //    else
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(270 + movement.z));
+        //    }
+        //    if (GetComponent<PlayerPowerups>().TripleShot)
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
+        //    }
+        //    if(GetComponent<PlayerPowerups>().QuadShot)
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(0 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(90 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(180 + movement.z));
+        //    }
+        //}
+        //if (Input.GetButton(rightAttackButton))
+        //{
+        //    if (GetComponent<PlayerPowerups>().DoubleShot)
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
+        //    }
+        //    else
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(90 - movement.z));
+        //    }
+        //    if (GetComponent<PlayerPowerups>().TripleShot)
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
+        //    }
+        //    if (GetComponent<PlayerPowerups>().QuadShot)
+        //    {
+        //        StartCoroutine(SpawnThrowWeapon(0 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(90 + movement.z));
+        //        StartCoroutine(SpawnThrowWeapon(180 + movement.z));
+        //    }
+
+
+            
+        //}
+        //if (Input.GetButton(upAttackButton))
+        //{
+        //    StartCoroutine(SpawnThrowWeapon(0 + movement.x));
+        //}
+        //if (Input.GetButton(downAttackButton))
+        //{
+        //    StartCoroutine(SpawnThrowWeapon(180 - movement.x));
+        //}
     }
 
-    IEnumerator SpawnThrowWeapon(float y)
+    IEnumerator SpawnThrowWeapon(float y, int buttonPressed)
     {
         yield return new WaitForSeconds(rangedAnimationDelay);
         //rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
         //GameObject rightShoulder = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).gameObject;
         //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
 
+        if (buttonPressed == 1)
+        {
+            if (Input.GetButton(rightAttackButton))
+            {
+                y += 180;
+            }
+            if (Input.GetButton(upAttackButton))
+            {
+                y += 90;
+            }
+            if (Input.GetButton(downAttackButton))
+            {
+                y -= 90;
+            }
+        }
+        if (buttonPressed == 2)
+        {
+            if (Input.GetButton(leftAttackButton))
+            {
+                y += 180;
+            }
+            if (Input.GetButton(upAttackButton))
+            {
+                y -= 90;
+            }
+            if (Input.GetButton(downAttackButton))
+            {
+                y += 90;
+            }
+        }
+        if (buttonPressed == 3)
+        {
+            if (Input.GetButton(leftAttackButton))
+            {
+                y -= 90;
+            }
+            if (Input.GetButton(rightAttackButton))
+            {
+                y += 90;
+            }
+            if (Input.GetButton(downAttackButton))
+            {
+                y += 180;
+            }
+        }
+        if (buttonPressed == 4)
+        {
+            if (Input.GetButton(leftAttackButton))
+            {
+                y += 90;
+            }
+            if (Input.GetButton(rightAttackButton))
+            {
+                y -= 90;
+            }
+            if (Input.GetButton(upAttackButton))
+            {
+                y += 180;
+            }
+        }
 
 
-        if (Input.GetButton(leftAttackButton))
-        {
-            y = 270 + movement.z;
-        }
-        if (Input.GetButton(rightAttackButton))
-        {
-            y = 90 - movement.z;
-        }
-        if (Input.GetButton(upAttackButton))
-        {
-            y = 0 + movement.x;
-        }
-        if (Input.GetButton(downAttackButton))
-        {
-            y = 180 - movement.x;
-        }
+        //if (Input.GetButton(leftAttackButton))
+        //{
+        //    y = 270 + movement.z;
+        //}
+        //if (Input.GetButton(rightAttackButton))
+        //{
+        //    y = 90 - movement.z;
+        //}
+        //if (Input.GetButton(upAttackButton))
+        //{
+        //    y = 0 + movement.x;
+        //}
+        //if (Input.GetButton(downAttackButton))
+        //{
+        //    y = 180 - movement.x;
+        //}
 
         GameObject throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
         throwWeapon = ResizeThrownItem(throwWeapon);
