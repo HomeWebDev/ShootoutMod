@@ -29,9 +29,18 @@ public class ContactDamage : MonoBehaviour {
                 enemy.TakeDamage(damageImpact);
             }
 
-            if(tag == "Arrow" && (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Boundary"))
+            if(tag == "Arrow" && other.tag == "Boundary")
             {
                 Destroy(gameObject);
+            }
+
+            if (tag == "Arrow" && (other.tag == "Obstacle" || other.tag == "Enemy"))
+            {
+                GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+                if(!player1.GetComponent<PlayerPowerups>().PenetratingShot)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

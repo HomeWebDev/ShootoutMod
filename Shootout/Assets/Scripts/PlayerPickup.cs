@@ -132,6 +132,7 @@ public class PlayerPickup : MonoBehaviour {
             player1.GetComponent<PlayerPowerups>().DoubleShot |= other.GetComponent<PowerupStats>().DoubleShot;
             player1.GetComponent<PlayerPowerups>().TripleShot |= other.GetComponent<PowerupStats>().TripleShot;
             player1.GetComponent<PlayerPowerups>().QuadShot |= other.GetComponent<PowerupStats>().QuadShot;
+            player1.GetComponent<PlayerPowerups>().PenetratingShot |= other.GetComponent<PowerupStats>().PenetratingShot;
 
 
             Destroy(other.gameObject);

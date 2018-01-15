@@ -14,6 +14,7 @@ public class PlayerPowerups : MonoBehaviour {
     public bool DoubleShot;
     public bool TripleShot;
     public bool QuadShot;
+    public bool PenetratingShot;
 
     // Use this for initialization
     void Start () {
