@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 114889901701916088}
   - component: {fileID: 114615053043694470}
   - component: {fileID: 114359003748728364}
-  - component: {fileID: 114714594645534112}
+  - component: {fileID: 114237631444083218}
   m_Layer: 0
   m_Name: Unknown Prodigy
   m_TagString: Player1
@@ -1547,6 +1547,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114237631444083218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613629848881684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0a6a07783735a4b8794ff3453f9d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
+  DoubleShot: 0
+  TripleShot: 0
+  QuadShot: 0
+  PenetratingShot: 0
 --- !u!114 &114311479840193152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1831,23 +1852,6 @@ MonoBehaviour:
     triggerValue: 0.2
     stateType: 0
     alternateStateText: {fileID: 0}
---- !u!114 &114714594645534112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613629848881684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthIncrease: 0
-  StaminaIncrease: 0
-  MovementSpeedIncrease: 0
-  AttackSpeedIncrease: 0
-  ThrowForceIncrease: 0
-  SizeIncrease: 0
 --- !u!114 &114731840277111720
 MonoBehaviour:
   m_ObjectHideFlags: 1

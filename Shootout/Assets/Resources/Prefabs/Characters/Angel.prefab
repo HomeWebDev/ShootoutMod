@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9592094}
   - component: {fileID: 114380125969775232}
   - component: {fileID: 143047919776332366}
-  - component: {fileID: 114332362546309358}
+  - component: {fileID: 114390194205144552}
   m_Layer: 0
   m_Name: Angel
   m_TagString: Player1
@@ -13093,23 +13093,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100288}
   m_IsPrefabParent: 1
---- !u!114 &114332362546309358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthIncrease: 0
-  StaminaIncrease: 0
-  MovementSpeedIncrease: 0
-  AttackSpeedIncrease: 0
-  ThrowForceIncrease: 0
-  SizeIncrease: 0
 --- !u!114 &114380125969775232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13134,6 +13117,27 @@ MonoBehaviour:
   longbowForce: 30
   ThrowForce: 20
   currentWeaponHash: 0
+--- !u!114 &114390194205144552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0a6a07783735a4b8794ff3453f9d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
+  DoubleShot: 0
+  TripleShot: 0
+  QuadShot: 0
+  PenetratingShot: 0
 --- !u!143 &143047919776332366
 CharacterController:
   m_ObjectHideFlags: 1

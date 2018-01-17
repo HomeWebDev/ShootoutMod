@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 114853991796239420}
   - component: {fileID: 114201236405167462}
   - component: {fileID: 114690993974804258}
-  - component: {fileID: 114270224245617598}
+  - component: {fileID: 114458116844269052}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Player1
@@ -16032,23 +16032,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114270224245617598
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthIncrease: 0
-  StaminaIncrease: 0
-  MovementSpeedIncrease: 0
-  AttackSpeedIncrease: 0
-  ThrowForceIncrease: 0
-  SizeIncrease: 0
 --- !u!114 &114281011434233456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16166,6 +16149,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114458116844269052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0a6a07783735a4b8794ff3453f9d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
+  DoubleShot: 0
+  TripleShot: 0
+  QuadShot: 0
+  PenetratingShot: 0
 --- !u!114 &114529020592656716
 MonoBehaviour:
   m_ObjectHideFlags: 1

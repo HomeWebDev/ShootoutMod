@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 9580402}
   - component: {fileID: 114561137652509250}
   - component: {fileID: 143619157748891166}
-  - component: {fileID: 114598175463717788}
+  - component: {fileID: 114276566872484050}
   m_Layer: 0
   m_Name: Demonic Fighter
   m_TagString: Player1
@@ -1673,6 +1673,27 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 156846}
   m_IsPrefabParent: 1
+--- !u!114 &114276566872484050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0a6a07783735a4b8794ff3453f9d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
+  DoubleShot: 0
+  TripleShot: 0
+  QuadShot: 0
+  PenetratingShot: 0
 --- !u!114 &114561137652509250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1697,23 +1718,6 @@ MonoBehaviour:
   longbowForce: 30
   ThrowForce: 20
   currentWeaponHash: 0
---- !u!114 &114598175463717788
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthIncrease: 0
-  StaminaIncrease: 0
-  MovementSpeedIncrease: 0
-  AttackSpeedIncrease: 0
-  ThrowForceIncrease: 0
-  SizeIncrease: 0
 --- !u!143 &143619157748891166
 CharacterController:
   m_ObjectHideFlags: 1

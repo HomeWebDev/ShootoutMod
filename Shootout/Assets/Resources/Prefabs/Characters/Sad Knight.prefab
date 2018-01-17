@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 114927950589093800}
   - component: {fileID: 114360459439903824}
   - component: {fileID: 114550792859759786}
-  - component: {fileID: 114610192805734086}
+  - component: {fileID: 114567866031795580}
   m_Layer: 0
   m_Name: Sad Knight
   m_TagString: Player1
@@ -1922,7 +1922,7 @@ MonoBehaviour:
   StaminaRegenRate: 1
   StaminaStatusBar: {fileID: 114454736014268596}
   maxStamina: 0
---- !u!114 &114610192805734086
+--- !u!114 &114567866031795580
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1930,7 +1930,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 143426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b0a6a07783735a4b8794ff3453f9d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HealthIncrease: 0
@@ -1939,6 +1939,10 @@ MonoBehaviour:
   AttackSpeedIncrease: 0
   ThrowForceIncrease: 0
   SizeIncrease: 0
+  DoubleShot: 0
+  TripleShot: 0
+  QuadShot: 0
+  PenetratingShot: 0
 --- !u!114 &114643291742460194
 MonoBehaviour:
   m_ObjectHideFlags: 1

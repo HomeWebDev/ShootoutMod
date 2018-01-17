@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114853111280645502}
   - component: {fileID: 114806411010200892}
   - component: {fileID: 114891986004161862}
-  - component: {fileID: 114680464126327430}
+  - component: {fileID: 114663466111757838}
   m_Layer: 0
   m_Name: Adventurer
   m_TagString: Player1
@@ -1518,6 +1518,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &114663466111757838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0a6a07783735a4b8794ff3453f9d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MovementSpeedIncrease: 0
+  AttackSpeedIncrease: 0
+  ThrowForceIncrease: 0
+  SizeIncrease: 0
+  DoubleShot: 0
+  TripleShot: 0
+  QuadShot: 0
+  PenetratingShot: 0
 --- !u!114 &114679035331016266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1542,23 +1563,6 @@ MonoBehaviour:
   longbowForce: 30
   ThrowForce: 20
   currentWeaponHash: 0
---- !u!114 &114680464126327430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67acba2723e85aa41ae6142084bdde22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthIncrease: 0
-  StaminaIncrease: 0
-  MovementSpeedIncrease: 0
-  AttackSpeedIncrease: 0
-  ThrowForceIncrease: 0
-  SizeIncrease: 0
 --- !u!114 &114806411010200892
 MonoBehaviour:
   m_ObjectHideFlags: 1

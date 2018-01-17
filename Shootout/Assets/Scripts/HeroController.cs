@@ -775,7 +775,7 @@ public class HeroController : MonoBehaviour
 
         if (buttonPressed != 0)
         {
-            if (GetComponent<PlayerPowerups>().DoubleShot && !GetComponent<PlayerPowerups>().TripleShot)
+            if (GetComponent<PowerupStats>().DoubleShot && !GetComponent<PowerupStats>().TripleShot)
             {
                 StartCoroutine(SpawnThrowWeapon(angle - doubleAngle, buttonPressed));
                 StartCoroutine(SpawnThrowWeapon(angle + doubleAngle, buttonPressed));
@@ -784,99 +784,18 @@ public class HeroController : MonoBehaviour
             {
                 StartCoroutine(SpawnThrowWeapon(angle, buttonPressed));
             }
-            if (GetComponent<PlayerPowerups>().TripleShot)
+            if (GetComponent<PowerupStats>().TripleShot)
             {
                 StartCoroutine(SpawnThrowWeapon(angle - tripleAngle, buttonPressed));
                 StartCoroutine(SpawnThrowWeapon(angle + tripleAngle, buttonPressed));
             }
-            if (GetComponent<PlayerPowerups>().QuadShot)
+            if (GetComponent<PowerupStats>().QuadShot)
             {
                 StartCoroutine(SpawnThrowWeapon(angle + quadAngle, buttonPressed));
                 StartCoroutine(SpawnThrowWeapon(angle + 2 * quadAngle, buttonPressed));
                 StartCoroutine(SpawnThrowWeapon(angle + 3 * quadAngle, buttonPressed));
             }
         }
-
-        //if (GetComponent<PlayerPowerups>().DoubleShot)
-        //{
-        //    StartCoroutine(SpawnThrowWeapon(angle - doubleAngle));
-        //    StartCoroutine(SpawnThrowWeapon(290 + movement.z));
-        //}
-        //else
-        //{
-        //    StartCoroutine(SpawnThrowWeapon(270 + movement.z));
-        //}
-        //if (GetComponent<PlayerPowerups>().TripleShot)
-        //{
-        //    StartCoroutine(SpawnThrowWeapon(250 + movement.z));
-        //    StartCoroutine(SpawnThrowWeapon(290 + movement.z));
-        //}
-        //if (GetComponent<PlayerPowerups>().QuadShot)
-        //{
-        //    StartCoroutine(SpawnThrowWeapon(0 + movement.z));
-        //    StartCoroutine(SpawnThrowWeapon(90 + movement.z));
-        //    StartCoroutine(SpawnThrowWeapon(180 + movement.z));
-        //}
-
-
-
-        //if (Input.GetButton(leftAttackButton))
-        //{
-        //    if (GetComponent<PlayerPowerups>().DoubleShot)
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
-        //    }
-        //    else
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(270 + movement.z));
-        //    }
-        //    if (GetComponent<PlayerPowerups>().TripleShot)
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
-        //    }
-        //    if(GetComponent<PlayerPowerups>().QuadShot)
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(0 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(90 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(180 + movement.z));
-        //    }
-        //}
-        //if (Input.GetButton(rightAttackButton))
-        //{
-        //    if (GetComponent<PlayerPowerups>().DoubleShot)
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
-        //    }
-        //    else
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(90 - movement.z));
-        //    }
-        //    if (GetComponent<PlayerPowerups>().TripleShot)
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(250 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(290 + movement.z));
-        //    }
-        //    if (GetComponent<PlayerPowerups>().QuadShot)
-        //    {
-        //        StartCoroutine(SpawnThrowWeapon(0 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(90 + movement.z));
-        //        StartCoroutine(SpawnThrowWeapon(180 + movement.z));
-        //    }
-
-
-            
-        //}
-        //if (Input.GetButton(upAttackButton))
-        //{
-        //    StartCoroutine(SpawnThrowWeapon(0 + movement.x));
-        //}
-        //if (Input.GetButton(downAttackButton))
-        //{
-        //    StartCoroutine(SpawnThrowWeapon(180 - movement.x));
-        //}
     }
 
     IEnumerator SpawnThrowWeapon(float y, int buttonPressed)
@@ -947,29 +866,17 @@ public class HeroController : MonoBehaviour
             }
         }
 
-
-        //if (Input.GetButton(leftAttackButton))
-        //{
-        //    y = 270 + movement.z;
-        //}
-        //if (Input.GetButton(rightAttackButton))
-        //{
-        //    y = 90 - movement.z;
-        //}
-        //if (Input.GetButton(upAttackButton))
-        //{
-        //    y = 0 + movement.x;
-        //}
-        //if (Input.GetButton(downAttackButton))
-        //{
-        //    y = 180 - movement.x;
-        //}
-
         GameObject throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
         throwWeapon = ResizeThrownItem(throwWeapon);
 
         throwWeapon.GetComponent<CapsuleCollider>().enabled = true;
         throwWeapon.AddComponent<Rigidbody>();
+
+        if(GetComponent<PowerupStats>().CircularShot)
+        {
+            throwWeapon.AddComponent<ThrowRotator>();
+            throwWeapon.GetComponent<ThrowRotator>().ThrowForce = ThrowForce;
+        }
 
         throwWeapon.tag = "Arrow";
 
@@ -979,7 +886,7 @@ public class HeroController : MonoBehaviour
 
     private GameObject ResizeThrownItem(GameObject item)
     {
-        Vector3 adjustedScale = new Vector3(item.transform.localScale.x + GetComponent<PlayerPowerups>().SizeIncrease, item.transform.localScale.y + GetComponent<PlayerPowerups>().SizeIncrease, item.transform.localScale.z + GetComponent<PlayerPowerups>().SizeIncrease);
+        Vector3 adjustedScale = new Vector3(item.transform.localScale.x + GetComponent<PowerupStats>().SizeIncrease, item.transform.localScale.y + GetComponent<PowerupStats>().SizeIncrease, item.transform.localScale.z + GetComponent<PowerupStats>().SizeIncrease);
         item.transform.localScale = adjustedScale;
 
         return item;

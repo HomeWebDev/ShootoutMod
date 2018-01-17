@@ -15,6 +15,7 @@ public class PowerupStats : MonoBehaviour {
     public bool TripleShot;
     public bool QuadShot;
     public bool PenetratingShot;
+    public bool CircularShot;
 
     // Use this for initialization
     void Start () {

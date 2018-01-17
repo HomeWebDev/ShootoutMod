@@ -37,7 +37,7 @@ public class ContactDamage : MonoBehaviour {
             if (tag == "Arrow" && (other.tag == "Obstacle" || other.tag == "Enemy"))
             {
                 GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
-                if(!player1.GetComponent<PlayerPowerups>().PenetratingShot)
+                if(!player1.GetComponent<PowerupStats>().PenetratingShot)
                 {
                     Destroy(gameObject);
                 }

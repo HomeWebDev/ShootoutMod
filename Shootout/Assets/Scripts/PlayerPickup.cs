@@ -105,35 +105,36 @@ public class PlayerPickup : MonoBehaviour {
             //Debug.Log("Powerup");
             //GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
 
-            player1.GetComponent<PlayerPowerups>().HealthIncrease += other.GetComponent<PowerupStats>().HealthIncrease;
+            player1.GetComponent<PowerupStats>().HealthIncrease += other.GetComponent<PowerupStats>().HealthIncrease;
             player1.GetComponent<PlayerHealth>().maxHealth += other.GetComponent<PowerupStats>().HealthIncrease;
             player1.GetComponent<PlayerHealth>().health += other.GetComponent<PowerupStats>().HealthIncrease;
             player1.GetComponent<PlayerHealth>().UpdateStatusBar();
 
-            player1.GetComponent<PlayerPowerups>().StaminaIncrease += other.GetComponent<PowerupStats>().StaminaIncrease;
+            player1.GetComponent<PowerupStats>().StaminaIncrease += other.GetComponent<PowerupStats>().StaminaIncrease;
             player1.GetComponent<PlayerStamina>().maxStamina += other.GetComponent<PowerupStats>().StaminaIncrease;
             player1.GetComponent<PlayerStamina>().Stamina += other.GetComponent<PowerupStats>().StaminaIncrease;
             player1.GetComponent<PlayerStamina>().UpdateStatusBar();
 
-            player1.GetComponent<PlayerPowerups>().MovementSpeedIncrease += other.GetComponent<PowerupStats>().MovementSpeedIncrease;
+            player1.GetComponent<PowerupStats>().MovementSpeedIncrease += other.GetComponent<PowerupStats>().MovementSpeedIncrease;
             player1.GetComponent<HeroController>().movementSpeed += other.GetComponent<PowerupStats>().MovementSpeedIncrease;
 
-            player1.GetComponent<PlayerPowerups>().AttackSpeedIncrease += other.GetComponent<PowerupStats>().AttackSpeedIncrease;
+            player1.GetComponent<PowerupStats>().AttackSpeedIncrease += other.GetComponent<PowerupStats>().AttackSpeedIncrease;
             player1.GetComponent<HeroController>().attackSpeed += other.GetComponent<PowerupStats>().AttackSpeedIncrease;
 
-            player1.GetComponent<PlayerPowerups>().ThrowForceIncrease += other.GetComponent<PowerupStats>().ThrowForceIncrease;
+            player1.GetComponent<PowerupStats>().ThrowForceIncrease += other.GetComponent<PowerupStats>().ThrowForceIncrease;
             player1.GetComponent<HeroController>().ThrowForce += other.GetComponent<PowerupStats>().ThrowForceIncrease;
 
-            player1.GetComponent<PlayerPowerups>().SizeIncrease += other.GetComponent<PowerupStats>().SizeIncrease;
+            player1.GetComponent<PowerupStats>().SizeIncrease += other.GetComponent<PowerupStats>().SizeIncrease;
             Vector3 adjustedScale = new Vector3(player1.transform.localScale.x + other.GetComponent<PowerupStats>().SizeIncrease, player1.transform.localScale.y + other.GetComponent<PowerupStats>().SizeIncrease, player1.transform.localScale.z + other.GetComponent<PowerupStats>().SizeIncrease);
             player1.transform.localScale = adjustedScale;
 
 
-            player1.GetComponent<PlayerPowerups>().DoubleShot |= other.GetComponent<PowerupStats>().DoubleShot;
-            player1.GetComponent<PlayerPowerups>().TripleShot |= other.GetComponent<PowerupStats>().TripleShot;
-            player1.GetComponent<PlayerPowerups>().QuadShot |= other.GetComponent<PowerupStats>().QuadShot;
-            player1.GetComponent<PlayerPowerups>().PenetratingShot |= other.GetComponent<PowerupStats>().PenetratingShot;
-
+            player1.GetComponent<PowerupStats>().DoubleShot |= other.GetComponent<PowerupStats>().DoubleShot;
+            player1.GetComponent<PowerupStats>().TripleShot |= other.GetComponent<PowerupStats>().TripleShot;
+            player1.GetComponent<PowerupStats>().QuadShot |= other.GetComponent<PowerupStats>().QuadShot;
+            player1.GetComponent<PowerupStats>().PenetratingShot |= other.GetComponent<PowerupStats>().PenetratingShot;
+            player1.GetComponent<PowerupStats>().CircularShot |= other.GetComponent<PowerupStats>().CircularShot;
+            
 
             Destroy(other.gameObject);
         }
