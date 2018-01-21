@@ -134,7 +134,8 @@ public class PlayerPickup : MonoBehaviour {
             player1.GetComponent<PowerupStats>().QuadShot |= other.GetComponent<PowerupStats>().QuadShot;
             player1.GetComponent<PowerupStats>().PenetratingShot |= other.GetComponent<PowerupStats>().PenetratingShot;
             player1.GetComponent<PowerupStats>().CircularShot |= other.GetComponent<PowerupStats>().CircularShot;
-            
+            player1.GetComponent<PowerupStats>().SpinningShot |= other.GetComponent<PowerupStats>().SpinningShot;
+
 
             Destroy(other.gameObject);
         }

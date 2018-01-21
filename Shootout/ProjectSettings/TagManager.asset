@@ -33,6 +33,7 @@ TagManager:
   - EndingText
   - Powerup
   - FoundItemCanvas
+  - Costume
   layers:
   - Default
   - TransparentFX

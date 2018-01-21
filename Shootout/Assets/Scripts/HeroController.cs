@@ -876,6 +876,13 @@ public class HeroController : MonoBehaviour
         {
             throwWeapon.AddComponent<ThrowRotator>();
             throwWeapon.GetComponent<ThrowRotator>().ThrowForce = ThrowForce;
+            throwWeapon.GetComponent<ThrowRotator>().Behaviour = 0;
+        }
+        if (GetComponent<PowerupStats>().SpinningShot)
+        {
+            throwWeapon.AddComponent<ThrowRotator>();
+            throwWeapon.GetComponent<ThrowRotator>().ThrowForce = ThrowForce;
+            throwWeapon.GetComponent<ThrowRotator>().Behaviour = 1;
         }
 
         throwWeapon.tag = "Arrow";
