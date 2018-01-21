@@ -152,7 +152,7 @@ public class PlayerPickup : MonoBehaviour {
         }
 
         //Remove other items in group
-        if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear" || other.tag == "Powerup")
+        if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear" || other.tag == "Powerup" || other.tag == "Costume")
         {
             if (other.gameObject.GetComponent<ItemName>().Group != string.Empty)
             {
@@ -167,8 +167,9 @@ public class PlayerPickup : MonoBehaviour {
                 GameObject[] backGear = GameObject.FindGameObjectsWithTag("BackGear");
                 GameObject[] headGear = GameObject.FindGameObjectsWithTag("HeadGear");
                 GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
+                GameObject[] costumes = GameObject.FindGameObjectsWithTag("Costume");
 
-                GameObject[] items = weapons.Concat(backGear).ToArray().Concat(headGear).ToArray().Concat(powerups).ToArray();
+                GameObject[] items = weapons.Concat(backGear).ToArray().Concat(headGear).ToArray().Concat(powerups).ToArray().Concat(costumes).ToArray();
 
                 foreach (GameObject item in items)
                 {

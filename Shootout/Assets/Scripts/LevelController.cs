@@ -341,7 +341,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 33).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 59).ToList();
 
         for (int k = 0; k < 4; k++)
         {
@@ -352,10 +352,33 @@ public class LevelController : MonoBehaviour {
 
         //Debug.Log("usedIndexes: " + usedIndexes[0] + ":" + usedIndexes[1] + ":" + usedIndexes[2] + ":" + usedIndexes[3]);
 
-        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x+5, 0.5f, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
-        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0.5f, z+3), Quaternion.Euler(-90, 0, 0)) as GameObject;
-        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.5f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
-        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.5f, z-3), Quaternion.Euler(-90, 0, 0)) as GameObject;
+        Quaternion euler0 = Quaternion.Euler(-90, 0, 0);
+        Quaternion euler1 = Quaternion.Euler(-90, 0, 0);
+        Quaternion euler2 = Quaternion.Euler(-90, 0, 0);
+        Quaternion euler3 = Quaternion.Euler(-90, 0, 0);
+
+        if(usedIndexes[0] >= 34 && usedIndexes[0] <= 59)
+        {
+            euler0 = Quaternion.Euler(0, 180, 0);
+        }
+        if (usedIndexes[1] >= 34 && usedIndexes[1] <= 59)
+        {
+            euler1 = Quaternion.Euler(0, 180, 0);
+        }
+        if (usedIndexes[2] >= 34 && usedIndexes[2] <= 59)
+        {
+            euler2 = Quaternion.Euler(0, 180, 0);
+        }
+        if (usedIndexes[3] >= 34 && usedIndexes[3] <= 59)
+        {
+            euler3 = Quaternion.Euler(0, 180, 0);
+        }
+
+
+        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x+5, 0.5f, z+3), euler0) as GameObject;
+        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0.5f, z+3), euler1) as GameObject;
+        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.5f, z-3), euler2) as GameObject;
+        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.5f, z-3), euler3) as GameObject;
 
         item1.GetComponent<ItemName>().Group = "Group" + groupId;
         item2.GetComponent<ItemName>().Group = "Group" + groupId;

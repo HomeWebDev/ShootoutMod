@@ -65,6 +65,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4413793608917698}
   - component: {fileID: 95516452913830928}
+  - component: {fileID: 65447470655224320}
+  - component: {fileID: 114840642323962036}
+  - component: {fileID: 114581357670391164}
   m_Layer: 0
   m_Name: Female White L Dress 04 Purple Nohead
   m_TagString: Costume
@@ -1056,6 +1059,18 @@ Transform:
   m_Father: {fileID: 4413793608917698}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65447470655224320
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044627317135108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95516452913830928
 Animator:
   serializedVersion: 3
@@ -1063,7 +1078,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044627317135108}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 231d45dba8bff13478d80904318e7bc4, type: 3}
   m_Controller: {fileID: 9100000, guid: b28a5814760ae474880bf98404639623, type: 2}
   m_CullingMode: 1
@@ -1073,6 +1088,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114581357670391164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044627317135108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Purple sorceress robe
+  Description: 
+  Group: 
+--- !u!114 &114840642323962036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044627317135108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e218f5defab3b1c40804a342b91d3a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  costumeMaterial: {fileID: 2100000, guid: be38e2d81c7d51346a9bc217d97caf3b, type: 2}
 --- !u!137 &137587726606420162
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -310,6 +310,9 @@ GameObject:
   m_Component:
   - component: {fileID: 453062}
   - component: {fileID: 9561650}
+  - component: {fileID: 65375633180795110}
+  - component: {fileID: 114132543720529708}
+  - component: {fileID: 114628815766280768}
   m_Layer: 0
   m_Name: Female White Archer 01 Blue Nohead
   m_TagString: Costume
@@ -1052,7 +1055,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 231d45dba8bff13478d80904318e7bc4, type: 3}
   m_Controller: {fileID: 9100000, guid: b28a5814760ae474880bf98404639623, type: 2}
   m_CullingMode: 1
@@ -1137,3 +1140,41 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155614}
   m_IsPrefabParent: 1
+--- !u!65 &65375633180795110
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114132543720529708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e218f5defab3b1c40804a342b91d3a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  costumeMaterial: {fileID: 2100000, guid: 831c611d164a8b844b9af3ec6ce6a37b, type: 2}
+--- !u!114 &114628815766280768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Blue archer gear
+  Description: 
+  Group: 
