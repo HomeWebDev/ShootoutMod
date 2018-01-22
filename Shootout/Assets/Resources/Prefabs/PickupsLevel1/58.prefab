@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 65055213058248592}
   - component: {fileID: 114716944817676840}
   - component: {fileID: 114521083458637926}
+  - component: {fileID: 114251532437645164}
   m_Layer: 0
   m_Name: 58
   m_TagString: Costume
@@ -1152,6 +1153,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114251532437645164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 5
+  AttackSpeedMod: 5
 --- !u!114 &114521083458637926
 MonoBehaviour:
   m_ObjectHideFlags: 1

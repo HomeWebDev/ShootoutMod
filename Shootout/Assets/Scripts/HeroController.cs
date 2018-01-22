@@ -139,7 +139,7 @@ public class HeroController : MonoBehaviour
         //moveV *= Time.deltaTime;
         //moveH *= Time.deltaTime;
         animator.SetFloat("MoveSpeedMultiplier", movementSpeed * 0.125f);
-        animator.SetFloat("AttackSpeedMultiplier", attackSpeed * 0.1f);
+        animator.SetFloat("AttackSpeedMultiplier", attackSpeed * 0.1f + GetComponent<CostumeStats>().AttackSpeedMod * 0.1f);
         //Debug.Log("movement: " + Mathf.Min(Mathf.Abs(moveV), Mathf.Abs(moveH)));
     }
 
@@ -161,7 +161,7 @@ public class HeroController : MonoBehaviour
         {
             movement = new Vector3(moveH, 0.0f, moveV);
         }
-        movement *= movementSpeed / 2;
+        movement *= (movementSpeed / 2 + GetComponent<CostumeStats>().SpeedMod / 2);
         controller.Move(movement * Time.deltaTime);
 
         // GetWeaponType();

@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 65998923797763522}
   - component: {fileID: 114019788805921672}
   - component: {fileID: 114953077343547508}
+  - component: {fileID: 114589729817345826}
   m_Layer: 0
   m_Name: 39
   m_TagString: Costume
@@ -1165,6 +1166,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costumeMaterial: {fileID: 2100000, guid: a92dc3dde17521047aa4c10fa4f85c7e, type: 2}
   baseMesh: {fileID: 4300000, guid: 231d45dba8bff13478d80904318e7bc4, type: 3}
+--- !u!114 &114589729817345826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 1
+  StaminaMod: 0
+  SpeedMod: 1
+  AttackSpeedMod: 1
 --- !u!114 &114953077343547508
 MonoBehaviour:
   m_ObjectHideFlags: 1

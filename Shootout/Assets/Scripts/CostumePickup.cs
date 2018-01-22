@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 public class CostumePickup : MonoBehaviour {
 
@@ -20,6 +21,12 @@ public class CostumePickup : MonoBehaviour {
             SkinnedMeshRenderer skinMesh = baseTransform.GetComponent<SkinnedMeshRenderer>();
             skinMesh.material = costumeMaterial;
             skinMesh.sharedMesh = baseMesh;
+
+            //Copy values from costumes stats to players costumestats
+            foreach (FieldInfo f in GetComponent<CostumeStats>().GetType().GetFields())
+            {
+                f.SetValue(player1.GetComponent<CostumeStats>(), f.GetValue(GetComponent<CostumeStats>()));
+            }
 
             //Destroj jacket
             Destroy(gameObject);

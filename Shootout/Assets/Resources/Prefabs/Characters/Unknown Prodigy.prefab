@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 114615053043694470}
   - component: {fileID: 114359003748728364}
   - component: {fileID: 114237631444083218}
+  - component: {fileID: 114259133712590082}
   m_Layer: 0
   m_Name: Unknown Prodigy
   m_TagString: Player1
@@ -1568,6 +1569,23 @@ MonoBehaviour:
   TripleShot: 0
   QuadShot: 0
   PenetratingShot: 0
+  CircularShot: 0
+  SpinningShot: 0
+--- !u!114 &114259133712590082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613629848881684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
 --- !u!114 &114311479840193152
 MonoBehaviour:
   m_ObjectHideFlags: 1

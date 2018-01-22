@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 65972166493168922}
   - component: {fileID: 114623230146628884}
   - component: {fileID: 114503546746237008}
+  - component: {fileID: 114613680502588212}
   m_Layer: 0
   m_Name: 51
   m_TagString: Costume
@@ -1102,6 +1103,21 @@ MonoBehaviour:
   Name: Green sorceress robe
   Description: 
   Group: 
+--- !u!114 &114613680502588212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1469740161313222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: -20
+  StaminaMod: 2
+  SpeedMod: 2
+  AttackSpeedMod: 0
 --- !u!114 &114623230146628884
 MonoBehaviour:
   m_ObjectHideFlags: 1

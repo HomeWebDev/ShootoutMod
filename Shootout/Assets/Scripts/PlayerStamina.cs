@@ -10,6 +10,7 @@ public class PlayerStamina : MonoBehaviour {
 
     public float maxStamina;
     private float nextUpdate = 0.1f;
+    private GameObject player1;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +20,8 @@ public class PlayerStamina : MonoBehaviour {
         StaminaStatusBar.UpdatePositioning();
 
         StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
+
+        player1 = GameObject.FindGameObjectWithTag("Player1");
     }
 
     public void UpdateStatusBar()
@@ -53,7 +56,9 @@ public class PlayerStamina : MonoBehaviour {
 
     public bool DepleteStamina(float value)
     {
-        if(Stamina >= value)
+        //Add stamina modifier
+        value = value - player1.GetComponent<CostumeStats>().StaminaMod;
+        if (Stamina >= value)
         {
             Stamina -= value;
             StaminaStatusBar.UpdateStatus(Stamina, maxStamina);

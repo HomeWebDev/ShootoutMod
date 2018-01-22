@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     private Animator animator;
     private int takeDamageHash = Animator.StringToHash("Take Damage");
     private int dieHash = Animator.StringToHash("Die");
+    private GameObject player1;
 
     // Use this for initialization
     void Start()
@@ -34,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
         healthStatusBar.UpdateStatus(health, maxHealth);
 
         animator = GetComponent<Animator>();
+
+        player1 = GameObject.FindGameObjectWithTag("Player1");
     }
 
     public void UpdateStatusBar()
@@ -90,6 +93,8 @@ public class PlayerHealth : MonoBehaviour
         //    shield -= amount;
         //else
         //    health -= amount;
+
+        amount = amount - amount * player1.GetComponent<CostumeStats>().DefenceMod / 100;
 
         health -= amount;
 

@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 65652831110115644}
   - component: {fileID: 114872218907475326}
   - component: {fileID: 114674157212782010}
+  - component: {fileID: 114712266913490060}
   m_Layer: 0
   m_Name: 44
   m_TagString: Costume
@@ -1166,6 +1167,21 @@ MonoBehaviour:
   Name: Blue knight armor
   Description: 
   Group: 
+--- !u!114 &114712266913490060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 10
+  StaminaMod: -1
+  SpeedMod: -1
+  AttackSpeedMod: -1
 --- !u!114 &114872218907475326
 MonoBehaviour:
   m_ObjectHideFlags: 1

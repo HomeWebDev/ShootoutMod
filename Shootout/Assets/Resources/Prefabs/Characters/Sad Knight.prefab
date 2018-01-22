@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 114360459439903824}
   - component: {fileID: 114550792859759786}
   - component: {fileID: 114567866031795580}
+  - component: {fileID: 114439374158329570}
   m_Layer: 0
   m_Name: Sad Knight
   m_TagString: Player1
@@ -1727,6 +1728,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114439374158329570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
 --- !u!114 &114446427545809084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1943,6 +1959,8 @@ MonoBehaviour:
   TripleShot: 0
   QuadShot: 0
   PenetratingShot: 0
+  CircularShot: 0
+  SpinningShot: 0
 --- !u!114 &114643291742460194
 MonoBehaviour:
   m_ObjectHideFlags: 1
