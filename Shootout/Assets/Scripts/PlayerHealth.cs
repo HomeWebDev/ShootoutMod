@@ -94,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
         //else
         //    health -= amount;
 
-        amount = amount - amount * player1.GetComponent<CostumeStats>().DefenceMod / 100;
+        amount = amount - amount * player1.GetComponent<CostumeStats>().DefenceMod / 100 - amount * player1.GetComponent<BackStats>().DefenceMod / 100;
 
         health -= amount;
 

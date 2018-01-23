@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 114550792859759786}
   - component: {fileID: 114567866031795580}
   - component: {fileID: 114439374158329570}
+  - component: {fileID: 114374950155479812}
   m_Layer: 0
   m_Name: Sad Knight
   m_TagString: Player1
@@ -1701,6 +1702,21 @@ MonoBehaviour:
   weapon: {fileID: 151166}
   headGear: {fileID: 0}
   backGear: {fileID: 0}
+--- !u!114 &114374950155479812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4116fea9a497e274da6304bc4f08f71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
 --- !u!114 &114424470174161824
 MonoBehaviour:
   m_ObjectHideFlags: 1

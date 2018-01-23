@@ -57,7 +57,7 @@ public class PlayerStamina : MonoBehaviour {
     public bool DepleteStamina(float value)
     {
         //Add stamina modifier
-        value = value - player1.GetComponent<CostumeStats>().StaminaMod;
+        value = value - player1.GetComponent<CostumeStats>().StaminaMod - player1.GetComponent<BackStats>().StaminaMod;
         if (Stamina >= value)
         {
             Stamina -= value;

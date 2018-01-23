@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 114690993974804258}
   - component: {fileID: 114458116844269052}
   - component: {fileID: 114562911817733890}
+  - component: {fileID: 114591498033244620}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Player1
@@ -16209,6 +16210,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44bfcfdefa9667146aadfd46527e81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
+--- !u!114 &114591498033244620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4116fea9a497e274da6304bc4f08f71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DefenceMod: 0

@@ -18,12 +18,4 @@ public class CostumeStats : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    public void ResetAll()
-    {
-        DefenceMod = 0;
-        StaminaMod = 0;
-        SpeedMod = 0;
-        AttackSpeedMod = 0;
-    }
 }
