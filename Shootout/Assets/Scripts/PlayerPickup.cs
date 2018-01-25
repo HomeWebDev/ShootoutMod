@@ -74,31 +74,31 @@ public class PlayerPickup : MonoBehaviour {
                     ActiveGear.weapon.GetComponent<WeaponConfig>().WeaponRotationRightHand);
             }
         }
-        if (other.tag == "BackGear")
-        {
-            if (ActiveGear.Back == null)
-            {
-                return;
-            }
-            ActiveGear.backGear = other.gameObject;
+        //if (other.tag == "BackGear")
+        //{
+        //    if (ActiveGear.Back == null)
+        //    {
+        //        return;
+        //    }
+        //    ActiveGear.backGear = other.gameObject;
 
-            //RemoveItemsFrom(Back.transform);
-            PutItemsPlace(ActiveGear.backGear, ActiveGear.Back.transform,
-                ActiveGear.backGear.GetComponent<GearConfig>().ItemRotation);
-        }
-        if (other.tag == "HeadGear")
-        {
-            if (ActiveGear.Head == null)
-            {
-                return;
-            }
-            ActiveGear.headGear = other.gameObject;
+        //    //RemoveItemsFrom(Back.transform);
+        //    PutItemsPlace(ActiveGear.backGear, ActiveGear.Back.transform,
+        //        ActiveGear.backGear.GetComponent<GearConfig>().ItemRotation);
+        //}
+        //if (other.tag == "HeadGear")
+        //{
+        //    if (ActiveGear.Head == null)
+        //    {
+        //        return;
+        //    }
+        //    ActiveGear.headGear = other.gameObject;
 
-            //RemoveItemsFrom(Head.transform);
+        //    //RemoveItemsFrom(Head.transform);
 
-            PutItemsPlace(ActiveGear.headGear, ActiveGear.Head.transform,
-                ActiveGear.headGear.GetComponent<GearConfig>().ItemRotation);
-        }
+        //    PutItemsPlace(ActiveGear.headGear, ActiveGear.Head.transform,
+        //        ActiveGear.headGear.GetComponent<GearConfig>().ItemRotation);
+        //}
 
         if (other.tag == "Powerup")
         {

@@ -16,7 +16,7 @@ public class BackPickup : MonoBehaviour {
             //Find back by reference from player object. Using "Find" by name seems sometimes buggy
             backTransform = player1.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(0).transform;
 
-            //Remove all old back item if any
+            //Remove all old back items if any
             foreach (Transform child in backTransform)
             {
                 if (child != this.transform)

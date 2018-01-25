@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class HeadStats : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public float DefenceMod;
+    public float StaminaMod;
+    public float SpeedMod;
+    public float AttackSpeedMod;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

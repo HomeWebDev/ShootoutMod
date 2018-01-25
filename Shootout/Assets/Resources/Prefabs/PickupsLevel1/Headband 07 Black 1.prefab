@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 114593423348160982}
   m_Layer: 0
   m_Name: Headband 07 Black 1
-  m_TagString: Untagged
+  m_TagString: HeadGear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e32b9c05bcc15a47aa73ca67b94fa8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
 --- !u!114 &114209044892069240
 MonoBehaviour:
   m_ObjectHideFlags: 1
