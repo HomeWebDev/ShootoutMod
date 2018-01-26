@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 114567866031795580}
   - component: {fileID: 114439374158329570}
   - component: {fileID: 114374950155479812}
+  - component: {fileID: 114274653541511994}
   m_Layer: 0
   m_Name: Sad Knight
   m_TagString: Player1
@@ -1668,6 +1669,19 @@ MonoBehaviour:
     keepVisible: 0
     triggerValue: 0.25
   statusBarName: Health
+--- !u!114 &114274653541511994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f6df84f2a38684a97d0fd2b07ee395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadStats: []
+  NumberOfGroups: 9
 --- !u!114 &114356400959743464
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ public class HeadPickup : MonoBehaviour
             //Remove all old back items if any
             foreach (Transform child in headTransform)
             {
-                if (child.tag == "HeadGear" && child != transform)
+                if (child.tag == "HeadGear" && child != transform && child.GetComponent<HeadStats>().Group == GetComponent<HeadStats>().Group)
                 {
                     //Debug.Log("delete");
                     Destroy(child.gameObject);
@@ -33,11 +33,18 @@ public class HeadPickup : MonoBehaviour
             transform.localEulerAngles = new Vector3(-90, 0, 0);
             transform.parent = headTransform;
 
+            int group = GetComponent<HeadStats>().Group;
+
             //Copy values from head stats to players headstats
             foreach (FieldInfo f in GetComponent<HeadStats>().GetType().GetFields())
             {
-                f.SetValue(player1.GetComponent<HeadStats>(), f.GetValue(GetComponent<HeadStats>()));
+                f.SetValue(player1.GetComponent<PlayerHeadStats>().HeadStats[group], f.GetValue(GetComponent<HeadStats>()));
             }
+
+            //foreach (FieldInfo f in GetComponent<HeadStats>().GetType().GetFields())
+            //{
+            //    f.SetValue(player1.GetComponent<HeadStats>(), f.GetValue(GetComponent<HeadStats>()));
+            //}
         }
     }
 }

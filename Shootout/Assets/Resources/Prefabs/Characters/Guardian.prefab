@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 114458116844269052}
   - component: {fileID: 114562911817733890}
   - component: {fileID: 114591498033244620}
+  - component: {fileID: 114931777483974608}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Player1
@@ -16366,6 +16367,19 @@ MonoBehaviour:
   secondsDelay: 0.2
   resetSensitivity: 0.1
   fillSpeed: 0.5
+--- !u!114 &114931777483974608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f6df84f2a38684a97d0fd2b07ee395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadStats: []
+  NumberOfGroups: 9
 --- !u!114 &114995612060325808
 MonoBehaviour:
   m_ObjectHideFlags: 1

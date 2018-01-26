@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HeadStats : MonoBehaviour {
 
+    public int Group;
     public float DefenceMod;
     public float StaminaMod;
     public float SpeedMod;

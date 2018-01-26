@@ -93,8 +93,14 @@ public class PlayerHealth : MonoBehaviour
         //    shield -= amount;
         //else
         //    health -= amount;
+        float headAmout = 0;
+        for (int i = 0; i < player1.GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
+        {
+            headAmout = player1.GetComponent<PlayerHeadStats>().HeadStats[i].DefenceMod;
+        }
+        float itemDefenceMod = amount * player1.GetComponent<CostumeStats>().DefenceMod / 100 - amount * player1.GetComponent<BackStats>().DefenceMod / 100 - amount * headAmout / 100;
 
-        amount = amount - amount * player1.GetComponent<CostumeStats>().DefenceMod / 100 - amount * player1.GetComponent<BackStats>().DefenceMod / 100;
+        amount = amount - itemDefenceMod;
 
         health -= amount;
 
