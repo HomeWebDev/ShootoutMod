@@ -140,17 +140,17 @@ public class HeroController : MonoBehaviour
         //moveV *= Time.deltaTime;
         //moveH *= Time.deltaTime;
         animator.SetFloat("MoveSpeedMultiplier", movementSpeed * 0.125f);
-        float headAttackSpeedMod = 0;
-        for (int i = 0; i < GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
-        {
-            Debug.Log("i: " + i);
-            PlayerHeadStats t = player1.GetComponent<PlayerHeadStats>();
-            HeadStats h = player1.GetComponent<PlayerHeadStats>().HeadStats[i];
-            float tr = h.AttackSpeedMod; //This row gets the error
-            headAttackSpeedMod = player1.GetComponent<PlayerHeadStats>().HeadStats[i].AttackSpeedMod;
-        }
+        //float headAttackSpeedMod = 0;
+        //for (int i = 0; i < GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
+        //{
+        //    Debug.Log("i: " + i);
+        //    PlayerHeadStats t = player1.GetComponent<PlayerHeadStats>();
+        //    HeadStats h = player1.GetComponent<PlayerHeadStats>().HeadStats[i];
+        //    float tr = h.AttackSpeedMod; //This row gets the error
+        //    headAttackSpeedMod = player1.GetComponent<PlayerHeadStats>().HeadStats[i].AttackSpeedMod;
+        //}
         float attackSpeedMultiplier = 0.1f;
-        float itemAttackSpeedMod = GetComponent<CostumeStats>().AttackSpeedMod * attackSpeedMultiplier + GetComponent<BackStats>().AttackSpeedMod * attackSpeedMultiplier + headAttackSpeedMod * attackSpeedMultiplier;
+        float itemAttackSpeedMod = GetComponent<CostumeStats>().AttackSpeedMod * attackSpeedMultiplier + GetComponent<BackStats>().AttackSpeedMod * attackSpeedMultiplier + GetComponent<HeadStats>().AttackSpeedMod * attackSpeedMultiplier;
         animator.SetFloat("AttackSpeedMultiplier", attackSpeed * attackSpeedMultiplier + itemAttackSpeedMod);
         //Debug.Log("movement: " + Mathf.Min(Mathf.Abs(moveV), Mathf.Abs(moveH)));
     }
@@ -174,12 +174,12 @@ public class HeroController : MonoBehaviour
             movement = new Vector3(moveH, 0.0f, moveV);
         }
 
-        float headSpeedMod = 0;
-        for (int i = 0; i < GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
-        {
-            headSpeedMod = GetComponent<PlayerHeadStats>().HeadStats[i].SpeedMod;
-        }
-        float itemSpeedMod = GetComponent<CostumeStats>().SpeedMod / 2 + GetComponent<BackStats>().SpeedMod / 2 + headSpeedMod / 2;
+        //float headSpeedMod = 0;
+        //for (int i = 0; i < GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
+        //{
+        //    headSpeedMod = GetComponent<PlayerHeadStats>().HeadStats[i].SpeedMod;
+        //}
+        float itemSpeedMod = GetComponent<CostumeStats>().SpeedMod / 2 + GetComponent<BackStats>().SpeedMod / 2 + GetComponent<HeadStats>().SpeedMod / 2;
         movement *= (movementSpeed / 2 + itemSpeedMod);
         controller.Move(movement * Time.deltaTime);
 

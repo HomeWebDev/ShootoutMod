@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 114237631444083218}
   - component: {fileID: 114259133712590082}
   - component: {fileID: 114343173811239720}
-  - component: {fileID: 114653597029451362}
+  - component: {fileID: 114063195366113742}
   m_Layer: 0
   m_Name: Unknown Prodigy
   m_TagString: Player1
@@ -1373,6 +1373,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114063195366113742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613629848881684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e32b9c05bcc15a47aa73ca67b94fa8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: 0
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
 --- !u!114 &114101989880025144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1860,19 +1876,6 @@ MonoBehaviour:
   weapon: {fileID: 1587113255796708}
   headGear: {fileID: 0}
   backGear: {fileID: 0}
---- !u!114 &114653597029451362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613629848881684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f6df84f2a38684a97d0fd2b07ee395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HeadStats: []
-  NumberOfGroups: 9
 --- !u!114 &114689981565136296
 MonoBehaviour:
   m_ObjectHideFlags: 1

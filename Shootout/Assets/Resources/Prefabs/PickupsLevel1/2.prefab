@@ -1,18 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &138894
+--- !u!1 &126352
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 410794}
-  - component: {fileID: 3361458}
-  - component: {fileID: 2365244}
-  - component: {fileID: 65995422342752620}
-  - component: {fileID: 114468293152270418}
-  - component: {fileID: 114627720737231974}
+  - component: {fileID: 425576}
+  - component: {fileID: 3306696}
+  - component: {fileID: 2374776}
+  - component: {fileID: 65647241418889152}
+  - component: {fileID: 114452318773864496}
+  - component: {fileID: 114908822088658710}
+  - component: {fileID: 114014567532770700}
+  - component: {fileID: 114210468442660164}
   m_Layer: 0
   m_Name: 2
   m_TagString: HeadGear
@@ -20,25 +22,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &410794
+--- !u!4 &425576
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138894}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 126352}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000024689058, z: 0.0000000036156251, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.8705944, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2365244
+--- !u!23 &2374776
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138894}
+  m_GameObject: {fileID: 126352}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -47,7 +49,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 16143c2c15b33704e85b17fa0a030a0d, type: 2}
+  - {fileID: 2100000, guid: 43ff5789dda7e8a4ebfbb75a41d6ad78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67,50 +69,72 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &3361458
+--- !u!33 &3306696
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138894}
-  m_Mesh: {fileID: 4300000, guid: b754368428a64be4bba5f701941d6701, type: 3}
+  m_GameObject: {fileID: 126352}
+  m_Mesh: {fileID: 4300000, guid: 79d93b1659c7dc34193cbb04464c57a7, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 138894}
+  m_RootGameObject: {fileID: 126352}
   m_IsPrefabParent: 1
---- !u!65 &65995422342752620
+--- !u!65 &65647241418889152
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138894}
+  m_GameObject: {fileID: 126352}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9299919, y: 1.1514332, z: 0.8127353}
-  m_Center: {x: 0.00000014901161, y: 0.07546817, z: 0.51665765}
---- !u!114 &114468293152270418
+  m_Size: {x: 1.0707186, y: 0.1720397, z: 0.43512937}
+  m_Center: {x: 7.145708e-16, y: 0.008311985, z: 0.32461408}
+--- !u!114 &114014567532770700
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138894}
+  m_GameObject: {fileID: 126352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e32b9c05bcc15a47aa73ca67b94fa8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: 0
+  DefenceMod: 3
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
+--- !u!114 &114210468442660164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Evil horns
+  Description: 
+  Group: 
+--- !u!114 &114452318773864496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126352}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b795151a2df7b494fb2fa3777facdf47, type: 3}
@@ -120,17 +144,15 @@ MonoBehaviour:
   BackGear: 0
   LegGear: 0
   ArmGear: 0
-  ItemRotation: {x: -90, y: 0, z: 0}
---- !u!114 &114627720737231974
+  ItemRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &114908822088658710
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138894}
+  m_GameObject: {fileID: 126352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Script: {fileID: 11500000, guid: a976f2c3a851e2c428541618c15fd80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Blue Wizard Hat
-  Description: Description

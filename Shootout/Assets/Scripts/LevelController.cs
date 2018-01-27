@@ -341,7 +341,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 110).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 104).ToList();
 
         for (int k = 0; k < 4; k++)
         {

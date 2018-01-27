@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PlayerPickup : MonoBehaviour {
 
@@ -174,11 +175,16 @@ public class PlayerPickup : MonoBehaviour {
                 foreach (GameObject item in items)
                 {
                     Debug.Log("item: " + item + " group: " + group);
-                    if (item.GetComponent<ItemName>().Group == group)
+                    try
                     {
-                        Debug.Log("deleteditem: " + item + " group: " + group);
-                        Destroy(item);
+                        if (item.GetComponent<ItemName>().Group == group)
+                        {
+                            Debug.Log("deleteditem: " + item + " group: " + group);
+                            Destroy(item);
+                        }
                     }
+                    catch(Exception ex)
+                    { }
                 }
             }
         }
