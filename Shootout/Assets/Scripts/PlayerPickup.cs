@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+using System.Reflection;
 
 public class PlayerPickup : MonoBehaviour {
 
@@ -140,6 +142,54 @@ public class PlayerPickup : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
+        if (other.tag == "HeadGear")
+        {
+            Debug.Log("Headpickup");
+            //Find head by reference from player object. Using "Find" by name seems sometimes buggy
+            Transform headTransform = player1.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).transform;
+
+            //Remove all old head items if any
+            foreach (Transform child in headTransform)
+            {
+                if (child.tag == "HeadGear" && child != other.transform && child.GetComponent<HeadStats>().Group == other.GetComponent<HeadStats>().Group)
+                {
+                    //Debug.Log("delete");
+                    Destroy(child.gameObject);
+                }
+            }
+
+            other.transform.position = new Vector3(headTransform.position.x, headTransform.position.y, headTransform.position.z);
+            other.transform.localEulerAngles = new Vector3(-90, 0, 0);
+            other.transform.parent = headTransform;
+
+            UpdateHeadStats();
+        }
+
+        if (other.tag == "BackGear")
+        {
+            //Find back by reference from player object. Using "Find" by name seems sometimes buggy
+            Transform backTransform = player1.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(0).transform;
+
+            //Remove all old back items if any
+            foreach (Transform child in backTransform)
+            {
+                if (child != other.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+
+            other.transform.position = new Vector3(backTransform.position.x, backTransform.position.y, backTransform.position.z);
+            other.transform.localEulerAngles = new Vector3(0, 0, 0);
+            other.transform.parent = backTransform;
+
+            //Copy values from back stats to players backstats
+            foreach (FieldInfo f in other.GetComponent<BackStats>().GetType().GetFields())
+            {
+                f.SetValue(player1.GetComponent<BackStats>(), f.GetValue(other.GetComponent<BackStats>()));
+            }
+        }
+
         if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear")
         {
             if (other.gameObject.GetComponent<ItemName>().Group != string.Empty)
@@ -174,17 +224,48 @@ public class PlayerPickup : MonoBehaviour {
                 foreach (GameObject item in items)
                 {
                     Debug.Log("item: " + item + " group: " + group);
-                    if (item.GetComponent<ItemName>().Group == group)
+                    try
                     {
-                        Debug.Log("deleteditem: " + item + " group: " + group);
-                        Destroy(item);
+                        if (item.GetComponent<ItemName>().Group == group)
+                        {
+                            Debug.Log("deleteditem: " + item + " group: " + group);
+                            Destroy(item);
+                        }
                     }
+                    catch(Exception ex)
+                    { }
                 }
             }
         }
     }
 
-    private void RemoveItemsFrom(Transform LocationTransform)
+    private void UpdateHeadStats()
+    {
+        Transform headTransform = player1.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).transform;
+
+        float defenceMod = 0;
+        float staminaMod = 0;
+        float speedMod = 0;
+        float attackSpeedMod = 0;
+
+        foreach (Transform child in headTransform)
+        {
+            if (child.tag == "HeadGear")
+            {
+                defenceMod += child.GetComponent<HeadStats>().DefenceMod;
+                staminaMod += child.GetComponent<HeadStats>().StaminaMod;
+                speedMod += child.GetComponent<HeadStats>().SpeedMod;
+                attackSpeedMod += child.GetComponent<HeadStats>().AttackSpeedMod;
+            }
+        }
+
+        player1.GetComponent<HeadStats>().DefenceMod = defenceMod;
+        player1.GetComponent<HeadStats>().StaminaMod = staminaMod;
+        player1.GetComponent<HeadStats>().SpeedMod = speedMod;
+        player1.GetComponent<HeadStats>().AttackSpeedMod = attackSpeedMod;
+    }
+
+private void RemoveItemsFrom(Transform LocationTransform)
     {
         //Destroy all held weapons in this hand except the currently picked up (script will trigger twice)
         var children = new List<GameObject>();

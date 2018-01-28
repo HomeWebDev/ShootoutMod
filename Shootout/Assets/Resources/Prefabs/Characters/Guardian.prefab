@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 114458116844269052}
   - component: {fileID: 114562911817733890}
   - component: {fileID: 114591498033244620}
+  - component: {fileID: 114358244423617608}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Player1
@@ -16078,6 +16079,22 @@ MonoBehaviour:
   shieldSlider: {fileID: 0}
   maxHealth: 0
   healthStatusBar: {fileID: 114166957662164100}
+--- !u!114 &114358244423617608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e32b9c05bcc15a47aa73ca67b94fa8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: 0
+  DefenceMod: 0
+  StaminaMod: 0
+  SpeedMod: 0
+  AttackSpeedMod: 0
 --- !u!114 &114364256618139424
 MonoBehaviour:
   m_ObjectHideFlags: 1

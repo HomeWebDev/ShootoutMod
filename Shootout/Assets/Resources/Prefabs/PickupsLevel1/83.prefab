@@ -1,46 +1,46 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &152152
+--- !u!1 &150742
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 424596}
-  - component: {fileID: 3366236}
-  - component: {fileID: 2380326}
-  - component: {fileID: 65803093357053354}
-  - component: {fileID: 114134914202892140}
-  - component: {fileID: 114003159892498240}
-  - component: {fileID: 114409579007560144}
-  - component: {fileID: 114799813855599312}
+  - component: {fileID: 440654}
+  - component: {fileID: 3385458}
+  - component: {fileID: 2329042}
+  - component: {fileID: 65671762235129390}
+  - component: {fileID: 114022989908001280}
+  - component: {fileID: 114833519508802072}
+  - component: {fileID: 114638976418120346}
+  - component: {fileID: 114000762183602446}
   m_Layer: 0
-  m_Name: 6
+  m_Name: 83
   m_TagString: HeadGear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &424596
+--- !u!4 &440654
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.000000014086165, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2380326
+--- !u!23 &2329042
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -49,7 +49,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d320e087380f80f4a97d6f27154a3d7e, type: 2}
+  - {fileID: 2100000, guid: 89f0960147705da40aa3c062e38c956d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -69,13 +69,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &3366236
+--- !u!33 &3385458
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
-  m_Mesh: {fileID: 4300000, guid: c94121162c0a4c348992726844067832, type: 3}
+  m_GameObject: {fileID: 150742}
+  m_Mesh: {fileID: 4300000, guid: 9738dc01de55618498985fd4d79e7057, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -85,37 +85,40 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 152152}
+  m_RootGameObject: {fileID: 150742}
   m_IsPrefabParent: 1
---- !u!65 &65803093357053354
+--- !u!65 &65671762235129390
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3847265, y: 0.4268151, z: 1.0094111}
-  m_Center: {x: 0, y: -0.48875695, z: 0.15667467}
---- !u!114 &114003159892498240
+  m_Size: {x: 0.9219303, y: 1.0093733, z: 0.39656994}
+  m_Center: {x: 0.0000001937151, y: 0.011700871, z: 0.307091}
+--- !u!114 &114000762183602446
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a976f2c3a851e2c428541618c15fd80f, type: 3}
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114134914202892140
+  Name: Peasant hat
+  Description: 
+  Group: 
+--- !u!114 &114022989908001280
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b795151a2df7b494fb2fa3777facdf47, type: 3}
@@ -126,33 +129,30 @@ MonoBehaviour:
   LegGear: 0
   ArmGear: 0
   ItemRotation: {x: 0, y: 0, z: 0}
---- !u!114 &114409579007560144
+--- !u!114 &114638976418120346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e32b9c05bcc15a47aa73ca67b94fa8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Group: 8
-  DefenceMod: 4
+  Group: 5
+  DefenceMod: 2
   StaminaMod: 0
   SpeedMod: 0
   AttackSpeedMod: 0
---- !u!114 &114799813855599312
+--- !u!114 &114833519508802072
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152152}
+  m_GameObject: {fileID: 150742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Script: {fileID: 11500000, guid: a976f2c3a851e2c428541618c15fd80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Hypnotic mask
-  Description: 
-  Group: 

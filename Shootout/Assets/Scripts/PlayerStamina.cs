@@ -57,7 +57,13 @@ public class PlayerStamina : MonoBehaviour {
     public bool DepleteStamina(float value)
     {
         //Add stamina modifier
-        value = value - player1.GetComponent<CostumeStats>().StaminaMod - player1.GetComponent<BackStats>().StaminaMod;
+        //float headValue = 0;
+        //for (int i = 0; i < player1.GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
+        //{
+        //    headValue = player1.GetComponent<PlayerHeadStats>().HeadStats[i].StaminaMod;
+        //}
+        float itemValue = player1.GetComponent<CostumeStats>().StaminaMod - player1.GetComponent<BackStats>().StaminaMod - player1.GetComponent<HeadStats>().StaminaMod;
+        value = value - itemValue;
         if (Stamina >= value)
         {
             Stamina -= value;
