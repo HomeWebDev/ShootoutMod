@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4633202616225722}
   - component: {fileID: 23247606450407506}
+  - component: {fileID: 208564343827100044}
   m_Layer: 0
   m_Name: NorthWallOpen
   m_TagString: Boundary
@@ -924,3 +925,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.7309391, y: 3.73094, z: 5.1221237}
   m_Center: {x: 0.00000011920928, y: -0.00000023841866, z: 2.5610619}
+--- !u!208 &208564343827100044
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345859089730800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

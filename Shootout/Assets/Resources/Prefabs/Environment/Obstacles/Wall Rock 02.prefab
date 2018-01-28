@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33728055927123920}
   - component: {fileID: 23275203220774440}
   - component: {fileID: 65122773033701870}
+  - component: {fileID: 208178936323095628}
   m_Layer: 0
   m_Name: Wall Rock 02
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1786528, y: 1.148437, z: 0.8900387}
   m_Center: {x: 0, y: -0.00000002980233, z: 0.44501936}
+--- !u!208 &208178936323095628
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219164837102832}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.58900005, y: 0.574, z: 0.44500002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.44500002}
+  m_TimeToStationary: 0.5

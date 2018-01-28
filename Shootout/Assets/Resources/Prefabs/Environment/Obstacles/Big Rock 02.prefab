@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33178701584041892}
   - component: {fileID: 23573465827146552}
   - component: {fileID: 64297607500356370}
+  - component: {fileID: 208902514607479666}
   m_Layer: 0
   m_Name: Big Rock 02
   m_TagString: Obstacle
@@ -97,3 +98,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: d48705b60243b1643a0b281bc8138f53, type: 3}
+--- !u!208 &208902514607479666
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068281680856700}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 6.393, y: 5.2370005, z: 2.0080001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.038000003, y: -0.586, z: 2.0080001}
+  m_TimeToStationary: 0.5

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33577017654159526}
   - component: {fileID: 23058410090825570}
   - component: {fileID: 65789416575766570}
+  - component: {fileID: 208395549587790130}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Obstacle
@@ -161,3 +162,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!208 &208395549587790130
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018446314856742}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.79, y: 0.409, z: 1.6340001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.40300003, y: 0, z: 1.6340001}
+  m_TimeToStationary: 0.5

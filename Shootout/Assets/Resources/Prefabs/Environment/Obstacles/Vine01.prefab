@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33514474297855134}
   - component: {fileID: 23668314721662672}
   - component: {fileID: 65021603922233794}
+  - component: {fileID: 208309158600369470}
   m_Layer: 9
   m_Name: Vine01
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5067734, y: 0.34479466, z: 1.5148444}
   m_Center: {x: 0.035152793, y: 0, z: 0.7574222}
+--- !u!208 &208309158600369470
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962160897856854}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.753, y: 0.172, z: 0.757}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.035, y: 0, z: 0.757}
+  m_TimeToStationary: 0.5

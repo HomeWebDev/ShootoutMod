@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33322834217346938}
   - component: {fileID: 23886632173721618}
   - component: {fileID: 65985024007290098}
+  - component: {fileID: 208995548067205846}
   m_Layer: 0
   m_Name: Tombstone 03
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.446707, y: 3.9543355, z: 3.111596}
   m_Center: {x: 0, y: 0, z: 1.555798}
+--- !u!208 &208995548067205846
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356704494675728}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.223, y: 1.9770001, z: 1.5560001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 1.5560001}
+  m_TimeToStationary: 0.5

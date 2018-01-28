@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33884641592002016}
   - component: {fileID: 23914936409286616}
   - component: {fileID: 65209615523529946}
+  - component: {fileID: 208206432087270162}
   m_Layer: 0
   m_Name: Graveyard Statue
   m_TagString: Obstacle
@@ -161,3 +162,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!208 &208206432087270162
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201719594608328}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.195, y: 0.878, z: 1.5610001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.042000003, y: 0.021000002, z: 1.5610001}
+  m_TimeToStationary: 0.5

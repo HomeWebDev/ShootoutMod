@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33074607402574230}
   - component: {fileID: 23888563159405806}
   - component: {fileID: 65717276853563728}
+  - component: {fileID: 208023386135432206}
   m_Layer: 0
   m_Name: Tombstone 02B
   m_TagString: Obstacle
@@ -161,3 +162,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!208 &208023386135432206
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114943406713098}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.69000006, y: 0.30200002, z: 0.698}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.698}
+  m_TimeToStationary: 0.5

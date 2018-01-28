@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33997078548328158}
   - component: {fileID: 23196547624907242}
   - component: {fileID: 65745749905741428}
+  - component: {fileID: 208216885182529722}
   m_Layer: 0
   m_Name: Pot 01 Blue
   m_TagString: Obstacle
@@ -3733,3 +3734,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &208216885182529722
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1134473828207482}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.684, y: 0.693, z: 0.739}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.739}
+  m_TimeToStationary: 0.5

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33970758871107440}
   - component: {fileID: 23375649113021978}
   - component: {fileID: 65965880346379538}
+  - component: {fileID: 208824613660567680}
   m_Layer: 0
   m_Name: Decrepit Tree 01 Brown
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 3.5}
   m_Center: {x: 0, y: 0, z: 1.75}
+--- !u!208 &208824613660567680
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412843641082290}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.276, y: 1.115, z: 1.7880001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.028, y: 0.072000004, z: 1.7880001}
+  m_TimeToStationary: 0.5

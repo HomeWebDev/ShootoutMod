@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33758871589398584}
   - component: {fileID: 23665590237142706}
   - component: {fileID: 65146595289256018}
+  - component: {fileID: 208419296740301624}
   m_Layer: 9
   m_Name: Cone Tree - Grey
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1, y: 2.1, z: 4.8}
   m_Center: {x: 0, y: 0, z: 2.4}
+--- !u!208 &208419296740301624
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480533046549446}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.0600001, y: 1.0600001, z: 2.407}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 2.407}
+  m_TimeToStationary: 0.5

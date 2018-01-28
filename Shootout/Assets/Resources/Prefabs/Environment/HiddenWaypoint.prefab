@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 23647049814881598}
   - component: {fileID: 65163911970696436}
   - component: {fileID: 114343697692303908}
+  - component: {fileID: 208218005298632572}
   m_Layer: 0
   m_Name: HiddenWaypoint
   m_TagString: Waypoint
@@ -34729,3 +34730,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &208218005298632572
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834182630469288}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.315, y: 2.295, z: 0.37500003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.047000002, y: 0.012, z: 0.37500003}
+  m_TimeToStationary: 0.5

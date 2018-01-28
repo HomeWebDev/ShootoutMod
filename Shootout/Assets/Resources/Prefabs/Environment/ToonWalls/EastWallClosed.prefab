@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4576940193822898}
   - component: {fileID: 23080210324949072}
+  - component: {fileID: 208809817396707818}
   m_Layer: 0
   m_Name: EastWallClosed
   m_TagString: Boundary
@@ -159,3 +160,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.475864, y: 3.65, z: 4.7665424}
   m_Center: {x: 0, y: 0, z: 1.9775262}
+--- !u!208 &208809817396707818
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1249986305236392}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

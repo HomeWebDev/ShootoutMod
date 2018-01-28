@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33212081800172346}
   - component: {fileID: 23570692086302400}
   - component: {fileID: 65218412498032312}
+  - component: {fileID: 208675858655997928}
   m_Layer: 0
   m_Name: Wall Rock 01
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6785953, y: 0.9634007, z: 0.66429216}
   m_Center: {x: -0.0000000015077308, y: 0.05312502, z: 0.33214608}
+--- !u!208 &208675858655997928
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538987305663642}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3390001, y: 0.48200002, z: 0.33200002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.053000003, z: 0.33200002}
+  m_TimeToStationary: 0.5

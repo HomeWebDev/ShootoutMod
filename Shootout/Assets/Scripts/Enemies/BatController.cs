@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BatController : MonoBehaviour {
 
@@ -25,13 +26,15 @@ public class BatController : MonoBehaviour {
         animator = GetComponent<Animator>();
 
         player1 = GameObject.FindGameObjectWithTag("Player1");
-
         position = GetComponent<Transform>().position;
         lastPosition = position;
     }
-	
-	// Update is called once per frame
-	void Update () {
+    private void Awake()
+    {
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if ((GetComponent<Transform>().position - player1.transform.position).magnitude < AttackDistance)
         {

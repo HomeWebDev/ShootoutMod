@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33526386342524266}
   - component: {fileID: 23090817624189824}
   - component: {fileID: 65258986925519700}
+  - component: {fileID: 208955665110518452}
   m_Layer: 0
   m_Name: Tombstone 02A
   m_TagString: Obstacle
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3809524, y: 0.60305005, z: 1.3956282}
   m_Center: {x: 0.00000004159288, y: -0.000000011790593, z: 0.69781405}
+--- !u!208 &208955665110518452
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011714295755174}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.69000006, y: 0.30200002, z: 0.698}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.698}
+  m_TimeToStationary: 0.5
