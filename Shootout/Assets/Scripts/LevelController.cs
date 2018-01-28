@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class LevelController : MonoBehaviour {
 
     private List<GameObject> fenceList = new List<GameObject>();
     private LevelRepresentation levelRepresentation;// = new LevelRepresentation();
+    public NavigationBaker navy;
     public int scaleX = 17;
     public int scaleZ = 12;
     public List<BoundsInt> RoomData;
@@ -18,7 +20,7 @@ public class LevelController : MonoBehaviour {
     private int obstacleType;
     private GameObject Walls;
     private GameObject Doors;
-    private GameObject Grounds;
+    public GameObject Grounds;
     private GameObject Fences;
     private GameObject Obstacles;
     private string groundPrefab;
@@ -33,6 +35,9 @@ public class LevelController : MonoBehaviour {
     {
         levelRepresentation = GetComponent<LevelRepresentation>();
         levelRepresentation.CreateRoomArray();
+
+        navy = GetComponent<NavigationBaker>();
+
 
         GenerateLevel();
 
@@ -211,6 +216,7 @@ public class LevelController : MonoBehaviour {
                     //Debug.Log("i: " + i + " , j: " + j + " , value: " + (levelRepresentation.RoomArray.GetLength(0) - i - 1));
                     GenerateRoom(levelRepresentation.RoomArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j], i, j);
 
+
                     if (levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] == LevelRepresentation.ContentType.BossLevel1)
                     {
                         //Debug.Log("Bossroom");
@@ -241,25 +247,12 @@ public class LevelController : MonoBehaviour {
             }
 
         }
-        RoomData.AddRange(levelRepresentation.RoomArray.Cast<Room>().Select(r => r.GetRoomArea()));
+        MergeMeshes(Grounds);
+        MergeMeshes(Walls);
+        MergeMeshes(Obstacles);
 
+        navy.Bake(Grounds.GetComponentsInChildren<NavMeshSurface>());
 
-        //var comby =  GetComponent<Combine>();
-        //foreach (Transform go in Walls.transform)
-        //{
-        //    comby.CombineStuff(go.gameObject);
-        //}
-        //Destroy(ground);
-
-        //StaticBatchingUtility.Combine(Walls);
-        //StaticBatchingUtility.Combine(Obstacles);
-        //StaticBatchingUtility.Combine(Grounds);
-
-        //MergeMeshes(Walls);
-        //MergeMeshes(Obstacles);
-        //MergeMeshes(Grounds);
-
-        //StaticBatchingUtility.Combine(walls);
     }
 
     private bool ShouldAddHiddenDoor()
@@ -289,50 +282,9 @@ public class LevelController : MonoBehaviour {
 
     private void MergeMeshes(GameObject mergeObject)
     {
-        Vector3 position = mergeObject.transform.position;
-        mergeObject.transform.position = Vector3.zero;
+        mergeObject.AddComponent<CombineChildren>();
+        mergeObject.GetComponent<CombineChildren>().Merge();
 
-        MeshRenderer meshRenderer = mergeObject.AddComponent<MeshRenderer>();
-        MeshFilter meshFilter = mergeObject.AddComponent<MeshFilter>();
-        MeshFilter[] meshFilters = mergeObject.GetComponentsInChildren<MeshFilter>();
-        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
-        int i = 0;
-        while (i < meshFilters.Length)
-        {
-            combine[i].mesh = meshFilters[i].sharedMesh;
-            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-            //meshFilters[i].gameObject.GetComponent<MeshRenderer>().enabled = false;
-            //meshFilters[i].gameObject.GetComponent<MeshFilter>();
-
-            meshFilters[i].gameObject.SetActive(false);
-            Debug.Log(meshFilters[i].gameObject.name);
-            i++;
-        }
-        Debug.Log("Length: " + meshFilters.Length);
-        mergeObject.transform.GetComponent<MeshFilter>().mesh = new Mesh();
-        mergeObject.transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        mergeObject.transform.gameObject.SetActive(true);
-        mergeObject.GetComponent<MeshRenderer>().enabled = true;
-
-        Mesh mesh = mergeObject.GetComponent<MeshFilter>().mesh;
-        mesh.RecalculateBounds();
-
-        //Reset position
-        mergeObject.transform.position = position;
-
-        while (i < meshFilters.Length)
-        {
-            Destroy(meshFilters[i].gameObject.GetComponent<MeshRenderer>());
-            Destroy(meshFilters[i].gameObject.GetComponent<MeshFilter>());
-            Destroy(meshFilters[i].gameObject.GetComponentInChildren<MeshRenderer>());
-            Destroy(meshFilters[i].gameObject.GetComponentInChildren<MeshFilter>());
-            Destroy(meshFilters[i].gameObject.transform);
-            i++;
-        }
-
-        var children = new List<GameObject>();
-        foreach (Transform child in mergeObject.transform) children.Add(child.gameObject);
-        children.ForEach(child => Destroy(child));
     }
 
     private void AddItems(Room room, int i, int j)
@@ -341,7 +293,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 104).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 72).ToList();
 
         for (int k = 0; k < 4; k++)
         {
@@ -556,6 +508,7 @@ public class LevelController : MonoBehaviour {
             wall.transform.parent = Walls.transform;
             doors.transform.parent = Doors.transform;
             fences.transform.parent = Fences.transform;
+
         }
         else if(room.SouthWallOpen)
         {
@@ -569,6 +522,7 @@ public class LevelController : MonoBehaviour {
             SetColorOfChildren(wall2);
             wall1.transform.parent = Walls.transform;
             wall2.transform.parent = Walls.transform;
+
         }
         if (room.WestDoorOpen)
         {
@@ -580,6 +534,7 @@ public class LevelController : MonoBehaviour {
             wall.transform.parent = Walls.transform;
             doors.transform.parent = Doors.transform;
             fences.transform.parent = Fences.transform;
+
         }
         else if(room.WestWallOpen)
         {
@@ -593,6 +548,7 @@ public class LevelController : MonoBehaviour {
             SetColorOfChildren(wall2);
             wall1.transform.parent = Walls.transform;
             wall2.transform.parent = Walls.transform;
+
         }
         if (room.EastDoorOpen)
         {
@@ -604,6 +560,7 @@ public class LevelController : MonoBehaviour {
             wall.transform.parent = Walls.transform;
             doors.transform.parent = Doors.transform;
             fences.transform.parent = Fences.transform;
+
         }
         else if(room.EastWallOpen)
         {
