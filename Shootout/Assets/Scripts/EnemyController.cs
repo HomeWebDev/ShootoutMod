@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour {
     public float meleeDamage;
 
     public bool UseNewMoveWithAstar = false;
+    public bool UseNav = false;
     public bool GeneratePathToPlayer = false;
     public bool MovePathToPlayer = false;
     public bool UpdatePostionNew = false;
@@ -33,6 +34,7 @@ public class EnemyController : MonoBehaviour {
 
 
     private GameObject player1;
+
     //private GameObject player2;
 
     // Use this for initialization
@@ -53,10 +55,12 @@ public class EnemyController : MonoBehaviour {
     void Update()
     {
 
-        if (!UseNewMoveWithAstar)
-            OldMove();
-        else
+        if (UseNewMoveWithAstar)
             Move();
+        else if (UseNav)
+            LookAtOnly();
+        else
+            OldMove();
 
         #region using Gameobjects
         //if (GeneratePathToPlayer && FoundPath.Count == 0)
@@ -87,6 +91,12 @@ public class EnemyController : MonoBehaviour {
         //}
         #endregion
 
+    }
+
+    private void LookAtOnly()
+    {
+        Vector3 neutralLookAtPlayerPosition = new Vector3(player1.transform.position.x, 1, player1.transform.position.z);
+        transform.LookAt(player1.transform.position);
     }
 
     private void OldMove()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114380125969775232}
   - component: {fileID: 143047919776332366}
   - component: {fileID: 114390194205144552}
+  - component: {fileID: 208024059985276696}
   m_Layer: 0
   m_Name: Angel
   m_TagString: Player1
@@ -13138,6 +13139,8 @@ MonoBehaviour:
   TripleShot: 0
   QuadShot: 0
   PenetratingShot: 0
+  CircularShot: 0
+  SpinningShot: 0
 --- !u!143 &143047919776332366
 CharacterController:
   m_ObjectHideFlags: 1
@@ -13155,3 +13158,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208024059985276696
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100288}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5

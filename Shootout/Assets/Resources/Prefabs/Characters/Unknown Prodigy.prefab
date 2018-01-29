@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 114259133712590082}
   - component: {fileID: 114343173811239720}
   - component: {fileID: 114063195366113742}
+  - component: {fileID: 208583518603477560}
   m_Layer: 0
   m_Name: Unknown Prodigy
   m_TagString: Player1
@@ -2104,6 +2105,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!208 &208583518603477560
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613629848881684}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222195338859826356
 CanvasRenderer:
   m_ObjectHideFlags: 1

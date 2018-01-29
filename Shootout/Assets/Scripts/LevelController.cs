@@ -248,10 +248,15 @@ public class LevelController : MonoBehaviour {
 
         }
         MergeMeshes(Grounds);
-        MergeMeshes(Walls);
+        //MergeMeshes(Walls);
         MergeMeshes(Obstacles);
 
+        Walls.SetActive(false);
+        Obstacles.SetActive(false);
         navy.Bake(Grounds.GetComponentsInChildren<NavMeshSurface>());
+        Walls.SetActive(true);
+        Obstacles.SetActive(true);
+
 
     }
 
@@ -293,7 +298,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 72).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 104).ToList();
 
         for (int k = 0; k < 4; k++)
         {

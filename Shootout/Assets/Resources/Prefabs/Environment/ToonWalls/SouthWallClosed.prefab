@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4502040832253288}
   - component: {fileID: 23215539998110432}
-  - component: {fileID: 208090812134861022}
   m_Layer: 0
   m_Name: SouthWallClosed
   m_TagString: Boundary
@@ -39,6 +38,7 @@ GameObject:
   - component: {fileID: 33598538610371342}
   - component: {fileID: 23111029605085690}
   - component: {fileID: 65858792170752706}
+  - component: {fileID: 208466123529970196}
   m_Layer: 0
   m_Name: SouthWallMid
   m_TagString: Boundary
@@ -160,18 +160,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.475864, y: 3.65, z: 4.7665424}
   m_Center: {x: 0, y: 0, z: 1.9775262}
---- !u!208 &208090812134861022
+--- !u!208 &208466123529970196
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1010131409021250}
+  m_GameObject: {fileID: 1407645702686746}
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 3.2380002, y: 2.266, z: 2.3830001}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 1.978}
   m_TimeToStationary: 0.5

@@ -692,7 +692,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774693905116170}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46dd793cc6e14f846b71ef186c4289f8, type: 3}
   m_Name: 
@@ -701,7 +701,8 @@ MonoBehaviour:
   rotationDamping: 20
   health: 10
   meleeDamage: 20
-  UseNewMoveWithAstar: 1
+  UseNewMoveWithAstar: 0
+  UseNav: 1
   GeneratePathToPlayer: 0
   MovePathToPlayer: 0
   UpdatePostionNew: 0
@@ -1006,7 +1007,7 @@ CharacterController:
   m_GameObject: {fileID: 1774693905116170}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5

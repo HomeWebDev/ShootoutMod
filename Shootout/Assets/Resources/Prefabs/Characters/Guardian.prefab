@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 114562911817733890}
   - component: {fileID: 114591498033244620}
   - component: {fileID: 114358244423617608}
+  - component: {fileID: 208119490576346722}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Player1
@@ -16427,6 +16428,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!208 &208119490576346722
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139232}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222023991403719390
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -2382,6 +2382,7 @@ GameObject:
   - component: {fileID: 1855270844}
   - component: {fileID: 1855270842}
   - component: {fileID: 1855270843}
+  - component: {fileID: 1855270845}
   m_Layer: 0
   m_Name: LevelControl
   m_TagString: LevelController
@@ -2400,9 +2401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c465fe94763bf40a17b402ed40282a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navy: {fileID: 1855270845}
   scaleX: 17
   scaleZ: 12
   RoomData: []
+  Grounds: {fileID: 0}
   WayPoint: {fileID: 0}
   HiddenWayPoint: {fileID: 0}
 --- !u!114 &1855270843
@@ -2429,6 +2432,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855270845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855270841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb9dcdc3b971724789f63a11237bb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1890482708
 GameObject:
   m_ObjectHideFlags: 0

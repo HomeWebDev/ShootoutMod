@@ -497,7 +497,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177656}
-  m_LocalRotation: {x: -0.2557381, y: 0.6600948, z: 0.6602235, w: -0.25095412}
+  m_LocalRotation: {x: -0.25573808, y: 0.66009474, z: 0.6602234, w: -0.2509541}
   m_LocalPosition: {x: 0.8077168, y: 1.0897548, z: -0.21276775}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46dd793cc6e14f846b71ef186c4289f8, type: 3}
   m_Name: 
@@ -928,7 +928,8 @@ MonoBehaviour:
   rotationDamping: 20
   health: 10
   meleeDamage: 1
-  UseNewMoveWithAstar: 1
+  UseNewMoveWithAstar: 0
+  UseNav: 1
   GeneratePathToPlayer: 0
   MovePathToPlayer: 0
   UpdatePostionNew: 0
@@ -977,7 +978,7 @@ CharacterController:
   m_GameObject: {fileID: 112992}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5

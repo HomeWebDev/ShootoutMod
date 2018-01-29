@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33113261968544644}
   - component: {fileID: 23830842825621576}
   - component: {fileID: 65012737624345990}
+  - component: {fileID: 208049959622449726}
   m_Layer: 0
   m_Name: NorthWallMid
   m_TagString: Boundary
@@ -38,7 +39,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4541528370148084}
   - component: {fileID: 23612190339189668}
-  - component: {fileID: 208351379049964902}
   m_Layer: 0
   m_Name: NorthWallClosed
   m_TagString: Boundary
@@ -160,18 +160,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.475864, y: 3.65, z: 4.7665424}
   m_Center: {x: 0, y: 0, z: 1.9775262}
---- !u!208 &208351379049964902
+--- !u!208 &208049959622449726
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1834306058898864}
+  m_GameObject: {fileID: 1302901723863874}
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 3.2380002, y: 2.266, z: 2.3830001}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 1.978}
   m_TimeToStationary: 0.5
