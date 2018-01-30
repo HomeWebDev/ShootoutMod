@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DamageController : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class DamageController : MonoBehaviour {
     private int takeDamageHash = Animator.StringToHash("Take Damage");
     private int dieHash = Animator.StringToHash("Die");
     private GameObject player1;
+    NavMeshAgent navAgent;
     private Vector3 knockbackImpact = Vector3.zero;
     CharacterController characterController;
     private int knockbackForce = 10;
@@ -18,6 +20,8 @@ public class DamageController : MonoBehaviour {
 
         player1 = GameObject.FindGameObjectWithTag("Player1");
 
+        navAgent = GetComponent<NavMeshAgent>();
+
         characterController = GetComponent<CharacterController>();
     }
 	
@@ -27,7 +31,10 @@ public class DamageController : MonoBehaviour {
         //Handle knockback
         if (knockbackImpact.magnitude > 0.2)
         {
-            characterController.Move(knockbackImpact * Time.deltaTime);
+            if(navAgent == null)
+                characterController.Move(knockbackImpact * Time.deltaTime);
+            else
+                navAgent.Move(knockbackImpact * Time.deltaTime);
         }
         knockbackImpact = Vector3.Lerp(knockbackImpact, Vector3.zero, 5 * Time.deltaTime);
     }
@@ -37,7 +44,7 @@ public class DamageController : MonoBehaviour {
         Knockback();
 
         animator.SetTrigger(takeDamageHash);
-    }
+    } 
 
     private void Knockback()
     {

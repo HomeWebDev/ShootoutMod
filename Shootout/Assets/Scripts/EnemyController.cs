@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour {
     public DamageController damageController;
 
 
-    public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
+    public float timeBetweenAttacks = 0.2f;     // The time in seconds between each attack.
     public int attackDamage = 10;               // The amount of health taken away per attack.
 
     public GameObject player1;                          // Reference to the player GameObject.

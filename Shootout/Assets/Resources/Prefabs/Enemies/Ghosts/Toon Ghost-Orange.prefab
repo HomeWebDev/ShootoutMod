@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4053888659996916}
   - component: {fileID: 95144514205405576}
   - component: {fileID: 54321786083449676}
-  - component: {fileID: 143835403182621292}
+  - component: {fileID: 136908671466434906}
   - component: {fileID: 114100993354144812}
   - component: {fileID: 114976923577306084}
   - component: {fileID: 114323223159078674}
@@ -732,7 +732,7 @@ MonoBehaviour:
   IsBoss: 0
   healthStatusBar: {fileID: 114916442839568762}
   damageController: {fileID: 114353898089801826}
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   attackDamage: 10
   player1: {fileID: 0}
 --- !u!114 &114253841031770694
@@ -948,6 +948,19 @@ MonoBehaviour:
   H: 1.5
   MoveCost: 1.5
   UseOldWayOfColliderFind: 1
+--- !u!136 &136908671466434906
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378101446017010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137388871733072514
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1002,23 +1015,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0024398267, y: -0.019021064, z: -0.000000029802322}
     m_Extent: {x: 0.6503662, y: 0.43389982, z: 0.40099686}
   m_DirtyAABB: 0
---- !u!143 &143835403182621292
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378101446017010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &195576151005262908
 NavMeshAgent:
   m_ObjectHideFlags: 1
