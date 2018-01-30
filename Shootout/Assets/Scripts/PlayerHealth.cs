@@ -21,12 +21,10 @@ public class PlayerHealth : MonoBehaviour
     private int takeDamageHash = Animator.StringToHash("Take Damage");
     private int dieHash = Animator.StringToHash("Die");
     private GameObject player1;
-
     // Use this for initialization
     void Start()
     {
         //shieldSlider.value = shield;
-
         maxHealth = health;
 
         healthStatusBar.screenSpaceOptions.xRatio = maxHealth / 1000;
@@ -86,18 +84,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount = 0f, DamageType dmgType = 0, GameObject Enemy = null)
     {
-        //// Decrement the player's health or shield by amount.
-        //if (shield > 0)
-        //    shield -= amount;
-        //else
-        //    health -= amount;
-        //float headAmout = 0;
-        //for (int i = 0; i < player1.GetComponent<PlayerHeadStats>().NumberOfGroups; i++)
-        //{
-        //    headAmout = player1.GetComponent<PlayerHeadStats>().HeadStats[i].DefenceMod;
-        //}
+
         float itemDefenceMod = amount * player1.GetComponent<CostumeStats>().DefenceMod / 100 - amount * player1.GetComponent<BackStats>().DefenceMod / 100 - amount * player1.GetComponent<HeadStats>().DefenceMod / 100;
 
         amount = amount - itemDefenceMod;
@@ -115,15 +104,6 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger(takeDamageHash);
         }
 
-        //healthSlider.value = health;
-        //shieldSlider.value = shield;
-
-        //if (health <= 0)
-        //{
-        //    //SkinnedMeshRenderer render = gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
-        //    //render.enabled = false;
-        //    PlayerKilled();
-        //}
     }
 
     private void Die()

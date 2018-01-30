@@ -33,7 +33,13 @@ public class EnemyController : MonoBehaviour {
     public DamageController damageController;
 
 
-    private GameObject player1;
+    public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
+    public int attackDamage = 10;               // The amount of health taken away per attack.
+
+    public GameObject player1;                          // Reference to the player GameObject.
+    private PlayerHealth playerHealth;                  // Reference to the player's health.
+    bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
+    float timer;                                // Timer for counting up to the next attack.                            // Timer for counting up to the next attack.
 
     //private GameObject player2;
 
@@ -44,16 +50,32 @@ public class EnemyController : MonoBehaviour {
 
         healthStatusBar.UpdateStatus(health, maxHealth);
 
+
+        //player2 = GameObject.Find("Player2");
+    }
+
+    private void Awake()
+    {
         controller = (CharacterController)(GetComponent(typeof(CharacterController)));
 
 
         player1 = GameObject.FindGameObjectWithTag("Player1");
-        //player2 = GameObject.Find("Player2");
+        playerHealth = player1.GetComponent<PlayerHealth>();
     }
-
     // Update is called once per frame
     void Update()
     {
+
+        // Add the time since Update was last called to the timer.
+        timer += Time.deltaTime;
+
+        // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
+        if (timer >= timeBetweenAttacks && playerInRange && health > 0)
+        {
+            // ... attack.
+            Attack();
+        }
+
 
         if (UseNewMoveWithAstar)
             Move();
@@ -61,35 +83,6 @@ public class EnemyController : MonoBehaviour {
             LookAtOnly();
         else
             OldMove();
-
-        #region using Gameobjects
-        //if (GeneratePathToPlayer && FoundPath.Count == 0)
-        //{
-        //    GeneratePathToPlayer = false;
-        //    GetComponent<Star>().GetPathToPlayer(out FoundPath);
-        //    FoundPath.Reverse();
-        //}
-
-        //Vector3 movement = new Vector3(0, 0, 0);
-
-        //if (MovePathToPlayer)
-        //{
-        //    //MovePathToPlayer = false;
-        //    movement = new Vector3(FoundPath.First().transform.position.x - gameObject.transform.position.x, 
-        //                           0.0f,
-        //                           FoundPath.First().transform.position.z - gameObject.transform.position.z);
-
-        //    Decimal x1 = System.Math.Round((Decimal)transform.position.x, 0, MidpointRounding.AwayFromZero);
-        //    Decimal z1 = System.Math.Round((Decimal)transform.position.z, 0, MidpointRounding.AwayFromZero);
-        //    Decimal x2 = System.Math.Round((Decimal)FoundPath.First().transform.position.x, 0, MidpointRounding.AwayFromZero);
-        //    Decimal z2 = System.Math.Round((Decimal)FoundPath.First().transform.position.z, 0, MidpointRounding.AwayFromZero);
-        //    if ((x1 == x2) && (z1 == z2))
-        //    {
-        //        Destroy(FoundPath.First());
-        //        FoundPath.RemoveAt(0);
-        //    }
-        //}
-        #endregion
 
     }
 
@@ -232,87 +225,117 @@ public class EnemyController : MonoBehaviour {
         transform.LookAt(neutralLookAtPlayerPosition);
     }
 
-    void Walk()
+    void Attack()
     {
+        // Reset the timer.
+        timer = 0f;
 
+        // If the player has health to lose...
+        if (playerHealth.health > 0)
+        {
+            // ... damage the player.
+            playerHealth.TakeDamage(attackDamage);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Obstacle")
-        {
-            if (!BlockList.Exists(v => v == collision.gameObject))
-                BlockList.Add(collision.gameObject);
-        }
+    #region Events maybe of use
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Obstacle")
+    //    {
+    //        if (!BlockList.Exists(v => v == collision.gameObject))
+    //            BlockList.Add(collision.gameObject);
+    //    }
 
-        if (collision.gameObject.tag == "Player1")
-            FoundPathVector.Clear();
+    //    if (collision.gameObject.tag == "Player1")
+    //        FoundPathVector.Clear();
+    //}
+
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Obstacle")
+    //    {
+    //        if (!BlockList.Exists(v => v == collision.gameObject))
+    //            BlockList.Add(collision.gameObject);
+    //    }
+
+    //    if (collision.gameObject.tag == "Player1")
+    //        FoundPathVector.Clear();
+    //}
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //Debug.Log("This entered cat: " + other);
+
+    //    //if (other.tag == "Player1" || other.tag == "Player2")
+    //    //{
+    //    //    PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+    //    //    playerHealth.TakeDamage(meleeDamage);
+    //    //}
+
+    //    if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary" || other.gameObject.tag == "Obstacle")
+    //    {
+    //        if (!BlockList.Exists(v => v == other.gameObject))
+    //            BlockList.Add(other.gameObject);
+    //    }
+
+    //    if (other.gameObject.tag == "Player1")
+    //        FoundPathVector.Clear();
+    //}
+
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    //Debug.Log("This entered cat: " + hit.gameObject);
+    //    if (hit.gameObject.tag == "Player1" || hit.gameObject.tag == "Player2")
+    //    {
+    //        FoundPathVector.Clear();
+    //        PlayerHealth playerHealth = hit.gameObject.GetComponent<PlayerHealth>();
+    //        playerHealth.TakeDamage(meleeDamage);
+    //    }
+    //    if (hit.gameObject.tag == "Crate" || hit.gameObject.tag == "Boundary" || hit.gameObject.tag == "Obstacle")
+    //    {
+    //        if (!BlockList.Exists(v => v == hit.gameObject))
+    //            BlockList.Add(hit.gameObject);
+    //    }
+
+    //}
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    //Debug.Log("This stays in cat: " + other);
+    //    if (other.tag == "Player1" || other.tag == "Player2")
+    //    {
+    //        FoundPathVector.Clear();
+    //        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+    //        playerHealth.TakeDamage(meleeDamage);
+    //    }
+    //    if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary" || other.gameObject.tag == "Obstacle")
+    //    {
+    //        if (!BlockList.Exists(v => v == other.gameObject))
+    //            BlockList.Add(other.gameObject);
+    //    }
+
+    //}
+    #endregion
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        // If the entering collider is the player...
+        if (other.gameObject == player1)
+        {
+            // ... the player is in range.
+            playerInRange = true;
+        }
     }
-
-    private void OnCollisionStay(Collision collision)
+    void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Boundary" || collision.gameObject.tag == "Obstacle")
+        // If the exiting collider is the player...
+        if (other.gameObject == player1)
         {
-            if (!BlockList.Exists(v => v == collision.gameObject))
-                BlockList.Add(collision.gameObject);
+            // ... the player is no longer in range.
+            playerInRange = false;
         }
-
-        if (collision.gameObject.tag == "Player1")
-            FoundPathVector.Clear();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log("This entered cat: " + other);
-
-        //if (other.tag == "Player1" || other.tag == "Player2")
-        //{
-        //    PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-        //    playerHealth.TakeDamage(meleeDamage);
-        //}
-
-        if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary" || other.gameObject.tag == "Obstacle")
-        {
-            if (!BlockList.Exists(v => v == other.gameObject))
-                BlockList.Add(other.gameObject);
-        }
-
-        if (other.gameObject.tag == "Player1")
-            FoundPathVector.Clear();
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        //Debug.Log("This entered cat: " + hit.gameObject);
-        if (hit.gameObject.tag == "Player1" || hit.gameObject.tag == "Player2")
-        {
-            FoundPathVector.Clear();
-            PlayerHealth playerHealth = hit.gameObject.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(meleeDamage);
-        }
-        if (hit.gameObject.tag == "Crate" || hit.gameObject.tag == "Boundary" || hit.gameObject.tag == "Obstacle")
-        {
-            if (!BlockList.Exists(v => v == hit.gameObject))
-            BlockList.Add(hit.gameObject);
-        }
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //Debug.Log("This stays in cat: " + other);
-        if (other.tag == "Player1" || other.tag == "Player2")
-        {
-            FoundPathVector.Clear();
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(meleeDamage);
-        }
-        if (other.gameObject.tag == "Crate" || other.gameObject.tag == "Boundary" || other.gameObject.tag == "Obstacle")
-        {
-            if (!BlockList.Exists(v => v == other.gameObject))
-                BlockList.Add(other.gameObject);
-        }
-
     }
 
     public void TakeDamage(int damageValue)
