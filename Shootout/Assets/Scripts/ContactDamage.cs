@@ -29,7 +29,7 @@ public class ContactDamage : MonoBehaviour {
                 enemy.TakeDamage(damageImpact);
             }
 
-            if(tag == "Arrow" && other.tag == "Boundary")
+            if(tag == "Arrow" && other.tag == "Boundary" || other.tag == "Ground")
             {
                 Destroy(gameObject);
             }

@@ -15,7 +15,7 @@ public class ArrowDamage : MonoBehaviour {
         //Debug.Log("Trigger: " + other);
 
         //Ignore walls
-        if (other.tag == "Boundary" | other.tag == "Fence")
+        if (other.tag == "Boundary" || other.tag == "Fence" || other.tag == "Ground")
         {
             Destroy(gameObject);
             return;
@@ -58,7 +58,7 @@ public class ArrowDamage : MonoBehaviour {
             enemy.TakeDamage(damageImpact);
         }
 
-        if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Boundary")
+        if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Boundary" || other.tag == "Ground")
         {
             Destroy(gameObject);
         }

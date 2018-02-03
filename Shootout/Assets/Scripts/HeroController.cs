@@ -313,6 +313,8 @@ public class HeroController : MonoBehaviour
 
             if (Input.GetButton(leftAttackButton))
             {
+                MagicAttack();
+
                 //weaponType == WeaponType.Longbow
                 if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
                 {
@@ -763,6 +765,61 @@ public class HeroController : MonoBehaviour
         arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * rangedForce;
     }
 
+    private void MagicAttack()
+    {
+        if (Input.GetButton(leftAttackButton))
+        {
+            StartCoroutine(SpawnMagicProjectile(270 + movement.z));
+        }
+        if (Input.GetButton(rightAttackButton))
+        {
+            StartCoroutine(SpawnMagicProjectile(90 - movement.z));
+        }
+        if (Input.GetButton(upAttackButton))
+        {
+            StartCoroutine(SpawnMagicProjectile(0 + movement.x));
+        }
+        if (Input.GetButton(downAttackButton))
+        {
+            StartCoroutine(SpawnMagicProjectile(180 - movement.x));
+        }
+    }
+
+    IEnumerator SpawnMagicProjectile(float y)
+    {
+        yield return new WaitForSeconds(rangedAnimationDelay);
+        //rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        if (Input.GetButton(leftAttackButton))
+        {
+            y = 270 + movement.z;
+        }
+        if (Input.GetButton(rightAttackButton))
+        {
+            y = 90 - movement.z;
+        }
+        if (Input.GetButton(upAttackButton))
+        {
+            y = 0 + movement.x;
+        }
+        if (Input.GetButton(downAttackButton))
+        {
+            y = 180 - movement.x;
+        }
+
+
+        try
+        {
+            GameObject projectile = Instantiate(GetComponent<MagicProjectile>().Projectile, ActiveEq.RightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
+            projectile.tag = "Arrow";
+            //projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * rangedForce;
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * (GetComponent<MagicProjectile>().Speed));
+            //projectile.GetComponent<MagicProjectileScript>().impactNormal = hit.normal;
+            //arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * rangedForce;
+        }
+        catch(Exception ex) { }
+    }
+
     private void ThrowWeapon()
     {
         int doubleAngle = 20;
@@ -823,6 +880,8 @@ public class HeroController : MonoBehaviour
         //rightHand = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).gameObject;
         //GameObject rightShoulder = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).gameObject;
         //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+
+        MagicAttack();
 
         if (buttonPressed == 1)
         {

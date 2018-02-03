@@ -34,6 +34,8 @@ TagManager:
   - Powerup
   - FoundItemCanvas
   - Costume
+  - Fire
+  - Ground
   layers:
   - Default
   - TransparentFX
