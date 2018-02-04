@@ -18,7 +18,6 @@ public class PlayerPickup : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-
         ActiveGear = GetComponent<Equipment>();
 
         if (other.tag.StartsWith("Weapon"))
@@ -188,6 +187,14 @@ public class PlayerPickup : MonoBehaviour {
             {
                 f.SetValue(player1.GetComponent<BackStats>(), f.GetValue(other.GetComponent<BackStats>()));
             }
+        }
+
+        if (other.tag == "Magic")
+        {
+            player1.gameObject.GetComponent<MagicStats>().Projectile = other.gameObject.GetComponent<MagicStats>().Projectile;
+            player1.gameObject.GetComponent<MagicStats>().Aura = other.gameObject.GetComponent<MagicStats>().Aura;
+
+            Destroy(other.gameObject);
         }
 
         if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear")

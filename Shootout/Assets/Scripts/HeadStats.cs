@@ -7,6 +7,7 @@ public class HeadStats : MonoBehaviour {
     public int Group;
     public float DefenceMod;
     public float StaminaMod;
+    public float MagicMod;
     public float SpeedMod;
     public float AttackSpeedMod;
 

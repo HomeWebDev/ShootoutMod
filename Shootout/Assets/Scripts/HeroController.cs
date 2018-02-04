@@ -14,6 +14,14 @@ public class HeroController : MonoBehaviour
     public string rightAttackButton;
     public string upAttackButton;
     public string downAttackButton;
+    public string shiftMagicButton;
+    private bool magicEnabled;
+    private float nextMagicShift;
+    private float magicShiftRate = 0.25f;
+    private bool auraUpdated;
+    private float nextMagic;
+    private float magicDelay = 0.50f;
+
 
     public bool meleeAttackActive;
 
@@ -64,6 +72,7 @@ public class HeroController : MonoBehaviour
     private Equipment ActiveEq;
 
     private PlayerStamina playerStamina;
+    private PlayerMagic playerMagic;
     private GameObject player1;
 
     // Use this for initialization
@@ -75,6 +84,7 @@ public class HeroController : MonoBehaviour
         ActiveEq = GetComponent<Equipment>();
 
         playerStamina = GetComponent<PlayerStamina>();
+        playerMagic = GetComponent<PlayerMagic>();
         player1 = GameObject.FindGameObjectWithTag("Player1");
     }
     void Awake()
@@ -155,6 +165,33 @@ public class HeroController : MonoBehaviour
         //Debug.Log("movement: " + Mathf.Min(Mathf.Abs(moveV), Mathf.Abs(moveH)));
     }
 
+    private void HandleMagic()
+    {
+        if (Input.GetButton(shiftMagicButton) && Time.time > nextMagicShift)
+        {
+            nextMagicShift = Time.time + magicShiftRate;
+            magicEnabled = !magicEnabled;
+        }
+
+        GameObject aura = GameObject.FindWithTag("Aura");
+
+        if (magicEnabled && !auraUpdated)
+        {
+            if (player1.gameObject.GetComponent<MagicStats>().Aura != null)
+            {
+                GameObject newAura = Instantiate(player1.gameObject.GetComponent<MagicStats>().Aura, player1.transform);
+                newAura.tag = "Aura";
+                auraUpdated = true;
+            }
+        }
+
+        if (!magicEnabled)
+        {
+            auraUpdated = false;
+            Destroy(aura);
+        }
+    }
+
     void FixedUpdate()
     {
         //Fix y position at 0
@@ -186,6 +223,8 @@ public class HeroController : MonoBehaviour
         // GetWeaponType();
 
         //Debug.Log("Weapontype: " + weaponType.ToString());
+
+        HandleMagic();
 
         //CHANGE!!!!
         if (ActiveEq.weapon != null)
@@ -313,7 +352,7 @@ public class HeroController : MonoBehaviour
 
             if (Input.GetButton(leftAttackButton))
             {
-                MagicAttack();
+                HandleMagicShot();
 
                 //weaponType == WeaponType.Longbow
                 if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
@@ -332,6 +371,8 @@ public class HeroController : MonoBehaviour
             }
             else if (Input.GetButton(rightAttackButton))
             {
+                HandleMagicShot();
+
                 if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
                 {
                     transform.rotation = Quaternion.Slerp(transform.rotation,
@@ -348,6 +389,8 @@ public class HeroController : MonoBehaviour
             }
             else if (Input.GetButton(upAttackButton))
             {
+                HandleMagicShot();
+
                 if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
                 {
                     transform.rotation = Quaternion.Slerp(transform.rotation,
@@ -364,6 +407,8 @@ public class HeroController : MonoBehaviour
             }
             else if (Input.GetButton(downAttackButton))
             {
+                HandleMagicShot();
+
                 if (ActiveEq.weapon.GetComponent<WeaponConfig>().WeaponType.Equals(WeaponType.RangeLong))
                 {
                     transform.rotation = Quaternion.Slerp(transform.rotation,
@@ -394,6 +439,18 @@ public class HeroController : MonoBehaviour
                     animator.ResetTrigger(walkBackwardHash);
                     animator.ResetTrigger(walkHash);
                 }
+            }
+        }
+    }
+
+    private void HandleMagicShot()
+    {
+        if (magicEnabled && Time.time > nextMagic)
+        {
+            if (playerMagic.DepleteMagic(10))
+            {
+                nextMagic = Time.time + magicDelay;
+                MagicAttack();
             }
         }
     }
@@ -810,6 +867,7 @@ public class HeroController : MonoBehaviour
 
         try
         {
+            GetComponent<MagicProjectile>().Projectile = GetComponent<MagicStats>().Projectile;
             GameObject projectile = Instantiate(GetComponent<MagicProjectile>().Projectile, ActiveEq.RightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
             projectile.tag = "Arrow";
             //projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * rangedForce;
@@ -881,7 +939,7 @@ public class HeroController : MonoBehaviour
         //GameObject rightShoulder = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).gameObject;
         //GameObject weapon = gameObject.transform.GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
 
-        MagicAttack();
+        //MagicAttack();
 
         if (buttonPressed == 1)
         {

@@ -6,6 +6,7 @@ public class BackStats : MonoBehaviour {
 
     public float DefenceMod;
     public float StaminaMod;
+    public float MagicMod;
     public float SpeedMod;
     public float AttackSpeedMod;
 

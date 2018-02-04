@@ -36,6 +36,8 @@ TagManager:
   - Costume
   - Fire
   - Ground
+  - Magic
+  - Aura
   layers:
   - Default
   - TransparentFX
