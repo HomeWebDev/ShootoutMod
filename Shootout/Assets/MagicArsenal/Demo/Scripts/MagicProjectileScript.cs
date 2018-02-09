@@ -7,6 +7,7 @@ public class MagicProjectileScript : MonoBehaviour
     public GameObject projectileParticle;
     public GameObject muzzleParticle;
     public GameObject[] trailParticles;
+    public int DamageImpact;
     [HideInInspector]
     public Vector3 impactNormal; //Used to rotate impactparticle.
  
@@ -26,11 +27,17 @@ public class MagicProjectileScript : MonoBehaviour
     {
         if (!hasCollided)
         {
-            //Debug.Log("Collided with: " + hit.gameObject.tag);
+            Debug.Log("Collided with: " + hit.gameObject.tag);
 
             if (hit.gameObject.tag == "Player1" || hit.gameObject.tag == "Arrow" || hit.gameObject.tag == "Weapon" || hit.gameObject.tag == "Ground" || hit.gameObject.tag == "Powerup" || hit.gameObject.tag == "Costume" || hit.gameObject.tag == "HeadGear" || hit.gameObject.tag == "BackGear" || hit.gameObject.tag == "Magic")
             {
                 return;
+            }
+
+            if(hit.gameObject.tag == "Enemy")
+            {
+                EnemyController enemy = hit.GetComponent<EnemyController>();
+                enemy.TakeDamage(DamageImpact);
             }
 
             hasCollided = true;

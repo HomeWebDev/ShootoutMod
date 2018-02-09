@@ -18,7 +18,7 @@ public class HeroController : MonoBehaviour
     private bool magicEnabled;
     private float nextMagicShift;
     private float magicShiftRate = 0.25f;
-    private bool auraUpdated;
+    public bool AuraUpdated;
     private float nextMagic;
     private float magicDelay = 0.50f;
 
@@ -175,19 +175,27 @@ public class HeroController : MonoBehaviour
 
         GameObject aura = GameObject.FindWithTag("Aura");
 
-        if (magicEnabled && !auraUpdated)
+        if (magicEnabled && !AuraUpdated)
         {
             if (player1.gameObject.GetComponent<MagicStats>().Aura != null)
             {
+                //Destroy old auras
+                GameObject[] oldAuras = GameObject.FindGameObjectsWithTag("Aura");
+                for (var i = 0; i < oldAuras.Length; i++)
+                {
+                    Destroy(oldAuras[i]);
+                }
+
                 GameObject newAura = Instantiate(player1.gameObject.GetComponent<MagicStats>().Aura, player1.transform);
                 newAura.tag = "Aura";
-                auraUpdated = true;
+                AuraUpdated = true;
+                //Debug.Log("Aura: " + newAura);
             }
         }
 
         if (!magicEnabled)
         {
-            auraUpdated = false;
+            AuraUpdated = false;
             Destroy(aura);
         }
     }
@@ -867,11 +875,11 @@ public class HeroController : MonoBehaviour
 
         try
         {
-            GetComponent<MagicProjectile>().Projectile = GetComponent<MagicStats>().Projectile;
-            GameObject projectile = Instantiate(GetComponent<MagicProjectile>().Projectile, ActiveEq.RightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
+            //GetComponent<MagicProjectile>().Projectile = GetComponent<MagicStats>().Projectile;
+            GameObject projectile = Instantiate(GetComponent<MagicStats>().Projectile, ActiveEq.RightHand.transform.position, Quaternion.Euler(0, y, 0)) as GameObject;
             projectile.tag = "Arrow";
             //projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * rangedForce;
-            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * (GetComponent<MagicProjectile>().Speed));
+            projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * (GetComponent<MagicStats>().Speed));
             //projectile.GetComponent<MagicProjectileScript>().impactNormal = hit.normal;
             //arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * rangedForce;
         }

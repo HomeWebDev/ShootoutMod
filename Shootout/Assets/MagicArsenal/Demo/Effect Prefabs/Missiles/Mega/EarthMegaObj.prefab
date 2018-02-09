@@ -69,6 +69,8 @@ MonoBehaviour:
   projectileParticle: {fileID: 131830, guid: da5b218f99284e34ab7f7865855c3675, type: 2}
   muzzleParticle: {fileID: 132458, guid: 9204101b834995840b429fc954b3709d, type: 2}
   trailParticles: []
+  DamageImpact: 20
+  Speed: 200
   impactNormal: {x: 0, y: 0, z: 0}
 --- !u!135 &13500000
 SphereCollider:

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114184827263851966}
   m_Layer: 0
   m_Name: Ground28
-  m_TagString: Boundary
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

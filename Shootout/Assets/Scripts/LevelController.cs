@@ -298,7 +298,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 104).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 144).ToList();
 
         for (int k = 0; k < 4; k++)
         {
@@ -336,6 +336,11 @@ public class LevelController : MonoBehaviour {
         GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0.5f, z+3), euler1) as GameObject;
         GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.5f, z-3), euler2) as GameObject;
         GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.5f, z-3), euler3) as GameObject;
+
+        //Debug.Log("item1: " + item1);
+        //Debug.Log("item2: " + item2);
+        //Debug.Log("item3: " + item3);
+        //Debug.Log("item4: " + item4);
 
         item1.GetComponent<ItemName>().Group = "Group" + groupId;
         item2.GetComponent<ItemName>().Group = "Group" + groupId;

@@ -6,4 +6,5 @@ public class MagicStats : MonoBehaviour {
 
     public GameObject Projectile;
     public GameObject Aura;
+    public float Speed;
 }

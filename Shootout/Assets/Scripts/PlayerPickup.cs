@@ -193,6 +193,8 @@ public class PlayerPickup : MonoBehaviour {
         {
             player1.gameObject.GetComponent<MagicStats>().Projectile = other.gameObject.GetComponent<MagicStats>().Projectile;
             player1.gameObject.GetComponent<MagicStats>().Aura = other.gameObject.GetComponent<MagicStats>().Aura;
+            player1.gameObject.GetComponent<MagicStats>().Speed = other.gameObject.GetComponent<MagicStats>().Speed;
+            player1.gameObject.GetComponent<HeroController>().AuraUpdated = false;
 
             Destroy(other.gameObject);
         }
@@ -209,7 +211,7 @@ public class PlayerPickup : MonoBehaviour {
         }
 
         //Remove other items in group
-        if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear" || other.tag == "Powerup" || other.tag == "Costume")
+        if (other.tag.StartsWith("Weapon") || other.tag == "BackGear" || other.tag == "HeadGear" || other.tag == "Powerup" || other.tag == "Costume" || other.tag == "Magic")
         {
             if (other.gameObject.GetComponent<ItemName>().Group != string.Empty)
             {
@@ -225,8 +227,9 @@ public class PlayerPickup : MonoBehaviour {
                 GameObject[] headGear = GameObject.FindGameObjectsWithTag("HeadGear");
                 GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
                 GameObject[] costumes = GameObject.FindGameObjectsWithTag("Costume");
+                GameObject[] magics = GameObject.FindGameObjectsWithTag("Magic");
 
-                GameObject[] items = weapons.Concat(backGear).ToArray().Concat(headGear).ToArray().Concat(powerups).ToArray().Concat(costumes).ToArray();
+                GameObject[] items = weapons.Concat(backGear).ToArray().Concat(headGear).ToArray().Concat(powerups).ToArray().Concat(costumes).ToArray().Concat(magics).ToArray();
 
                 foreach (GameObject item in items)
                 {
