@@ -10,6 +10,10 @@ GameObject:
   - component: {fileID: 460922}
   - component: {fileID: 3366398}
   - component: {fileID: 2345342}
+  - component: {fileID: 114672215882309460}
+  - component: {fileID: 136458978285385798}
+  - component: {fileID: 114824116739830216}
+  - component: {fileID: 114757761391075988}
   m_Layer: 0
   m_Name: Scepter 01 Red 1
   m_TagString: Untagged
@@ -82,3 +86,62 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132078}
   m_IsPrefabParent: 1
+--- !u!114 &114672215882309460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!114 &114757761391075988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: King's Scepter
+  Description: 
+  Group: 
+--- !u!114 &114824116739830216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 16
+  pickedUp: 0
+--- !u!136 &136458978285385798
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.099944845
+  m_Height: 0.84210896
+  m_Direction: 1
+  m_Center: {x: 1.7512964e-15, y: -0.12323648, z: -0.00000009685753}

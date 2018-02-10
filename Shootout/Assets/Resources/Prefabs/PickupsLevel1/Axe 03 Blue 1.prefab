@@ -10,6 +10,10 @@ GameObject:
   - component: {fileID: 493818}
   - component: {fileID: 3320580}
   - component: {fileID: 2367630}
+  - component: {fileID: 114101489137534236}
+  - component: {fileID: 136997760245218126}
+  - component: {fileID: 114595583462928314}
+  - component: {fileID: 114713104186226722}
   m_Layer: 0
   m_Name: Axe 03 Blue 1
   m_TagString: Untagged
@@ -82,3 +86,62 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126786}
   m_IsPrefabParent: 1
+--- !u!114 &114101489137534236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!114 &114595583462928314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 12
+  pickedUp: 0
+--- !u!114 &114713104186226722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Warrior Axe
+  Description: 
+  Group: 
+--- !u!136 &136997760245218126
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.22045365
+  m_Height: 0.7239272
+  m_Direction: 1
+  m_Center: {x: 0.0058953688, y: -0.18368357, z: -0.00000008381905}

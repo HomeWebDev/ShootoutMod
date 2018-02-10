@@ -10,6 +10,8 @@ GameObject:
   - component: {fileID: 463170}
   - component: {fileID: 3326222}
   - component: {fileID: 2312814}
+  - component: {fileID: 114112824086378882}
+  - component: {fileID: 136997405557216382}
   m_Layer: 0
   m_Name: Crossbow 01 Blue 1
   m_TagString: Untagged
@@ -82,3 +84,35 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154328}
   m_IsPrefabParent: 1
+--- !u!114 &114112824086378882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!136 &136997405557216382
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.29474777
+  m_Height: 0.2499308
+  m_Direction: 1
+  m_Center: {x: -0.12849107, y: -0.05021362, z: -0.000000014901161}

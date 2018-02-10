@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4294207990585610}
   - component: {fileID: 33515061610393512}
   - component: {fileID: 23567962643114232}
+  - component: {fileID: 114636529840727736}
+  - component: {fileID: 136296782415302220}
   m_Layer: 0
   m_Name: Longbow 02 Magenta 1
   m_TagString: Untagged
@@ -82,3 +84,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713637479773342}
   m_Mesh: {fileID: 4300000, guid: a7bd1c3a25162434eae515d705076cee, type: 3}
+--- !u!114 &114636529840727736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1713637479773342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!136 &136296782415302220
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1713637479773342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.16343898
+  m_Height: 0.9903775
+  m_Direction: 1
+  m_Center: {x: 0.05644204, y: 2.5666984e-14, z: -0.00000004656611}

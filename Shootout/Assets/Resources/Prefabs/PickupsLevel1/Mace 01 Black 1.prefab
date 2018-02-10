@@ -10,6 +10,10 @@ GameObject:
   - component: {fileID: 413602}
   - component: {fileID: 3350772}
   - component: {fileID: 2393106}
+  - component: {fileID: 114663172200598762}
+  - component: {fileID: 136656487579559548}
+  - component: {fileID: 114030893156293298}
+  - component: {fileID: 114995315318197754}
   m_Layer: 0
   m_Name: Mace 01 Black 1
   m_TagString: Untagged
@@ -3504,3 +3508,62 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105782}
   m_IsPrefabParent: 1
+--- !u!114 &114030893156293298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 12
+  pickedUp: 0
+--- !u!114 &114663172200598762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!114 &114995315318197754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Golden Mace
+  Description: 
+  Group: 
+--- !u!136 &136656487579559548
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.18483752
+  m_Height: 0.7714944
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.17524232, z: 0}

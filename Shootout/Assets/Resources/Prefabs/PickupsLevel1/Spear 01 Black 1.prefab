@@ -10,6 +10,10 @@ GameObject:
   - component: {fileID: 434428}
   - component: {fileID: 3333336}
   - component: {fileID: 2329842}
+  - component: {fileID: 114613797795406860}
+  - component: {fileID: 136339782033129528}
+  - component: {fileID: 114447700986726856}
+  - component: {fileID: 114517947917109504}
   m_Layer: 0
   m_Name: Spear 01 Black 1
   m_TagString: Untagged
@@ -82,3 +86,62 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169186}
   m_IsPrefabParent: 1
+--- !u!114 &114447700986726856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 0
+  pickedUp: 0
+--- !u!114 &114517947917109504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Description: 
+  Group: 
+--- !u!114 &114613797795406860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!136 &136339782033129528
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.15380138
+  m_Height: 1.5982559
+  m_Direction: 1
+  m_Center: {x: -0.0036398545, y: -0.4627754, z: -0.00000016205011}

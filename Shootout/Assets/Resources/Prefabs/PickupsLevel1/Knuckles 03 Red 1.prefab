@@ -10,6 +10,10 @@ GameObject:
   - component: {fileID: 401608}
   - component: {fileID: 3346540}
   - component: {fileID: 2395586}
+  - component: {fileID: 114032103004176638}
+  - component: {fileID: 136688746244520202}
+  - component: {fileID: 114026099957077536}
+  - component: {fileID: 114377198111798522}
   m_Layer: 0
   m_Name: Knuckles 03 Red 1
   m_TagString: Untagged
@@ -82,3 +86,62 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180968}
   m_IsPrefabParent: 1
+--- !u!114 &114026099957077536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 15
+  pickedUp: 0
+--- !u!114 &114032103004176638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleHanded: 0
+  LeftHandCopy: 0
+  RightHandCopy: 0
+  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponType: 0
+  AttackAnimation: 0
+  AttackAnimationHash: 0
+--- !u!114 &114377198111798522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Spikeyest Knuckles
+  Description: 
+  Group: 
+--- !u!136 &136688746244520202
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.115496
+  m_Height: 0.30968958
+  m_Direction: 1
+  m_Center: {x: 0.08629546, y: -0.00020199273, z: 0.0009993783}
