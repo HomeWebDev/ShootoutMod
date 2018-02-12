@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 114721438373844010}
   m_Layer: 0
   m_Name: Scythe 01 Green 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

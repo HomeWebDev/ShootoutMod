@@ -1,32 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &142984
+--- !u!1 &140854
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 441930}
-  - component: {fileID: 3377694}
-  - component: {fileID: 2319960}
-  - component: {fileID: 114965022491052114}
-  - component: {fileID: 136964677113090362}
-  - component: {fileID: 114956233665327106}
-  - component: {fileID: 114500178816776950}
+  - component: {fileID: 446942}
+  - component: {fileID: 3314700}
+  - component: {fileID: 2365726}
+  - component: {fileID: 114429824400625490}
+  - component: {fileID: 136745383315926264}
+  - component: {fileID: 114749982803885736}
+  - component: {fileID: 114025080694487972}
   m_Layer: 0
-  m_Name: Club 01
-  m_TagString: Untagged
+  m_Name: 150
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &441930
+--- !u!4 &446942
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
+  m_GameObject: {fileID: 140854}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,12 +34,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2319960
+--- !u!23 &2365726
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
+  m_GameObject: {fileID: 140854}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -48,7 +48,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e45d9e58507c031488b1a8098e34d5d5, type: 2}
+  - {fileID: 2100000, guid: ec9719db55d066040b959da93510ae8a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68,13 +68,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &3377694
+--- !u!33 &3314700
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
-  m_Mesh: {fileID: 4300000, guid: f4b3e6e51bcc24048a75bfc479b6d283, type: 3}
+  m_GameObject: {fileID: 140854}
+  m_Mesh: {fileID: 4300000, guid: aeb43cec5715ccc4e9d22a466c062d5e, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -84,41 +84,28 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 142984}
+  m_RootGameObject: {fileID: 140854}
   m_IsPrefabParent: 1
---- !u!114 &114500178816776950
+--- !u!114 &114025080694487972
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
+  m_GameObject: {fileID: 140854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Club
+  Name: Spiked Club
   Description: 
   Group: 
---- !u!114 &114956233665327106
+--- !u!114 &114429824400625490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageImpact: 1
-  pickedUp: 0
---- !u!114 &114965022491052114
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
+  m_GameObject: {fileID: 140854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
@@ -128,20 +115,33 @@ MonoBehaviour:
   LeftHandCopy: 0
   RightHandCopy: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 4
   AttackAnimationHash: 0
---- !u!136 &136964677113090362
+--- !u!114 &114749982803885736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 10
+  pickedUp: 0
+--- !u!136 &136745383315926264
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142984}
+  m_GameObject: {fileID: 140854}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.06832003
-  m_Height: 0.64283276
+  m_Radius: 0.14770666
+  m_Height: 0.76929593
   m_Direction: 1
-  m_Center: {x: 0.000000007450581, y: -0.204879, z: -0.000000005587937}
+  m_Center: {x: 0.000000007450581, y: -0.18220551, z: -0.0047102356}

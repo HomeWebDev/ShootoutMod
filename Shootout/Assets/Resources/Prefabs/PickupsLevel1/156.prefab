@@ -1,45 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &164904
+--- !u!1 &112290
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 463916}
-  - component: {fileID: 3314376}
-  - component: {fileID: 2370302}
-  - component: {fileID: 114534698598298830}
-  - component: {fileID: 136517171536704134}
-  - component: {fileID: 114673758113487414}
-  - component: {fileID: 114072869918991624}
+  - component: {fileID: 497734}
+  - component: {fileID: 3368958}
+  - component: {fileID: 2383004}
+  - component: {fileID: 114573922506669564}
+  - component: {fileID: 136255162669074302}
+  - component: {fileID: 114709964965661464}
+  - component: {fileID: 114868186736434568}
   m_Layer: 0
-  m_Name: Club 02 Blue 1
-  m_TagString: Untagged
+  m_Name: 156
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &463916
+--- !u!4 &497734
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 112290}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000038735084, z: 0.000000025512906, w: 0.7071067}
+  m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2370302
+--- !u!23 &2383004
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
+  m_GameObject: {fileID: 112290}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -48,7 +48,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 932def4f06f616446b62397c8385f76d, type: 2}
+  - {fileID: 2100000, guid: 458fb3f31d74ceb409c12f70f1a42f72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68,13 +68,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &3314376
+--- !u!33 &3368958
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
-  m_Mesh: {fileID: 4300000, guid: 6753e40a5e1ccad4c97f18ba96a9934e, type: 3}
+  m_GameObject: {fileID: 112290}
+  m_Mesh: {fileID: 4300000, guid: f707a423d77669d45931b34a0f2cff83, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -84,28 +84,14 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 164904}
+  m_RootGameObject: {fileID: 112290}
   m_IsPrefabParent: 1
---- !u!114 &114072869918991624
+--- !u!114 &114573922506669564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Barbed Club
-  Description: 
-  Group: 
---- !u!114 &114534698598298830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
+  m_GameObject: {fileID: 112290}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
@@ -115,33 +101,47 @@ MonoBehaviour:
   LeftHandCopy: 0
   RightHandCopy: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 4
   AttackAnimationHash: 0
---- !u!114 &114673758113487414
+--- !u!114 &114709964965661464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
+  m_GameObject: {fileID: 112290}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageImpact: 5
+  damageImpact: 25
   pickedUp: 0
---- !u!136 &136517171536704134
+--- !u!114 &114868186736434568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Battle Hammer
+  Description: 
+  Group: 
+--- !u!136 &136255162669074302
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 164904}
+  m_GameObject: {fileID: 112290}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.13302642
-  m_Height: 0.6706017
+  m_Radius: 0.17420095
+  m_Height: 0.7028311
   m_Direction: 1
-  m_Center: {x: -0.0014368147, y: -0.21188481, z: -0.00023687637}
+  m_Center: {x: 0.0014545694, y: -0.11896536, z: -0.00000008568167}

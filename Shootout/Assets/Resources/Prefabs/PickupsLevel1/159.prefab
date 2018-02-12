@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 114824116739830216}
   - component: {fileID: 114757761391075988}
   m_Layer: 0
-  m_Name: Scepter 01 Red 1
-  m_TagString: Untagged
+  m_Name: 159
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +101,9 @@ MonoBehaviour:
   LeftHandCopy: 0
   RightHandCopy: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 4
   AttackAnimationHash: 0
 --- !u!114 &114757761391075988
 MonoBehaviour:

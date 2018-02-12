@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 136748206427780376}
   m_Layer: 0
   m_Name: Wand 01 Stick Blue 1
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

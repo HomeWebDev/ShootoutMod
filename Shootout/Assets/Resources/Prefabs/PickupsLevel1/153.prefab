@@ -1,32 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &159492
+--- !u!1 &129094
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 474418}
-  - component: {fileID: 3342428}
-  - component: {fileID: 2336536}
-  - component: {fileID: 114324365466254198}
-  - component: {fileID: 136792426141829912}
-  - component: {fileID: 114568606082671504}
-  - component: {fileID: 114227027785308198}
+  - component: {fileID: 437284}
+  - component: {fileID: 3399430}
+  - component: {fileID: 2396994}
+  - component: {fileID: 114792573174367034}
+  - component: {fileID: 136651017599297846}
+  - component: {fileID: 114522188513670424}
+  - component: {fileID: 114976195310543340}
   m_Layer: 0
-  m_Name: Hammer 01 Black 1
-  m_TagString: Untagged
+  m_Name: 153
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &474418
+--- !u!4 &437284
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
+  m_GameObject: {fileID: 129094}
   m_LocalRotation: {x: -0.7071068, y: 0.000000038735084, z: 0.000000025512906, w: 0.7071067}
   m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,12 +34,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2336536
+--- !u!23 &2396994
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
+  m_GameObject: {fileID: 129094}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -48,7 +48,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3679f9db6a55149449c51db986aed8dd, type: 2}
+  - {fileID: 2100000, guid: ca5c1001b6bf20e49afaf5b5c16397cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68,13 +68,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &3342428
+--- !u!33 &3399430
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
-  m_Mesh: {fileID: 4300000, guid: ee8fa2b6c812bda49a9732f6e84914a4, type: 3}
+  m_GameObject: {fileID: 129094}
+  m_Mesh: {fileID: 4300000, guid: 5a468b25bbfd00b4da8b8811b4a639b4, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -84,28 +84,27 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 159492}
+  m_RootGameObject: {fileID: 129094}
   m_IsPrefabParent: 1
---- !u!114 &114227027785308198
+--- !u!114 &114522188513670424
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
+  m_GameObject: {fileID: 129094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Smith's Hammer
-  Description: 
-  Group: 
---- !u!114 &114324365466254198
+  damageImpact: 5
+  pickedUp: 0
+--- !u!114 &114792573174367034
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
+  m_GameObject: {fileID: 129094}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
@@ -115,33 +114,34 @@ MonoBehaviour:
   LeftHandCopy: 0
   RightHandCopy: 0
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 2
   AttackAnimationHash: 0
---- !u!114 &114568606082671504
+--- !u!114 &114976195310543340
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
+  m_GameObject: {fileID: 129094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageImpact: 5
-  pickedUp: 0
---- !u!136 &136792426141829912
+  Name: Kitchen Knife
+  Description: 
+  Group: 
+--- !u!136 &136651017599297846
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159492}
+  m_GameObject: {fileID: 129094}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.1599274
-  m_Height: 0.54043067
+  m_Radius: 0.05291975
+  m_Height: 0.49135602
   m_Direction: 1
-  m_Center: {x: 0.015728123, y: -0.10014013, z: -0.00000004097819}
+  m_Center: {x: 0.017630856, y: -0.12293805, z: -0.000000055879347}
