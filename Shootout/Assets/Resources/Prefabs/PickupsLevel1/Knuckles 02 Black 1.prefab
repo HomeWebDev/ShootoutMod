@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122110}
   m_LocalRotation: {x: -0.7071068, y: 0.000000038735084, z: 0.000000025512906, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: -0, z: 0}
+  m_LocalPosition: {x: 1.0397619, y: 0.5, z: -4.2647243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoubleHanded: 0
-  LeftHandCopy: 0
+  LeftHandCopy: 1
   RightHandCopy: 0
-  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
-  WeaponRotationRightHand: {x: 0, y: 0, z: 0}
+  WeaponRotationLeftHand: {x: -90, y: 180, z: 0}
+  WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
   AttackAnimation: 0
   AttackAnimationHash: 0

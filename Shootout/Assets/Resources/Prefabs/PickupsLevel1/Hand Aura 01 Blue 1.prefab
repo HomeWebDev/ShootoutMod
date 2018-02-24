@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.3589883, y: 0.5, z: -4.531285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 465838}
@@ -3490,9 +3490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoubleHanded: 0
-  LeftHandCopy: 0
+  LeftHandCopy: 1
   RightHandCopy: 0
-  WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
+  WeaponRotationLeftHand: {x: 0, y: 180, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
   WeaponType: 0
   AttackAnimation: 0
@@ -3520,7 +3520,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.15
+  m_Height: 0.25
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
