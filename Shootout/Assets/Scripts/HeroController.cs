@@ -21,6 +21,7 @@ public class HeroController : MonoBehaviour
     public bool AuraUpdated;
     private float nextMagic;
     private float magicDelay = 0.50f;
+    private bool nextThrownIsRightHand = false;
 
 
     public bool meleeAttackActive;
@@ -121,6 +122,7 @@ public class HeroController : MonoBehaviour
     public enum WeponAttackType
     {
         Punch,
+        PunchThrow,
         Melee1,
         Melee1Throw,
         Melee2,
@@ -506,45 +508,68 @@ public class HeroController : MonoBehaviour
         //}
     }
 
-    public void Melee1ThrowEvent()
+    public void LeftPunchThrowEvent()
     {
-        //Test: Throwing all one-handed axes
-        //if (weaponType == WeaponType.Axe)
         if (ActiveEq.weapon == null)
         {
             return;
         }
 
+        rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+        rangedForce = ThrowForce;
+
+        if (playerStamina.DepleteStamina(10))
         {
-            rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
-            rangedForce = ThrowForce;
+            ThrowWeapon();
+        }
+    }
 
-            if (playerStamina.DepleteStamina(10))
-            {
-                ThrowWeapon();
-            }
+    public void RightPunchThrowEvent()
+    {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
 
+        rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+        rangedForce = ThrowForce;
+
+        if (playerStamina.DepleteStamina(10))
+        {
+            nextThrownIsRightHand = true;
+            ThrowWeapon();
+        }
+    }
+
+    public void Melee1ThrowEvent()
+    {
+        if (ActiveEq.weapon == null)
+        {
+            return;
+        }
+
+        rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+        rangedForce = ThrowForce;
+
+        if (playerStamina.DepleteStamina(10))
+        {
+            ThrowWeapon();
         }
     }
 
     public void Melee2ThrowEvent()
     {
-        //Test: Throwing all one-handed axes
-        //if (weaponType == WeaponType.Axe)
         if (ActiveEq.weapon == null)
         {
             return;
         }
 
-        {
-            rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
-            rangedForce = ThrowForce;
+        rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
+        rangedForce = ThrowForce;
 
-            if (playerStamina.DepleteStamina(10))
-            {
-                ThrowWeapon();
-            }
-            
+        if (playerStamina.DepleteStamina(10))
+        {
+            ThrowWeapon();
         }
     }
 
@@ -1010,7 +1035,18 @@ public class HeroController : MonoBehaviour
             }
         }
 
-        GameObject throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
+        GameObject throwWeapon;
+        //Handle dual-handed weapons
+        if (nextThrownIsRightHand)
+        {
+            nextThrownIsRightHand = false;
+            throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.RightHand.transform.position, Quaternion.Euler(-00, y + 90, -90));
+        }
+        else
+        {
+            throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.weapon.transform.position, Quaternion.Euler(-00, y + 90, -90));
+        }
+        //GameObject throwWeapon = Instantiate(ActiveEq.weapon, ActiveEq.RightHand.transform.position, Quaternion.Euler(-00, y + 90, -90));
         throwWeapon = ResizeThrownItem(throwWeapon);
 
         throwWeapon.GetComponent<CapsuleCollider>().enabled = true;

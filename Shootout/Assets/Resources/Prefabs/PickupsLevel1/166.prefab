@@ -1,74 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &132088
+--- !u!1 &115192
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 490054}
-  - component: {fileID: 114224674324800434}
-  - component: {fileID: 136875302096396210}
-  - component: {fileID: 114929223599362614}
-  - component: {fileID: 114625008784015398}
+  - component: {fileID: 430078}
+  - component: {fileID: 114193187900786674}
+  - component: {fileID: 136087994193502538}
+  - component: {fileID: 114074187386272248}
+  - component: {fileID: 114218108530485426}
   m_Layer: 0
-  m_Name: Hand Aura 01 Purple 1
+  m_Name: 166
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &188120
+--- !u!1 &150524
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 412256}
-  - component: {fileID: 19846798}
-  - component: {fileID: 19952512}
+  - component: {fileID: 465838}
+  - component: {fileID: 19858858}
+  - component: {fileID: 19922906}
   m_Layer: 0
-  m_Name: FX Hand Aura
+  m_Name: 'FX Hand Aura '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &412256
+--- !u!4 &430078
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188120}
+  m_GameObject: {fileID: 115192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.3589883, y: 0.5, z: -4.531285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 465838}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &465838
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150524}
   m_LocalRotation: {x: -0.7071072, y: -0.00000195802, z: -0.0000013453938, w: 0.7071064}
   m_LocalPosition: {x: 0.010726036, y: 0.061078012, z: 0.00050812104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 490054}
+  m_Father: {fileID: 430078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &490054
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.792229, y: 0.5, z: -4.5633388}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 412256}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &19846798
+--- !u!198 &19858858
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188120}
+  m_GameObject: {fileID: 150524}
   serializedVersion: 5
   lengthInSec: 1
   simulationSpeed: 1
@@ -385,7 +385,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -426,7 +426,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -3400,13 +3400,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &19952512
+--- !u!199 &19922906
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188120}
+  m_GameObject: {fileID: 150524}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -3415,7 +3415,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7dfc3f4d3e5b43f4e8d30aeea64391dc, type: 2}
+  - {fileID: 2100000, guid: 0ba9024548bf8224f989d14a7bd697c0, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -3463,14 +3463,27 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 132088}
+  m_RootGameObject: {fileID: 115192}
   m_IsPrefabParent: 1
---- !u!114 &114224674324800434
+--- !u!114 &114074187386272248
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132088}
+  m_GameObject: {fileID: 115192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 8
+  pickedUp: 0
+--- !u!114 &114193187900786674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
@@ -3482,41 +3495,28 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: 0, y: 180, z: 0}
   WeaponRotationRightHand: {x: 0, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 1
   AttackAnimationHash: 0
---- !u!114 &114625008784015398
+--- !u!114 &114218108530485426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132088}
+  m_GameObject: {fileID: 115192}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Purple Hand Aura
+  Name: Blue Hand Aura
   Description: 
   Group: 
---- !u!114 &114929223599362614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageImpact: 12
-  pickedUp: 0
---- !u!136 &136875302096396210
+--- !u!136 &136087994193502538
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132088}
+  m_GameObject: {fileID: 115192}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

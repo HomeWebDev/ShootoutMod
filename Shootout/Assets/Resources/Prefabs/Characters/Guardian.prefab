@@ -1527,7 +1527,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5525563, y: 3.7284246e-17, z: -2.0149598}
+  m_LocalPosition: {x: 0.6003346, y: 4.1372563e-17, z: -2.2359056}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417462}
@@ -15849,6 +15849,7 @@ MonoBehaviour:
   upAttackButton: P1AttackUp
   downAttackButton: P1AttackDown
   shiftMagicButton: ShiftMagic
+  AuraUpdated: 0
   meleeAttackActive: 0
   movementSpeed: 10
   attackSpeed: 10
@@ -16421,6 +16422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 0}
   Aura: {fileID: 0}
+  Speed: 0
 --- !u!114 &114529020592656716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16497,7 +16499,7 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 1
-  AttackAnimation: 12
+  AttackAnimation: 13
   AttackAnimationHash: 0
 --- !u!114 &114642924685706338
 MonoBehaviour:

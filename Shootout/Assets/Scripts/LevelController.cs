@@ -298,7 +298,7 @@ public class LevelController : MonoBehaviour {
         int z = i * scaleZ;
 
         List<int> usedIndexes = new List<int>();
-        List<int> availableIndexes = Enumerable.Range(1, 159).ToList();
+        List<int> availableIndexes = Enumerable.Range(1, 170).ToList();
 
         for (int k = 0; k < 4; k++)
         {
@@ -332,10 +332,16 @@ public class LevelController : MonoBehaviour {
         }
 
 
-        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x+5, 0.5f, z+3), euler0) as GameObject;
-        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x-5, 0.5f, z+3), euler1) as GameObject;
-        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x+5, 0.5f, z-3), euler2) as GameObject;
-        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x-5, 0.5f, z-3), euler3) as GameObject;
+        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[0], typeof(GameObject)), new Vector3(x + 5, 0.5f, z + 3), euler0) as GameObject;
+        GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[1], typeof(GameObject)), new Vector3(x - 5, 0.5f, z + 3), euler1) as GameObject;
+        GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[2], typeof(GameObject)), new Vector3(x + 5, 0.5f, z - 3), euler2) as GameObject;
+        GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + usedIndexes[3], typeof(GameObject)), new Vector3(x - 5, 0.5f, z - 3), euler3) as GameObject;
+
+        //GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + 111, typeof(GameObject)), new Vector3(x + 5, 0.5f, z + 3), euler0) as GameObject;
+        //GameObject item2 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + 109, typeof(GameObject)), new Vector3(x - 5, 0.5f, z + 3), euler1) as GameObject;
+        //GameObject item3 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + 113, typeof(GameObject)), new Vector3(x + 5, 0.5f, z - 3), euler2) as GameObject;
+        //GameObject item4 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + 112, typeof(GameObject)), new Vector3(x - 5, 0.5f, z - 3), euler3) as GameObject;
+
 
         Debug.Log("item1: " + item1);
         Debug.Log("item2: " + item2);

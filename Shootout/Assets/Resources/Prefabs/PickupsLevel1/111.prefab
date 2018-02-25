@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 198753143511938068}
   - component: {fileID: 65973094229604288}
   - component: {fileID: 114310408591489434}
+  - component: {fileID: 114711621383861118}
   m_Layer: 0
   m_Name: 111
   m_TagString: Magic
@@ -371,6 +372,20 @@ MonoBehaviour:
   Projectile: {fileID: 100000, guid: 282615179c2d9ca48a205b00c31e7efa, type: 2}
   Aura: {fileID: 130084, guid: 9c8b1062f0fce064d90ad316f2cbd7f9, type: 2}
   Speed: 200
+--- !u!114 &114711621383861118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507714286009198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Earth Small Magic
+  Description: 
+  Group: 
 --- !u!198 &198145696696389864
 ParticleSystem:
   m_ObjectHideFlags: 1

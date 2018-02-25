@@ -1,45 +1,46 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &129760
+--- !u!1 &122110
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 420542}
-  - component: {fileID: 3303460}
-  - component: {fileID: 2375736}
-  - component: {fileID: 114028021708576196}
-  - component: {fileID: 136066264659821520}
-  - component: {fileID: 114808252298585020}
-  - component: {fileID: 114074646122124524}
+  - component: {fileID: 415184}
+  - component: {fileID: 3360962}
+  - component: {fileID: 2327034}
+  - component: {fileID: 114381135883322546}
+  - component: {fileID: 136696438766351924}
+  - component: {fileID: 114011383740824162}
+  - component: {fileID: 114165072374783116}
+  - component: {fileID: 114933360425830040}
   m_Layer: 0
-  m_Name: Knuckles 01 Gold Green 1
+  m_Name: 164
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &420542
+--- !u!4 &415184
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.29369715, y: 0.5, z: -4.411405}
+  m_GameObject: {fileID: 122110}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000038735084, z: 0.000000025512906, w: 0.7071067}
+  m_LocalPosition: {x: 1.0397619, y: 0.5, z: -4.2647243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2375736
+--- !u!23 &2327034
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
+  m_GameObject: {fileID: 122110}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -48,7 +49,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: adfabf184a742274591c955e47320246, type: 2}
+  - {fileID: 2100000, guid: 3fc4cf65c6384a54ab98f6e8e5e6efc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68,13 +69,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &3303460
+--- !u!33 &3360962
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
-  m_Mesh: {fileID: 4300000, guid: b626bc0f42cb18a4cb9768260c3f365d, type: 3}
+  m_GameObject: {fileID: 122110}
+  m_Mesh: {fileID: 4300000, guid: 67f38df5b4cd54a45a7c4f64c2e511e5, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -84,14 +85,40 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 129760}
+  m_RootGameObject: {fileID: 122110}
   m_IsPrefabParent: 1
---- !u!114 &114028021708576196
+--- !u!114 &114011383740824162
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
+  m_GameObject: {fileID: 122110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 0
+  pickedUp: 0
+--- !u!114 &114165072374783116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImpact: 10
+  pickedUp: 0
+--- !u!114 &114381135883322546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122110}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26c4b05f12c6ca444955a1a7aae8e225, type: 3}
@@ -103,45 +130,32 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: -90, y: 180, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 1
   AttackAnimationHash: 0
---- !u!114 &114074646122124524
+--- !u!114 &114933360425830040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
+  m_GameObject: {fileID: 122110}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d74594e453de7e14286f7ea5bbb2a747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Spikey Knuckles
+  Name: Spikeyer Knuckles
   Description: 
   Group: 
---- !u!114 &114808252298585020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7367e7736dd750c4e898586e096a6a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageImpact: 5
-  pickedUp: 0
---- !u!136 &136066264659821520
+--- !u!136 &136696438766351924
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129760}
+  m_GameObject: {fileID: 122110}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.1444309
-  m_Height: 0.2516911
+  m_Radius: 0.10767415
+  m_Height: 0.40725353
   m_Direction: 1
-  m_Center: {x: 0.105468184, y: 0, z: 0.05765558}
+  m_Center: {x: 0.05280849, y: 0.01626852, z: 0.0009993882}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 114026099957077536}
   - component: {fileID: 114377198111798522}
   m_Layer: 0
-  m_Name: Knuckles 03 Red 1
+  m_Name: 165
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: -90, y: 180, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 0
+  AttackAnimation: 1
   AttackAnimationHash: 0
 --- !u!114 &114377198111798522
 MonoBehaviour:
