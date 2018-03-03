@@ -28,6 +28,7 @@ public class LevelController : MonoBehaviour {
     public GameObject WayPoint;
     public GameObject HiddenWayPoint;
     private int groupId = 0;
+    public List<Color> wallColorList = new List<Color>();
 
     List<GameObject> obstacleList = new List<GameObject>();
 
@@ -121,14 +122,17 @@ public class LevelController : MonoBehaviour {
         //GameObject ground = Instantiate(Resources.Load("Prefabs/Environment/Terrain", typeof(GameObject)), new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         //ground.GetComponent<TerrainHandler>().ShiftTerrain(terrainId);
 
-        groundId = Random.Range(1, 31);
+        //groundId = Random.Range(1, 31);
 
         GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
         groundId = progressController.GetComponent<ProgressController>().NextLevel - 1;
 
         groundPrefab = "Prefabs/Environment/Grounds/Ground" + groundId;
 
-        wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
+        //wallColor = Random.ColorHSV(0.0f, 1.0f, 0.8f, 0.8f, 1.0f, 1.0f);
+
+        wallColor = wallColorList[progressController.GetComponent<ProgressController>().NextLevel - 2];
+
 
         obstacleType = rand.Next(8);
 
