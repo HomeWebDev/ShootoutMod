@@ -137,20 +137,82 @@ public class LevelController : MonoBehaviour {
         obstacleType = rand.Next(8);
 
         obstacleList.Clear();
-        if (obstacleType == 0)
+
+        if (progressController.GetComponent<ProgressController>().NextLevel < 3)
         {
+            obstacleType = 0;
             obstacleDensity = 10;
-            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Green") as GameObject);
-            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Grey") as GameObject);
             obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Lime") as GameObject);
         }
-        if (obstacleType == 1)
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 4)
         {
+            obstacleType = 0;
+            obstacleDensity = 15;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Green") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Lime") as GameObject);
+        }
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 5)
+        {
+            obstacleType = 0;
+            obstacleDensity = 20;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Green") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Grey") as GameObject);
+        }
+        else if(progressController.GetComponent<ProgressController>().NextLevel < 6)
+        {
+            obstacleType = 1;
             obstacleDensity = 10;
             obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Decrepit Tree 01 Brown") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Grey") as GameObject);
+        }
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 7)
+        {
+            obstacleType = 1;
+            obstacleDensity = 10;
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Decrepit Tree 01 Brown") as GameObject);
+            obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Log") as GameObject);
+        }
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 8)
+        {
+            obstacleType = 1;
+            obstacleDensity = 10;
             obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Vine01") as GameObject);
             obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Log") as GameObject);
         }
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 12)
+        {
+            obstacleType = 2;
+        }
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 16)
+        {
+            obstacleType = 7;
+        }
+        else if (progressController.GetComponent<ProgressController>().NextLevel < 22)
+        {
+            obstacleType = 6;
+        }
+        else
+        {
+            obstacleType = 4;
+        }
+
+        Debug.Log("ObstacleType: " + obstacleType);
+
+        //obstacleList.Clear();
+        //if (obstacleType == 0)
+        //{
+        //    obstacleDensity = 10;
+        //    obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Green") as GameObject);
+        //    obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Grey") as GameObject);
+        //    obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Cone Tree - Lime") as GameObject);
+        //}
+        //if (obstacleType == 1)
+        //{
+        //    obstacleDensity = 10;
+        //    obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Decrepit Tree 01 Brown") as GameObject);
+        //    obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Vine01") as GameObject);
+        //    obstacleList.Add(Resources.Load("Prefabs/Environment/Obstacles/Log") as GameObject);
+        //}
         if (obstacleType == 2)
         {
             obstacleDensity = 5;
