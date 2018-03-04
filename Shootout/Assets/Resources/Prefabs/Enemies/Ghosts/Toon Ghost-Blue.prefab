@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotationDamping: 20
-  health: 10
+  health: 4
   meleeDamage: 20
   UseNewMoveWithAstar: 0
   UseNav: 1

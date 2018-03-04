@@ -13,150 +13,151 @@ public class ShiftCamera : MonoBehaviour {
     private System.Random rand = new System.Random();
     private LevelController levelController;
     private GameObject player1;
+    private int levelId = 1;
 
     // Update is called once per frame
-  //  private void Update()
-  //  {
-  //      if(player1 == null)
-  //      {
-  //          return;
-  //      }
-  //      if (levelController == null)
-  //      {
-  //          return;
-  //      }
+    //  private void Update()
+    //  {
+    //      if(player1 == null)
+    //      {
+    //          return;
+    //      }
+    //      if (levelController == null)
+    //      {
+    //          return;
+    //      }
 
-  //      numberOfUpdates++;
-  //      Debug.Log("numberOfUpdates: " + numberOfUpdates);
+    //      numberOfUpdates++;
+    //      Debug.Log("numberOfUpdates: " + numberOfUpdates);
 
-  //      int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
-  //      int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
+    //      int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
+    //      int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;
 
-  //      int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
-  //      int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
+    //      int xPlayerRoom = (int)((player1.transform.position.x / levelController.scaleX) + 0.5f) + 0;
+    //      int zPlayerRoom = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((player1.transform.position.z) / levelController.scaleZ) + 1.5f);
 
-  //      float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
-  //      float zPlayerRelativePos =  zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - player1.transform.position.z / levelController.scaleZ - 1);
+    //      float xPlayerRelativePos = player1.transform.position.x / levelController.scaleX - xPlayerRoom + 0.5f;
+    //      float zPlayerRelativePos =  zPlayerRoom + 0.5f - (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - player1.transform.position.z / levelController.scaleZ - 1);
 
 
-  //      //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
+    //      //Debug.Log("xPlayerRelativePos: " + xPlayerRelativePos + " , zPlayerRelativePos: " + zPlayerRelativePos);
 
-  //      bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
+    //      bool blockNorth = false, blockSouth = false, blockWest = false, blockEast = false;
 
-  //      //Debug.Log("xPlayerRoom: " + xPlayerRoom + " , zPlayerRoom: " + zPlayerRoom);
+    //      //Debug.Log("xPlayerRoom: " + xPlayerRoom + " , zPlayerRoom: " + zPlayerRoom);
 
-  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
-  //      {
-  //          blockNorth = true;
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].NorthWallOpen)
-  //              {
-  //                  blockNorth = false;
-  //              }
-  //          }
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].NorthWallOpen)
-  //              {
-  //                  blockNorth = false;
-  //              }
-  //          }
-  //      }
-  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
-  //      {
-  //          blockSouth = true;
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].SouthWallOpen)
-  //              {
-  //                  blockSouth = false;
-  //              }
-  //          }
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].SouthWallOpen)
-  //              {
-  //                  blockSouth = false;
-  //              }
-  //          }
-  //      }
-  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
-  //      {
-  //          blockWest = true;
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].WestWallOpen)
-  //              {
-  //                  blockWest = false;
-  //              }
-  //          }
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].WestWallOpen)
-  //              {
-  //                  blockWest = false;
-  //              }
-  //          }
-  //      }
-  //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
-  //      {
-  //          blockEast = true;
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].EastWallOpen)
-  //              {
-  //                  blockEast = false;
-  //              }
-  //          }
-  //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
-  //          {
-  //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].EastWallOpen)
-  //              {
-  //                  blockEast = false;
-  //              }
-  //          }
-  //      }
+    //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+    //      {
+    //          blockNorth = true;
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].NorthWallOpen)
+    //              {
+    //                  blockNorth = false;
+    //              }
+    //          }
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].NorthWallOpen)
+    //              {
+    //                  blockNorth = false;
+    //              }
+    //          }
+    //      }
+    //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+    //      {
+    //          blockSouth = true;
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom - 1].SouthWallOpen)
+    //              {
+    //                  blockSouth = false;
+    //              }
+    //          }
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom + 1].SouthWallOpen)
+    //              {
+    //                  blockSouth = false;
+    //              }
+    //          }
+    //      }
+    //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].WestWallOpen)
+    //      {
+    //          blockWest = true;
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].WestWallOpen)
+    //              {
+    //                  blockWest = false;
+    //              }
+    //          }
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].WestWallOpen)
+    //              {
+    //                  blockWest = false;
+    //              }
+    //          }
+    //      }
+    //      if (!levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].EastWallOpen)
+    //      {
+    //          blockEast = true;
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].NorthWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom - 1, xPlayerRoom].EastWallOpen)
+    //              {
+    //                  blockEast = false;
+    //              }
+    //          }
+    //          if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom, xPlayerRoom].SouthWallOpen)
+    //          {
+    //              if (levelController.GetLevelRepresentation().RoomArray[zPlayerRoom + 1, xPlayerRoom].EastWallOpen)
+    //              {
+    //                  blockEast = false;
+    //              }
+    //          }
+    //      }
 
-  //      //Debug.Log("" + blockNorth + blockSouth + blockWest + blockEast);
+    //      //Debug.Log("" + blockNorth + blockSouth + blockWest + blockEast);
 
-  //      Vector3 newCameraPos;
+    //      Vector3 newCameraPos;
 
-  //      float xPos = player1.transform.position.x;
-  //      float yPos = Camera.main.transform.position.y;
-  //      float zPos = player1.transform.position.z - 4.2f;
-		
-		//float xPosCentered = xPlayerRoom * levelController.scaleX;
-  //      float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
+    //      float xPos = player1.transform.position.x;
+    //      float yPos = Camera.main.transform.position.y;
+    //      float zPos = player1.transform.position.z - 4.2f;
 
-  //      if (blockNorth & zPlayerRelativePos > 0.5)
-  //      {
-		//	zPos = zPosCentered;
-  //      }
-  //      if (blockSouth & zPlayerRelativePos < 0.5)
-  //      {
-		//	zPos = zPosCentered;
-  //      }
-  //      if (blockWest & xPlayerRelativePos < 0.5)
-  //      {
-		//	xPos = xPosCentered;
-  //      }
-  //      if (blockEast & xPlayerRelativePos > 0.5)
-  //      {
-		//	xPos = xPosCentered;
-  //      }
+    //float xPosCentered = xPlayerRoom * levelController.scaleX;
+    //      float zPosCentered = (levelController.GetLevelRepresentation().RoomArray.GetLength(0) - 1.0f) * levelController.scaleZ - zPlayerRoom * levelController.scaleZ - 4.2f;
 
-  //      newCameraPos = new Vector3(xPos, yPos, zPos);
+    //      if (blockNorth & zPlayerRelativePos > 0.5)
+    //      {
+    //	zPos = zPosCentered;
+    //      }
+    //      if (blockSouth & zPlayerRelativePos < 0.5)
+    //      {
+    //	zPos = zPosCentered;
+    //      }
+    //      if (blockWest & xPlayerRelativePos < 0.5)
+    //      {
+    //	xPos = xPosCentered;
+    //      }
+    //      if (blockEast & xPlayerRelativePos > 0.5)
+    //      {
+    //	xPos = xPosCentered;
+    //      }
 
-  //      if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
-  //      {
-  //          Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 2.0f);
-  //      }
-  //      else
-  //      {
-  //          Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.01f);
-  //      }
-  //  }
+    //      newCameraPos = new Vector3(xPos, yPos, zPos);
+
+    //      if (Math.Abs(newCameraPos.x - Camera.main.transform.position.x) < 2 & Math.Abs(newCameraPos.z - Camera.main.transform.position.z) < 2)
+    //      {
+    //          Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 2.0f);
+    //      }
+    //      else
+    //      {
+    //          Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, newCameraPos, 0.01f);
+    //      }
+    //  }
 
     IEnumerator LoadAsyncronously()
     {
@@ -237,6 +238,8 @@ public class ShiftCamera : MonoBehaviour {
     {
         //Debug.Log("EnterTrigger");
         GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        GameObject progressController = GameObject.FindGameObjectWithTag("ProgressController");
+        levelId = progressController.GetComponent<ProgressController>().NextLevel - 1;
         //GameObject player2 = GameObject.Find("Player2");
 
         //Debug.Log("Player1: " + player1);
@@ -378,13 +381,148 @@ public class ShiftCamera : MonoBehaviour {
 
     private void InstantiateEnemies(Vector3 enemyPosition)
     {
-        if(rand.NextDouble() > 0.50)
+        if (levelId == 1)
         {
-            InstantiateBats(enemyPosition);
+            InstantiateLevel1Enemies(enemyPosition);
+        }
+        else if (levelId == 2)
+        {
+            InstantiateLevel2Enemies(enemyPosition);
+        }
+        else if (levelId == 3)
+        {
+            InstantiateLevel3Enemies(enemyPosition);
+        }
+        else if (levelId == 4)
+        {
+            InstantiateLevel4Enemies(enemyPosition);
+        }
+        else if (levelId == 5)
+        {
+            InstantiateLevel5Enemies(enemyPosition);
+        }
+        else if (levelId == 6)
+        {
+            InstantiateLevel6Enemies(enemyPosition);
         }
         else
         {
-            InstantiateGhosts(enemyPosition);
+            if (rand.NextDouble() > 0.50)
+            {
+                InstantiateBats(enemyPosition);
+            }
+            else
+            {
+                InstantiateGhosts(enemyPosition);
+            }
+        }
+    }
+
+    private void InstantiateLevel1Enemies(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.50)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+    }
+
+    private void InstantiateLevel2Enemies(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.50)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+    }
+
+    private void InstantiateLevel3Enemies(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.75)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.67)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.5)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+    }
+
+    private void InstantiateLevel4Enemies(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.75)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.67)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.5)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+    }
+
+    private void InstantiateLevel5Enemies(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.75)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.67)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (rand.NextDouble() > 0.5)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+    }
+
+    private void InstantiateLevel6Enemies(Vector3 enemyPosition)
+    {
+        if (rand.NextDouble() > 0.50)
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy1 = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else
+        {
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy1 = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy2 = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
     }
 
@@ -392,15 +530,15 @@ public class ShiftCamera : MonoBehaviour {
     {
         if (rand.NextDouble() > 0.67)
         {
-            GameObject greenBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
         else if (rand.NextDouble() > 0.50)
         {
-            GameObject pinkBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Pink", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
         else
         {
-            GameObject redBat = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Bats/Toon Bat-Red", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
     }
 
@@ -408,15 +546,15 @@ public class ShiftCamera : MonoBehaviour {
     {
         if (rand.NextDouble() > 0.67)
         {
-            GameObject greenBat = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Blue", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
         else if (rand.NextDouble() > 0.50)
         {
-            GameObject pinkBat = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Green", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
         else
         {
-            GameObject redBat = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
+            GameObject enemy = Instantiate(Resources.Load("Prefabs/Enemies/Ghosts/Toon Ghost-Orange", typeof(GameObject)), enemyPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         }
     }
 
