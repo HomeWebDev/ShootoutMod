@@ -141,7 +141,33 @@ public class PlayerPickup : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        if (other.tag == "HeadGear")
+        if (other.tag == "Replenish")
+        {
+            player1.GetComponent<PlayerHealth>().health += other.GetComponent<ReplenishStats>().HealthReplenish;
+            if (player1.GetComponent<PlayerHealth>().health > player1.GetComponent<PlayerHealth>().maxHealth)
+            {
+                player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
+            }
+            player1.GetComponent<PlayerHealth>().UpdateStatusBar();
+
+            player1.GetComponent<PlayerStamina>().Stamina += other.GetComponent<ReplenishStats>().StaminaReplenish;
+            if (player1.GetComponent<PlayerStamina>().Stamina > player1.GetComponent<PlayerStamina>().maxStamina)
+            {
+                player1.GetComponent<PlayerStamina>().Stamina = player1.GetComponent<PlayerStamina>().maxStamina;
+            }
+            player1.GetComponent<PlayerStamina>().UpdateStatusBar();
+
+            player1.GetComponent<PlayerMagic>().Magic += other.GetComponent<ReplenishStats>().MagicReplenish;
+            if (player1.GetComponent<PlayerMagic>().Magic > player1.GetComponent<PlayerMagic>().maxMagic)
+            {
+                player1.GetComponent<PlayerMagic>().Magic = player1.GetComponent<PlayerMagic>().maxMagic;
+            }
+            player1.GetComponent<PlayerMagic>().UpdateStatusBar();
+
+            Destroy(other.gameObject);
+        }
+
+            if (other.tag == "HeadGear")
         {
             Debug.Log("Headpickup");
             //Find head by reference from player object. Using "Find" by name seems sometimes buggy

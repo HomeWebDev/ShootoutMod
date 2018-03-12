@@ -38,6 +38,7 @@ TagManager:
   - Ground
   - Magic
   - Aura
+  - Replenish
   layers:
   - Default
   - TransparentFX

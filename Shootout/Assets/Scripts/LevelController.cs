@@ -306,7 +306,8 @@ public class LevelController : MonoBehaviour {
                         else
                         {
                             Debug.Log("Add hidden door");
-                            AddHiddenWaypoint(i, j);
+                            //TODO: Activate hidden waypoint
+                            //AddHiddenWaypoint(i, j);
                         }
                     }
                 }

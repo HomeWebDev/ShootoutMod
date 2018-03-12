@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour {
     private int maxHealth;
     public UltimateStatusBar healthStatusBar;
     public DamageController damageController;
+    private System.Random rand = new System.Random();
 
 
     public float timeBetweenAttacks = 0.2f;     // The time in seconds between each attack.
@@ -371,9 +372,23 @@ public class EnemyController : MonoBehaviour {
     {
         yield return new WaitForSeconds(1.5f);
 
+        SpawnItem();
+
         Destroy(gameObject);
 
         CheckDoorsOpen();
+    }
+
+    private void SpawnItem()
+    {
+        if (rand.Next(100) > 50)
+        {
+            int heartId = rand.Next(8) + 1;
+
+            Debug.Log("HeartId: " + heartId);
+
+            GameObject item1 = Instantiate(Resources.Load("Prefabs/Pickups/Replenish/" + heartId, typeof(GameObject)), new Vector3(transform.position.x, 0.5f, transform.position.z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
     }
 
     private void CheckDoorsOpen()
