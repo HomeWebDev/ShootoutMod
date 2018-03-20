@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23495503167292032}
   - component: {fileID: 65306300223540852}
   - component: {fileID: 208768161807907280}
+  - component: {fileID: 114688459085694304}
   m_Layer: 0
   m_Name: Pillar 01 Brown
   m_TagString: Obstacle
@@ -96,6 +97,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0147328, y: 1.0315301, z: 3.9639416}
   m_Center: {x: 0, y: -0.00000002980233, z: 1.9819708}
+--- !u!114 &114688459085694304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363948519359584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f5090b2d45ebd4eb9ff23f84f43eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!208 &208768161807907280
 NavMeshObstacle:
   m_ObjectHideFlags: 1

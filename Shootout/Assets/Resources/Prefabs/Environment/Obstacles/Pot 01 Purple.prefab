@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 23264619544518126}
   - component: {fileID: 65909734045702710}
   - component: {fileID: 208384303520992780}
+  - component: {fileID: 114135972092895830}
   m_Layer: 0
   m_Name: Pot 01 Purple
   m_TagString: Obstacle
@@ -331,6 +332,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114135972092895830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816687189982842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f5090b2d45ebd4eb9ff23f84f43eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!198 &198218018730504278
 ParticleSystem:
   m_ObjectHideFlags: 1

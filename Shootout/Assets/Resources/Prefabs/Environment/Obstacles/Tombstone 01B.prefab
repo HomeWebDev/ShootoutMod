@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23341048349535354}
   - component: {fileID: 65018499257064552}
   - component: {fileID: 208233063736058616}
+  - component: {fileID: 114107311407255334}
   m_Layer: 0
   m_Name: Tombstone 01B
   m_TagString: Obstacle
@@ -162,6 +163,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114107311407255334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403505989095144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f5090b2d45ebd4eb9ff23f84f43eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!208 &208233063736058616
 NavMeshObstacle:
   m_ObjectHideFlags: 1

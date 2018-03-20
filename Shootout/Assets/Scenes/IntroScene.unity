@@ -582,8 +582,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Changelog\n\nVersion 0.0.0004\n============================\n * Added changelog\n
-    * Added player controls text in hero selection scene\n\nVersion 0.0.0003\n============================\n
-    * Added heart drops from enemies for health, stamina and magic\n\nVersion 0.0.0002\n============================\n
+    * Added player controls text in hero selection scene\n * Made obstacles (trees
+    etc) destroyable\n\nVersion 0.0.0003\n============================\n * Added heart
+    drops from enemies for health, stamina and magic\n\nVersion 0.0.0002\n============================\n
     * Added enemies for forest levels\n * Added obstacles for forest levels\n\nVersion
     0.0.0001\n============================\n * First beta version on Steam"
 --- !u!222 &323361490
@@ -2289,7 +2290,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

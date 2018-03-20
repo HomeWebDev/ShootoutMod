@@ -23,6 +23,11 @@ public class ContactDamage : MonoBehaviour {
                 CrateController crateDamage = other.GetComponent<CrateController>();
                 crateDamage.TakeDamage(other, damageImpact);
             }
+            else if (other.tag == "Obstacle")
+            {
+                ObstacleController obstacleDamage = other.GetComponent<ObstacleController>();
+                obstacleDamage.TakeOneDamage();
+            }
             else if (other.tag == "Enemy")
             {
                 EnemyController enemy = other.GetComponent<EnemyController>();

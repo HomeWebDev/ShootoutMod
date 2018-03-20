@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 23375896048715100}
   - component: {fileID: 65565462021138678}
   - component: {fileID: 208533731700276446}
+  - component: {fileID: 114356079440750080}
   m_Layer: 0
   m_Name: Pot 01 Green
   m_TagString: Obstacle
@@ -331,6 +332,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114356079440750080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888632781722106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f5090b2d45ebd4eb9ff23f84f43eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!198 &198082468102013580
 ParticleSystem:
   m_ObjectHideFlags: 1
