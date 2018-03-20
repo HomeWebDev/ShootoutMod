@@ -40,6 +40,12 @@ public class MagicProjectileScript : MonoBehaviour
                 enemy.TakeDamage(DamageImpact);
             }
 
+            if (hit.gameObject.tag == "Obstacle")
+            {
+                ObstacleController obstacleDamage = hit.GetComponent<ObstacleController>();
+                obstacleDamage.TakeOneDamage();
+            }
+
             hasCollided = true;
             //transform.DetachChildren();
             impactParticle = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, impactNormal)) as GameObject;

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23920688022580262}
   - component: {fileID: 65407045310301624}
   - component: {fileID: 208994660019896372}
+  - component: {fileID: 114790669613785636}
   m_Layer: 0
   m_Name: Wall Rock 03a
   m_TagString: Obstacle
@@ -96,6 +97,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9954711, y: 0.87966526, z: 0.8566687}
   m_Center: {x: 0.000000032954308, y: -0.000000030194027, z: 0.42833424}
+--- !u!114 &114790669613785636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853977737922464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f5090b2d45ebd4eb9ff23f84f43eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!208 &208994660019896372
 NavMeshObstacle:
   m_ObjectHideFlags: 1

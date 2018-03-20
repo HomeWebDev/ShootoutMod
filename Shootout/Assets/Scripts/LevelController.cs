@@ -316,7 +316,7 @@ public class LevelController : MonoBehaviour {
         }
         MergeMeshes(Grounds);
         //MergeMeshes(Walls);
-        MergeMeshes(Obstacles);
+        //MergeMeshes(Obstacles);
 
         Walls.SetActive(false);
         Obstacles.SetActive(false);
