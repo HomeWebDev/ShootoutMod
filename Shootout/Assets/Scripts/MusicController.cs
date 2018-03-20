@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicController : MonoBehaviour {
 
     private AudioSource audioSource;
     public List<AudioClip> clipList;
+    public string UserVolume = "";
 
     private void Awake()
     {
@@ -21,9 +23,13 @@ public class MusicController : MonoBehaviour {
         audioSource.clip = clip;
         audioSource.Play();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void ChangeVolume(Slider vol)
+    {
+        audioSource.volume = vol.value*0.1f;
+    }
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

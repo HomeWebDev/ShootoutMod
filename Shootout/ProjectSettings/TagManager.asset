@@ -39,6 +39,7 @@ TagManager:
   - Magic
   - Aura
   - Replenish
+  - audiosettings
   layers:
   - Default
   - TransparentFX

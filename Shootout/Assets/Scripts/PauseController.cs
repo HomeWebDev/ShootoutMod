@@ -9,6 +9,7 @@ public class PauseController : MonoBehaviour {
     public GameObject pauseCanvas;
     public GameObject gameOverCanvas;
     public GameObject foundItemCanvas;
+    public GameObject audioSettingsCanvas;
     private bool gameOver = false;
 
     // Use this for initialization
@@ -29,6 +30,7 @@ public class PauseController : MonoBehaviour {
         if (!pauseCanvas.activeInHierarchy)
         {
             pauseCanvas.SetActive(true);
+            audioSettingsCanvas.SetActive(false);
             Time.timeScale = 0;
             AudioListener.pause = true;
         }
@@ -38,6 +40,14 @@ public class PauseController : MonoBehaviour {
             Time.timeScale = 1;
             AudioListener.pause = false;
         }
+    }
+
+    public void AudioSettings()
+    {
+        AudioListener.pause = false;
+        pauseCanvas.SetActive(false);
+        audioSettingsCanvas.SetActive(true);
+
     }
 
     public void GameOver()
