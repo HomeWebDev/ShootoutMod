@@ -2057,7 +2057,7 @@ Transform:
   - {fileID: 1710676851}
   - {fileID: 1660820292}
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &319244818
 ParticleSystem:
@@ -11507,62 +11507,62 @@ Prefab:
     - target: {fileID: 224585000104839418, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -260.09998
+      value: -314.5
       objectReference: {fileID: 0}
     - target: {fileID: 224585000104839418, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 153.60489
+      value: 185.75562
       objectReference: {fileID: 0}
     - target: {fileID: 224585000104839418, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 91.8
+      value: 111.00001
       objectReference: {fileID: 0}
     - target: {fileID: 224585000104839418, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 12.24
+      value: 14.799999
       objectReference: {fileID: 0}
     - target: {fileID: 224837389635604424, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -260.09998
+      value: -314.5
       objectReference: {fileID: 0}
     - target: {fileID: 224837389635604424, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 141.32976
+      value: 170.91121
       objectReference: {fileID: 0}
     - target: {fileID: 224837389635604424, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 91.8
+      value: 111.00001
       objectReference: {fileID: 0}
     - target: {fileID: 224837389635604424, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 12.24
+      value: 14.799999
       objectReference: {fileID: 0}
     - target: {fileID: 224258369281054496, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -260.09998
+      value: -314.5
       objectReference: {fileID: 0}
     - target: {fileID: 224258369281054496, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 165.88
+      value: 200.6
       objectReference: {fileID: 0}
     - target: {fileID: 224258369281054496, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 91.8
+      value: 111.00001
       objectReference: {fileID: 0}
     - target: {fileID: 224258369281054496, guid: b347d640c88d1eb449d422128c9dda92,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 12.24
+      value: 14.799999
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114092814586054730, guid: b347d640c88d1eb449d422128c9dda92, type: 2}
@@ -12129,7 +12129,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4576938629463648, guid: 6416bc7e67fbcdb44ba26afbdb3f2c98, type: 2}
       propertyPath: m_RootOrder
-      value: 35
+      value: 34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6416bc7e67fbcdb44ba26afbdb3f2c98, type: 2}
@@ -18297,6 +18297,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 584433480}
   gameOverCanvas: {fileID: 910194732}
   foundItemCanvas: {fileID: 562857201}
+  audioSettingsCanvas: {fileID: 0}
 --- !u!1 &1270325276
 GameObject:
   m_ObjectHideFlags: 0
@@ -31215,7 +31216,7 @@ Transform:
   - {fileID: 881072903}
   - {fileID: 1807586812}
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1587152524
 ParticleSystem:
@@ -45187,7 +45188,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4769761918072510, guid: f6f59ebfe90b86e4cbeafdaac11f57cf, type: 2}
       propertyPath: m_RootOrder
-      value: 34
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4509539002157158, guid: f6f59ebfe90b86e4cbeafdaac11f57cf, type: 2}
       propertyPath: m_LocalRotation.x

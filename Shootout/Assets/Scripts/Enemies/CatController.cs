@@ -24,8 +24,13 @@ public class CatController : MonoBehaviour
         anim["Walk"].speed = 3.0f;
     }
 
+    private void Update()
+    {
+        anim.Play();
+    }
+
     // Update is called once per frame
-    void Update()
+    void UpdateOld()
     {
         //PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
 
@@ -34,7 +39,7 @@ public class CatController : MonoBehaviour
         //float moveH = Input.GetAxis(horizontalAxis);
 
         GameObject player1 = GameObject.Find("Player1");
-        GameObject player2 = GameObject.Find("Player2");
+        //GameObject player2 = GameObject.Find("Player2");
 
         float moveH = player1.transform.position.x - gameObject.transform.position.x;
         float moveV = player1.transform.position.z - gameObject.transform.position.z;
@@ -49,7 +54,9 @@ public class CatController : MonoBehaviour
             anim.Play();
         }
         else
+        {
             anim.Stop();
+        }
 
         controller.Move(movement * Time.deltaTime);
 

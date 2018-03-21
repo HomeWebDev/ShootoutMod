@@ -3347,6 +3347,7 @@ GameObject:
   - component: {fileID: 65685251105086328}
   - component: {fileID: 54845000394794134}
   - component: {fileID: 114412224513321214}
+  - component: {fileID: 114270846588105524}
   m_Layer: 0
   m_Name: cat
   m_TagString: Enemy
@@ -8751,7 +8752,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1644225061688358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 5.17489, y: 2.2867253e-17, z: -1.2358195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4176826833295874}
@@ -9726,7 +9727,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5f0741dda2890354cbdfc8937918a284, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -9746,6 +9747,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114270846588105524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644225061688358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4264ee7780296b54e93ffa5f4ef7d134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  rotationDamping: 20
+  horizontalAxis: 
+  verticalAxis: 
+  health: 0
 --- !u!114 &114287423356567000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9762,6 +9779,7 @@ MonoBehaviour:
   health: 20
   meleeDamage: 1
   UseNewMoveWithAstar: 0
+  UseNav: 0
   GeneratePathToPlayer: 0
   MovePathToPlayer: 0
   UpdatePostionNew: 0
@@ -9775,6 +9793,9 @@ MonoBehaviour:
   IsBoss: 1
   healthStatusBar: {fileID: 114635915532215738}
   damageController: {fileID: 114412224513321214}
+  timeBetweenAttacks: 0.2
+  attackDamage: 10
+  player1: {fileID: 0}
 --- !u!114 &114301900785559070
 MonoBehaviour:
   m_ObjectHideFlags: 1

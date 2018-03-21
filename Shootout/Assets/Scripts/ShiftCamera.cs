@@ -322,6 +322,9 @@ public class ShiftCamera : MonoBehaviour {
 
         GameObject cat = Instantiate(Resources.Load("Prefabs/Enemies/cat", typeof(GameObject)), bossPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
 
+        Vector3 adjustedScale = new Vector3(cat.transform.localScale.x + levelId - 1, player1.transform.localScale.y + levelId - 1, player1.transform.localScale.z + levelId - 1);
+        cat.transform.localScale = adjustedScale;
+
         levelController.GetLevelRepresentation().ContentArray[zThisRoom, xThisRoom] = LevelRepresentation.ContentType.NoContent;
     }
 
