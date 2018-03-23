@@ -717,7 +717,7 @@ MonoBehaviour:
   healthStatusBar: {fileID: 114995046863962540}
   damageController: {fileID: 114313394748126748}
   timeBetweenAttacks: 1
-  attackDamage: 10
+  attackDamage: 20
   player1: {fileID: 0}
 --- !u!114 &114376618152628748
 MonoBehaviour:
@@ -957,7 +957,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}

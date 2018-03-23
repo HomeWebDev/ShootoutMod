@@ -678,7 +678,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215033699703956}
   m_LocalRotation: {x: -0.7071068, y: 0.000000014015474, z: 0.000000014015474, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 475480}
@@ -744,7 +744,7 @@ MonoBehaviour:
   healthStatusBar: {fileID: 114184936692304760}
   damageController: {fileID: 114746640857050182}
   timeBetweenAttacks: 0.2
-  attackDamage: 1
+  attackDamage: 10
   player1: {fileID: 0}
 --- !u!114 &114120162476781876
 MonoBehaviour:
@@ -982,7 +982,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
