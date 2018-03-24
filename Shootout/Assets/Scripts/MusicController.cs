@@ -6,12 +6,20 @@ using UnityEngine.UI;
 public class MusicController : MonoBehaviour {
 
     private AudioSource audioSource;
+    private GameObject player1;
     public List<AudioClip> clipList;
+    public float FactorBy = 0.1f;
     public string UserVolume = "";
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+
+        if(audioSource != null)
+        {
+            audioSource.volume = player1.GetComponent<HeroController>().MusicVolume;
+        } 
     }
 
     // Use this for initialization
@@ -19,14 +27,16 @@ public class MusicController : MonoBehaviour {
         AudioClip clip = clipList[Random.Range(0, clipList.Count)];
 
         audioSource.loop = true;
-        audioSource.volume = 0.2f;
         audioSource.clip = clip;
         audioSource.Play();
     }
 
     public void ChangeVolume(Slider vol)
     {
-        audioSource.volume = vol.value*0.1f;
+        audioSource.volume = vol.value * FactorBy;
+
+        GameObject.FindGameObjectWithTag("Player1").GetComponent<HeroController>().MusicVolume = vol.value * FactorBy;
+
     }
     // Update is called once per frame
     void Update () {

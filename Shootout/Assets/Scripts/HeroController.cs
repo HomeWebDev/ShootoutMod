@@ -8,6 +8,9 @@ public class HeroController : MonoBehaviour
     Rigidbody rb;
     CharacterController controller;
     Animator animator;
+    public float MusicVolume = 0.15f;
+    public float FXVolume = 0.15f;
+    public float UnitVolume = 0.15f;
     public string horizontalAxis;
     public string verticalAxis;
     public string leftAttackButton;
