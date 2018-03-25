@@ -18,9 +18,11 @@ public class HeroController : MonoBehaviour
     public string upAttackButton;
     public string downAttackButton;
     public string shiftMagicButton;
-    private bool magicEnabled;
+    public bool magicEnabled;
     private float nextMagicShift;
+    private float nextMagicDeplete;
     private float magicShiftRate = 0.25f;
+    private float magicDepleteRate = 0.25f;
     public bool AuraUpdated;
     private float nextMagic;
     private float magicDelay = 0.50f;
@@ -179,6 +181,12 @@ public class HeroController : MonoBehaviour
         }
 
         GameObject aura = GameObject.FindWithTag("Aura");
+
+        if (magicEnabled && Time.time > nextMagicDeplete)
+        {
+            nextMagicDeplete = Time.time + magicDepleteRate;
+            playerMagic.DepleteMagic(1);
+        }
 
         if (magicEnabled && !AuraUpdated)
         {

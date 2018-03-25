@@ -45,6 +45,11 @@ public class PlayerHealth : MonoBehaviour
         healthStatusBar.UpdateStatus(health, maxHealth);
     }
 
+    public void UpdateStatusBarWithoutPosition()
+    {
+        healthStatusBar.UpdateStatus(health, maxHealth);
+    }
+
     /// <summary>
     /// Reset health
     /// </summary>

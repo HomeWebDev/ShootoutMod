@@ -148,21 +148,21 @@ public class PlayerPickup : MonoBehaviour {
             {
                 player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
             }
-            player1.GetComponent<PlayerHealth>().UpdateStatusBar();
+            player1.GetComponent<PlayerHealth>().UpdateStatusBarWithoutPosition();
 
             player1.GetComponent<PlayerStamina>().Stamina += other.GetComponent<ReplenishStats>().StaminaReplenish;
             if (player1.GetComponent<PlayerStamina>().Stamina > player1.GetComponent<PlayerStamina>().maxStamina)
             {
                 player1.GetComponent<PlayerStamina>().Stamina = player1.GetComponent<PlayerStamina>().maxStamina;
             }
-            player1.GetComponent<PlayerStamina>().UpdateStatusBar();
+            player1.GetComponent<PlayerStamina>().UpdateStatusBarWithoutPosition();
 
             player1.GetComponent<PlayerMagic>().Magic += other.GetComponent<ReplenishStats>().MagicReplenish;
             if (player1.GetComponent<PlayerMagic>().Magic > player1.GetComponent<PlayerMagic>().maxMagic)
             {
                 player1.GetComponent<PlayerMagic>().Magic = player1.GetComponent<PlayerMagic>().maxMagic;
             }
-            player1.GetComponent<PlayerMagic>().UpdateStatusBar();
+            player1.GetComponent<PlayerMagic>().UpdateStatusBarWithoutPosition();
 
             Destroy(other.gameObject);
         }

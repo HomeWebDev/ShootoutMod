@@ -32,14 +32,22 @@ public class PlayerMagic : MonoBehaviour {
         MagicStatusBar.UpdateStatus(Magic, maxMagic);
     }
 
+    public void UpdateStatusBarWithoutPosition()
+    {
+        MagicStatusBar.UpdateStatus(Magic, maxMagic);
+    }
+
     // Update is called once per frame
     void Update () {
 
-        //Regenerate magic every interval
-        if (Time.time >= nextUpdate)
+        if(!player1.GetComponent<HeroController>().magicEnabled)
         {
-            nextUpdate = Time.time + 0.1f;
-            RegenMagic();
+            //Regenerate magic every interval if magic not enabled
+            if (Time.time >= nextUpdate)
+            {
+                nextUpdate = Time.time + 0.1f;
+                RegenMagic();
+            }
         }
     }
 

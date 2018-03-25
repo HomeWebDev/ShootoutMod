@@ -29,7 +29,7 @@ public class MagicProjectileScript : MonoBehaviour
         {
             Debug.Log("Collided with: " + hit.gameObject.tag);
 
-            if (hit.gameObject.tag == "Player1" || hit.gameObject.tag == "Arrow" || hit.gameObject.tag == "Weapon" || hit.gameObject.tag == "Ground" || hit.gameObject.tag == "Powerup" || hit.gameObject.tag == "Costume" || hit.gameObject.tag == "HeadGear" || hit.gameObject.tag == "BackGear" || hit.gameObject.tag == "Magic")
+            if (hit.gameObject.tag == "Player1" || hit.gameObject.tag == "Arrow" || hit.gameObject.tag == "Weapon" || hit.gameObject.tag == "Ground" || hit.gameObject.tag == "Powerup" || hit.gameObject.tag == "Costume" || hit.gameObject.tag == "HeadGear" || hit.gameObject.tag == "BackGear" || hit.gameObject.tag == "Magic" || hit.gameObject.tag == "Replenish")
             {
                 return;
             }

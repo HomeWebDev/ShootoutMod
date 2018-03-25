@@ -130,7 +130,7 @@ MonoBehaviour:
   WeaponRotationLeftHand: {x: 0, y: 0, z: 0}
   WeaponRotationRightHand: {x: -90, y: 0, z: 0}
   WeaponType: 0
-  AttackAnimation: 4
+  AttackAnimation: 5
   AttackAnimationHash: 0
 --- !u!136 &136459184183719028
 CapsuleCollider:

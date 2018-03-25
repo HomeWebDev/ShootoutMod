@@ -32,6 +32,11 @@ public class PlayerStamina : MonoBehaviour {
         StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
     }
 
+    public void UpdateStatusBarWithoutPosition()
+    {
+        StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
+    }
+
     // Update is called once per frame
     void Update () {
 
