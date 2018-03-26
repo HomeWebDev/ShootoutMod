@@ -329,6 +329,8 @@ public class LevelController : MonoBehaviour {
 
     private bool ShouldAddHiddenDoor()
     {
+        return true; //TODO: Remove this when more than forest should be opened
+
         Debug.Log("ForestCleared: " + Collectibles.current.collectibleItemsList.Where(item => item.name == "ForestCleared").FirstOrDefault().collected);
         Debug.Log("groundId: " + groundId);
         if (Collectibles.current.collectibleItemsList.Where(item => item.name == "ForestCleared").FirstOrDefault().collected && groundId == 3)
@@ -521,7 +523,7 @@ public class LevelController : MonoBehaviour {
 
         //Instantiate(obstacleList[obstacleIndex], new Vector3(x, 0, z), Quaternion.Euler(-90, 0, 0));
 
-        if (rand.Next(100) > 50)
+        if (rand.Next(100) > 50 && levelRepresentation.ContentArray[levelRepresentation.RoomArray.GetLength(0) - i - 1, j] != LevelRepresentation.ContentType.BossLevel1)
         {
             for (int l = 0; l < obstacleDensity; l++)
             {

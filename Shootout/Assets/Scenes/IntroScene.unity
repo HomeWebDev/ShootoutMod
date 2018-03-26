@@ -546,7 +546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.4377, y: 0.000013061577}
+  m_AnchoredPosition: {x: -7.4377, y: 0.000018204226}
   m_SizeDelta: {x: 330.3, y: 775.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323361489
@@ -581,10 +581,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Changelog\n\nVersion 0.0.0008\n============================\n * Audio level
-    kept between levels\n * Heart updates no longer risk changing status bars\n *
-    Magic no longer collides with hearts\n * Magic now bleeds off when active\n *
-    Fix for throwing picked up weapons\n\nVersion 0.0.0007\n============================\n
+  m_Text: "Changelog\n\nVersion 0.0.0009\n============================\n * No longer
+    possible to break rocks in walls\n * No trees in boss room\n * No longer possible
+    to open path to desert area\n * Bosses drop powerup\n * Shortcut keys for shifting
+    level and opening doors disabled\n\nVersion 0.0.0008\n============================\n
+    * Audio level kept between levels\n * Heart updates no longer risk changing status
+    bars\n * Magic no longer collides with hearts\n * Magic now bleeds off when active\n
+    * Fix for throwing picked up weapons\n\nVersion 0.0.0007\n============================\n
     * Harder enemies\n * Fix sonic bat attack\n\nVersion 0.0.0006\n============================\n
     * Experiment with walking, growing cats\n\nVersion 0.0.0005\n============================\n
     * Added audio settings in pause menu\n\nVersion 0.0.0004\n============================\n

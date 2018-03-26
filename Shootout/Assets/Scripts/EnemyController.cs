@@ -359,10 +359,7 @@ public class EnemyController : MonoBehaviour {
             speed = 0;
 
             //Destroy(gameObject);
-
             StartCoroutine(DelayedDelete());
-
-            //
 
             tag = "Untagged";
         }
@@ -372,7 +369,14 @@ public class EnemyController : MonoBehaviour {
     {
         yield return new WaitForSeconds(1.5f);
 
-        SpawnItem();
+        if(IsBoss)
+        {
+            SpawnBossItem();
+        }
+        else
+        {
+            SpawnItem();
+        }
 
         Destroy(gameObject);
 
@@ -389,6 +393,15 @@ public class EnemyController : MonoBehaviour {
 
             GameObject item1 = Instantiate(Resources.Load("Prefabs/Pickups/Replenish/" + heartId, typeof(GameObject)), new Vector3(transform.position.x, 0.5f, transform.position.z), Quaternion.Euler(0, 0, 0)) as GameObject;
         }
+    }
+
+    private void SpawnBossItem()
+    {
+        int itemIndex = UnityEngine.Random.Range(17, 33);
+
+        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + itemIndex, typeof(GameObject)), new Vector3(transform.position.x, 0.5f, transform.position.z), Quaternion.Euler(0, 0, 0)) as GameObject;
+
+        item1.GetComponent<ItemName>().Group = "GroupBoss";
     }
 
     private void CheckDoorsOpen()
