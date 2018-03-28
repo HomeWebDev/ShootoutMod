@@ -29,6 +29,7 @@ public class PlayerStamina : MonoBehaviour {
         StaminaStatusBar.screenSpaceOptions.xRatio = maxStamina / 1000;
         StaminaStatusBar.UpdatePositioning();
 
+        Debug.Log("StaminaXRatio: " + StaminaStatusBar.screenSpaceOptions.xRatio);
         StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
     }
 
@@ -50,13 +51,12 @@ public class PlayerStamina : MonoBehaviour {
 
     private void RegenStamina()
     {
-        Stamina += maxStamina / 100 * StaminaRegenRate;
-        //Stamina += StaminaRegenRate;
-        if(Stamina > maxStamina)
-        {
-            Stamina = maxStamina;
-        }
-        StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
+        //Stamina += maxStamina / 100 * StaminaRegenRate;
+        //if(Stamina > maxStamina)
+        //{
+        //    Stamina = maxStamina;
+        //}
+        //StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
     }
 
     public bool DepleteStamina(float value)

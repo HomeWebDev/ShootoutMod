@@ -388,6 +388,7 @@ public class EnemyController : MonoBehaviour {
         if (rand.Next(100) > 50)
         {
             int heartId = rand.Next(8) + 1;
+            //int heartId = rand.Next(4) + 5;
 
             Debug.Log("HeartId: " + heartId);
 

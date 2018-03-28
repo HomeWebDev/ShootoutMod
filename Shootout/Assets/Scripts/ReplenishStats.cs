@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ReplenishStats : MonoBehaviour {
 
+    public float HealthIncrease;
+    public float StaminaIncrease;
+    public float MagicIncrease;
     public float HealthReplenish;
     public float StaminaReplenish;
     public float MagicReplenish;

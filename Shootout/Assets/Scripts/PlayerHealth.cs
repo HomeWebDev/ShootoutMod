@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
         healthStatusBar.screenSpaceOptions.xRatio = maxHealth / 1000;
         healthStatusBar.UpdatePositioning();
 
+        Debug.Log("HealthXRatio: " + healthStatusBar.screenSpaceOptions.xRatio);
         healthStatusBar.UpdateStatus(health, maxHealth);
     }
 

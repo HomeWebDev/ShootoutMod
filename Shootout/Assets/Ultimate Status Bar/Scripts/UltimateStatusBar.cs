@@ -926,7 +926,7 @@ public class UltimateStatusBar : MonoBehaviour
 			// Now configure the ratio based on the above information.
 			screenSpaceOptions.xRatio = rawRatio.x / maxValue;
 			screenSpaceOptions.yRatio = rawRatio.y / maxValue;
-		}
+        }
 
 		// Store the calculation value of either Height or Width.
 		float referenceSize = screenSpaceOptions.scalingAxis == ScreenSpaceOptions.ScalingAxis.Height ? Screen.height : Screen.width;
@@ -943,8 +943,8 @@ public class UltimateStatusBar : MonoBehaviour
 		// Configure the position of the image according to the information that was gathered above.
 		Vector2 imagePosition = screenSpaceOptions.ConfigureImagePosition( new Vector2( baseTransform.sizeDelta.x, baseTransform.sizeDelta.y ) );
 
-		// Apply the positioning.
-		baseTransform.position = imagePosition + pivotSpacer;
+        // Apply the positioning.
+        baseTransform.position = imagePosition + pivotSpacer;
 
 		if( OnUpdatePositioning != null )
 			OnUpdatePositioning();

@@ -185,7 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364adf5106d8b124d9e6c5c68ef13838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthReplenish: 20
+  HealthIncrease: 0
+  StaminaIncrease: 0
+  MagicIncrease: 0
+  HealthReplenish: 50
   StaminaReplenish: 0
   MagicReplenish: 0
 --- !u!198 &198386078313166608

@@ -29,6 +29,7 @@ public class PlayerMagic : MonoBehaviour {
         MagicStatusBar.screenSpaceOptions.xRatio = maxMagic / 1000;
         MagicStatusBar.UpdatePositioning();
 
+        Debug.Log("MagicXRatio: " + MagicStatusBar.screenSpaceOptions.xRatio);
         MagicStatusBar.UpdateStatus(Magic, maxMagic);
     }
 
@@ -53,12 +54,12 @@ public class PlayerMagic : MonoBehaviour {
 
     private void RegenMagic()
     {
-        Magic += maxMagic / 100 * MagicRegenRate;
-        if (Magic > maxMagic)
-        {
-            Magic = maxMagic;
-        }
-        MagicStatusBar.UpdateStatus(Magic, maxMagic);
+        //Magic += maxMagic / 100 * MagicRegenRate;
+        //if (Magic > maxMagic)
+        //{
+        //    Magic = maxMagic;
+        //}
+        //MagicStatusBar.UpdateStatus(Magic, maxMagic);
     }
 
     public bool DepleteMagic(float value)
