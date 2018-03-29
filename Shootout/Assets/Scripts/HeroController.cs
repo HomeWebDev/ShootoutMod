@@ -18,10 +18,14 @@ public class HeroController : MonoBehaviour
     public string upAttackButton;
     public string downAttackButton;
     public string shiftMagicButton;
+    public string shiftThrowButton;
     public bool magicEnabled;
+    public bool throwEnabled;
     private float nextMagicShift;
+    private float nextThrowShift;
     private float nextMagicDeplete;
     private float magicShiftRate = 0.25f;
+    private float throwShiftRate = 0.25f;
     private float magicDepleteRate = 0.25f;
     public bool AuraUpdated;
     private float nextMagic;
@@ -29,7 +33,7 @@ public class HeroController : MonoBehaviour
     private bool nextThrownIsRightHand = false;
 
 
-    public bool meleeAttackActive;
+public bool meleeAttackActive;
 
     public float movementSpeed;
     public float attackSpeed;
@@ -172,6 +176,15 @@ public class HeroController : MonoBehaviour
         //Debug.Log("movement: " + Mathf.Min(Mathf.Abs(moveV), Mathf.Abs(moveH)));
     }
 
+    private void HandleThrowing()
+    {
+        if (Input.GetButton(shiftThrowButton) && Time.time > nextThrowShift)
+        {
+            nextThrowShift = Time.time + throwShiftRate;
+            throwEnabled = !throwEnabled;
+        }
+    }
+
     private void HandleMagic()
     {
         if (Input.GetButton(shiftMagicButton) && Time.time > nextMagicShift)
@@ -182,7 +195,7 @@ public class HeroController : MonoBehaviour
 
         GameObject aura = GameObject.FindWithTag("Aura");
 
-        if (magicEnabled && Time.time > nextMagicDeplete)
+        if (magicEnabled && Time.time > nextMagicDeplete && player1.gameObject.GetComponent<MagicStats>().Aura != null)
         {
             nextMagicDeplete = Time.time + magicDepleteRate;
             playerMagic.DepleteMagic(1);
@@ -246,6 +259,7 @@ public class HeroController : MonoBehaviour
         //Debug.Log("Weapontype: " + weaponType.ToString());
 
         HandleMagic();
+        HandleThrowing();
 
         //CHANGE!!!!
         if (ActiveEq.weapon != null)
@@ -466,7 +480,7 @@ public class HeroController : MonoBehaviour
 
     private void HandleMagicShot()
     {
-        if (magicEnabled && Time.time > nextMagic)
+        if (magicEnabled && Time.time > nextMagic && player1.gameObject.GetComponent<MagicStats>().Aura != null)
         {
             if (playerMagic.DepleteMagic(10))
             {
@@ -529,9 +543,12 @@ public class HeroController : MonoBehaviour
         rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
         rangedForce = ThrowForce;
 
-        if (playerStamina.DepleteStamina(10))
+        if (throwEnabled)
         {
-            ThrowWeapon();
+            if (playerStamina.DepleteStamina(5))
+            {
+                ThrowWeapon();
+            }
         }
     }
 
@@ -545,10 +562,13 @@ public class HeroController : MonoBehaviour
         rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
         rangedForce = ThrowForce;
 
-        if (playerStamina.DepleteStamina(10))
+        if (throwEnabled)
         {
-            nextThrownIsRightHand = true;
-            ThrowWeapon();
+            if (playerStamina.DepleteStamina(5))
+            {
+                nextThrownIsRightHand = true;
+                ThrowWeapon();
+            }
         }
     }
 
@@ -562,9 +582,12 @@ public class HeroController : MonoBehaviour
         rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
         rangedForce = ThrowForce;
 
-        if (playerStamina.DepleteStamina(10))
+        if (throwEnabled)
         {
-            ThrowWeapon();
+            if (playerStamina.DepleteStamina(5))
+            {
+                ThrowWeapon();
+            }
         }
     }
 
@@ -578,9 +601,12 @@ public class HeroController : MonoBehaviour
         rangedAnimationDelay = melee1AnimationDelay / (attackSpeed * 0.1f);
         rangedForce = ThrowForce;
 
-        if (playerStamina.DepleteStamina(10))
+        if (throwEnabled)
         {
-            ThrowWeapon();
+            if (playerStamina.DepleteStamina(5))
+            {
+                ThrowWeapon();
+            }
         }
     }
 

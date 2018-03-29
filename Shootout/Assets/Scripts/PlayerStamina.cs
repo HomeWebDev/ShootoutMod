@@ -84,5 +84,7 @@ public class PlayerStamina : MonoBehaviour {
     public void SetMaxStamina()
     {
         Stamina = maxStamina;
+
+        StaminaStatusBar.UpdateStatus(Stamina, maxStamina);
     }
 }

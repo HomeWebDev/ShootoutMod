@@ -546,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.4377, y: -0.000026952306}
-  m_SizeDelta: {x: 330.3, y: 775.9}
+  m_AnchoredPosition: {x: -7.4377003, y: -24.999975}
+  m_SizeDelta: {x: 330.3, y: 832.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323361489
 MonoBehaviour:
@@ -581,7 +581,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Changelog\n\nVersion 0.0.0010\n============================\n * Some hearts
+  m_Text: "Changelog\n\nVersion 0.0.0011\n============================\n * Use O button
+    to enable/disable throwing weapons (if player has throwing weapon)\n * Stamina
+    not regenerating\n\nVersion 0.0.0010\n============================\n * Some hearts
     now increse max values of bars\n * Removed regeneration of stamina and magic\n\nVersion
     0.0.0009\n============================\n * No longer possible to break rocks in
     walls\n * No trees in boss room\n * No longer possible to open path to desert
@@ -2300,8 +2302,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971260672}
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0.9999988
+  m_Size: 0.93994707
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

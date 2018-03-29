@@ -15842,6 +15842,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e71169f23f52e4bb030e49763a7307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicVolume: 0.15
+  FXVolume: 0.15
+  UnitVolume: 0.15
   horizontalAxis: Horizontal1
   verticalAxis: Vertical1
   leftAttackButton: P1AttackLeft
@@ -15849,6 +15852,9 @@ MonoBehaviour:
   upAttackButton: P1AttackUp
   downAttackButton: P1AttackDown
   shiftMagicButton: ShiftMagic
+  shiftThrowButton: ShiftThrow
+  magicEnabled: 0
+  throwEnabled: 1
   AuraUpdated: 0
   meleeAttackActive: 0
   movementSpeed: 10

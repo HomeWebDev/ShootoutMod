@@ -189,8 +189,8 @@ MonoBehaviour:
   StaminaIncrease: 0
   MagicIncrease: 50
   HealthReplenish: 0
-  StaminaReplenish: 50
-  MagicReplenish: 0
+  StaminaReplenish: 0
+  MagicReplenish: 50
 --- !u!198 &198205124282903138
 ParticleSystem:
   m_ObjectHideFlags: 1

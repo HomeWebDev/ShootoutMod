@@ -82,5 +82,7 @@ public class PlayerMagic : MonoBehaviour {
     public void SetMaxMagic()
     {
         Magic = maxMagic;
+
+        MagicStatusBar.UpdateStatus(Magic, maxMagic);
     }
 }

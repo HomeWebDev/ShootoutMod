@@ -42,6 +42,7 @@ public class LoadLevel : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
 
         player1.GetComponent<PlayerStamina>().SetMaxStamina();
+        player1.GetComponent<PlayerMagic>().SetMaxMagic();
 
         SceneManager.LoadSceneAsync("LevelScene");
     }

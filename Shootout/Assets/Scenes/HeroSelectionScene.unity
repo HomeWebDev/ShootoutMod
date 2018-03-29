@@ -1952,8 +1952,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.3808, y: -1.7}
-  m_SizeDelta: {x: 318.7, y: 124.9}
+  m_AnchoredPosition: {x: 2.5402, y: -3.35}
+  m_SizeDelta: {x: 318.7, y: 144.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723668818
 MonoBehaviour:
@@ -1992,6 +1992,8 @@ MonoBehaviour:
     Arrow keys for movement
 
     I, J, K, L for attack
+
+    O to enable/disable throwing
 
     U to enable/disable magic'
 --- !u!222 &1723668819
@@ -2371,8 +2373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 617, y: 375.75}
-  m_SizeDelta: {x: -1275.5, y: -778.5}
+  m_AnchoredPosition: {x: 617, y: 360.75}
+  m_SizeDelta: {x: -1275.5, y: -748.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054568011
 MonoBehaviour:
