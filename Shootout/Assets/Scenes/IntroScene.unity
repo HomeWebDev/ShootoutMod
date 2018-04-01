@@ -546,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.4377003, y: -24.999975}
-  m_SizeDelta: {x: 330.3, y: 832.6}
+  m_AnchoredPosition: {x: -7.4377003, y: -44.5}
+  m_SizeDelta: {x: 330.3, y: 871.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323361489
 MonoBehaviour:
@@ -581,17 +581,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Changelog\n\nVersion 0.0.0011\n============================\n * Use O button
-    to enable/disable throwing weapons (if player has throwing weapon)\n * Stamina
-    not regenerating\n\nVersion 0.0.0010\n============================\n * Some hearts
-    now increse max values of bars\n * Removed regeneration of stamina and magic\n\nVersion
-    0.0.0009\n============================\n * No longer possible to break rocks in
-    walls\n * No trees in boss room\n * No longer possible to open path to desert
-    area\n * Bosses drop powerup\n * Shortcut keys for shifting level and opening
-    doors disabled\n\nVersion 0.0.0008\n============================\n * Audio level
-    kept between levels\n * Heart updates no longer risk changing status bars\n *
-    Magic no longer collides with hearts\n * Magic now bleeds off when active\n *
-    Fix for throwing picked up weapons\n\nVersion 0.0.0007\n============================\n
+  m_Text: "Changelog\n\nVersion 0.0.0012\n============================\n * Improvements
+    for audio settings\n * Boss items now have fixed position\n\nVersion 0.0.0011\n============================\n
+    * Use O button to enable/disable throwing weapons (if player has throwing weapon)\n
+    * Stamina not regenerating\n\nVersion 0.0.0010\n============================\n
+    * Some hearts now increse max values of bars\n * Removed regeneration of stamina
+    and magic\n\nVersion 0.0.0009\n============================\n * No longer possible
+    to break rocks in walls\n * No trees in boss room\n * No longer possible to open
+    path to desert area\n * Bosses drop powerup\n * Shortcut keys for shifting level
+    and opening doors disabled\n\nVersion 0.0.0008\n============================\n
+    * Audio level kept between levels\n * Heart updates no longer risk changing status
+    bars\n * Magic no longer collides with hearts\n * Magic now bleeds off when active\n
+    * Fix for throwing picked up weapons\n\nVersion 0.0.0007\n============================\n
     * Harder enemies\n * Fix sonic bat attack\n\nVersion 0.0.0006\n============================\n
     * Experiment with walking, growing cats\n\nVersion 0.0.0005\n============================\n
     * Added audio settings in pause menu\n\nVersion 0.0.0004\n============================\n
@@ -1714,7 +1715,6 @@ MonoBehaviour:
   clipList:
   - {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
   FactorBy: 0.1
-  UserVolume: 
 --- !u!1 &1300932144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,8 +2323,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971260672}
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
-  m_Value: 0.9999988
-  m_Size: 0.9399471
+  m_Value: 1
+  m_Size: 0.89788896
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
