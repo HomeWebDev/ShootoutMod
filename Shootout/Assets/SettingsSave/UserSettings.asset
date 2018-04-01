@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cdd63250d7712489eab08fd7bc915e, type: 3}
   m_Name: UserSettings
   m_EditorClassIdentifier: 
-  FilePath: 
-  EnableSave: 0
-  EnableLoad: 0
+  FilePath: C:/Users/elakmask/AppData/LocalLow/JK Gaming/Game of the year\UserSettings.xml
+  EnableSave: 1
+  EnableLoad: 1
   UserCollectibles:
     collectibleItemsList:
     - name: ForestCleared
@@ -30,5 +30,5 @@ MonoBehaviour:
       collected: 0
   UserSoundSettings:
     MasterLevel: 1
-    MusicLevel: 0.027142858
+    MusicLevel: 0
     FXSoundLevel: 1
