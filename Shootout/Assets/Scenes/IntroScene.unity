@@ -826,6 +826,47 @@ MonoBehaviour:
   image: {fileID: 605555558}
   videoToPlay: {fileID: 32900000, guid: 2e5fa76666b8e7647a13c287b6121e3c, type: 3}
   audioToPlay: {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
+--- !u!1 &647519150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 647519152}
+  - component: {fileID: 647519151}
+  m_Layer: 0
+  m_Name: UserSettingController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &647519151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 647519150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627b48da9c40246499ca2a5d269adb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 6efa8eeec82b0934f8bbf0a2733d9d0a, type: 2}
+--- !u!4 &647519152
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 647519150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1589.7979, y: 519.125, z: 80.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654548377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,7 +1755,6 @@ MonoBehaviour:
   clipList:
   - {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
   FactorBy: 0.1
-  UserVolume: 
 --- !u!1 &1300932144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2363,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971260672}
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
-  m_Value: 0.9999988
+  m_Value: 0.9999994
   m_Size: 0.9399471
   m_NumberOfSteps: 0
   m_OnValueChanged:

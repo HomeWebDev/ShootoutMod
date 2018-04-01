@@ -25,8 +25,14 @@ public class UserSettings : ScriptableObject
         }
     }
 
-    public void Load()
+    public UserSettings Load()
     {
+        if(EnableLoad)
+        {
+            FilePath = Path.Combine(Application.persistentDataPath, "UserSettings.xml");
+            return XMLSerializerUtility.DeserializeFromFile<UserSettings>(FilePath);
+        }
+        return null;
 
     }
 

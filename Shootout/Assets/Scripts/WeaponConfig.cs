@@ -13,7 +13,8 @@ public class WeaponConfig : MonoBehaviour {
     public HeroController.WeaponType WeaponType;
     public HeroController.WeponAttackType AttackAnimation;
     public int AttackAnimationHash = 0;
-    
+    public GameObject Ultimate;
+
     void Start()
     {
 

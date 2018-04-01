@@ -7,7 +7,6 @@ public class MusicController : MonoBehaviour {
 
     private AudioSource audioSource;
     public UserSettings Settings;
-    private GameObject player1;
     public List<AudioClip> clipList;
     public float FactorBy = 0.1f;
 
@@ -35,6 +34,7 @@ public class MusicController : MonoBehaviour {
         audioSource.volume = vol.value * FactorBy;
 
         Settings.UserSoundSettings.MusicLevel = vol.value * FactorBy;
+        Settings.Save();
 
     }
     // Update is called once per frame

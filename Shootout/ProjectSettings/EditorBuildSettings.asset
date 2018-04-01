@@ -11,28 +11,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HeroSelectionScene.unity
     guid: 0fadc0ee3accc79419c59cb0ce2b31a0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IntroSceneOld.unity
     guid: 59ef09f59cabd7e44ae66fb36983fd3d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/scene1Backup.unity
     guid: 3184c58aa7410434781ebdf4756dc2b0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ResultScene.unity
     guid: 675f361cfca419248903fb968754b1b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ControlsScene.unity
     guid: a0a5397a8d327b9458d6d2efe5621746
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/scene1.unity
     guid: da1496c213d0fcd46aba9540dd0dc0f9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/scene2.unity
     guid: 7a2de44633b043245986d04b404c5cac
   - enabled: 1
     path: Assets/Scenes/LevelScene.unity
     guid: 2821e7096e1094c4b82c6c64462a93e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadLevelScene.unity
     guid: f7a86d5dab4cf434f9dae1c8e9331181
   - enabled: 1
