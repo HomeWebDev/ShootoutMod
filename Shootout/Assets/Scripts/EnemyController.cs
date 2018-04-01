@@ -400,7 +400,17 @@ public class EnemyController : MonoBehaviour {
     {
         int itemIndex = UnityEngine.Random.Range(17, 33);
 
-        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + itemIndex, typeof(GameObject)), new Vector3(transform.position.x, 0.5f, transform.position.z), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //Place item 2.8 meters below waypoint
+        GameObject levelController = GameObject.FindGameObjectWithTag("LevelController");
+        int xBossRoom = (int)((transform.position.x / levelController.GetComponent<LevelController>().scaleX) + 0.5f) + 0;
+        int zBossRoom = levelController.GetComponent<LevelController>().GetLevelRepresentation().RoomArray.GetLength(0) - (int)(((transform.position.z) / levelController.GetComponent<LevelController>().scaleZ) + 1.5f);
+        float posX = xBossRoom * levelController.GetComponent<LevelController>().scaleX;
+        float posZ = (levelController.GetComponent<LevelController>().GetLevelRepresentation().RoomArray.GetLength(0) - 1 - zBossRoom) * levelController.GetComponent<LevelController>().scaleZ - 2.8f;
+        GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + itemIndex, typeof(GameObject)), new Vector3(posX, 0.5f, posZ), Quaternion.Euler(0, 0, 0)) as GameObject;
+        //GameObject item1 = Instantiate(Resources.Load("Prefabs/PickupsLevel1/" + itemIndex, typeof(GameObject)), new Vector3(transform.position.x, 0.5f, transform.position.z), Quaternion.Euler(0, 0, 0)) as GameObject;
+
+        //Debug.Log("transform.position.x: " + transform.position.x + " transform.position.z: " + transform.position.z);
+        //Debug.Log("posX: " + posX + " posZ: " + posZ);
 
         item1.GetComponent<ItemName>().Group = "GroupBoss";
     }

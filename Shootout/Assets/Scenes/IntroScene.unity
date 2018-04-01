@@ -546,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.4377003, y: -24.999975}
-  m_SizeDelta: {x: 330.3, y: 832.6}
+  m_AnchoredPosition: {x: -7.4377003, y: -44.5}
+  m_SizeDelta: {x: 330.3, y: 871.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323361489
 MonoBehaviour:
@@ -581,17 +581,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Changelog\n\nVersion 0.0.0011\n============================\n * Use O button
-    to enable/disable throwing weapons (if player has throwing weapon)\n * Stamina
-    not regenerating\n\nVersion 0.0.0010\n============================\n * Some hearts
-    now increse max values of bars\n * Removed regeneration of stamina and magic\n\nVersion
-    0.0.0009\n============================\n * No longer possible to break rocks in
-    walls\n * No trees in boss room\n * No longer possible to open path to desert
-    area\n * Bosses drop powerup\n * Shortcut keys for shifting level and opening
-    doors disabled\n\nVersion 0.0.0008\n============================\n * Audio level
-    kept between levels\n * Heart updates no longer risk changing status bars\n *
-    Magic no longer collides with hearts\n * Magic now bleeds off when active\n *
-    Fix for throwing picked up weapons\n\nVersion 0.0.0007\n============================\n
+  m_Text: "Changelog\n\nVersion 0.0.0012\n============================\n * Improvements
+    for audio settings\n * Boss items now have fixed position\n\nVersion 0.0.0011\n============================\n
+    * Use O button to enable/disable throwing weapons (if player has throwing weapon)\n
+    * Stamina not regenerating\n\nVersion 0.0.0010\n============================\n
+    * Some hearts now increse max values of bars\n * Removed regeneration of stamina
+    and magic\n\nVersion 0.0.0009\n============================\n * No longer possible
+    to break rocks in walls\n * No trees in boss room\n * No longer possible to open
+    path to desert area\n * Bosses drop powerup\n * Shortcut keys for shifting level
+    and opening doors disabled\n\nVersion 0.0.0008\n============================\n
+    * Audio level kept between levels\n * Heart updates no longer risk changing status
+    bars\n * Magic no longer collides with hearts\n * Magic now bleeds off when active\n
+    * Fix for throwing picked up weapons\n\nVersion 0.0.0007\n============================\n
     * Harder enemies\n * Fix sonic bat attack\n\nVersion 0.0.0006\n============================\n
     * Experiment with walking, growing cats\n\nVersion 0.0.0005\n============================\n
     * Added audio settings in pause menu\n\nVersion 0.0.0004\n============================\n
@@ -826,47 +827,6 @@ MonoBehaviour:
   image: {fileID: 605555558}
   videoToPlay: {fileID: 32900000, guid: 2e5fa76666b8e7647a13c287b6121e3c, type: 3}
   audioToPlay: {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
---- !u!1 &647519150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 647519152}
-  - component: {fileID: 647519151}
-  m_Layer: 0
-  m_Name: UserSettingController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &647519151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 647519150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627b48da9c40246499ca2a5d269adb1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: 6efa8eeec82b0934f8bbf0a2733d9d0a, type: 2}
---- !u!4 &647519152
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 647519150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1589.7979, y: 519.125, z: 80.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654548377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,8 +2323,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971260672}
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
-  m_Value: 0.9999994
-  m_Size: 0.9399471
+  m_Value: 1
+  m_Size: 0.89788896
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
