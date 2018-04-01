@@ -6,19 +6,18 @@ using UnityEngine.UI;
 public class MusicController : MonoBehaviour {
 
     private AudioSource audioSource;
+    public UserSettings Settings;
     private GameObject player1;
     public List<AudioClip> clipList;
     public float FactorBy = 0.1f;
-    public string UserVolume = "";
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        player1 = GameObject.FindGameObjectWithTag("Player1");
 
         if(audioSource != null)
         {
-            audioSource.volume = player1.GetComponent<HeroController>().MusicVolume;
+            audioSource.volume = Settings.UserSoundSettings.MusicLevel;
         } 
     }
 
@@ -35,7 +34,7 @@ public class MusicController : MonoBehaviour {
     {
         audioSource.volume = vol.value * FactorBy;
 
-        GameObject.FindGameObjectWithTag("Player1").GetComponent<HeroController>().MusicVolume = vol.value * FactorBy;
+        Settings.UserSoundSettings.MusicLevel = vol.value * FactorBy;
 
     }
     // Update is called once per frame

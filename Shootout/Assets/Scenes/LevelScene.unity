@@ -3943,6 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ced38d9e5d05b47ac046f27bcc29b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 6efa8eeec82b0934f8bbf0a2733d9d0a, type: 2}
   clipList:
   - {fileID: 8300000, guid: 1cc8579203b9d3e4997e710206147b17, type: 3}
   - {fileID: 8300000, guid: 0f44254869088d54087d5331a42d812a, type: 3}
@@ -3967,6 +3968,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 98b2c611ac867bd40adece07b38654db, type: 3}
   - {fileID: 8300000, guid: 8d5862c2b64aee24aafa3d2226cc7dd1, type: 3}
   - {fileID: 8300000, guid: 3294adc821f6c1748a6caadf18d85336, type: 3}
+  FactorBy: 0.1
   UserVolume: 
 --- !u!4 &2057338938
 Transform:

@@ -1694,6 +1694,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766887473a04cb345bd43b960445a245, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1277227931 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1049118379195606, guid: 766887473a04cb345bd43b960445a245,
+    type: 2}
+  m_PrefabInternal: {fileID: 1277227930}
+--- !u!114 &1277227932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1277227931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ced38d9e5d05b47ac046f27bcc29b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: 6efa8eeec82b0934f8bbf0a2733d9d0a, type: 2}
+  clipList:
+  - {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
+  FactorBy: 0.1
+  UserVolume: 
 --- !u!1 &1300932144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2324,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
   m_Value: 0.9999988
-  m_Size: 0.93994707
+  m_Size: 0.9399471
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
