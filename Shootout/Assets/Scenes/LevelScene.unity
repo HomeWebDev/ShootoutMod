@@ -3923,8 +3923,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2057338938}
-  - component: {fileID: 2057338937}
   - component: {fileID: 2057338939}
+  - component: {fileID: 2057338937}
   m_Layer: 0
   m_Name: MusicControl
   m_TagString: Untagged
@@ -3969,7 +3969,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8d5862c2b64aee24aafa3d2226cc7dd1, type: 3}
   - {fileID: 8300000, guid: 3294adc821f6c1748a6caadf18d85336, type: 3}
   FactorBy: 0.1
-  UserVolume: 
 --- !u!4 &2057338938
 Transform:
   m_ObjectHideFlags: 0

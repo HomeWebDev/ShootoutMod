@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224544754107791780}
   - component: {fileID: 82562800978043356}
   - component: {fileID: 114802817378335182}
+  - component: {fileID: 114065668509622454}
   m_Layer: 5
   m_Name: IntroSoundPlayer
   m_TagString: IntroSoundPlayer
@@ -108,6 +109,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114065668509622454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049118379195606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ced38d9e5d05b47ac046f27bcc29b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 0}
+  clipList:
+  - {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
+  FactorBy: 0.1
 --- !u!114 &114802817378335182
 MonoBehaviour:
   m_ObjectHideFlags: 1
