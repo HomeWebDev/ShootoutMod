@@ -29,19 +29,20 @@ public class CameraMover : MonoBehaviour {
         {
             return;
         }
-
+#if UNITY_EDITOR
         //Open doors
-        //if (Input.GetKey(KeyCode.N))
-        //{
-        //    levelController.OpenDoors();
-        //}
+        if (Input.GetKey(KeyCode.N))
+        {
+            levelController.OpenDoors();
+        }
 
         //Shift level
-        //if (Input.GetKey(KeyCode.X))
-        //{
-        //    player1.GetComponent<HeroController>().enabled = false;
-        //    SceneManager.LoadScene("LoadLevelScene");
-        //}
+        if (Input.GetKey(KeyCode.X))
+        {
+            player1.GetComponent<HeroController>().enabled = false;
+            SceneManager.LoadScene("LoadLevelScene");
+        }
+#endif
 
         int xRoomPos = (int)(player1.transform.position.x / levelController.scaleX);
         int zRoomPos = levelController.GetLevelRepresentation().RoomArray.GetLength(0) - (int)((player1.transform.position.z) / levelController.scaleZ) - 1;

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ced38d9e5d05b47ac046f27bcc29b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 0}
+  Settings: {fileID: 11400000, guid: 6efa8eeec82b0934f8bbf0a2733d9d0a, type: 2}
   clipList:
   - {fileID: 8300000, guid: a34bb2eae243e1f48948ee821061a64b, type: 3}
   FactorBy: 0.1
