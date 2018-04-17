@@ -1708,12 +1708,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e71169f23f52e4bb030e49763a7307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicVolume: 0.15
+  FXVolume: 0.15
+  UnitVolume: 0.15
   horizontalAxis: Horizontal1
   verticalAxis: Vertical1
   leftAttackButton: P1AttackLeft
   rightAttackButton: P1AttackRight
   upAttackButton: P1AttackUp
   downAttackButton: P1AttackDown
+  shiftMagicButton: 
+  shiftThrowButton: 
+  magicEnabled: 0
+  throwEnabled: 0
+  AuraUpdated: 0
   meleeAttackActive: 0
   movementSpeed: 15
   attackSpeed: 15
@@ -1747,7 +1755,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.4, y: 0.5, z: 0.4}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1

@@ -2007,6 +2007,7 @@ MonoBehaviour:
   WeaponType: 0
   AttackAnimation: 3
   AttackAnimationHash: 0
+  Ultimate: {fileID: 0}
 --- !u!114 &114426413630130576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6099,7 +6100,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.4, y: 0.5, z: 0.4}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1

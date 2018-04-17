@@ -546,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.4377003, y: -44.5}
-  m_SizeDelta: {x: 330.3, y: 871.6}
+  m_AnchoredPosition: {x: -7.4377003, y: -128.8}
+  m_SizeDelta: {x: 330.3, y: 1040.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323361489
 MonoBehaviour:
@@ -581,7 +581,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Changelog\n\nVersion 0.0.0012\n============================\n * Improvements
+  m_Text: "Changelog\n\nVersion 0.0.0013\n============================\n * Fix for
+    enemy damage\n\nVersion 0.0.0012\n============================\n * Improvements
     for audio settings\n * Boss items now have fixed position\n\nVersion 0.0.0011\n============================\n
     * Use O button to enable/disable throwing weapons (if player has throwing weapon)\n
     * Stamina not regenerating\n\nVersion 0.0.0010\n============================\n
@@ -2324,7 +2325,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 971260671}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.89788896
+  m_Size: 0.75235534
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2391,7 +2392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627b48da9c40246499ca2a5d269adb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: 6efa8eeec82b0934f8bbf0a2733d9d0a, type: 2}
 --- !u!4 &1954320844
 Transform:
   m_ObjectHideFlags: 0
